@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+trackeet-react-app/node_modules
+trackeet-react-app/.pnp
+trackeet-react-app/.pnp.js
+
+# testing
+trackeet-react-app/coverage
+
+# production
+trackeet-react-app/build
+
+# misc
+trackeet-react-app/.DS_Store
+trackeet-react-app/.env.local
+trackeet-react-app/.env.development.local
+trackeet-react-app/.env.test.local
+trackeet-react-app/.env.production.local
+
+trackeet-react-app/npm-debug.log*
+trackeet-react-app/yarn-debug.log*
+trackeet-react-app/yarn-error.log*
