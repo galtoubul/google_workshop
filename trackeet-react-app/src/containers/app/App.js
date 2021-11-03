@@ -1,5 +1,11 @@
 import './App.css';
+import { Box } from '@mui/material';
+import { Kanban } from '../../components/common/kanban/kanban';
 
 export const App = () => {
-  return <div className={'App'}></div>;
+  return (
+    <Box>
+      <Kanban></Kanban>
+    </Box>
+  );
 };

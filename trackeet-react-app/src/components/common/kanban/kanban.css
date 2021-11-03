@@ -1,0 +1,12 @@
+.board span {
+
+   display: flex;
+   justify-content: center;
+
+}
+.board  header{
+    display: flex;
+    justify-content: center;
+
+
+}
