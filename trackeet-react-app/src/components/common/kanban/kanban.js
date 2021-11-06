@@ -1,10 +1,10 @@
-import React from 'react';
-import Board from 'react-trello';
-import { KanbanCard } from './kanbanCard/kanbanCard';
-import './kanban.css';
-import { InsertButton } from './insertButton/insertButton';
-import { data } from './data/getData';
-import { boardStyle } from './kanbanStyle';
+import React from "react";
+import Board from "react-trello";
+import { KanbanCard } from "./kanbanCard/kanbanCard";
+import "./kanban.css";
+import { InsertButton } from "./insertButton/insertButton";
+import { data } from "./data/getData";
+import { boardStyle } from "./kanbanStyle";
 
 export const Kanban = (props) => {
   const getInsertCardButton = () => <InsertButton />;
@@ -12,18 +12,12 @@ export const Kanban = (props) => {
   const getCard = (props) => {
     const { date, cardName, shopName } = props;
 
-    return (
-      <KanbanCard
-        date={date}
-        cardName={cardName}
-        shopName={shopName}
-      />
-    );
+    return <KanbanCard date={date} cardName={cardName} shopName={shopName} />;
   };
 
   return (
     <Board
-      className={'kanban'}
+      className={"kanban"}
       style={boardStyle}
       components={{
         AddCardLink: getInsertCardButton,

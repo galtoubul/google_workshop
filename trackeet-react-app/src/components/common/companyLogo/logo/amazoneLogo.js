@@ -1,11 +1,6 @@
 export const AmazonLogo = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      id="body_1"
-      width="30"
-      height="30"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" id="body_1" width="30" height="30">
       <g transform="matrix(0.625 0 0 0.625 0 0)">
         <g transform="matrix(1 0 0 1 0 0)">
           <path

@@ -1,11 +1,11 @@
 export const cardActionsStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
 };
 export const cardContentStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
 };
-export const cardStyle = { margin: '8px', width: 350 };
+export const cardStyle = { margin: "8px", width: 350 };

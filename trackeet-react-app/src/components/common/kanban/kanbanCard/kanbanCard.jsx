@@ -1,16 +1,16 @@
-import { React } from 'react';
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
-import CardContent from '@mui/material/CardContent';
-import { CardButtons } from './cardButtons';
-import { CardTitle } from './cardTitle';
+import { React } from "react";
+import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
+import CardContent from "@mui/material/CardContent";
+import { CardButtons } from "./cardButtons";
+import { CardTitle } from "./cardTitle";
 import {
   cardActionsStyle,
   cardContentStyle,
   cardStyle,
-} from './kanbanCardStyle';
-import { CardActions } from '@mui/material';
-import { CompanyLogo } from '../../companyLogo/companyLogo';
+} from "./kanbanCardStyle";
+import { CardActions } from "@mui/material";
+import { CompanyLogo } from "../../companyLogo/companyLogo";
 
 export const KanbanCard = (props) => {
   return (
