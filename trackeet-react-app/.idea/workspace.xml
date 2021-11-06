@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/avatarCard/avatarCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/avatarCard/logo/aliExpressLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/avatarCard/logo/asosLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/avatarCard/logo/ebayLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/card/kanbanCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/kanban/kanban.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/translation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/avatarCard/logo/aliExpressLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/avatarCard/logo/aliExpressLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/avatarCard/logo/amazoneLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/avatarCard/logo/amazoneLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/card/kanbanCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/card/kanbanCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanban.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanban.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanban.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,30 +83,13 @@
       <workItem from="1635784305848" duration="1305000" />
       <workItem from="1635798522601" duration="173000" />
       <workItem from="1635798729042" duration="1302000" />
-      <workItem from="1635936939197" duration="20790000" />
+      <workItem from="1635936939197" duration="26374000" />
+      <workItem from="1636051315328" duration="919000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/common/kanban/kanban.js</url>
-          <line>8</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/common/kanban/kanban.js</url>
-          <line>22</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

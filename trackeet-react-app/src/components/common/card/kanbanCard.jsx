@@ -11,7 +11,7 @@ import { IconButton } from '@mui/material';
 
 export const KanbanCard = (props) => {
   return (
-    <Card sx={{ maxWidth: 290, margin: '8px' }}>
+    <Card sx={{ margin: '8px', width: 350 }}>
       <CardContent>
         <Box
           sx={{
