@@ -5,36 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/.eslintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/InputAutocomplete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/InputText.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/translation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/companyLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/companyLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/getLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/getLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/aliExpressLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/aliExpressLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/amazoneLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/amazoneLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/asosLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/asosLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/ebayLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/ebayLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/data/getData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/data/getData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButtonStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButtonStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCardStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCardStyle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +90,9 @@
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="" />

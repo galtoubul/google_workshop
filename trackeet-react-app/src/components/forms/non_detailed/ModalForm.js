@@ -9,7 +9,6 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  p: 4,
 };
 
 const ModalForm = (props) => {
@@ -17,7 +16,7 @@ const ModalForm = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <div>
+    <>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
@@ -27,7 +26,7 @@ const ModalForm = (props) => {
       >
         <Box sx={style}>{props.children}</Box>
       </Modal>
-    </div>
+    </>
   );
 };
 
