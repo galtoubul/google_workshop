@@ -21,3 +21,4 @@ trackeet-react-app/.env.production.local
 trackeet-react-app/npm-debug.log*
 trackeet-react-app/yarn-debug.log*
 trackeet-react-app/yarn-error.log*
+node_modules
