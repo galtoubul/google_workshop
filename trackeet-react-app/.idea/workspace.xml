@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e58caaf1-dc78-4809-a008-fd4814d8ec99" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/buttons/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/buttons/Information.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/buttons/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/buttons/Notifications.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+    <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/locales/en/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/locales/en/translation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/InputAutocomplete.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/InputText.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +26,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -45,7 +40,10 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="20Y0Q541h2bhjZkWRWfWqYpNxaz" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="20HpWqf4SyETz070Jpm06AOytOV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,47 +53,68 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="eslint.code.style.apply.dismiss" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/common/avatarCard/logo" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\node_modules\prettier" />
+    <property name="prettier.import.notification.dismissed" value="true" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/common/avatarCard/logo" />
+      <recent name="$PROJECT_DIR$/src/components/common/avatarCard" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\components\header" />
+      <recent name="$PROJECT_DIR$/src/components/common/kanban" />
+      <recent name="$PROJECT_DIR$/src/components/common/companyLogo" />
+      <recent name="$PROJECT_DIR$/src/components/common/avatarCard/logo" />
+      <recent name="$PROJECT_DIR$/src/components/common" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" />
+      <recent name="$PROJECT_DIR$/src/components/common/kanban/data/getData.js" />
+      <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCardStyle.jsx" />
+      <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardButtons.js" />
+      <recent name="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButtonStyle.js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e58caaf1-dc78-4809-a008-fd4814d8ec99" name="Changes" comment="" />
-      <created>1636206193437</created>
+      <changelist id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="" />
+      <created>1635711403318</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1636206193437</updated>
-      <workItem from="1636206194606" duration="742000" />
-      <workItem from="1636209829279" duration="10570000" />
+      <updated>1635711403318</updated>
+      <workItem from="1635711407006" duration="704000" />
+      <workItem from="1635712129253" duration="227000" />
+      <workItem from="1635712376058" duration="86000" />
+      <workItem from="1635712705068" duration="3792000" />
+      <workItem from="1635784305848" duration="1305000" />
+      <workItem from="1635798522601" duration="173000" />
+      <workItem from="1635798729042" duration="1302000" />
+      <workItem from="1635936939197" duration="26374000" />
+      <workItem from="1636051315328" duration="919000" />
+      <workItem from="1636201699251" duration="10786000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

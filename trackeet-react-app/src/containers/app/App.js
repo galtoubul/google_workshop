@@ -1,10 +1,15 @@
-//import { Login } from "../../components/header/buttons/Login";
-//import { Information } from "../../components/header/buttons/Information";
-//import { Notifications } from "../../components/header/buttons/Notifications";
-//import { Box } from "@mui/material";
-import { Header } from "../../components/header/Header";
 import "./App.css";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";
+import ModalForm from "../../components/forms/non_detailed/ModalForm";
 
 export const App = () => {
-  return <Header />;
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <ModalForm>
+        <NonDetailedForm></NonDetailedForm>
+      </ModalForm>
+    </LocalizationProvider>
+  );
 };
