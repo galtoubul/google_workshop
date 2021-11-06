@@ -1,45 +1,56 @@
-// import { FormControl, FormErrorMessage, Button, Input } from "@chakra-ui/react";
-// import { Formik, Form, Field } from "formik";
-import { Button } from "@chakra-ui/react";
-import { Formik, Form } from "formik";
-import InputText from "../../../components/forms/non_detailed/InputText";
-import InputAutocomplete from "../../../components/forms/non_detailed/InputAutocomplete";
-
-// const validateOrderName = function (value) {
-//   let error;
-//   if (!value) {
-//     error = "Order name is required";
-//   }
-
-//   return error;
-// };
-
-const companies = [
-  { value: "amazon", label: "Amazon" },
-  { value: "ebay", label: "Ebay" },
-  { value: "fedex", label: "Fedex" },
-  { value: "nike", label: "Nike" },
-  { value: "asos", label: "Asos" },
-  { value: "aliExpress", label: "Ali Express" },
-  { value: "apple", label: "Apple" },
-];
+import TextInput from "../../../components/forms/non_detailed/TextInput.js";
+import AutocompleteInput from "../../../components/forms/non_detailed/AutocompleteInput.js";
+import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
+import "./NonDetailedForm.css";
+import Button from "@mui/material/Button";
+import { useState } from "react";
 
 const NonDetailedForm = () => {
+  const [orderName, setName] = useState("");
+  const [orderNumber, setOrderNumber] = useState("");
+
+  const orderNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const orderNumberChange = (event) => {
+    setOrderNumber(event.target.value);
+  };
+
+  const companies = [
+    { title: "Amazon" },
+    { title: "Ebay" },
+    { title: "Fedex" },
+    { title: "Nike" },
+    { title: "Asos" },
+    { title: "AliExpress" },
+    { title: "Apple" },
+  ];
+
   return (
-    <Formik>
-      {(props) => (
-        <Form>
-          <InputAutocomplete placeholder="Company Name" list={companies} />
-          <InputText placeholder="Order Name" />
-          <Button mt={4} colorScheme="teal">
-            SAVE
-          </Button>
-          <Button mt={4} colorScheme="teal">
-            ADVANCED
-          </Button>
-        </Form>
-      )}
-    </Formik>
+    <form className="non-detailed-form-container">
+      <div className="non-detailed-form-header">
+        <h1>New Order</h1>
+      </div>
+      <div className="non-detailed-form-input-fields">
+        <AutocompleteInput label="Company" autocompleteList={companies} />
+        <TextInput
+          label="Order Name"
+          onChange={orderNameChange}
+          value={orderName}
+        />
+        <TextInput
+          label="Order Number"
+          onChange={orderNumberChange}
+          value={orderNumber}
+        />
+        <DatePickerInput label="Estimated Arriving Date" />
+      </div>
+      <div className="non-detailed-form-buttons">
+        <Button variant="contained">SAVE</Button>
+        <Button variant="contained">ADVANCED</Button>
+      </div>
+    </form>
   );
 };
 
