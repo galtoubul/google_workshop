@@ -1,4 +1,3 @@
-import "./App.css";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";

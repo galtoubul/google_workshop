@@ -1,7 +1,7 @@
 import React from "react";
 import Board from "react-trello";
 import { KanbanCard } from "./kanbanCard/kanbanCard";
-import "./kanban.css";
+import "./kanban.scss";
 import { InsertButton } from "./insertButton/insertButton";
 import { data } from "./data/getData";
 import { boardStyle } from "./kanbanStyle";

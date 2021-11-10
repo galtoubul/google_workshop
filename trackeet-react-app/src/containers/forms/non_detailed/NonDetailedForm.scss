@@ -1,34 +1,38 @@
-.non-detailed-form-container {
-  border: 2px solid black;
-  background-color: lightblue;
+@import './src/assets/colors/colorsPalette';
+@import './src/assets/styles/styles';
+@import './src/assets/fonts/font';
+
+.nonDetailedFormContainer {
+  background-color: $white;
   height: 400px;
   width: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: $boarderRadius;
 }
 
-.non-detailed-form-header {
+.nonDetailedFormHeader {
   height: 10%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: monospace;
+  font-family: $fontFamily;
 }
 
-.non-detailed-form-input-fields {
+.nonDetailedFormInputFields {
   height: 75%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+
 }
 
-.non-detailed-form-buttons {
+.nonDetailedFormButtons {
   height: 15%;
   width: 223px;
   display: flex;

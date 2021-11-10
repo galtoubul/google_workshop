@@ -1,7 +1,7 @@
 import TextInput from "../../../components/forms/non_detailed/TextInput.js";
 import AutocompleteInput from "../../../components/forms/non_detailed/AutocompleteInput.js";
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
-import "./NonDetailedForm.css";
+import "./NonDetailedForm.scss";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 
@@ -28,11 +28,11 @@ const NonDetailedForm = () => {
   ];
 
   return (
-    <form className="non-detailed-form-container">
-      <div className="non-detailed-form-header">
+    <form className={"nonDetailedFormContainer"}>
+      <div className={"nonDetailedFormHeader"}>
         <h1>New Order</h1>
       </div>
-      <div className="non-detailed-form-input-fields">
+      <div className={"nonDetailedFormInputFields"}>
         <AutocompleteInput label="Company" autocompleteList={companies} />
         <TextInput
           label="Order Name"
@@ -46,7 +46,7 @@ const NonDetailedForm = () => {
         />
         <DatePickerInput label="Estimated Arriving Date" />
       </div>
-      <div className="non-detailed-form-buttons">
+      <div className="nonDetailedFormButtons">
         <Button variant="contained">SAVE</Button>
         <Button variant="contained">ADVANCED</Button>
       </div>

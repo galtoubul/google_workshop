@@ -7,7 +7,7 @@ import { Information } from "../../components/header/buttons/Information";
 import { Home } from "../../components/header/buttons/Home";
 import { Notifications } from "../../components/header/buttons/Notifications";
 import { Login } from "../../components/header/buttons/Login";
-import "./header.css";
+import styles from "./header.scss";
 
 export const Header = () => {
   return (
@@ -16,10 +16,10 @@ export const Header = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Trackeet Bitches!!!
         </Typography>
-        <Home className="headerIcon" />
-        <Information className="headerIcon" />
-        <Notifications className="headerIcon" />
-        <Login className="headerIcon" />
+        <Home className={styles.headerIcon} />
+        <Information className={styles.headerIcon} />
+        <Notifications className={styles.headerIcon} />
+        <Login className={styles.headerIcon} />
       </Toolbar>
     </AppBar>
   );
