@@ -7,7 +7,9 @@ import { data } from "./data/getData";
 import { boardStyle } from "./kanbanStyle";
 
 export const Kanban = (props) => {
-  const getInsertCardButton = () => <InsertButton />;
+  const getInsertCardButton = () => (
+    <InsertButton openNonDetailedForm={props.openNonDetailedForm} />
+  );
 
   const getCard = (props) => {
     const { date, cardName, shopName } = props;
@@ -20,7 +22,7 @@ export const Kanban = (props) => {
       className={"kanban"}
       style={boardStyle}
       components={{
-        AddCardLink: getInsertCardButton,
+        AddCardLink: () => getInsertCardButton,
         Card: getCard,
       }}
       editable

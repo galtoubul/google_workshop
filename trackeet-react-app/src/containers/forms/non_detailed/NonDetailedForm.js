@@ -47,7 +47,9 @@ const NonDetailedForm = () => {
         <DatePickerInput label="Estimated Arriving Date" />
       </div>
       <div className="nonDetailedFormButtons">
-        <Button variant="contained">SAVE</Button>
+        <Button sx={{ backgroundColor: 11111 }} variant="contained">
+          SAVE
+        </Button>
         <Button variant="contained">ADVANCED</Button>
       </div>
     </form>
