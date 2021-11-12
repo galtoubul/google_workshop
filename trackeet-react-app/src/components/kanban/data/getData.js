@@ -1,66 +1,41 @@
-export const data = {
-  lanes: [
-    {
-      cards: [
-        {
-          cardName: "Milk",
-          date: "15 mins",
-          shopName: "amazon",
-          id: "1",
-        },
-      ],
-      id: "Wishlist",
-      style: {
-        width: 400,
-        backgroundColor: "#b7efc5",
+import { boardStyle } from "./styles";
+
+const getFormatCards = (cards, state) => {
+  return cards
+    .filter((card) => card.state === state)
+    .map((card) => {
+      return {
+        cardName: card.cardName,
+        date: card.date,
+        shopName: card.shopName,
+        id: card.id,
+      };
+    });
+};
+
+export const getData = (cards) => {
+  return {
+    lanes: [
+      {
+        cards: getFormatCards(cards, "Wishlist"),
+        id: "Wishlist",
+        style: boardStyle,
+        title: "Wishlist",
       },
-      title: "Wishlist",
-    },
-    {
-      cards: [
-        {
-          cardName: "Milk",
-          date: "15 mins",
-          shopName: "ebay",
-          style: {
-            width: 400,
-            marginLeft: 30,
-          },
-          id: "2",
-        },
-      ],
-      currentPage: 1,
-      id: "On The Way",
-      style: {
-        width: 400,
-        backgroundColor: "#b7efc5",
-        marginLeft: 30,
+      {
+        cards: getFormatCards(cards, "On The Way"),
+        currentPage: 1,
+        id: "On The Way",
+        style: boardStyle,
+        title: "On The Way",
       },
-      title: "On The Way",
-    },
-    {
-      cards: [
-        {
-          cardName: "Milk",
-          date: "15 mins",
-          shopName: "asos",
-          id: "3",
-        },
-        {
-          cardName: "Milk",
-          date: "15 mins",
-          shopName: "aliExpress",
-          id: "4",
-        },
-      ],
-      currentPage: 1,
-      id: "Arrived",
-      style: {
-        width: 400,
-        backgroundColor: "#b7efc5",
-        marginLeft: 30,
+      {
+        cards: getFormatCards(cards, "Arrived"),
+        currentPage: 1,
+        id: "Arrived",
+        style: boardStyle,
+        title: "Arrived",
       },
-      title: "Arrived",
-    },
-  ],
+    ],
+  };
 };

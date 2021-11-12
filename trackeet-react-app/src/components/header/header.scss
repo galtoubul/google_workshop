@@ -1,4 +1,13 @@
 .headerIcon{
     margin: 16px;
-    color: red !important;;
+}
+.logo{
+    flex:1;
+    resizeMode: 'contain';
+    width: 170px;
+
+}
+.logoContainer {
+    flex:1;
+
 }

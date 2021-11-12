@@ -9,6 +9,7 @@ const DatePickerInput = (props) => {
       label={props.label}
       value={value}
       onChange={(newValue) => {
+        props.onChange(newValue);
         setValue(newValue);
       }}
       renderInput={(params) => (

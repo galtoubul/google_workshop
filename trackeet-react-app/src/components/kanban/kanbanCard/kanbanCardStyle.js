@@ -1,3 +1,6 @@
+import { BOARDER_RADIUS } from "../../../assets/styles/styles";
+import { WHITE } from "../../../assets/colors/colorsPalette";
+
 export const cardActionsStyle = {
   display: "flex",
   flexDirection: "row",
@@ -8,4 +11,9 @@ export const cardContentStyle = {
   flexDirection: "row",
   justifyContent: "space-between",
 };
-export const cardStyle = { margin: "8px", width: 350 };
+export const cardStyle = {
+  backgroundColor: WHITE,
+  borderRadius: BOARDER_RADIUS,
+  margin: "8px",
+  width: 350,
+};

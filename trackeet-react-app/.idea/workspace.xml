@@ -5,29 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/styles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/kanban/kanban.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/font.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo/loginLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo/screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/loginForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/loginForm.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/theme/ThemColors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanCardsData/data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanCardsData/kanbanCardsReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/colors/colorsPalette.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/aliExpressLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/aliExpressLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/amazoneLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/amazoneLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/asosLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/asosLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/logo/ebayLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/logo/ebayLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/data/getData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/data/getData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButtonStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButtonStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanban.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/kanbanCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCardStyle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/kanbanCardStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/AutocompleteInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/AutocompleteInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/TextInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Information.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/data/getData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/data/getData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/data/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/data/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButtonStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButtonStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanCard/kanbanCardStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/kanbanCardStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/app/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +89,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eslint.code.style.apply.dismiss" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/sass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/logo" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -82,22 +100,24 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/logo" />
       <recent name="$PROJECT_DIR$/src/components/common/avatarCard/logo" />
       <recent name="$PROJECT_DIR$/src/components/common/avatarCard" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utlis/hooks" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/containers/page" />
       <recent name="$PROJECT_DIR$/src/components/common/kanban" />
       <recent name="$PROJECT_DIR$/src/components/common/companyLogo" />
-      <recent name="$PROJECT_DIR$/src/components/common/avatarCard/logo" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" />
@@ -130,11 +150,24 @@
       <workItem from="1636201699251" duration="10786000" />
       <workItem from="1636533274502" duration="5428000" />
       <workItem from="1636539724587" duration="399000" />
+      <workItem from="1636618648202" duration="651000" />
+      <workItem from="1636633513292" duration="15289000" />
+      <workItem from="1636719730780" duration="3383000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/containers/page/Page.js</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

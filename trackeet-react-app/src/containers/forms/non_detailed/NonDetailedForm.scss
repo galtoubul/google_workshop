@@ -2,43 +2,40 @@
 @import './src/assets/styles/styles';
 @import './src/assets/fonts/font';
 
-.nonDetailedFormContainer {
+.non-detailed-form-container {
   background-color: $white;
-  width: 320px;
+  height: 400px;
+  width: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: space-between;
   flex-direction: column;
   border-radius: $boarderRadius;
 }
 
-.nonDetailedFormHeader {
-  margin: 8px;
+.non-detailed-form-header {
   height: 10%;
   width: 100%;
   display: flex;
+  margin-top: 16px;
   align-items: center;
   justify-content: center;
-  font-family: $fontFamily;
 }
 
-.nonDetailedFormInputFields {
+.non-detailed-form-input-fields {
   height: 75%;
   width: 100%;
   display: flex;
-  margin: 8px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
-
 }
 
-.nonDetailedFormButtons {
-  margin: 8px;
+.non-detailed-form-buttons {
   height: 15%;
   width: 223px;
   display: flex;
   align-items: center;
+  margin-bottom: 16px;
   justify-content: space-between;
 }

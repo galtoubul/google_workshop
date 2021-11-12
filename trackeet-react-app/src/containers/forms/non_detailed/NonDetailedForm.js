@@ -3,11 +3,27 @@ import AutocompleteInput from "../../../components/forms/non_detailed/Autocomple
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./NonDetailedForm.scss";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Typography } from "@mui/material";
+import { KanbanCardsContext } from "../../../utlis/hooks/kanbanCardsData/kanbanCardsContext";
 
-const NonDetailedForm = () => {
+const NonDetailedForm = (props) => {
   const [orderName, setName] = useState("");
   const [orderNumber, setOrderNumber] = useState("");
+  const [orderDate, setOrderDate] = useState("");
+  const [orderCompany, setOrderCompany] = useState("");
+  const { addCard, state } = useContext(KanbanCardsContext);
+
+  const saveNewCard = (orderName, orderNumber, orderDate, orderCompany) => {
+    addCard({
+      cardName: orderName,
+      date: orderDate,
+      shopName: orderCompany.toLowerCase(),
+      id: state.cards.length + 1,
+      state: props.addPosition,
+    });
+    props.closeModal();
+  };
 
   const orderNameChange = (event) => {
     setName(event.target.value);
@@ -15,6 +31,15 @@ const NonDetailedForm = () => {
 
   const orderNumberChange = (event) => {
     setOrderNumber(event.target.value);
+  };
+
+  const orderDateChange = (newDate) => {
+    console.log(newDate);
+    setOrderDate(newDate.toLocaleDateString("en-US"));
+  };
+
+  const orderCompanyChange = (event, newInputValue) => {
+    setOrderCompany(newInputValue);
   };
 
   const companies = [
@@ -28,12 +53,16 @@ const NonDetailedForm = () => {
   ];
 
   return (
-    <form className={"nonDetailedFormContainer"}>
-      <div className={"nonDetailedFormHeader"}>
-        <h1>New Order</h1>
+    <form className="non-detailed-form-container">
+      <div className="non-detailed-form-header">
+        <Typography variant={"h4"}>New Order</Typography>
       </div>
-      <div className={"nonDetailedFormInputFields"}>
-        <AutocompleteInput label="Company" autocompleteList={companies} />
+      <div className="non-detailed-form-input-fields">
+        <AutocompleteInput
+          onChange={orderCompanyChange}
+          label="Company"
+          autocompleteList={companies}
+        />
         <TextInput
           label="Order Name"
           onChange={orderNameChange}
@@ -44,13 +73,23 @@ const NonDetailedForm = () => {
           onChange={orderNumberChange}
           value={orderNumber}
         />
-        <DatePickerInput label="Estimated Arriving Date" />
+        <DatePickerInput
+          onChange={orderDateChange}
+          label="Estimated Arriving Date"
+        />
       </div>
-      <div className="nonDetailedFormButtons">
-        <Button sx={{ backgroundColor: 11111 }} variant="contained">
+      <div className="non-detailed-form-buttons">
+        <Button color={"secondary"} variant="outlined">
+          ADVANCED
+        </Button>
+        <Button
+          onClick={() =>
+            saveNewCard(orderName, orderNumber, orderDate, orderCompany)
+          }
+          variant="contained"
+        >
           SAVE
         </Button>
-        <Button variant="contained">ADVANCED</Button>
       </div>
     </form>
   );
