@@ -4,7 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import { boxStyle, fabStyle } from "./insertButtonStyle";
 
-export const InsertButton = () => {
+export const InsertButton = (props) => {
   return (
     <Box sx={boxStyle}>
       <Fab
@@ -13,6 +13,7 @@ export const InsertButton = () => {
         color="primary"
         aria-label="add"
         sx={fabStyle}
+        onClick={props.openNonDetailedForm}
       >
         <AddIcon />
       </Fab>

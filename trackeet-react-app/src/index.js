@@ -4,10 +4,4 @@ import "./index.css";
 import "./i18n";
 import { App } from "./containers/app/App";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
