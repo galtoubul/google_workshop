@@ -1,0 +1,28 @@
+/* body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+h1 {
+    color: firebrick;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* text-align: center; */
+    /* margin: 15;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem; */
+}
+.box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/* Button {
+  align-items: center;
+  text-justify: "center";
+  text-align: center;
+  align-content: center;
+  text-align-last: center;
+  display: center;
+} */
