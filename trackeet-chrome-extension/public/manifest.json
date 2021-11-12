@@ -12,6 +12,6 @@
     "48": "logo192.png",
     "128": "logo192.png"
   },
-  "content_security_policy": "script-src 'self' 'sha256-Pva0zhelup+1lfMbs8wKXqTrHkMwoA4Gn8EPZPQhtlI=' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'sha256-w52CZIM5Srqw9duKhqpEikzzKFS9PdYnnra/+chMF3Q=' 'unsafe-eval'; object-src 'self'"
   //to do-check out how to adapt the hash for each computer seperatly!//
 }
