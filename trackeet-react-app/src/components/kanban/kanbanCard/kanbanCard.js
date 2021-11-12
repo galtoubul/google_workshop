@@ -10,7 +10,7 @@ import {
   cardStyle,
 } from "./kanbanCardStyle";
 import { CardActions } from "@mui/material";
-import { CompanyLogo } from "../../companyLogo/companyLogo";
+import { CompanyLogo } from "../../common/companyLogo/companyLogo";
 
 export const KanbanCard = (props) => {
   return (
