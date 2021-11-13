@@ -1,20 +1,19 @@
 .loginLogo{
 
-
-  width: 40%;
-
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 100%;
 }
 .loginLogoContainer {
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  //flex:1;
-  //background-color: red;
 
 }
 .loginPageContainer1{
-
+  margin: 32px 0px;
   display: flex;
   justify-content: center;
   flex-direction: row;

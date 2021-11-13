@@ -2,7 +2,7 @@ import { Kanban } from "../../components/kanban/kanban";
 import { useState } from "react";
 import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";
 import ModalForm from "../../components/forms/non_detailed/ModalForm";
-import { KanbanTicketsProvider } from "../../utlis/hooks/kanbanCardsData/kanbanCardsContext";
+import { KanbanProvider } from "../../utlis/hooks/kanbanContext/kanbanContext";
 
 export const Page = () => {
   const [newCardPosition, setNewCardPosition] = useState("");
@@ -18,7 +18,7 @@ export const Page = () => {
 
   return (
     <>
-      <KanbanTicketsProvider>
+      <KanbanProvider>
         <Kanban openNonDetailedForm={openNonDetailedForm}></Kanban>
         <ModalForm
           isModalOpen={newCardPosition !== ""}
@@ -29,7 +29,7 @@ export const Page = () => {
             addPosition={newCardPosition}
           />
         </ModalForm>
-      </KanbanTicketsProvider>
+      </KanbanProvider>
     </>
   );
 };
