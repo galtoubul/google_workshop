@@ -6,10 +6,11 @@ const DatePickerInput = (props) => {
   const [value, setValue] = useState(null);
   return (
     <DatePicker
+      disableOpenPicker={true}
+      inputFormat={"DD/MM/YYYY"}
       label={props.label}
       value={value}
       onChange={(newValue) => {
-        props.onChange(newValue);
         setValue(newValue);
       }}
       renderInput={(params) => (

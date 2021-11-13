@@ -5,21 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/header/headerLogo/HeaderLogo.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header/headerLogo/headerLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
+
+      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/public/keet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Information.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Notifications.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanCardsData/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanCardsData/kanbanCardsContext.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanCardsData/kanbanCardsReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +64,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eslint.code.style.apply.dismiss" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/logo" />
-    <property name="list.type.of.created.stylesheet" value="Sass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -128,7 +128,7 @@
       <workItem from="1636548935187" duration="796000" />
       <workItem from="1636550903519" duration="1011000" />
       <workItem from="1636554450323" duration="337000" />
-      <workItem from="1636800115636" duration="13750000" />
+      <workItem from="1636809179223" duration="2834000" />
     </task>
     <servers />
   </component>

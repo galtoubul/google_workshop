@@ -2,12 +2,18 @@
     margin: 16px;
 }
 .logo{
-    flex:1;
     resizeMode: 'contain';
-    width: 170px;
+    width: 150px;
 
 }
 .logoContainer {
-    flex:1;
+    padding: 4px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
+}
+
+.ToolBar {
+        padding: 0px !important;;
 }
