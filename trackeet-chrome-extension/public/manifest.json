@@ -12,6 +12,7 @@
     "48": "keet.png",
     "128": "keet.png"
   },
+
   "content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI=' 'unsafe-eval'; object-src 'self'"
   //to do-check out how to adapt the hash for each computer seperatly!//
 }
