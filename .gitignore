@@ -24,7 +24,6 @@ trackeet-react-app/yarn-error.log*
 trackeet-react-app/.idea/codeStyles/Project.xml
 trackeet-react-app/.idea/*
 
-
 # Chrome Extension
 # dependencies
 trackeet-chrome-extension/node_modules
@@ -51,3 +50,4 @@ trackeet-chrome-extension/.idea/codeStyles/Project.xml
 trackeet-chrome-extension/.idea/*
 
 node_modules/
+
