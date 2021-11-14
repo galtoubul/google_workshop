@@ -8,7 +8,7 @@ import MultilineInput from "../../../components/forms/MultilineInput";
 import Toggle from "../../../components/forms/Toggle";
 import CurrencyInput from "../../../components/forms/CurrencyInput";
 
-const NonDetailedForm = () => {
+const DetailedForm = (props) => {
   const [orderName, setName] = useState("");
   const [orderNumber, setOrderNumber] = useState("");
   const [url, setURL] = useState("");
@@ -43,7 +43,7 @@ const NonDetailedForm = () => {
             <div className="heading">
               <div className="icon"></div>
               <div className="title">
-                <h1>New Order</h1>
+                <h1>Order Name</h1>
               </div>
             </div>
             <div className="heading-toggle-buttons">
@@ -103,10 +103,10 @@ const NonDetailedForm = () => {
             <h1>Timeline</h1>
           </div>
         </div>
-        <div className="time-line-content">content</div>
+        <div className="time-line-content"></div>
       </section>
     </form>
   );
 };
 
-export default NonDetailedForm;
+export default DetailedForm;

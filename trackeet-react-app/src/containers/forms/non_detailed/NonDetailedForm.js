@@ -10,8 +10,8 @@ import { useKanbanContext } from "../../../utlis/hooks/kanbanContext/kanbanConte
 const NonDetailedForm = (props) => {
   const [orderName, setName] = useState("");
   const [orderNumber, setOrderNumber] = useState("");
-  const [orderDate, setOrderDate] = useState("");
-  const [orderCompany, setOrderCompany] = useState("");
+  const [estimatedArrivingDate, setOrderDate] = useState("");
+  const [company, setOrderCompany] = useState("");
   const { addCard } = useKanbanContext();
 
   const saveNewCard = (orderName, orderNumber, orderDate, orderCompany) => {
@@ -37,8 +37,13 @@ const NonDetailedForm = (props) => {
   };
 
   const openDetailedForm = () => {
-    console.log("here");
     props.openDetailedForm();
+    // props.openDetailedForm(
+    //   orderName,
+    //   orderNumber,
+    //   estimatedArrivingDate,
+    //   company
+    // );
     props.closeModal();
   };
 
@@ -88,7 +93,7 @@ const NonDetailedForm = (props) => {
         </Button>
         <Button
           onClick={() =>
-            saveNewCard(orderName, orderNumber, orderDate, orderCompany)
+            saveNewCard(orderName, orderNumber, estimatedArrivingDate, company)
           }
           variant="contained"
         >
