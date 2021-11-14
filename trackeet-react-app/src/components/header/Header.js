@@ -6,29 +6,30 @@ import { Home } from "../../components/header/buttons/Home";
 import { Notifications } from "../../components/header/buttons/Notifications";
 import { Login } from "../../components/header/buttons/Login";
 import styles from "./header.scss";
-import { Img } from "@chakra-ui/react";
-import logo from "../../assets/logo/logo.png";
 import { DARK_TURQUOISE } from "../../assets/colors/colorsPalette";
+import { HeaderLogo } from "./headerLogo/headerLogo";
 
 export const Header = (props) => {
+  const getLoggedInButton = () => {
+    return (
+      <>
+        <Home className={styles.headerIconButton} />
+        <Information className={styles.headerIconButton} />
+        <Notifications className={styles.headerIconButton} />
+        <Login logOut={props.logOut} className={styles.headerIconButton} />
+      </>
+    );
+  };
+
+  const getLoggedOutButtons = () => {
+    return <Information className={styles.headerIconButton} />;
+  };
+
   return (
     <AppBar position="static">
       <Toolbar sx={{ backgroundColor: DARK_TURQUOISE }}>
-        <div className={"logoContainer"}>
-          <Img className={"logo"} src={logo} alt={"logo"} />
-        </div>
-        {props.isLoggedIn ? (
-          <>
-            <Home className={styles.headerIcon} />
-            <Information className={styles.headerIcon} />
-            <Notifications className={styles.headerIcon} />
-            <Login logOut={props.logOut} className={styles.headerIcon} />
-          </>
-        ) : (
-          <>
-            <Information className={styles.headerIcon} />
-          </>
-        )}
+        {HeaderLogo()}
+        {props.isLoggedIn ? getLoggedInButton() : getLoggedOutButtons()}
       </Toolbar>
     </AppBar>
   );

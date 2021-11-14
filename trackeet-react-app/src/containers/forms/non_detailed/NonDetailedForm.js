@@ -3,25 +3,19 @@ import AutocompleteInput from "../../../components/forms/non_detailed/Autocomple
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./NonDetailedForm.scss";
 import Button from "@mui/material/Button";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Typography } from "@mui/material";
-import { KanbanCardsContext } from "../../../utlis/hooks/kanbanCardsData/kanbanCardsContext";
+import { useKanbanContext } from "../../../utlis/hooks/kanbanContext/kanbanContext";
 
 const NonDetailedForm = (props) => {
   const [orderName, setName] = useState("");
   const [orderNumber, setOrderNumber] = useState("");
   const [orderDate, setOrderDate] = useState("");
   const [orderCompany, setOrderCompany] = useState("");
-  const { addCard, state } = useContext(KanbanCardsContext);
+  const { addCard } = useKanbanContext();
 
   const saveNewCard = (orderName, orderNumber, orderDate, orderCompany) => {
-    addCard({
-      cardName: orderName,
-      date: orderDate,
-      shopName: orderCompany.toLowerCase(),
-      id: state.cards.length + 1,
-      state: props.addPosition,
-    });
+    addCard(orderName, orderNumber, orderDate, orderCompany);
     props.closeModal();
   };
 

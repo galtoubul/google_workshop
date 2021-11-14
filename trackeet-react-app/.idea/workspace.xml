@@ -5,37 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/colors/colorsPalette.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/colors/colorsPalette.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/fonts/font.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/fonts/font.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/logo/loginLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/logo/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/logo/screen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/styles/styles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/styles/styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/AutocompleteInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/TextInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Information.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Notifications.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/selectButton/SelectButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/forms/non_detailed/NonDetailedForm.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/theme/ThemColors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/package.json" afterDir="false" />
+
+      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/public/keet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/mainpage/MainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/mainpage/MainPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/mainpage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/mainpage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Information.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/buttons/Notifications.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/header/header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +31,7 @@
       <list>
         <option value="CSS File" />
         <option value="SCSS File" />
+        <option value="Sass File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -79,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eslint.code.style.apply.dismiss" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../trackeet-chrome-extension" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -103,18 +88,18 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utlis/hooks/kanbanContext" />
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\containers" />
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\components\common" />
       <recent name="$PROJECT_DIR$/src/utlis/hooks" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/containers/page" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/components/header/headerLogo/headerLogo.js" />
       <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" />
       <recent name="$PROJECT_DIR$/src/components/common/kanban/data/getData.js" />
       <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/kanbanCardStyle.jsx" />
       <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanCard/cardButtons.js" />
-      <recent name="$PROJECT_DIR$/src/components/common/kanban/insertButton/insertButtonStyle.js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -143,6 +128,7 @@
       <workItem from="1636548935187" duration="796000" />
       <workItem from="1636550903519" duration="1011000" />
       <workItem from="1636554450323" duration="337000" />
+      <workItem from="1636809179223" duration="2834000" />
     </task>
     <servers />
   </component>
@@ -159,7 +145,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
