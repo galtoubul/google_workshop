@@ -49,3 +49,5 @@ trackeet-chrome-extension/yarn-debug.log*
 trackeet-chrome-extension/yarn-error.log*
 trackeet-chrome-extension/.idea/codeStyles/Project.xml
 trackeet-chrome-extension/.idea/*
+
+node_modules/

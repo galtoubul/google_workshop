@@ -1,9 +1,9 @@
-@import './src/assets/fonts/font';
-@import './src/assets/colors/colorsPalette';
+@import "./src/assets/fonts/font";
+@import "./src/assets/colors/colorsPalette";
 
-$boarderRadius:8px;
+$boarderRadius: 8px;
 
-.title{
+.title {
   font-family: $fontFamily;
   margin: 0;
   font-weight: 400;
