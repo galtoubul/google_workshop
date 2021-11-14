@@ -1,0 +1,12 @@
+@import "./src/assets/fonts/font";
+@import "./src/assets/colors/colorsPalette";
+
+$boarderRadius: 8px;
+
+.title {
+  font-family: $fontFamily;
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.5625rem;
+  line-height: 1.235;
+}

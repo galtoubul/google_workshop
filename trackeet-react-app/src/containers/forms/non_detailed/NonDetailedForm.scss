@@ -1,0 +1,41 @@
+@import "./src/assets/colors/colorsPalette";
+@import "./src/assets/styles/styles";
+@import "./src/assets/fonts/font";
+
+.non-detailed-form-container {
+  background-color: $white;
+  height: 400px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: $boarderRadius;
+}
+
+.non-detailed-form-header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  margin-top: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.non-detailed-form-input-fields {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.non-detailed-form-buttons {
+  height: 15%;
+  width: 223px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-content: space-between;
+}

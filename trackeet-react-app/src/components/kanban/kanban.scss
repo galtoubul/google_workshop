@@ -1,0 +1,11 @@
+@import "./src/assets/styles/styles";
+.board span {
+  @extend .title;
+
+  display: flex;
+  justify-content: center;
+}
+.board header {
+  display: flex;
+  justify-content: center;
+}

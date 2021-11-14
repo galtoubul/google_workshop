@@ -1,0 +1,21 @@
+.loginLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 100%;
+}
+.loginLogoContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.loginPageContainer1 {
+  margin: 32px 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+}

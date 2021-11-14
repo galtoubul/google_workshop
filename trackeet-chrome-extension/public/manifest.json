@@ -1,0 +1,18 @@
+{
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
+  "icons": {
+    "16": "keet.png",
+    "48": "keet.png",
+    "128": "keet.png"
+  },
+
+  "content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI=' 'unsafe-eval'; object-src 'self'"
+  //to do-check out how to adapt the hash for each computer seperatly!//
+}

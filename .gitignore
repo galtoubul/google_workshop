@@ -24,4 +24,30 @@ trackeet-react-app/yarn-error.log*
 trackeet-react-app/.idea/codeStyles/Project.xml
 trackeet-react-app/.idea/*
 
+# Chrome Extension
+# dependencies
+trackeet-chrome-extension/node_modules
+trackeet-chrome-extension/.pnp
+trackeet-chrome-extension/.pnp.js
+
+# testing
+trackeet-chrome-extension/coverage
+
+# production
+trackeet-chrome-extension/build
+
+# misc
+trackeet-chrome-extension/.DS_Store
+trackeet-chrome-extension/.env.local
+trackeet-chrome-extension/.env.development.local
+trackeet-chrome-extension/.env.test.local
+trackeet-chrome-extension/.env.production.local
+
+trackeet-chrome-extension/npm-debug.log*
+trackeet-chrome-extension/yarn-debug.log*
+trackeet-chrome-extension/yarn-error.log*
+trackeet-chrome-extension/.idea/codeStyles/Project.xml
+trackeet-chrome-extension/.idea/*
+
 node_modules/
+
