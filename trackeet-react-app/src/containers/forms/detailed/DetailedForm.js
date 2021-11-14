@@ -1,7 +1,7 @@
 import TextInput from "../../../components/forms/non_detailed/TextInput.js";
 import AutocompleteInput from "../../../components/forms/non_detailed/AutocompleteInput.js";
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
-import "./DetailedForm.css";
+import "./DetailedForm.scss";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import MultilineInput from "../../../components/forms/MultilineInput";
@@ -36,7 +36,7 @@ const NonDetailedForm = () => {
   ];
 
   return (
-    <form className="non-detailed-form-container">
+    <form className="detailed-form-container">
       <section className="tabs-container">
         <div className="tabs-header-container">
           <div className="tabs-header">
@@ -83,8 +83,12 @@ const NonDetailedForm = () => {
                 </div>
                 <div className="one-third-buttons">
                   <div className="save-move-buttons">
-                    <Button variant="contained">SAVE</Button>
-                    <Button variant="contained">ADVANCED</Button>
+                    <Button sx={{ width: "100px" }} variant="contained">
+                      SAVE
+                    </Button>
+                    <Button sx={{ width: "100px" }} variant="contained">
+                      MOVE
+                    </Button>
                   </div>
                 </div>
               </div>

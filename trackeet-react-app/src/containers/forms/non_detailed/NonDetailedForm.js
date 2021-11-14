@@ -36,6 +36,12 @@ const NonDetailedForm = (props) => {
     setOrderCompany(newInputValue);
   };
 
+  const openDetailedForm = () => {
+    console.log("here");
+    props.openDetailedForm();
+    props.closeModal();
+  };
+
   const companies = [
     { title: "Amazon" },
     { title: "Ebay" },
@@ -73,7 +79,11 @@ const NonDetailedForm = (props) => {
         />
       </div>
       <div className="non-detailed-form-buttons">
-        <Button color={"secondary"} variant="outlined">
+        <Button
+          color={"secondary"}
+          variant="outlined"
+          onClick={openDetailedForm}
+        >
           ADVANCED
         </Button>
         <Button

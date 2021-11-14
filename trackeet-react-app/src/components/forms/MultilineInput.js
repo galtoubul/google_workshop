@@ -6,7 +6,7 @@ const MultilineInput = (props) => {
       id="outlined-multiline-static"
       label={props.label}
       multiline
-      rows={8}
+      rows={6}
       sx={{ width: "100%" }}
     />
   );
