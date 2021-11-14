@@ -23,3 +23,5 @@ trackeet-react-app/yarn-debug.log*
 trackeet-react-app/yarn-error.log*
 trackeet-react-app/.idea/codeStyles/Project.xml
 trackeet-react-app/.idea/*
+
+node_modules/
