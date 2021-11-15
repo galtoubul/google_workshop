@@ -7,7 +7,7 @@ form {
 }
 
 .detailed-form-container {
-  border: 2px solid black;
+
   background-color: $white;
   height: 600px;
   width: 1200px;
@@ -19,13 +19,13 @@ form {
 
 .tabs-container {
   border-radius: 20px 0 0 20px;
-  border-right: 2px solid black;
+  border-right: 2px solid $darkTurquoise;
   width: 75%;
   height: 100%;
 }
 
 .tabs-header-container {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $darkTurquoise;
   width: 100%;
   height: 15%;
   display: flex;
@@ -35,7 +35,7 @@ form {
 }
 
 .tabs-header {
-  width: 90%;
+  width: 95%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -43,16 +43,21 @@ form {
 }
 
 .heading {
-  width: 66%;
+  width: 80%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start ;
 }
 
 .icon {
-  width: 50px;
+  width: 90px;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
 }
 
 .title {
@@ -100,33 +105,33 @@ Toggle {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
 }
 
 .time-line-header-container {
   width: 75%;
   height: 15%;
   display: flex;
-  align-items: center;
+
   justify-content: center;
+  align-items: flex-end;
 }
 
-h1 {
-  margin: 5px 0;
-}
 
 .time-line-header {
-  width: 65%;
-  padding-left: 20px;
-  border-bottom: 2px solid black;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid $darkTurquoise;
 }
 
 .time-line-content {
-  width: 90%;
+  width: 95%;
   height: 85%;
-
   display: flex;
   align-items: center;
-  justify-content: center;
+
+
 }
 
 .two-thirds {

@@ -6,13 +6,13 @@ import { EbayLogo } from "./logo/ebayLogo";
 
 export const getLogo = (logo) => {
   switch (logo) {
-    case "amazon":
+    case "Amazon":
       return <AmazonLogo />;
-    case "aliExpress":
+    case "Aliexpress":
       return <AliExpressLogo />;
-    case "asos":
+    case "Asos":
       return <AsosLogo />;
-    case "ebay":
+    case "Ebay":
       return <EbayLogo />;
     default:
       return <DefaultLogo />;

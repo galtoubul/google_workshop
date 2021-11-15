@@ -1,11 +1,11 @@
 import IconButton from "@mui/material/IconButton";
-import { BiHome } from "react-icons/bi";
+import { BiCog } from "react-icons/bi";
 import { GREY } from "../../../assets/colors/colorsPalette";
 
-export const Home = () => {
+export const SettingsButton = () => {
   return (
     <IconButton>
-      <BiHome color={GREY} />
+      <BiCog color={GREY} />
     </IconButton>
   );
 };

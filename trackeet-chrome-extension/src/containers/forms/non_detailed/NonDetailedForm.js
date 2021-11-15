@@ -21,7 +21,11 @@ const NonDetailedForm = (props) => {
       <TextInput label="Order Name" />
       <TextInput label="Order Number" />
       <DatePickerInput label="Estimated Arriving Date" />
-      <Button sx={{ margin: "2% 5%" }} variant="contained">
+      <Button
+        onClick={props.closeForm}
+        sx={{ margin: "2% 5%" }}
+        variant="contained"
+      >
         SAVE
       </Button>
     </>

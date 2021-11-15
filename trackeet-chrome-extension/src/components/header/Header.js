@@ -5,7 +5,7 @@ import "./header.scss";
 import { Img } from "@chakra-ui/react";
 import logo from "../../assets/logo/logo.png";
 import { DARK_TURQUOISE } from "../../assets/colors/colorsPalette";
-import { Home } from "./buttons/Home";
+import { SettingsButton } from "./buttons/SettingsButton";
 
 export const Header = (props) => {
   return (
@@ -18,7 +18,7 @@ export const Header = (props) => {
       >
         <div className={"logoContainer"}>
           <Img className={"logo"} src={logo} alt={"logo"} />
-          <Home />
+          <SettingsButton />
         </div>
       </Toolbar>
     </AppBar>

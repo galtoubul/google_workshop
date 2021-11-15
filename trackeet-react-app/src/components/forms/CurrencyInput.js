@@ -6,13 +6,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextInput from "./non_detailed/TextInput";
 import "./CurrencyInput.css";
+import { useContext } from "react";
+import { FormContext } from "../../containers/forms/formContext/formContext";
 
 const CurrencyInput = () => {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  const { getSetInputValueCallback, state } = useContext(FormContext);
+  const { currency } = state.card;
 
   return (
     <div className="input-fields-container">
@@ -23,9 +22,11 @@ const CurrencyInput = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={age}
+            value={currency}
             label="Currency"
-            onChange={handleChange}
+            onChange={(event) =>
+              getSetInputValueCallback("currency")(event.target.value)
+            }
           >
             <MenuItem value={10}>ILS</MenuItem>
             <MenuItem value={20}>USD</MenuItem>

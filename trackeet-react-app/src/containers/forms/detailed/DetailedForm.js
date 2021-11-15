@@ -3,28 +3,31 @@ import AutocompleteInput from "../../../components/forms/non_detailed/Autocomple
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./DetailedForm.scss";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useContext } from "react";
 import MultilineInput from "../../../components/forms/MultilineInput";
 import Toggle from "../../../components/forms/Toggle";
 import CurrencyInput from "../../../components/forms/CurrencyInput";
+import { FormContext } from "../formContext/formContext";
+import { useForm } from "../formContext/useForm";
+import { TimeLine } from "../../../components/forms/timeLine/TimeLine";
+import { Typography } from "@mui/material";
+import { getLogo } from "../../../components/common/companyLogo/getLogo";
 
 const DetailedForm = (props) => {
-  const [orderName, setName] = useState("");
-  const [orderNumber, setOrderNumber] = useState("");
-  const [url, setURL] = useState("");
+  const { getSetInputValueCallback, state } = useContext(FormContext);
+  const {
+    orderName,
+    url,
+    company,
+    orderDate,
+    estimatedArrivingDate,
+    orderNumber,
+    notes,
+    position,
+  } = state.card;
 
-  const orderNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const orderNumberChange = (event) => {
-    setOrderNumber(event.target.value);
-  };
-
-  const URLChange = (event) => {
-    setURL(event.target.value);
-  };
-
+  const { saveCard } = useForm();
+  console.log(state.card);
   const companies = [
     { title: "Amazon" },
     { title: "Ebay" },
@@ -41,9 +44,9 @@ const DetailedForm = (props) => {
         <div className="tabs-header-container">
           <div className="tabs-header">
             <div className="heading">
-              <div className="icon"></div>
+              <div className="icon">{getLogo(company)}</div>
               <div className="title">
-                <h1>Order Name</h1>
+                <Typography variant="h4">{orderName}</Typography>
               </div>
             </div>
             <div className="heading-toggle-buttons">
@@ -56,38 +59,87 @@ const DetailedForm = (props) => {
           <div className="row">
             <TextInput
               label="Order Name"
-              onChange={orderNameChange}
+              onChange={(event) =>
+                getSetInputValueCallback("orderName")(event.target.value)
+              }
               value={orderName}
             />
-            <AutocompleteInput label="Company" autocompleteList={companies} />
+            <AutocompleteInput
+              onChange={(event, newInputValue) =>
+                getSetInputValueCallback("company")(newInputValue)
+              }
+              label="Company"
+              autocompleteList={companies}
+              value={company}
+            />
 
-            <DatePickerInput label="Estimated Arriving Date" />
+            <DatePickerInput
+              onChange={(newDate) =>
+                getSetInputValueCallback("estimatedArrivingDate")(
+                  newDate.toLocaleDateString("en-US")
+                )
+              }
+              label="Estimated Arriving Date"
+              value={estimatedArrivingDate}
+            />
           </div>
           <div className="row">
-            <TextInput label="URL" onChange={URLChange} value={url} />
+            <TextInput
+              label="URL"
+              onChange={(event) =>
+                getSetInputValueCallback("url")(event.target.value)
+              }
+              value={url}
+            />
             <CurrencyInput></CurrencyInput>
-            <DatePickerInput label="Order Date" />
+            <DatePickerInput
+              onChange={(newDate) =>
+                getSetInputValueCallback("orderDate")(
+                  newDate.toLocaleDateString("en-US")
+                )
+              }
+              label="Order Date"
+              value={orderDate}
+            />
           </div>
           <div className="row">
             <div className="two-thirds">
-              <MultilineInput label="notes"></MultilineInput>
+              <MultilineInput
+                onChange={(event) =>
+                  getSetInputValueCallback("notes")(event.target.value)
+                }
+                label="notes"
+                value={notes}
+              ></MultilineInput>
             </div>
             <div className="one-third-container">
               <div className="one-third-elements">
                 <div className="one-third-input-fields">
                   <TextInput
                     label="Order Number"
-                    onChange={orderNumberChange}
+                    onChange={(event) =>
+                      getSetInputValueCallback("orderNumber")(
+                        event.target.value
+                      )
+                    }
                     value={orderNumber}
                   />
                 </div>
                 <div className="one-third-buttons">
                   <div className="save-move-buttons">
-                    <Button sx={{ width: "100px" }} variant="contained">
-                      SAVE
-                    </Button>
-                    <Button sx={{ width: "100px" }} variant="contained">
+                    <Button
+                      color={"secondary"}
+                      variant="outlined"
+                      sx={{ width: "100px" }}
+                    >
                       MOVE
+                    </Button>
+                    <Button
+                      onClick={() => saveCard(state.card)}
+                      sx={{ width: "100px" }}
+                      variant="contained"
+                    >
+                      SAVE
                     </Button>
                   </div>
                 </div>
@@ -100,10 +152,12 @@ const DetailedForm = (props) => {
       <section className="time-line-container">
         <div className="time-line-header-container">
           <div className="time-line-header">
-            <h1>Timeline</h1>
+            <Typography variant="h5">Timeline</Typography>
           </div>
         </div>
-        <div className="time-line-content"></div>
+        <div className="time-line-content">
+          <TimeLine position={position} />
+        </div>
       </section>
     </form>
   );

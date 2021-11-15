@@ -3,49 +3,21 @@ import AutocompleteInput from "../../../components/forms/non_detailed/Autocomple
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./NonDetailedForm.scss";
 import Button from "@mui/material/Button";
-import { useState } from "react";
 import { Typography } from "@mui/material";
-import { useKanbanContext } from "../../../utlis/hooks/kanbanContext/kanbanContext";
+import { FormContext } from "../formContext/formContext";
+import { useContext, useEffect } from "react";
+import { useForm } from "../formContext/useForm";
 
 const NonDetailedForm = (props) => {
-  const [orderName, setName] = useState("");
-  const [orderNumber, setOrderNumber] = useState("");
-  const [estimatedArrivingDate, setOrderDate] = useState("");
-  const [company, setOrderCompany] = useState("");
-  const { addCard } = useKanbanContext();
+  const { saveCard } = useForm();
+  const { getSetInputValueCallback, openDetailedForm, state } =
+    useContext(FormContext);
+  const { orderName, orderNumber, estimatedArrivingDate, company } = state.card;
 
-  const saveNewCard = (orderName, orderNumber, orderDate, orderCompany) => {
-    addCard(orderName, orderNumber, orderDate, orderCompany);
-    props.closeModal();
-  };
-
-  const orderNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const orderNumberChange = (event) => {
-    setOrderNumber(event.target.value);
-  };
-
-  const orderDateChange = (newDate) => {
-    console.log(newDate);
-    setOrderDate(newDate.toLocaleDateString("en-US"));
-  };
-
-  const orderCompanyChange = (event, newInputValue) => {
-    setOrderCompany(newInputValue);
-  };
-
-  const openDetailedForm = () => {
-    props.openDetailedForm();
-    // props.openDetailedForm(
-    //   orderName,
-    //   orderNumber,
-    //   estimatedArrivingDate,
-    //   company
-    // );
-    props.closeModal();
-  };
+  useEffect(() => {
+    getSetInputValueCallback("position")(props.newCardPosition);
+    // eslint-disable-next-line
+  }, []);
 
   const companies = [
     { title: "Amazon" },
@@ -64,22 +36,34 @@ const NonDetailedForm = (props) => {
       </div>
       <div className="non-detailed-form-input-fields">
         <AutocompleteInput
-          onChange={orderCompanyChange}
+          onChange={(event, newInputValue) =>
+            getSetInputValueCallback("company")(newInputValue)
+          }
+          value={company}
           label="Company"
           autocompleteList={companies}
         />
         <TextInput
           label="Order Name"
-          onChange={orderNameChange}
+          onChange={(event) =>
+            getSetInputValueCallback("orderName")(event.target.value)
+          }
           value={orderName}
         />
         <TextInput
           label="Order Number"
-          onChange={orderNumberChange}
+          onChange={(event) =>
+            getSetInputValueCallback("orderNumber")(event.target.value)
+          }
           value={orderNumber}
         />
         <DatePickerInput
-          onChange={orderDateChange}
+          onChange={(newDate) =>
+            getSetInputValueCallback("estimatedArrivingDate")(
+              newDate.toLocaleDateString("en-US")
+            )
+          }
+          value={estimatedArrivingDate}
           label="Estimated Arriving Date"
         />
       </div>
@@ -91,12 +75,7 @@ const NonDetailedForm = (props) => {
         >
           ADVANCED
         </Button>
-        <Button
-          onClick={() =>
-            saveNewCard(orderName, orderNumber, estimatedArrivingDate, company)
-          }
-          variant="contained"
-        >
+        <Button onClick={() => saveCard(state.card)} variant="contained">
           SAVE
         </Button>
       </div>

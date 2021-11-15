@@ -1,17 +1,14 @@
 import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
-import { useState } from "react";
 
 const DatePickerInput = (props) => {
-  const [value, setValue] = useState(null);
+  const { label, value, onChange } = props;
+
   return (
     <DatePicker
-      label={props.label}
+      label={label}
       value={value}
-      onChange={(newValue) => {
-        props.onChange(newValue);
-        setValue(newValue);
-      }}
+      onChange={onChange}
       renderInput={(params) => (
         <TextField {...params} sx={{ width: "223px" }} />
       )}

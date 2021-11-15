@@ -7,7 +7,7 @@ const DatePickerInput = (props) => {
   return (
     <DatePicker
       disableOpenPicker={true}
-      inputFormat={"DD/MM/YYYY"}
+      inputFormat={"dd/mm/yyyy"}
       label={props.label}
       value={value}
       onChange={(newValue) => {

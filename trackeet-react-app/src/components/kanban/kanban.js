@@ -1,26 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import RealtimeBoard from "react-trello";
 import { KanbanCard } from "./kanbanCard/kanbanCard";
 import "./kanban.scss";
 import { InsertButton } from "./insertButton/insertButton";
 import { boardStyle } from "./kanbanStyle";
 import { useKanbanContext } from "../../utlis/hooks/kanbanContext/kanbanContext";
+import {
+  FormContext,
+  formInitialState,
+} from "../../containers/forms/formContext/formContext";
+
+const getCardFormat = (props) => {
+  return Object.keys(props)
+    .filter((key) => Object.keys(formInitialState.card).includes(key))
+    .reduce((obj, key) => {
+      obj[key] = props[key];
+      return obj;
+    }, {});
+};
 
 export const Kanban = (props) => {
   const { kanbanState, setEventBus } = useKanbanContext();
+  const { openNonDetailedForm, setIsNewForm } = useContext(FormContext);
+  const { setNewCardPosition } = props;
 
   const getInsertCardButton = (props, id) => (
     <InsertButton
       openNonDetailedForm={() => {
-        props.openNonDetailedForm(id);
+        openNonDetailedForm();
+        setIsNewForm(true);
+        setNewCardPosition(id);
       }}
     />
   );
 
   const getCard = (props) => {
-    const { date, cardName, shopName } = props;
-
-    return <KanbanCard date={date} cardName={cardName} shopName={shopName} />;
+    return <KanbanCard card={getCardFormat(props)} />;
   };
 
   return (

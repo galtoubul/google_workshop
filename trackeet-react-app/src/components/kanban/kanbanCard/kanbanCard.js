@@ -13,17 +13,19 @@ import { CardActions } from "@mui/material";
 import { CompanyLogo } from "../../common/companyLogo/companyLogo";
 
 export const KanbanCard = (props) => {
+  const { estimatedArrivingDate, orderName, company } = props.card;
+
   return (
     <Card sx={cardStyle}>
       <CardContent>
         <Box sx={cardContentStyle}>
-          <CardTitle date={props.date} cardName={props.cardName} />
-          <CompanyLogo shopName={props.shopName} />
+          <CardTitle date={estimatedArrivingDate} cardName={orderName} />
+          <CompanyLogo shopName={company} />
         </Box>
       </CardContent>
 
       <CardActions sx={cardActionsStyle}>
-        <CardButtons />
+        <CardButtons card={props.card} />
       </CardActions>
     </Card>
   );

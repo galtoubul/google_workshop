@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 const AutocompleteInput = (props) => {
   return (
     <Autocomplete
+      value={props.value}
       onInputChange={props.onChange}
       onChange={props.onChange}
       freeSolo

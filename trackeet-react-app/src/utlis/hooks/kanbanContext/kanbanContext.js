@@ -10,10 +10,16 @@ export const KanbanProvider = (props) => {
         {
           cards: [
             {
-              cardName: "Milk",
-              date: "15 mins",
-              shopName: "amazon",
+              orderName: "New shoes",
+              url: "https://shoesonline.co.il/product/unisex-converse-all-s",
+              currency: "50",
+              company: "Amazon",
+              orderDate: "11/10/2020",
+              estimatedArrivingDate: "11/11/2020",
+              orderNumber: "3444234",
+              notes: "",
               id: "1",
+              position: "Wishlist",
             },
           ],
           id: "Wishlist",
@@ -23,10 +29,16 @@ export const KanbanProvider = (props) => {
         {
           cards: [
             {
-              cardName: "Milk",
-              date: "15 mins",
-              shopName: "ebay",
+              orderName: "Computer",
+              url: "https://shoesonline.co.il/product/unisex-converse-all-s",
+              currency: "32",
+              company: "Ebay",
+              orderDate: "11/11/2021",
+              estimatedArrivingDate: "01/01/2022",
+              orderNumber: "3123",
+              notes: "",
               id: "2",
+              position: "On The Way",
             },
           ],
           currentPage: 1,
@@ -37,16 +49,28 @@ export const KanbanProvider = (props) => {
         {
           cards: [
             {
-              cardName: "Milk",
-              date: "15 mins",
-              shopName: "asos",
+              orderName: "New shirt",
+              url: "",
+              currency: "32",
+              company: "Asos",
+              orderDate: "12/10/2020",
+              estimatedArrivingDate: "01/01/2022",
+              orderNumber: "13123",
+              notes: "",
               id: "3",
+              position: "Arrived",
             },
             {
-              cardName: "Milk",
-              date: "15 mins",
-              shopName: "aliExpress",
+              orderName: "Refrigerator",
+              url: "",
+              currency: "230",
+              company: "Aliexpress",
+              orderDate: "12/10/2020",
+              estimatedArrivingDate: "03/12/2020",
+              orderNumber: "",
+              notes: "",
               id: "4",
+              position: "Arrived",
             },
           ],
           currentPage: 1,
@@ -62,23 +86,44 @@ export const KanbanProvider = (props) => {
     setKanbanState({ eventBus });
   };
 
-  const addCard = (orderName, orderNumber, orderDate, orderCompany) => {
+  const addCard = (card) => {
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
-      laneId: "Wishlist",
+      laneId: card.position,
       card: {
+        ...card,
         id: Math.random().toString(36).slice(2),
-        cardName: orderName,
-        date: orderDate,
-        shopName: orderCompany.toLowerCase(),
-        orderNumber,
       },
+    });
+  };
+
+  const deleteCard = (card) => {
+    kanbanState.eventBus.publish({
+      type: "REMOVE_CARD",
+      laneId: card.position,
+      cardId: card.id,
+    });
+  };
+
+  const updateCard = (card) => {
+    console.log("UPDATE");
+    kanbanState.eventBus.publish({
+      card,
+      type: "UPDATE_CARD",
+      laneId: card.position,
     });
   };
 
   return (
     <KanbanContext.Provider
-      value={{ kanbanState, setKanbanState, addCard, setEventBus }}
+      value={{
+        updateCard,
+        kanbanState,
+        setKanbanState,
+        addCard,
+        setEventBus,
+        deleteCard,
+      }}
     >
       {props.children}
     </KanbanContext.Provider>
