@@ -13,6 +13,7 @@ export const formInitialState = {
     notes: "",
     position: "",
     id: "",
+    currencyAmount: "",
   },
   isNonDetailedFormOpen: false,
   isDetailedFormOpen: false,

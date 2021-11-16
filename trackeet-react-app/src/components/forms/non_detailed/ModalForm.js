@@ -14,7 +14,6 @@ const ModalForm = (props) => {
       open={props.isModalOpen}
       onClose={() => {
         props.closeModal();
-        console.log("tryClose");
       }}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"

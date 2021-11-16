@@ -10,17 +10,8 @@ import {
   formInitialState,
 } from "../../containers/forms/formContext/formContext";
 
-const getCardFormat = (props) => {
-  return Object.keys(props)
-    .filter((key) => Object.keys(formInitialState.card).includes(key))
-    .reduce((obj, key) => {
-      obj[key] = props[key];
-      return obj;
-    }, {});
-};
-
 export const Kanban = (props) => {
-  const { kanbanState, setEventBus } = useKanbanContext();
+  const { kanbanState, setEventBus, handleCardDrag } = useKanbanContext();
   const { openNonDetailedForm, setIsNewForm } = useContext(FormContext);
   const { setNewCardPosition } = props;
 
@@ -34,8 +25,28 @@ export const Kanban = (props) => {
     />
   );
 
+  const getCardFormat = (props) => {
+    return Object.keys(props)
+      .filter((key) => Object.keys(formInitialState.card).includes(key))
+      .reduce((obj, key) => {
+        obj[key] = props[key];
+        return obj;
+      }, {});
+  };
+
   const getCard = (props) => {
     return <KanbanCard card={getCardFormat(props)} />;
+  };
+
+  const handleDragEnd = (
+    cardId,
+    sourceLaneId,
+    targetLaneId,
+    position,
+    cardDetails
+  ) => {
+    delete cardDetails.laneId;
+    handleCardDrag(targetLaneId, cardDetails);
   };
 
   return (
@@ -46,6 +57,7 @@ export const Kanban = (props) => {
         AddCardLink: (p) => getInsertCardButton(props, p.laneId),
         Card: getCard,
       }}
+      handleDragEnd={handleDragEnd}
       editable
       eventBusHandle={setEventBus}
       data={kanbanState.boardData}

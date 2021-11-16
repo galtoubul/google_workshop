@@ -27,7 +27,6 @@ const DetailedForm = (props) => {
   } = state.card;
 
   const { saveCard } = useForm();
-  console.log(state.card);
   const companies = [
     { title: "Amazon" },
     { title: "Ebay" },

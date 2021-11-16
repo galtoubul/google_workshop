@@ -8,7 +8,7 @@ export const getLogo = (logo) => {
   switch (logo) {
     case "Amazon":
       return <AmazonLogo />;
-    case "Aliexpress":
+    case "AliExpress":
       return <AliExpressLogo />;
     case "Asos":
       return <AsosLogo />;
