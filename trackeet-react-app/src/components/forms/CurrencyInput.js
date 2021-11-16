@@ -11,50 +11,36 @@ import { FormContext } from "../../containers/forms/formContext/formContext";
 
 const CurrencyInput = () => {
   const { getSetInputValueCallback, state } = useContext(FormContext);
-  const { currency } = state.card;
+  const { currency, currencyAmount } = state.card;
 
   return (
     <div className="input-fields-container">
-      <TextInput></TextInput>
+      <TextInput
+        onChange={(event) =>
+          getSetInputValueCallback("currencyAmount")(event.target.value)
+        }
+        value={currencyAmount}
+      ></TextInput>
       <Box sx={{ minWidth: 80 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Currency</InputLabel>
+          <InputLabel id="select-label">Currency</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="label"
+            id="select"
             value={currency}
             label="Currency"
             onChange={(event) =>
               getSetInputValueCallback("currency")(event.target.value)
             }
           >
-            <MenuItem value={10}>ILS</MenuItem>
-            <MenuItem value={20}>USD</MenuItem>
-            <MenuItem value={30}>EUR</MenuItem>
+            <MenuItem value={"ILS"}>ILS</MenuItem>
+            <MenuItem value={"USD"}>USD</MenuItem>
+            <MenuItem value={"EUR"}>EUR</MenuItem>
           </Select>
         </FormControl>
       </Box>
     </div>
   );
-
-  //   return (
-  //     <Box sx={{ minWidth: 120 }}>
-  //       <FormControl fullWidth>
-  //         <InputLabel id="demo-simple-select-label">Age</InputLabel>
-  //         <Select
-  //           labelId="demo-simple-select-label"
-  //           id="demo-simple-select"
-  //           value={age}
-  //           label="Age"
-  //           onChange={handleChange}
-  //         >
-  //           <MenuItem value={10}>Ten</MenuItem>
-  //           <MenuItem value={20}>Twenty</MenuItem>
-  //           <MenuItem value={30}>Thirty</MenuItem>
-  //         </Select>
-  //       </FormControl>
-  //     </Box>
-  //   );
 };
 
 export default CurrencyInput;

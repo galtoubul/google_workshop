@@ -12,7 +12,7 @@ export const KanbanProvider = (props) => {
             {
               orderName: "New shoes",
               url: "https://shoesonline.co.il/product/unisex-converse-all-s",
-              currency: "50",
+              currency: "ILS",
               company: "Amazon",
               orderDate: "11/10/2020",
               estimatedArrivingDate: "11/11/2020",
@@ -20,6 +20,7 @@ export const KanbanProvider = (props) => {
               notes: "",
               id: "1",
               position: "Wishlist",
+              currencyAmount: 120,
             },
           ],
           id: "Wishlist",
@@ -31,7 +32,7 @@ export const KanbanProvider = (props) => {
             {
               orderName: "Computer",
               url: "https://shoesonline.co.il/product/unisex-converse-all-s",
-              currency: "32",
+              currency: "ILS",
               company: "Ebay",
               orderDate: "11/11/2021",
               estimatedArrivingDate: "01/01/2022",
@@ -39,6 +40,7 @@ export const KanbanProvider = (props) => {
               notes: "",
               id: "2",
               position: "On The Way",
+              currencyAmount: 120,
             },
           ],
           currentPage: 1,
@@ -51,7 +53,7 @@ export const KanbanProvider = (props) => {
             {
               orderName: "New shirt",
               url: "",
-              currency: "32",
+              currency: "ILS",
               company: "Asos",
               orderDate: "12/10/2020",
               estimatedArrivingDate: "01/01/2022",
@@ -59,18 +61,20 @@ export const KanbanProvider = (props) => {
               notes: "",
               id: "3",
               position: "Arrived",
+              currencyAmount: 120,
             },
             {
               orderName: "Refrigerator",
               url: "",
-              currency: "230",
-              company: "Aliexpress",
+              currency: "ILS",
+              company: "AliExpress",
               orderDate: "12/10/2020",
               estimatedArrivingDate: "03/12/2020",
               orderNumber: "",
               notes: "",
               id: "4",
               position: "Arrived",
+              currencyAmount: 120,
             },
           ],
           currentPage: 1,
@@ -86,6 +90,10 @@ export const KanbanProvider = (props) => {
     setKanbanState({ eventBus });
   };
 
+  const getNewCard = (card, dragPosition) => {
+    return dragPosition ? { ...card, position: dragPosition } : card;
+  };
+
   const addCard = (card) => {
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
@@ -97,6 +105,10 @@ export const KanbanProvider = (props) => {
     });
   };
 
+  const handleCardDrag = (dragPosition, card) => {
+    updateCard(card, dragPosition);
+  };
+
   const deleteCard = (card) => {
     kanbanState.eventBus.publish({
       type: "REMOVE_CARD",
@@ -105,10 +117,9 @@ export const KanbanProvider = (props) => {
     });
   };
 
-  const updateCard = (card) => {
-    console.log("UPDATE");
+  const updateCard = (card, dragPosition) => {
     kanbanState.eventBus.publish({
-      card,
+      card: getNewCard(card, dragPosition),
       type: "UPDATE_CARD",
       laneId: card.position,
     });
@@ -123,6 +134,7 @@ export const KanbanProvider = (props) => {
         addCard,
         setEventBus,
         deleteCard,
+        handleCardDrag,
       }}
     >
       {props.children}
