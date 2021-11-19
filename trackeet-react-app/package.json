@@ -40,6 +40,7 @@
     "dev": "parcel src/index.html",
     "start": "react-scripts start",
     "start-api": "cd ../backend/web-server && flask run --no-debugger",
+    "start-api-win": "cd ../backend/web-server && python -m flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
