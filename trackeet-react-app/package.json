@@ -17,7 +17,7 @@
     "@testing-library/user-event": "^12.8.3",
     "@types/react": "^17.0.34",
     "@types/react-dom": "latest",
-    "date-fns": "^2.25.0",
+    "date-fns": "^2.26.0",
     "framer-motion": "^4.1.17",
     "i18next": "^21.4.0",
     "i18next-browser-languagedetector": "^6.1.2",
