@@ -6,6 +6,7 @@ import { LoginLogo } from "../../assets/logo/LoginLogo";
 import { getLogo } from "../../components/common/companyLogo/getLogo";
 import { useGoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./refreshToken";
+import { useState, useEffect } from "react";
 
 const useStyles = makeStyles({
   startIcon: {
@@ -31,7 +32,20 @@ export const LoginPage = (props) => {
     alert(`Failed to login. 😢 `);
   };
 
-  const clientId = process.env.REACT_APP_TRACKEET_GOOGLE_AUTH_CLIENT_ID;
+  const [clientId, setClientId] = useState();
+
+  useEffect(() => {
+    fetch("/api/client_id")
+      .then((res) => res.json())
+      .then((data) => {
+        setClientId(data.client_id);
+      });
+  }, []);
+
+  const signInWrapper = () => {
+    console.log("signInWrapper, client id: ", { clientId });
+    signIn();
+  };
 
   const { signIn } = useGoogleLogin({
     onSuccess,
@@ -53,7 +67,7 @@ export const LoginPage = (props) => {
           classes={{
             startIcon: classes.startIcon,
           }}
-          onClick={signIn}
+          onClick={signInWrapper}
         >
           Sign in with Google
         </Button>
