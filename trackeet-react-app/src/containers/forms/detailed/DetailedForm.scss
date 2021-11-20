@@ -7,7 +7,6 @@ form {
 }
 
 .detailed-form-container {
-
   background-color: $white;
   height: 600px;
   width: 1200px;
@@ -47,18 +46,15 @@ form {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start ;
+  justify-content: flex-start;
 }
 
 .icon {
-
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 2px;
-
-
 }
 
 .title {
@@ -106,7 +102,6 @@ Toggle {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .time-line-header-container {
@@ -117,7 +112,6 @@ Toggle {
   justify-content: center;
   align-items: flex-end;
 }
-
 
 .time-line-header {
   width: 50%;
@@ -131,8 +125,6 @@ Toggle {
   height: 85%;
   display: flex;
   align-items: center;
-
-
 }
 
 .two-thirds {
