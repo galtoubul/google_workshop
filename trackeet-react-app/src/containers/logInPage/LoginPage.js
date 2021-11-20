@@ -6,7 +6,6 @@ import { LoginLogo } from "../../assets/logo/LoginLogo";
 import { getLogo } from "../../components/common/companyLogo/getLogo";
 import { useGoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./refreshToken";
-import { useState, useEffect } from "react";
 
 const useStyles = makeStyles({
   startIcon: {
@@ -32,24 +31,7 @@ export const LoginPage = (props) => {
     alert(`Failed to login. 😢 `);
   };
 
-  const getClientId = () => {
-    fetch("/api/client_id")
-      .then((res) => res.json())
-      .then((data) => {
-        return data.clientId;
-      });
-  };
-
-  const [clientId, setClientId] = useState("");
-  const [tryingToLogin, setTryingToLogin] = useState(false);
-
-  useEffect(() => {
-    if (tryingToLogin) {
-      console.log("signInWrapper, client id: ", clientId);
-      signIn();
-      setTryingToLogin(false);
-    }
-  }, [tryingToLogin]);
+  const { clientId } = props;
 
   const { signIn } = useGoogleLogin({
     onSuccess,
@@ -58,15 +40,6 @@ export const LoginPage = (props) => {
     isSignedIn: true,
     accessType: "offline",
   });
-
-  const signInWrapper = () => {
-    getClientId().then((x) => {
-      setClientId(x);
-      setTryingToLogin(true);
-      console.log("signInWrapper, client id: ", clientId);
-      signIn();
-    });
-  };
 
   return (
     <div className="login-container">
@@ -80,7 +53,7 @@ export const LoginPage = (props) => {
           classes={{
             startIcon: classes.startIcon,
           }}
-          onClick={signInWrapper}
+          onClick={signIn}
         >
           Sign in with Google
         </Button>
