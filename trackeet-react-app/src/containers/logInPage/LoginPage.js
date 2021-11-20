@@ -38,7 +38,7 @@ export const LoginPage = (props) => {
     fetch("/api/client_id")
       .then((res) => res.json())
       .then((data) => {
-        setClientId(data.client_id);
+        setClientId(data.clientId);
       });
   }, []);
 

@@ -12,4 +12,4 @@ def hello_world():
 
 @app.route('/api/client_id')
 def get_client_id():
-    return {'client_id': REACT_APP_TRACKEET_GOOGLE_AUTH_CLIENT_ID}
+    return {'clientId': REACT_APP_TRACKEET_GOOGLE_AUTH_CLIENT_ID}
