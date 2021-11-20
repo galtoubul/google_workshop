@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/galtoubul/google_workshop#readme",
   "dependencies": {
+    "@material-ui/styles": "^4.11.4",
     "@mui/icons-material": "^5.1.0",
+    "firebase": "^9.5.0",
+    "react-social-login-buttons": "^3.6.0",
     "sass": "^1.43.4"
   },
   "devDependencies": {
