@@ -7,6 +7,9 @@ import { getLogo } from "../../components/common/companyLogo/getLogo";
 import { useGoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./refreshToken";
 
+const clientId =
+  "233763386465-f2u4jd95rvm249jcko3p8o6g1dllmev3.apps.googleusercontent.com";
+
 const useStyles = makeStyles({
   startIcon: {
     position: "absolute",
@@ -31,8 +34,6 @@ export const LoginPage = (props) => {
     alert(`Failed to login. 😢 `);
   };
 
-  const { clientId } = props;
-
   const { signIn } = useGoogleLogin({
     onSuccess,
     onFailure,
@@ -40,7 +41,7 @@ export const LoginPage = (props) => {
     isSignedIn: true,
     accessType: "offline",
   });
-
+  console.log(clientId);
   return (
     <div className="login-container">
       <div className="login-buttons-container">
