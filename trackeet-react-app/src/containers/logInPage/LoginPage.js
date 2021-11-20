@@ -32,20 +32,24 @@ export const LoginPage = (props) => {
     alert(`Failed to login. 😢 `);
   };
 
-  const [clientId, setClientId] = useState();
-
-  useEffect(() => {
+  const getClientId = () => {
     fetch("/api/client_id")
       .then((res) => res.json())
       .then((data) => {
-        setClientId(data.clientId);
+        return data.clientId;
       });
-  }, []);
-
-  const signInWrapper = () => {
-    console.log("signInWrapper, client id: ", { clientId });
-    signIn();
   };
+
+  const [clientId, setClientId] = useState("");
+  const [tryingToLogin, setTryingToLogin] = useState(false);
+
+  useEffect(() => {
+    if (tryingToLogin) {
+      console.log("signInWrapper, client id: ", clientId);
+      signIn();
+      setTryingToLogin(false);
+    }
+  }, [tryingToLogin]);
 
   const { signIn } = useGoogleLogin({
     onSuccess,
@@ -54,6 +58,15 @@ export const LoginPage = (props) => {
     isSignedIn: true,
     accessType: "offline",
   });
+
+  const signInWrapper = () => {
+    getClientId().then((x) => {
+      setClientId(x);
+      setTryingToLogin(true);
+      console.log("signInWrapper, client id: ", clientId);
+      signIn();
+    });
+  };
 
   return (
     <div className="login-container">
