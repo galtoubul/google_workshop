@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/getLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/getLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/CurrencyInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/CurrencyInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/formContext/formContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/formContext/formContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +122,8 @@
       <workItem from="1636925571735" duration="5009000" />
       <workItem from="1636978890212" duration="24195000" />
       <workItem from="1637087941708" duration="6590000" />
+      <workItem from="1637828122561" duration="2714000" />
+      <workItem from="1637830878680" duration="35000" />
     </task>
     <servers />
   </component>
@@ -143,6 +140,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
