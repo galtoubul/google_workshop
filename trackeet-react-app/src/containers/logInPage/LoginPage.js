@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import Button from "@mui/material/Button";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 import "./LoginPage.scss";
 import { LoginLogo } from "../../assets/logo/LoginLogo";
 import { getLogo } from "../../components/common/companyLogo/getLogo";
