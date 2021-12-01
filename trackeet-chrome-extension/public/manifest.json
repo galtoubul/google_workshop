@@ -3,6 +3,7 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "manifest_version": 2,
+  "permissions": ["tabs", "https://*/", "http://*/"],
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Open the popup"
@@ -13,6 +14,7 @@
     "128": "keet.png"
   },
 
-  "content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI=' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI='; object-src 'self'"
+  //"content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI=' 'unsafe-eval'; object-src 'self'"
   //to do-check out how to adapt the hash for each computer seperatly!//
 }
