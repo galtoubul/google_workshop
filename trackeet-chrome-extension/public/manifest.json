@@ -1,12 +1,12 @@
 {
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "Trackeet",
+  "description": "Trackeet tool",
   "version": "1.0",
   "manifest_version": 2,
-  "permissions": ["tabs", "https://*/", "http://*/"],
+  "permissions": ["tabs", "storage", "<all_urls>"],
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "Open the popup"
+    "default_title": "Open Trackeet tool"
   },
   "icons": {
     "16": "keet.png",
