@@ -5,7 +5,8 @@ import Button from "@mui/material/Button";
 import { BiLinkExternal } from "react-icons/bi";
 import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";
 import { useState } from "react";
-// import Extractor_Amazon from "../../scripts/Extractor_Amazon";
+import { scriptExecutor } from "./scriptExecutor";
+//import Extractor_Amazon_New  from "../../scripts/Extractor_Amazon_New";
 
 export const ADD_NEW_ORDER = "Add new order";
 
@@ -31,10 +32,9 @@ export const MainPage = () => {
         sx={{ margin: "2% 5%", display: "flex", justifyContent: "center" }}
         endIcon={<BiLinkExternal />}
         onClick={() => {
-          // eslint-disable-next-line no-undef
-          chrome.tabs.executeScript(null, {
-            file: "Extractor_Amazon.js",
-          });
+          const temp = scriptExecutor("window.location.href");
+          // eslint-disable-next-line no-alert
+          alert(temp);
         }}
       >
         Scan Habibi
@@ -64,3 +64,10 @@ export const MainPage = () => {
 //         }
 //     );
 // });
+
+// // eslint-disable-next-line no-undef
+// chrome.tabs.executeScript(null, {
+//     file: "Extractor_Amazon.js",
+// });
+
+//chrome.tabs.executeScript(null, {code: "(()=>{return new XMLSerializer().serializeToString(document)})()"}, (result)=>{console.log(new DOMParser().parseFromString(result[0], "text/xml"))})
