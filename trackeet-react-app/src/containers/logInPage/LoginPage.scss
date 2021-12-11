@@ -1,21 +1,40 @@
-.loginLogo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-height: 100%;
-}
-.loginLogoContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-}
-.loginPageContainer1 {
-  margin: 32px 0px;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
+@import "./src/assets/colors/colorsPalette";
+@import "./src/assets/styles/styles";
+@import "./src/assets/fonts/font";
 
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+}
+
+.login-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 40%;
+}
+
+.login-title {
+  width: 300px;
+  text-align: center;
+  font-family: $fontFamily;
+  color: $darkTurquoise;
+}
+
+.login-button {
+  width: 300px;
+  text-transform: none !important;
+}
+
+.separator-container {
+  width: 5%;
+}
+
+.login-logo-container {
+  padding-top: 10px;
+  max-height: 70%;
+  width: 55%;
 }
