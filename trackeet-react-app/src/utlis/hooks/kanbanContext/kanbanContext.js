@@ -1,82 +1,29 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { boardStyle } from "../../../components/kanban/data/styles";
+import { initApi } from "../../api/api";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
 export const KanbanProvider = (props) => {
+  const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
   const [kanbanState, setKanbanState] = useState({
     boardData: {
       lanes: [
         {
-          cards: [
-            {
-              orderName: "New shoes",
-              url: "https://shoesonline.co.il/product/unisex-converse-all-s",
-              currency: "ILS",
-              company: "Amazon",
-              orderDate: "11/10/2020",
-              estimatedArrivingDate: "11/11/2020",
-              orderNumber: "3444234",
-              notes: "",
-              id: "1",
-              position: "Wishlist",
-              currencyAmount: 120,
-            },
-          ],
+          cards: wishListCards.cards,
           id: "Wishlist",
           style: boardStyle,
           title: "Wishlist",
         },
         {
-          cards: [
-            {
-              orderName: "Computer",
-              url: "https://shoesonline.co.il/product/unisex-converse-all-s",
-              currency: "ILS",
-              company: "Ebay",
-              orderDate: "11/11/2021",
-              estimatedArrivingDate: "01/01/2022",
-              orderNumber: "3123",
-              notes: "",
-              id: "2",
-              position: "On The Way",
-              currencyAmount: 120,
-            },
-          ],
+          cards: onTheWayCards.cards,
           currentPage: 1,
           id: "On The Way",
           style: boardStyle,
           title: "On The Way",
         },
         {
-          cards: [
-            {
-              orderName: "New shirt",
-              url: "",
-              currency: "ILS",
-              company: "Asos",
-              orderDate: "12/10/2020",
-              estimatedArrivingDate: "01/01/2022",
-              orderNumber: "13123",
-              notes: "",
-              id: "3",
-              position: "Arrived",
-              currencyAmount: 120,
-            },
-            {
-              orderName: "Refrigerator",
-              url: "",
-              currency: "ILS",
-              company: "AliExpress",
-              orderDate: "12/10/2020",
-              estimatedArrivingDate: "03/12/2020",
-              orderNumber: "",
-              notes: "",
-              id: "4",
-              position: "Arrived",
-              currencyAmount: 120,
-            },
-          ],
+          cards: arrivedCards.cards,
           currentPage: 1,
           id: "Arrived",
           style: boardStyle,
@@ -84,6 +31,11 @@ export const KanbanProvider = (props) => {
         },
       ],
     },
+  });
+  let api;
+
+  useEffect(() => {
+    api = initApi();
   });
 
   const setEventBus = (eventBus) => {
@@ -103,6 +55,7 @@ export const KanbanProvider = (props) => {
         id: Math.random().toString(36).slice(2),
       },
     });
+    api.addCard(card).catch((e) => console.log(e));
   };
 
   const handleCardDrag = (dragPosition, card) => {
@@ -115,6 +68,7 @@ export const KanbanProvider = (props) => {
       laneId: card.position,
       cardId: card.id,
     });
+    api.deleteCard(card.id).catch((e) => console.log(e));
   };
 
   const updateCard = (card, dragPosition) => {
@@ -123,6 +77,7 @@ export const KanbanProvider = (props) => {
       type: "UPDATE_CARD",
       laneId: card.position,
     });
+    api.updateCard(card).catch((e) => console.log(e));
   };
 
   return (
