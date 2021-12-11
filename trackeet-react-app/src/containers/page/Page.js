@@ -25,7 +25,6 @@ export const Page = () => {
       <KanbanProvider startKanbanState={startKanbanState}>
         <FormProvider>
           <Kanban setNewCardPosition={setNewCardPosition}></Kanban>
-          <div>fsdf</div>
           <Forms newCardPosition={newCardPosition} />
         </FormProvider>
       </KanbanProvider>
