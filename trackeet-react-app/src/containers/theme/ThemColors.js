@@ -36,6 +36,7 @@ export const theme = createTheme({
   typography: {
     fontFamily: [FONT_FAMILY].join(","),
     fontWeight: 900,
+    textTransform: "none",
   },
 });
 
