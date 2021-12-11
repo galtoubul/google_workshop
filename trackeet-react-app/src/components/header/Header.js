@@ -26,7 +26,7 @@ export const Header = (props) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ position: "fixed", overflow: "hidden" }}>
       <Toolbar sx={{ backgroundColor: DARK_TURQUOISE }}>
         {HeaderLogo()}
         {props.isLoggedIn ? getLoggedInButton() : getLoggedOutButtons()}

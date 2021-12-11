@@ -24,12 +24,10 @@ export const App = () => {
     signOut();
   };
 
-  useEffect(() => {
-    fetch("/api/client_id")
-      .then((res) => res.json())
-      .then((data) => {
-        setClientId(data.clientId);
-      });
+  useEffect(async () => {
+    const logInResponse = await fetch("/api/client_id");
+    const logInData = logInResponse.json();
+    setClientId(logInData.clientId);
   }, []);
 
   return (

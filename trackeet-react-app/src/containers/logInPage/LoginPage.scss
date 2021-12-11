@@ -1,40 +1,89 @@
-@import "./src/assets/colors/colorsPalette";
-@import "./src/assets/styles/styles";
 @import "./src/assets/fonts/font";
+@import "./src/assets/colors/colorsPalette";
 
-.login-container {
+.headerLogin{
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  align-content: center;
+  background-color: $grey;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.login-buttons-container {
+.loginTextContainer{
+
+  width: 430px;
+
+}
+
+.loginText{
+}
+.bodyWithDemo{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  background-color: white ;
+  height: 95vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.airPlain{
+  width: 950px;
+  fill: $grey;
+}
+.demoPage{
+
+  margin: 30px;
+  width: 50%;
+
+  >div{
+    display: flex;
+    height: 619px;
+    border-radius: 8px;
+
+  }
+
+}
+.contactUsContainer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  background-color: red !important;
+  height: 95vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.logInRowContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.loginLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 100%;
+}
+.loginLogoContainer {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  width: 40%;
+  flex-direction: row;
+  align-items: center;
+  width: 35%;
 }
+.loginPageContainer1 {
+  margin: 32px 0px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
 
-.login-title {
-  width: 300px;
-  text-align: center;
-  font-family: $fontFamily;
-  color: $darkTurquoise;
-}
-
-.login-button {
-  width: 300px;
-  text-transform: none !important;
-}
-
-.separator-container {
-  width: 5%;
-}
-
-.login-logo-container {
-  padding-top: 10px;
-  max-height: 70%;
-  width: 55%;
+  width: 100%;
 }
