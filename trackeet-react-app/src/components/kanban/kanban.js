@@ -59,6 +59,7 @@ export const Kanban = (props) => {
       }}
       handleDragEnd={handleDragEnd}
       editable
+      draggable
       eventBusHandle={setEventBus}
       data={kanbanState.boardData}
     />
