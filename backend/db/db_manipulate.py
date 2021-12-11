@@ -1,4 +1,5 @@
 import mysql.connector as SQLC
+import json
 
 
 # TODO hide these in .env.local
@@ -11,23 +12,23 @@ db_password = '***REMOVED***'
 db_con = SQLC.connect(host=db_host,user=db_user,passwd=db_password)
 cursor = db_con.cursor()
 
-fe_to_db = {
-    'bucket': {
-        'wishlist': 'Wishlist',
-        'on_the_way': 'OnTheWay',
-        'arrived': 'Arrived',
-        None: 'Wishlist'
-    }
-}
+# fe_to_db = {
+#     'bucket': {
+#         'wishlist': 'Wishlist',
+#         'on_the_way': 'OnTheWay',
+#         'arrived': 'Arrived',
+#         None: 'Wishlist'
+#     }
+# }
 
-db_to_fe = {
-    'bucket': {
-        'Wishlist': 'wishlist',
-        'OnTheWay': 'on_the_way',
-        'Arrived': 'arrived',
-        None: 'wishlist'
-    }
-}
+# db_to_fe = {
+#     'bucket': {
+#         'Wishlist': 'wishlist',
+#         'OnTheWay': 'on_the_way',
+#         'Arrived': 'arrived',
+#         None: 'wishlist'
+#     }
+# }
 
 
 # return all the cards of the user that associated with user_id
@@ -48,7 +49,8 @@ def get_cards(user_id):
                       'order_date': res[6],
                       'order_serial_code': res[0],
                       'notes': res[8],
-                      'timeline_position': db_to_fe['bucket'][res[3]]})
+                      'timeline_position': res[3]})
+    return json.dumps(cards)
 
 
 def is_in_company(company_name):
@@ -89,6 +91,7 @@ def add_card (data):
         update_foreign_keys(data)
 
         price = float(data.get('price')) if 'price' in data else None
+        bucket = 'Wishlist' if 'timeline_position' not in data else data.get('price')
 
         cursor.execute("""INSERT INTO Trackeet.Orders
                         (OrderNumber, OrderName, CompanyName, CustomerId,
@@ -102,13 +105,13 @@ def add_card (data):
                                 'company_name': data.get('company'),
                                 'customer_id': int(data.get('user_id')),
                                 'url': data.get('order_url'),
-                                'bucket': fe_to_db['bucket'][data.get('timeline_position')],
+                                'bucket': bucket,
                                 'price': price,
                                 'currency': data.get('currency'),
                                 'order_date': data.get('order_date'),
                                 'estimated_arriving_date': data.get('estimated_arrival_date'),
                                 'notes': data.get('notes')})
         db_con.commit()
-    except SQLC.connector.IntegrityError as err:
+    except SQLC.IntegrityError as err:
         return ('ERROR: failed to insert values: %s', err)
     return 'Succesful insertion! {} rows were affacted'.format(cursor.rowcount)
