@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/API.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/api/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/api/api.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/api/http.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utlis/api/utils/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/companyLogo/getLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/companyLogo/getLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/CurrencyInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/CurrencyInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/forms/formContext/formContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/formContext/formContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +31,8 @@
       <list>
         <option value="CSS File" />
         <option value="Sass File" />
-        <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -59,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="eslint.code.style.apply.dismiss" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../trackeet-chrome-extension" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -70,31 +75,31 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/assets/logo" />
       <recent name="$PROJECT_DIR$/src/components/common/avatarCard/logo" />
       <recent name="$PROJECT_DIR$/src/components/common/avatarCard" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utlis/api/utils" />
       <recent name="$PROJECT_DIR$/src/utlis/hooks/kanbanContext" />
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\containers" />
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\components\common" />
       <recent name="$PROJECT_DIR$/src/utlis/hooks" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/utlis/api/utils/utils.js" />
       <recent name="$PROJECT_DIR$/src/components/forms/timeLine/TimeLineItem.js" />
       <recent name="$PROJECT_DIR$/src/containers/forms/forms.js" />
       <recent name="$PROJECT_DIR$/src/components/header/headerLogo/headerLogo.js" />
       <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" />
-      <recent name="$PROJECT_DIR$/src/components/common/kanban/data/getData.js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -126,7 +131,15 @@
       <workItem from="1636809179223" duration="2834000" />
       <workItem from="1636925571735" duration="5009000" />
       <workItem from="1636978890212" duration="24195000" />
-      <workItem from="1637087941708" duration="6590000" />
+      <workItem from="1637087941708" duration="8056000" />
+      <workItem from="1637150537820" duration="1234000" />
+      <workItem from="1637157281929" duration="601000" />
+      <workItem from="1637160286565" duration="599000" />
+      <workItem from="1637162766863" duration="510000" />
+      <workItem from="1637163695504" duration="175000" />
+      <workItem from="1637164348629" duration="599000" />
+      <workItem from="1637756464159" duration="1235000" />
+      <workItem from="1638346848401" duration="22751000" />
     </task>
     <servers />
   </component>
