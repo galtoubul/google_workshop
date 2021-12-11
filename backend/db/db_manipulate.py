@@ -113,8 +113,8 @@ def add_card (data):
                                 'notes': data.get('notes')})
         db_con.commit()
     except SQLC.IntegrityError as err:
-        return ('ERROR: failed to insert values: %s', err)
-    return 'Succesful insertion! {} rows were affacted'.format(cursor.rowcount)
+        return ('ERROR: failed to insert records: %s', err)
+    return 'Succesful insert! {} rows were affacted'.format(cursor.rowcount)
 
 
 db_to_fe_dict = {
@@ -164,38 +164,57 @@ def get_fe_param_to_query_param(data):
 
 def update_card(customer_id, compamy_name, order_number, data):
     fe_param_to_query_param = get_fe_param_to_query_param(data)
+      
+    update_query = 'UPDATE Trackeet.Orders SET '
 
-    try:       
-        update_query = 'UPDATE Trackeet.Orders SET '
+    query_params_dict = {}
+    is_first = True
+    for (db_format, fe_format) in db_to_fe_dict.items():
+        if fe_format in data:
+            if not is_first:
+                update_query += ', '
+            update_query += f'{db_format} = %({fe_format})s'
+            query_params_dict[fe_format] = fe_param_to_query_param[fe_format]
+            is_first = False
 
-        query_params_dict = {}
-        is_first = True
-        for (db_format, fe_format) in db_to_fe_dict.items():
-            if fe_format in data:
-                if not is_first:
-                    update_query += ', '
-                update_query += f'{db_format} = %({fe_format})s'
-                query_params_dict[fe_format] = fe_param_to_query_param[fe_format]
-                is_first = False
+    query_params_dict['customer_id'] = int(customer_id)
+    query_params_dict['compamy_name'] = compamy_name
+    query_params_dict['order_number'] = int(order_number)
 
-        query_params_dict['customer_id'] = int(customer_id)
-        query_params_dict['compamy_name'] = compamy_name
-        query_params_dict['order_number'] = int(order_number)
+    update_query += (""" WHERE CustomerId = %(customer_id)s   AND
+                                CompanyName = %(compamy_name)s AND
+                                OrderNumber = %(order_number)s""")
 
-        print(query_params_dict)
-
-        update_query += (""" WHERE CustomerId = %(customer_id)s   AND
-                                   CompanyName = %(compamy_name)s AND
-                                   OrderNumber = %(order_number)s""")
-
-        print(update_query)
-
+    try: 
         cursor.execute(update_query, query_params_dict)
         db_con.commit()
 
     except SQLC.IntegrityError as err:
-        return ('ERROR: failed to insert values: %s', err)
-    return 'Succesful insertion! {} rows were affacted'.format(cursor.rowcount)
+        return ('ERROR: failed to update records: %s', err)
+    return 'Succesful update! {} rows were affacted'.format(cursor.rowcount)
+
+
+def delete_card(user_id, compamy_name, order_number):
+    delete_query = """DELETE FROM Trackeet.Orders
+                      WHERE CustomerId  = %(customer_id)s  AND
+                            CompanyName = %(compamy_name)s AND
+                            OrderNumber = %(order_number)s"""
+    
+    query_params_dict = {}
+    query_params_dict['customer_id'] = int(user_id)
+    query_params_dict['compamy_name'] = compamy_name
+    query_params_dict['order_number'] = int(order_number)
+
+    print(delete_query)
+    print(query_params_dict)
+
+    try:
+        cursor.execute(delete_query, query_params_dict)
+        db_con.commit()
+
+    except SQLC.IntegrityError as err:
+        return ('ERROR: failed to delete records: %s', err)
+    return 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)
 
 
 

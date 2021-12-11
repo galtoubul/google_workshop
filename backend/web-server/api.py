@@ -34,10 +34,20 @@ def add_card():
     res = db.add_card(request.form)
     return jsonify({"response": res})
 
+
 @app.route('/api/updateCard', methods=['POST'])
 def update_card():
     user_id = request.args.get('user_id')
     compamy_name = request.args.get('company')
     order_number = request.args.get('order_serial_code')
     res = db.update_card(user_id, compamy_name, order_number, request.form)
+    return jsonify({"response": res})
+
+
+@app.route('/api/deleteCard', methods=['POST'])
+def delete_card():
+    user_id = request.args.get('user_id')
+    compamy_name = request.args.get('company')
+    order_number = request.args.get('order_serial_code')
+    res = db.delete_card(user_id, compamy_name, order_number)
     return jsonify({"response": res})
