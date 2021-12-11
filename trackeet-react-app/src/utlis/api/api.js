@@ -1,5 +1,5 @@
 import { initHttp } from "./http";
-import { getCardsInFormat } from "./utils/utils";
+import { getCardsInFormat, toCardServerFormat } from "./utils/utils";
 
 export const initApi = () => {
   const http = initHttp();
@@ -13,17 +13,16 @@ export const initApi = () => {
   };
 
   const addCard = (card) => {
-    return http.post("addCard", { card });
+    return http.post("addCard", { card: toCardServerFormat(card) });
   };
 
-  const updateCard = (cardId, card) => {
-    // return http.post("updateCard", {
-    //   ...toCardServerFormat(card),
-    //   card_id: cardId,
-    // });
+  const updateCard = (card) => {
+    return http.post("updateCard", { card: toCardServerFormat(card) });
   };
 
-  const deleteCard = () => {};
+  const deleteCard = (cardId) => {
+    return http.post("deleteCard", { card_id: cardId });
+  };
 
   return { getCards, addCard, updateCard, deleteCard };
 };

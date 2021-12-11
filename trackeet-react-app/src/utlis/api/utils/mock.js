@@ -89,4 +89,19 @@ export const initMock = () => {
           ];
       }
     });
+  // eslint-disable-next-line no-undef
+  axiosMock.onPost("https://trackeet.co/addCard").reply((e) => {
+    console.log(e);
+    return [200, {}];
+  });
+  // eslint-disable-next-line no-undef
+  axiosMock.onPost("https://trackeet.co/deleteCard").reply((e) => {
+    console.log(e);
+    return [200, {}];
+  });
+  // eslint-disable-next-line no-undef
+  axiosMock.onPost("https://trackeet.co/updateCard").reply((e) => {
+    console.log(e);
+    return [200, {}];
+  });
 };

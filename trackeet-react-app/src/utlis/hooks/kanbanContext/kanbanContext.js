@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { boardStyle } from "../../../components/kanban/data/styles";
+import { initApi } from "../../api/api";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
-  console.log(wishListCards);
   const [kanbanState, setKanbanState] = useState({
     boardData: {
       lanes: [
@@ -32,6 +32,11 @@ export const KanbanProvider = (props) => {
       ],
     },
   });
+  let api;
+
+  useEffect(() => {
+    api = initApi();
+  });
 
   const setEventBus = (eventBus) => {
     setKanbanState({ eventBus });
@@ -50,6 +55,7 @@ export const KanbanProvider = (props) => {
         id: Math.random().toString(36).slice(2),
       },
     });
+    api.addCard(card).catch((e) => console.log(e));
   };
 
   const handleCardDrag = (dragPosition, card) => {
@@ -62,6 +68,7 @@ export const KanbanProvider = (props) => {
       laneId: card.position,
       cardId: card.id,
     });
+    api.deleteCard(card.id).catch((e) => console.log(e));
   };
 
   const updateCard = (card, dragPosition) => {
@@ -70,6 +77,7 @@ export const KanbanProvider = (props) => {
       type: "UPDATE_CARD",
       laneId: card.position,
     });
+    api.updateCard(card).catch((e) => console.log(e));
   };
 
   return (
