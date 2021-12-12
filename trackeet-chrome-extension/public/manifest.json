@@ -2,19 +2,22 @@
   "name": "Trackeet",
   "description": "Trackeet tool",
   "version": "1.0",
-  "manifest_version": 2,
-  "permissions": ["tabs", "storage", "<all_urls>"],
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_title": "Open Trackeet tool"
-  },
+  "manifest_version": 3,
+  "permissions": [
+    "tabs",
+    "storage","scripting"
+  ],
+  "host_permissions": ["<all_urls>","https://www.amazon.com/*"],
   "icons": {
     "16": "keet.png",
     "48": "keet.png",
     "128": "keet.png"
   },
-
-  "content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI='; object-src 'self'"
-  //"content_security_policy": "script-src 'self' 'sha256-DaiUovyBLsjkIwmgWmBmIUBAkNavxkr2MD9XrcpVPRI=' 'unsafe-eval'; object-src 'self'"
-  //to do-check out how to adapt the hash for each computer seperatly!//
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Open Trackeet tool"
+  }
 }
