@@ -1,29 +1,23 @@
-export const scriptExecutor = (resource) => {
-  let final = "";
-  if (resource === "document") {
+export const scriptExecutor = () => {
+  let final = "blahblah";
+  // eslint-disable-next-line no-undef
+  chrome.tabs.query({ active: true }, (tabs) => {
     // eslint-disable-next-line no-undef
-    chrome.tabs.executeScript(
-      null,
+    chrome.scripting.executeScript(
       {
-        code: "(()=>{return new XMLSerializer().serializeToString(document)})()",
+        target: { tabId: tabs[0].id },
+        func: () => {
+          return window.location.href;
+        },
       },
-      (result) => {
-        final = new DOMParser().parseFromString(result[0], "text/xml");
-      }
-    );
-  } else {
-    // eslint-disable-next-line no-undef
-    chrome.tabs.executeScript(
-      null,
-      {
-        code: `(()=>{return (window.location.href)})()`,
-      },
-      (result) => {
+      (injectionResults) => {
+        console.log(injectionResults[0].result);
         // eslint-disable-next-line prefer-destructuring
-        final = result[0];
+        final = injectionResults[0].result;
       }
     );
-  }
-
+  });
+  // eslint-disable-next-line no-alert
+  alert(final);
   return final;
 };
