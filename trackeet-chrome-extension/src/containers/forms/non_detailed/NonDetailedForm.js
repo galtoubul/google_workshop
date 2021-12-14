@@ -8,18 +8,15 @@ const NonDetailedForm = (props) => {
   const companies = [
     { title: "Amazon" },
     { title: "Ebay" },
-    { title: "Fedex" },
-    { title: "Nike" },
     { title: "Asos" },
     { title: "AliExpress" },
-    { title: "Apple" },
   ];
 
   return (
     <>
       <AutocompleteInput label="Company" autocompleteList={companies} />
       <TextInput label="Order Name" />
-      <TextInput label="Order Number" />
+      <TextInput label="Order Serial Code" />
       <DatePickerInput label="Estimated Arriving Date" />
       <Button
         onClick={props.closeForm}
