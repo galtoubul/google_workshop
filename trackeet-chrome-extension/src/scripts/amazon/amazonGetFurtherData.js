@@ -21,7 +21,7 @@ const amazonGetFurtherData = (newURL) => {
         tab
       ) {
         // make sure the status is 'complete' and it's the right tab
-        if (tabId == firstTab.id && changeInfo.status == "complete") {
+        if (tabId === firstTab.id && changeInfo.status === "complete") {
           doc = await tabGetDocument(tab.id);
           resolve(doc);
           // eslint-disable-next-line no-undef
