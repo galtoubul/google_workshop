@@ -32,11 +32,18 @@ cursor = db_con.cursor()
 
 
 # return all the cards of the user that associated with user_id
-def get_cards(user_id):
-    cursor.execute("""SELECT *
+def get_cards(user_id, bucket=None):
+    select_query = """SELECT *
                       FROM Trackeet.Orders
-                      WHERE CustomerId = %(user_id)s""",
-                      {'user_id': user_id})
+                      WHERE CustomerId = %(user_id)s"""
+    query_params_dict = {'user_id': user_id}
+
+    if bucket != None:
+        select_query += ' AND Bucket = %(bucket)s'
+        query_params_dict['bucket'] = bucket
+    
+    cursor.execute(select_query, query_params_dict)
+
     results = cursor.fetchall()
     cards = []
     for res in results:
@@ -50,7 +57,7 @@ def get_cards(user_id):
                       'order_serial_code': res[0],
                       'notes': res[8],
                       'timeline_position': res[3]})
-    return json.dumps(cards)
+    return {'cards': cards}
 
 
 def is_in_company(company_name):
@@ -113,8 +120,8 @@ def add_card (data):
                                 'notes': data.get('notes')})
         db_con.commit()
     except SQLC.IntegrityError as err:
-        return ('ERROR: failed to insert records: %s', err)
-    return 'Succesful insert! {} rows were affacted'.format(cursor.rowcount)
+        return {'response': f'ERROR: failed to insert records: {err}'}
+    return {'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount)}
 
 
 db_to_fe_dict = {
@@ -190,8 +197,8 @@ def update_card(customer_id, compamy_name, order_number, data):
         db_con.commit()
 
     except SQLC.IntegrityError as err:
-        return ('ERROR: failed to update records: %s', err)
-    return 'Succesful update! {} rows were affacted'.format(cursor.rowcount)
+        return {'response': f'ERROR: failed to update records: {err}'}
+    return {'response': 'Succesful update! {} rows were affacted'.format(cursor.rowcount)}
 
 
 def delete_card(user_id, compamy_name, order_number):
@@ -205,16 +212,13 @@ def delete_card(user_id, compamy_name, order_number):
     query_params_dict['compamy_name'] = compamy_name
     query_params_dict['order_number'] = int(order_number)
 
-    print(delete_query)
-    print(query_params_dict)
-
     try:
         cursor.execute(delete_query, query_params_dict)
         db_con.commit()
 
     except SQLC.IntegrityError as err:
-        return ('ERROR: failed to delete records: %s', err)
-    return 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)
+        return {'response': f'ERROR: failed to delete records: {err}'}
+    return {'response': 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)}
 
 
 
