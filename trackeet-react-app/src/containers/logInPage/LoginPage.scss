@@ -7,43 +7,52 @@
   align-items: center;
   align-content: center;
   background-color: $grey;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  height: 1000px;
 }
 
 .loginTextContainer{
 
-  width: 430px;
+  width: 600px;
 
 }
 
-.loginText{
-}
-.bodyWithDemo{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  align-content: center;
-  background-color: white ;
-  height: 95vh;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
+
+
 .airPlain{
   width: 950px;
   fill: $grey;
 }
+
+
+.bodyWithDemoContainer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  background-color: $grey ;
+
+  height: 800px;
+
+}
+.demoBody{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  height: 80vh!important;
+  height: 500px;
+
+
+}
 .demoPage{
 
-  margin: 30px;
-  width: 50%;
-
+height: 80vh;
   >div{
-    display: flex;
-    height: 619px;
+    //display:block;
+    //overflow:scroll;
+    height: 400px!important;
+    width:100%;
     border-radius: 8px;
 
   }
@@ -56,7 +65,6 @@
   justify-content: center;
 }
 .logInRowContainer {
-  margin: 16px;
   display: flex;
   justify-content: space-around;
 }
@@ -67,6 +75,7 @@
   left: 0;
   max-height: 100%;
 }
+
 .loginLogoContainer {
   display: flex;
   justify-content: center;
@@ -79,10 +88,8 @@
   justify-content: space-evenly;
   align-items: center;
   align-content: center;
-  height: 95vh;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+
+  height: 1000px;
 
   flex-direction: row;
   background-color: $grey;

@@ -11,12 +11,14 @@ import {
 } from "./kanbanCardStyle";
 import { CardActions } from "@mui/material";
 import { CompanyLogo } from "../../common/companyLogo/companyLogo";
+import { useUserInformationContext } from "../../../utlis/hooks/userInformationContext/userInformationContext";
 
 export const KanbanCard = (props) => {
   const { estimatedArrivingDate, orderName, company } = props.card;
+  const { isLoggedIn } = useUserInformationContext();
 
   return (
-    <Card sx={cardStyle}>
+    <Card sx={{ ...cardStyle, width: !isLoggedIn ? "240px" : 350 }}>
       <CardContent>
         <Box sx={cardContentStyle}>
           <CardTitle date={estimatedArrivingDate} cardName={orderName} />

@@ -9,12 +9,14 @@ import {
   FormContext,
   formInitialState,
 } from "../../containers/forms/formContext/formContext";
+import { Box } from "@mui/material";
+import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
 
 export const Kanban = (props) => {
   const { kanbanState, setEventBus, handleCardDrag } = useKanbanContext();
   const { openNonDetailedForm, setIsNewForm } = useContext(FormContext);
   const { setNewCardPosition } = props;
-
+  const { isLoggedIn } = useUserInformationContext();
   const getInsertCardButton = (props, id) => (
     <InsertButton
       openNonDetailedForm={() => {
@@ -50,7 +52,10 @@ export const Kanban = (props) => {
   };
 
   return (
-    <div className={"kanbanContainer"}>
+    <Box
+      sx={{ marginTop: isLoggedIn ? "67.89px" : "0px" }}
+      className={"kanbanContainer"}
+    >
       <RealtimeBoard
         className={"board"}
         style={boardStyle}
@@ -64,6 +69,6 @@ export const Kanban = (props) => {
         eventBusHandle={setEventBus}
         data={kanbanState.boardData}
       />
-    </div>
+    </Box>
   );
 };
