@@ -7,7 +7,7 @@ const KanbanContext = createContext({ boardData: { lanes: [] } });
 
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
-  const { api } = useUserInformationContext();
+  const { api, isLoggedIn } = useUserInformationContext();
 
   const [kanbanState, setKanbanState] = useState({
     boardData: {
@@ -15,21 +15,22 @@ export const KanbanProvider = (props) => {
         {
           cards: wishListCards.cards,
           id: "Wishlist",
-          style: boardStyle,
+          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
           title: "Wishlist",
         },
         {
           cards: onTheWayCards.cards,
           currentPage: 1,
           id: "On The Way",
-          style: boardStyle,
+
+          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
           title: "On The Way",
         },
         {
           cards: arrivedCards.cards,
           currentPage: 1,
           id: "Arrived",
-          style: boardStyle,
+          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
           title: "Arrived",
         },
       ],
