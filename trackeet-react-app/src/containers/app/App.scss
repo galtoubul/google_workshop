@@ -3,3 +3,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+.mainHeader{
+  z-index: 3;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+}
