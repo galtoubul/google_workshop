@@ -6,9 +6,4 @@ export const boardStyle = {
   alignItems: "stretch",
   justifyContent: "center",
   backgroundColor: GREY,
-
-  height: "100vh",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundAttachment: "fixed",
 };
