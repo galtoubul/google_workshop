@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1a9678-8cb4-4fa4-805c-c1d1f533e453" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/appRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/logInModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/header/buttons/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/header/buttons/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanban.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanban.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanban.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/kanbanCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/kanbanCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/app/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/LoginPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/LoginPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/LoginPage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/page/Page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +23,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -90,7 +84,7 @@
       <workItem from="1638789064315" duration="3000" />
       <workItem from="1639244680210" duration="171000" />
       <workItem from="1639408162141" duration="3874000" />
-      <workItem from="1639506456901" duration="33048000" />
+      <workItem from="1639506456901" duration="39683000" />
     </task>
     <servers />
   </component>
