@@ -50,18 +50,20 @@ export const Kanban = (props) => {
   };
 
   return (
-    <RealtimeBoard
-      className={"board"}
-      style={boardStyle}
-      components={{
-        AddCardLink: (p) => getInsertCardButton(props, p.laneId),
-        Card: getCard,
-      }}
-      handleDragEnd={handleDragEnd}
-      editable
-      draggable
-      eventBusHandle={setEventBus}
-      data={kanbanState.boardData}
-    />
+    <div className={"kanbanContainer"}>
+      <RealtimeBoard
+        className={"board"}
+        style={boardStyle}
+        components={{
+          AddCardLink: (p) => getInsertCardButton(props, p.laneId),
+          Card: getCard,
+        }}
+        handleDragEnd={handleDragEnd}
+        editable
+        draggable
+        eventBusHandle={setEventBus}
+        data={kanbanState.boardData}
+      />
+    </div>
   );
 };
