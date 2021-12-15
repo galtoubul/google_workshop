@@ -1,3 +1,5 @@
+const { uuid } = require("uuidv4");
+
 export const toCards = (response) => {
   const cards = response.cards.map((card) => {
     return {
@@ -9,8 +11,11 @@ export const toCards = (response) => {
       estimatedArrivingDate: card.estimated_arrival_date,
       orderNumber: card.order_serial_code,
       notes: card.notes,
-      id: card.card_id,
-      position: card.timeline_position,
+      id: uuid(),
+      position:
+        card.timeline_position === "OnTheWay"
+          ? "On The Way"
+          : card.timeline_position,
       currencyAmount: card.currency_amount,
     };
   });
@@ -21,7 +26,7 @@ export const toCards = (response) => {
 export const getCardsInFormat = async (http, cursor, position) => {
   const res = await http.get("getCards", {
     cursor,
-    position,
+    timeline_position: position,
   });
   return toCards(res);
 };
@@ -30,14 +35,15 @@ export const toCardServerFormat = (card) => {
   return {
     order_name: card.orderName,
     order_url: card.url,
-    currency: card.currency,
+    currency: "ILS", // todo fix the currency enum with the server .,
     company: card.company,
     order_date: card.orderDate,
     estimated_arrival_date: card.estimatedArrivingDate,
     order_serial_code: card.orderNumber,
     notes: card.notes,
-    card_id: card.id,
-    timeline_position: card.position,
-    currency_amount: card.currencyAmount,
+    card_id: uuid(),
+    timeline_position:
+      card.position === "On The Way" ? "OnTheWay" : card.position,
+    price: card.currencyAmount,
   };
 };
