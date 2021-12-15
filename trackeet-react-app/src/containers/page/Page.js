@@ -3,20 +3,21 @@ import { useEffect, useState } from "react";
 import { KanbanProvider } from "../../utlis/hooks/kanbanContext/kanbanContext";
 import { FormProvider } from "../forms/formContext/formContext";
 import { Forms } from "../forms/forms";
-import { initMock } from "../../utlis/api/utils/mock";
+import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
 import { initApi } from "../../utlis/api/api";
 
 export const Page = () => {
   const [newCardPosition, setNewCardPosition] = useState("");
   const [startKanbanState, setStartKanbanState] = useState(null);
+  const { userInformation, isLoggedIn } = useUserInformationContext();
 
   useEffect(async () => {
-    initMock();
-    const api = initApi();
-
-    const cards = await api.getCards(1);
-    setStartKanbanState(cards);
-  }, []);
+    if (isLoggedIn) {
+      const api = initApi(userInformation);
+      const cards = await api.getCards(1);
+      setStartKanbanState(cards);
+    }
+  }, [isLoggedIn]);
 
   return !startKanbanState ? (
     <></>
