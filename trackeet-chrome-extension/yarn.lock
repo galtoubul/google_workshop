@@ -11677,6 +11677,13 @@
     "use-callback-ref" "^1.2.1"
     "use-sidecar" "^1.0.1"
 
+"react-google-button@^0.7.2":
+  "integrity" "sha512-LPIqU2hIlc212kqks8MtKjRstquVkP3SIjxlK5B1nIfg2R7YqSusJAxZUkJA5dv/z6QeSuGyI9ujwV/VWMTyAA=="
+  "resolved" "https://registry.npmjs.org/react-google-button/-/react-google-button-0.7.2.tgz"
+  "version" "0.7.2"
+  dependencies:
+    "prop-types" "^15.7.2"
+
 "react-i18next@^11.13.0":
   "integrity" "sha512-2xuQgd+Arzl3uZKkcKVk1V3rdiyXJrDkVAMxVtX2i3o+sDc+g+YjWoHh7Hw336wd+UGTI+F30ZCkb3X2VCixEQ=="
   "resolved" "https://registry.npmjs.org/react-i18next/-/react-i18next-11.14.0.tgz"

@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/api.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/http.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/loginPage/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/loginPage/signIn/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/colors/colorsPalette.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/assets/colors/colorsPalette.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/theme/ThemColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/theme/ThemColors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +135,7 @@
       <workItem from="1637164348629" duration="599000" />
       <workItem from="1637756464159" duration="1235000" />
       <workItem from="1638346848401" duration="22751000" />
+      <workItem from="1639645000974" duration="469000" />
     </task>
     <servers />
   </component>
@@ -156,6 +152,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

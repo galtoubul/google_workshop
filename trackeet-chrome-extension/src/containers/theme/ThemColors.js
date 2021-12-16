@@ -4,6 +4,7 @@ import {
   DARK_TURQUOISE,
   TURQUOISE,
   GREY,
+  BLUE,
 } from "../../assets/colors/colorsPalette";
 import { FONT_FAMILY, FONT_WEIGHT } from "../../assets/fonts/font";
 
@@ -31,6 +32,9 @@ export const theme = createTheme({
       main: DARK_TURQUOISE,
       dark: BLACK,
       contrastText: BLACK,
+    },
+    google_button: {
+      main: BLUE,
     },
   },
   typography: {
