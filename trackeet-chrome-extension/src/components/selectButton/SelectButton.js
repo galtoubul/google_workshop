@@ -7,7 +7,7 @@ import { ADD_NEW_ORDER } from "../../containers/mainpage/MainPage";
 
 export const SelectButton = (props) => {
   return (
-    <FormControl sx={{ margin: "2% 5%" }}>
+    <FormControl sx={{ margin: "2% 5%" }} size="small">
       <InputLabel>{ADD_NEW_ORDER}</InputLabel>
       <Select
         value={props.addCardPosition}

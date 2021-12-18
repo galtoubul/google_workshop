@@ -16,12 +16,13 @@ const NonDetailedForm = (props) => {
     <>
       <AutocompleteInput label="Company" autocompleteList={companies} />
       <TextInput label="Order Name" />
-      <TextInput label="Order Serial Code" />
+      <TextInput label="Order Serial Code" size="small" />
       <DatePickerInput label="Estimated Arriving Date" />
       <Button
         onClick={props.closeForm}
         sx={{ margin: "2% 5%" }}
         variant="contained"
+        size={"small"}
       >
         SAVE
       </Button>

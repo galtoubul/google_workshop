@@ -1,12 +1,10 @@
-//import GoogleButton from "react-google-button";
 import Box from "@mui/material/Box";
 import SignIn from "./signIn/SignIn";
 
-const Login = () => {
+const Login = (props) => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", height: 240 }}>
-      {/*<GoogleButton />*/}
-      <SignIn />
+      <SignIn login={props.login} />
     </Box>
   );
 };

@@ -26,7 +26,17 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="http://trackeet.co">
+      <Link
+        color="inherit"
+        href=""
+        onClick={() => {
+          // eslint-disable-next-line no-undef
+          chrome.tabs.create(
+            { active: true, url: "http://trackeet.co" },
+            () => {}
+          );
+        }}
+      >
         Trackeet
       </Link>{" "}
       {new Date().getFullYear()}
@@ -37,7 +47,7 @@ function Copyright(props) {
 
 //const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -45,6 +55,7 @@ export default function SignIn() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    props.login();
   };
 
   return (
