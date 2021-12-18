@@ -8,6 +8,7 @@ const AutocompleteInput = (props) => {
       onInputChange={props.onChange}
       onChange={props.onChange}
       freeSolo
+      size="small"
       options={props.autocompleteList.map((option) => option.title)}
       renderInput={(params) => <TextField {...params} label={props.label} />}
     />

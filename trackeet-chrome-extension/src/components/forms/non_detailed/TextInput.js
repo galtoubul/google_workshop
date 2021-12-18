@@ -6,6 +6,7 @@ const TextInput = (props) => {
       sx={{ margin: "2% 5%" }}
       label={props.label}
       value={props.value}
+      size={"small"}
       onChange={props.onChange}
     />
   );

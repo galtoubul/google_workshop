@@ -6,6 +6,7 @@ import { Img } from "@chakra-ui/react";
 import logo from "../../assets/logo/logo.png";
 import { DARK_TURQUOISE } from "../../assets/colors/colorsPalette";
 import { SettingsButton } from "./buttons/SettingsButton";
+import { LogoutButton } from "./buttons/LogoutButton";
 
 export const Header = (props) => {
   return (
@@ -18,7 +19,10 @@ export const Header = (props) => {
       >
         <div className={"logoContainer"}>
           <Img className={"logo"} src={logo} alt={"logo"} />
-          <SettingsButton />
+          <div className={"buttonsContainer"}>
+            {props.isLoggedIn ? <LogoutButton logOut={props.logOut} /> : null}
+            <SettingsButton />
+          </div>
         </div>
       </Toolbar>
     </AppBar>
