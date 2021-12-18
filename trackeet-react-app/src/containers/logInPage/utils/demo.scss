@@ -1,0 +1,19 @@
+@import "./src/assets/fonts/font";
+@import "./src/assets/colors/colorsPalette";
+
+.bodyWithDemoContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  height: 93vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: $grey;
+}
+.demoPage{
+
+  height: 400px;
+}
