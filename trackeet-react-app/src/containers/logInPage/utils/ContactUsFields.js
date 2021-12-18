@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./ContactUs.scss";
 
-export const ContactUs = (props) => {
+export const ContactUsFields = (props) => {
   return (
     <Box
       component="form"

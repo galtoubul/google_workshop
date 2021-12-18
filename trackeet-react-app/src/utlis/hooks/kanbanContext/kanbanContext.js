@@ -8,7 +8,8 @@ const KanbanContext = createContext({ boardData: { lanes: [] } });
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
   const { api, isLoggedIn } = useUserInformationContext();
-
+  console.log("api");
+  console.log(api);
   const [kanbanState, setKanbanState] = useState({
     boardData: {
       lanes: [

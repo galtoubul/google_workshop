@@ -9,11 +9,12 @@ import { initApi } from "../../utlis/api/api";
 export const Page = () => {
   const [newCardPosition, setNewCardPosition] = useState("");
   const [startKanbanState, setStartKanbanState] = useState(null);
-  const { userInformation, isLoggedIn } = useUserInformationContext();
+  const { userInformation, isLoggedIn, getIsLoggedIn } =
+    useUserInformationContext();
 
   useEffect(async () => {
     if (isLoggedIn) {
-      const api = initApi(userInformation);
+      const api = initApi(userInformation, getIsLoggedIn);
       const cards = await api.getCards(1);
       setStartKanbanState(cards);
     }

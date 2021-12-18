@@ -5,20 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/api.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/http.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utlis/api/utils/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/LoginModalLogo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/logInModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/Demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/LoginHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/LoginHeader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/app/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/appRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/appRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/ConatctUs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/ContactUs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/logInModal.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/userInformationContext/userInformationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/userInformationContext/userInformationContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,11 +100,11 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/containers/logInPage/LoginModal" />
       <recent name="$PROJECT_DIR$/src/utlis/api/utils" />
       <recent name="$PROJECT_DIR$/src/utlis/hooks/kanbanContext" />
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\containers" />
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\components\common" />
-      <recent name="$PROJECT_DIR$/src/utlis/hooks" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/utlis/api/utils/utils.js" />
@@ -140,6 +152,9 @@
       <workItem from="1637164348629" duration="599000" />
       <workItem from="1637756464159" duration="1235000" />
       <workItem from="1638346848401" duration="22751000" />
+      <workItem from="1639550740838" duration="142000" />
+      <workItem from="1639845101113" duration="2934000" />
+      <workItem from="1639859841569" duration="6222000" />
     </task>
     <servers />
   </component>
@@ -156,6 +171,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
