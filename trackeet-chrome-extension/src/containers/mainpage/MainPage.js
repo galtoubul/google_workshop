@@ -1,80 +1,78 @@
+/* eslint-disable no-var */
+
 import "./MainPage.css";
 import * as React from "react";
-import { SelectButton } from "../../components/selectButton/SelectButton";
 import Button from "@mui/material/Button";
-//import { Snackbar } from "@mui/material";
 import { BiScan } from "react-icons/bi";
 import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";
-import { useState } from "react";
 import cardAutoCreator from "../../scripts/cardAutoCreator";
+//import { useUserInformationContext } from "../userInformationContext";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-
-// eslint-disable-next-line func-style
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href=""
-        onClick={() => {
-          // eslint-disable-next-line no-undef
-          chrome.tabs.create(
-            { active: true, url: "http://trackeet.co" },
-            () => {}
-          );
-        }}
-      >
-        Trackeet
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-export const ADD_NEW_ORDER = "Add new order";
+import { useState } from "react";
+//import autoFill from "../../scripts/autoFill";
 
 export const MainPage = () => {
-  const [addCardPosition, setAddCardPosition] = useState(ADD_NEW_ORDER);
-
-  const openForm = (cardPosition) => {
-    setAddCardPosition(cardPosition);
-  };
-
-  const closeForm = (cardPosition) => {
-    setAddCardPosition(ADD_NEW_ORDER);
-  };
+  //const { api } = useUserInformationContext();
+  //const [orderStatus, setOrderStatus] = useState(null);
+  const [orderName, setOrderName] = useState(null);
+  // const [orderSerialCode, setOrderSerialCode] = useState(null);
+  // const [estimatedArrivingDate, setEstimatedArrivingDate] = useState(null);
 
   return (
     <div className="pageContainer">
-      <SelectButton openForm={openForm} addCardPosition={addCardPosition} />
-      {addCardPosition !== ADD_NEW_ORDER && (
-        <NonDetailedForm closeForm={closeForm} />
-      )}
-      {addCardPosition === ADD_NEW_ORDER ? (
-        <Button
-          variant="contained"
-          size={"small"}
-          sx={{ margin: "2% 5%", display: "flex", justifyContent: "center" }}
-          endIcon={<BiScan />}
-          onClick={async () => {
-            // eslint-disable-next-line no-var,vars-on-top
-            var x = await cardAutoCreator();
-            console.log(x);
-          }}
-        >
-          Auto Scan
-        </Button>
-      ) : null}
-      {/*<Snackbar open={true} />*/}
-      <Copyright sx={{ mt: 0, mb: 0 }} />
+      {
+        <>
+          <Box
+            sx={{ display: "flex", justifyContent: "center", margin: "2% 5%" }}
+          >
+            <CircularProgress />
+          </Box>
+          <Typography>Auto scanning in process</Typography>
+        </>
+      }
+      <NonDetailedForm
+        orderName={orderName}
+        setOrderName={setOrderName}
+        order_status={null}
+        order_serial_code={null}
+        estimated_arriving_date={null}
+      />
+      <Button
+        variant="contained"
+        size={"small"}
+        sx={{ margin: "2% 5%", display: "flex", justifyContent: "center" }}
+        endIcon={<BiScan />}
+        onClick={async () => {
+          // eslint-disable-next-line no-var,vars-on-top
+          var x = await cardAutoCreator();
+          // await api.addCard(x);
+          console.log(x);
+        }}
+      >
+        Auto Scan
+      </Button>
+      <Button
+        variant="contained"
+        size={"small"}
+        sx={{ margin: "2% 5%", display: "flex", justifyContent: "center" }}
+        endIcon={<BiScan />}
+        onClick={async () => {
+          var card = {};
+          try {
+            card = await cardAutoCreator();
+          } catch (e) {
+            console.error(e);
+          }
+
+          console.log(card);
+          setOrderName(card.order_name);
+          console.log(orderName);
+        }}
+      >
+        Auto Fill
+      </Button>
     </div>
   );
 };

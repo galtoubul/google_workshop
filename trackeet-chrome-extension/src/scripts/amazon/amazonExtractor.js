@@ -2,20 +2,15 @@
 /* eslint-disable no-var */
 /* eslint-disable vars-on-top */
 
-import tabGetPathname from "../tabGetPathname";
-import tabGetURL from "../tabGetURL";
-import tabGetDocument from "../tabGetDocument";
-import tabGetSearchParams from "../tabGetSearchParams";
+import tabGetURL from "../chrome_api/tabGetURL";
+import tabGetDocument from "../chrome_api/tabGetDocument";
+import tabGetSearchParams from "../chrome_api/tabGetSearchParams";
 import amazonGetFurtherData from "./amazonGetFurtherData";
-import getTabID from "../getTabID";
+import getCurrentTabID from "../chrome_api/getCurrentTabID";
 
 const amazonExtractor = async () => {
-  var path = await tabGetPathname();
-  if (path.search("/progress-tracker/package/") === -1)
-    return new Error("You are at amazon but not inside an order!");
-  //If we are here so we are in a relevant window
   var url = await tabGetURL();
-  var id = await getTabID();
+  var id = await getCurrentTabID();
   var doc = await tabGetDocument(id);
   var searchParams = await tabGetSearchParams();
 
