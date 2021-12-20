@@ -12,8 +12,5 @@ export const AppRoute = () => {
     setClientId(logInData.clientId);
   }, []);
 
-  console.log("AppRoute");
-  console.log(isLoggedIn);
-  // eslint-disable-next-line no-constant-condition
   return isLoggedIn ? <Page></Page> : <LoginPage clientId={clientId} />;
 };
