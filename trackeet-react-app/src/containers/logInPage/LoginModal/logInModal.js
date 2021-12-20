@@ -21,7 +21,7 @@ export const LoginModal = (props) => {
     addInformationToUser(p);
   };
 
-  const { signIn } = useGoogleLogin({ onSuccess });
+  const { signIn } = useGoogleLogin({ onSuccess, clientId: CLIENT_ID });
 
   // Error Handler
   // const responseGoogleError = (response) => {
@@ -30,7 +30,7 @@ export const LoginModal = (props) => {
 
   const style = {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     flexDirection: "column",
     alignItems: "center",
     position: "absolute",
@@ -39,7 +39,7 @@ export const LoginModal = (props) => {
     transform: "translate(-50%, -50%)",
     backgroundColor: WHITE,
     width: 300,
-    height: 250,
+    height: 200,
     boxShadow: 24,
     p: 4,
     borderRadius: BOARDER_RADIUS,
@@ -64,12 +64,15 @@ export const LoginModal = (props) => {
             justifyContent: "space-evenly",
           }}
         >
-          <Box sx={{ width: "25%" }}>
+          <Box sx={{ width: "25%", margin: "2px" }}>
             <LoginModalLogo />
           </Box>
-
-          <Typography variant="h4">Trackeet</Typography>
-          <Typography variant="h6">Manage all your orders</Typography>
+          <Box sx={{ margin: "2px" }}>
+            <Typography variant="h4">Trackeet</Typography>
+          </Box>
+          <Box sx={{ margin: "4px" }}>
+            <Typography variant="h6">Manage all your orders</Typography>
+          </Box>
         </Box>
 
         <Button
