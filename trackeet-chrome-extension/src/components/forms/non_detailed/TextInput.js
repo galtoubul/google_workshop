@@ -5,10 +5,13 @@ const TextInput = (props) => {
     <TextField
       sx={{ margin: "2% 5%" }}
       label={props.label}
-      value={props.value}
       size={"small"}
-      onChange={props.onChange}
-    />
+      onChange={(event) => {
+        //console.log(props.orderName);
+        //props.setOrderName(event.target.value);
+        //props.addInformation(event.target.value);
+      }}
+    ></TextField>
   );
 };
 

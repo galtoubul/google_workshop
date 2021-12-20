@@ -5,8 +5,10 @@ const AutocompleteInput = (props) => {
   return (
     <Autocomplete
       sx={{ margin: "2% 5%" }}
-      onInputChange={props.onChange}
-      onChange={props.onChange}
+      // onInputChange={props.addInformation}
+      onChange={(event) => {
+        props.addInformation(event.target.textContent);
+      }}
       freeSolo
       size="small"
       options={props.autocompleteList.map((option) => option.title)}

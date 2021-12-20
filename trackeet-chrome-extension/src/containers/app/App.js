@@ -4,7 +4,7 @@ import ThemeColors from "../../containers/theme/ThemColors";
 import { Header } from "../../components/header/Header";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import Login from "../loginPage/Login";
+import SignIn from "../signIn/SignIn";
 import { useState } from "react";
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
 
   return (
     <ThemeColors>
+      {/*<UserInformationProvider>*/}
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <div className="App">
           <Header isLoggedIn={isLoggedIn} logOut={logOut} />
@@ -27,10 +28,11 @@ const App = () => {
           {isLoggedIn ? (
             <MainPage className={"mainPage"}></MainPage>
           ) : (
-            <Login login={login} />
+            <SignIn login={login} />
           )}
         </div>
       </LocalizationProvider>
+      {/*</UserInformationProvider>*/}
     </ThemeColors>
   );
 };

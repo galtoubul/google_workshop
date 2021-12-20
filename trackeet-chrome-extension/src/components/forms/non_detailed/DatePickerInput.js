@@ -13,6 +13,7 @@ const DatePickerInput = (props) => {
       value={value}
       onChange={(newValue) => {
         setValue(newValue);
+        props.addInformation(newValue.toLocaleDateString("en-US"));
       }}
       renderInput={(params) => (
         <TextField {...params} sx={{ margin: "2% 5%" }} />
