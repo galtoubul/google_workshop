@@ -5,33 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/LoginModalLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/logInModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/Demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/LoginHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/LoginHeader.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/watcherTasks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/colors/colorsPalette.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors/colorsPalette.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts/font.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fonts/font.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/non_detailed/ModalForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/timeLine/TimeLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/timeLine/TimeLine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/insertButton/insertButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanStyle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/app/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/appRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/appRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/ConatctUs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/ContactUs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/logInModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/userInformationContext/userInformationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/userInformationContext/userInformationContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/detailed/DetailedForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/forms/non_detailed/NonDetailedForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/logInModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/logInModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/utils/LoginHeader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/LoginHeader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/theme/ThemColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/theme/ThemColors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +37,8 @@
       <list>
         <option value="CSS File" />
         <option value="Sass File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -84,10 +78,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v17.0.1/bin/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -154,7 +149,10 @@
       <workItem from="1638346848401" duration="22751000" />
       <workItem from="1639550740838" duration="142000" />
       <workItem from="1639845101113" duration="2934000" />
-      <workItem from="1639859841569" duration="6222000" />
+      <workItem from="1639859841569" duration="6374000" />
+      <workItem from="1639901539136" duration="508000" />
+      <workItem from="1639933016556" duration="11927000" />
+      <workItem from="1639986859592" duration="382000" />
     </task>
     <servers />
   </component>

@@ -73,10 +73,10 @@ const NonDetailedForm = (props) => {
           variant="outlined"
           onClick={openDetailedForm}
         >
-          ADVANCED
+          Advanced
         </Button>
         <Button onClick={() => saveCard(state.card)} variant="contained">
-          SAVE
+          Save
         </Button>
       </div>
     </form>

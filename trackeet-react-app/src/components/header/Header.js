@@ -2,8 +2,6 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { Information } from "../../components/header/buttons/Information";
-import { Home } from "../../components/header/buttons/Home";
-import { Notifications } from "../../components/header/buttons/Notifications";
 import { Login } from "../../components/header/buttons/Login";
 import styles from "./header.scss";
 import { DARK_TURQUOISE } from "../../assets/colors/colorsPalette";
@@ -16,14 +14,7 @@ import { scroller } from "react-scroll";
 export const Header = (props) => {
   const { isLoggedIn } = useUserInformationContext();
   const getLoggedInButton = () => {
-    return (
-      <>
-        <Home className={styles.headerIconButton} />
-        <Information className={styles.headerIconButton} />
-        <Notifications className={styles.headerIconButton} />
-        {isLoggedIn && <Login className={styles.headerIconButton} />}
-      </>
-    );
+    return <>{isLoggedIn && <Login className={styles.headerIconButton} />}</>;
   };
 
   const getLoggedOutButtons = () => {
@@ -67,15 +58,16 @@ export const Header = (props) => {
               marginLeft: "8px",
             }}
           >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: "white", display: "block" }}
-                onClick={() => scrollTo(page)}
-              >
-                {page}
-              </Button>
-            ))}
+            {!isLoggedIn &&
+              pages.map((page) => (
+                <Button
+                  key={page}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                  onClick={() => scrollTo(page)}
+                >
+                  {page}
+                </Button>
+              ))}
           </Box>
         </Box>
         {isLoggedIn ? getLoggedInButton() : getLoggedOutButtons()}
