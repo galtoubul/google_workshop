@@ -9,7 +9,6 @@ import { HeaderLogo } from "./headerLogo/headerLogo";
 import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { scroller } from "react-scroll";
 
 export const Header = (props) => {
   const { isLoggedIn } = useUserInformationContext();
@@ -19,15 +18,6 @@ export const Header = (props) => {
 
   const getLoggedOutButtons = () => {
     return <Information className={styles.headerIconButton} />;
-  };
-
-  const scrollTo = (position) => {
-    scroller.scrollTo(position, {
-      offset: -document.getElementById("header").getBoundingClientRect().height,
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
   };
 
   const pages = ["About Us", "Demo", "Contact Us"];
@@ -63,7 +53,7 @@ export const Header = (props) => {
                 <Button
                   key={page}
                   sx={{ my: 2, color: "white", display: "block" }}
-                  onClick={() => scrollTo(page)}
+                  onClick={() => props.scrollToPosition(page)}
                 >
                   {page}
                 </Button>
