@@ -3,16 +3,25 @@ import amazonExtractor from "./amazon/amazonExtractor";
 import tabGetPathname from "./chrome_api/tabGetPathname";
 import cardValidator from "./cardValidator";
 
-const cardAutoCreator = async () => {
+export const getIsSupported = async () => {
+  const hostname = await tabGetHostname();
+  const path = await tabGetPathname();
+  if (
+    path.search("/progress-tracker/package/") !== -1 &&
+    hostname === "www.amazon.com"
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
+export const cardAutoCreator = async () => {
   // eslint-disable-next-line no-var
-  var hostname = await tabGetHostname();
-  // eslint-disable-next-line no-var
-  var path = await tabGetPathname();
-  // eslint-disable-next-line no-var
-  var ret;
-  // console.log(hostname);
-  // console.log(path);
-  // console.log("hi");
+  const hostname = await tabGetHostname();
+  const path = await tabGetPathname();
+  let ret;
+
   switch (hostname) {
     case "www.amazon.com":
       if (path.search("/progress-tracker/package/") === -1) {
@@ -20,8 +29,8 @@ const cardAutoCreator = async () => {
         ret = null;
         break;
       } else {
-        // console.log("hi3");
         ret = await amazonExtractor();
+        console.log(ret);
         break;
       }
 
@@ -30,11 +39,7 @@ const cardAutoCreator = async () => {
       break;
   }
 
-  // console.log("hi4");
-  // console.log(ret);
   if (!cardValidator(ret))
     throw "The URL isn't supported! Please refer to the manual";
   return ret;
 };
-
-export default cardAutoCreator;

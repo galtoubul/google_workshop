@@ -15,41 +15,13 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FcGoogle } from "react-icons/fc";
-
-// eslint-disable-next-line func-style
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href=""
-        onClick={() => {
-          // eslint-disable-next-line no-undef
-          chrome.tabs.create(
-            { active: true, url: "http:// trackeet.co" },
-            () => {}
-          );
-        }}
-      >
-        Trackeet
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-//const theme = createTheme();
+import { useUserInformationContext } from "../userInformationContext";
+import { GoogleLoginButton } from "../logInModal";
 
 export default function SignIn(props) {
+  const { logIn } = useUserInformationContext();
   const handleSubmit = (event) => {
-    props.login();
+    logIn();
   };
 
   return (
@@ -85,20 +57,9 @@ export default function SignIn(props) {
             >
               Sign In With Google
             </Button>
-            {/*<Grid container>*/}
-            {/*<Grid item xs>*/}
-            {/*  <Link href="#" variant="body2">*/}
-            {/*    Forgot password?*/}
-            {/*  </Link>*/}
-            {/*</Grid>*/}
-            {/*<Grid item>*/}
-            {/*  <Link href="#" variant="body2">*/}
-            {/*    {"Don't have an account? Sign Up"}*/}
-            {/*  </Link>*/}
-            {/*</Grid>*/}
+            <GoogleLoginButton></GoogleLoginButton>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 0, mb: 0 }} />
       </Container>
     </Box>
   );

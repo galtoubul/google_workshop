@@ -1,38 +1,26 @@
 import "./App.scss";
-import { MainPage } from "../mainpage/MainPage";
 import ThemeColors from "../../containers/theme/ThemColors";
 import { Header } from "../../components/header/Header";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import SignIn from "../signIn/SignIn";
-import { useState } from "react";
+import * as React from "react";
+import { UserInformationProvider } from "../userInformationContext";
+import { AppRoute } from "../appRoute";
+// import { Footer } from "../../components/footer/Footer";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const login = () => {
-    setIsLoggedIn(true);
-  };
-
-  const logOut = () => {
-    setIsLoggedIn(false);
-  };
-
   return (
     <ThemeColors>
-      {/*<UserInformationProvider>*/}
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <div className="App">
-          <Header isLoggedIn={isLoggedIn} logOut={logOut} />
-          {/* eslint-disable-next-line no-constant-condition */}
-          {isLoggedIn ? (
-            <MainPage className={"mainPage"}></MainPage>
-          ) : (
-            <SignIn login={login} />
-          )}
-        </div>
-      </LocalizationProvider>
-      {/*</UserInformationProvider>*/}
+      <UserInformationProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <div className="App">
+            <Header />
+            {/* eslint-disable-next-line no-constant-condition */}
+            <AppRoute />
+            {/*<Footer></Footer>*/}
+          </div>
+        </LocalizationProvider>
+      </UserInformationProvider>
     </ThemeColors>
   );
 };
