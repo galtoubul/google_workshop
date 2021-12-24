@@ -6,8 +6,9 @@ import { LoginHeader } from "./utils/LoginHeader";
 import { ContactUs } from "./utils/ContactUs";
 import { LoginModal } from "./LoginModal/logInModal";
 import { useState } from "react";
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 
-export const LoginPage = () => {
+export const LoginPage = (props) => {
   const [isLoggInModalOpen, setIslogInModalOpen] = useState(false);
 
   const openLogInModal = () => {
@@ -18,15 +19,22 @@ export const LoginPage = () => {
     setIslogInModalOpen(false);
   };
 
-  return (
-    <div>
-      <LoginHeader openLoggingModal={openLogInModal} />
+  document.body.style.overflow = "hidden";
 
-      <LoginModal closeModal={closeLogInModal} isOpen={isLoggInModalOpen} />
-      <div name={"Demo"} id={"Demo"}>
-        <Demo />
+  return (
+    <ReactScrollWheelHandler
+      upHandler={(e) => props.changeSitePart("prev")}
+      downHandler={(e) => props.changeSitePart("next")}
+    >
+      <div>
+        <LoginHeader openLoggingModal={openLogInModal} />
+
+        <LoginModal closeModal={closeLogInModal} isOpen={isLoggInModalOpen} />
+        <div name={"Demo"} id={"Demo"}>
+          <Demo />
+        </div>
+        <ContactUs />
       </div>
-      <ContactUs />
-    </div>
+    </ReactScrollWheelHandler>
   );
 };
