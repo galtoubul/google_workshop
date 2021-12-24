@@ -5,10 +5,11 @@ import "./header.scss";
 import { Img } from "@chakra-ui/react";
 import logo from "../../assets/logo/logo.png";
 import { DARK_TURQUOISE } from "../../assets/colors/colorsPalette";
-import { SettingsButton } from "./buttons/SettingsButton";
 import { LogoutButton } from "./buttons/LogoutButton";
+import { useUserInformationContext } from "../../containers/userInformationContext";
 
 export const Header = (props) => {
+  const { setLogOutState, isLoggedIn } = useUserInformationContext();
   return (
     <AppBar position="static" sx={{ backgroundColor: DARK_TURQUOISE }}>
       <Toolbar
@@ -20,8 +21,7 @@ export const Header = (props) => {
         <div className={"logoContainer"}>
           <Img className={"logo"} src={logo} alt={"logo"} />
           <div className={"buttonsContainer"}>
-            {props.isLoggedIn ? <LogoutButton logOut={props.logOut} /> : null}
-            <SettingsButton />
+            {isLoggedIn ? <LogoutButton logOut={setLogOutState} /> : null}
           </div>
         </div>
       </Toolbar>

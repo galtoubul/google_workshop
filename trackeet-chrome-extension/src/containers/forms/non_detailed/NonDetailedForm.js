@@ -1,26 +1,31 @@
-import TextInput from "../../../components/forms/non_detailed/TextInput.js";
+/* eslint-disable no-var */
 import AutocompleteInput from "../../../components/forms/non_detailed/AutocompleteInput.js";
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./NonDetailedForm.scss";
 import Button from "@mui/material/Button";
-import { useState } from "react";
 import { useUserInformationContext } from "../../userInformationContext";
 import { SelectButton } from "../../../components/selectButton/SelectButton";
 import * as React from "react";
-import TextField from "@mui/material/TextField";
 
 const NonDetailedForm = (props) => {
-  const [formData, setFormData] = useState({});
   const { api } = useUserInformationContext();
+  const { setFormInformation, formData } = props;
 
-  const setFormInformation = (field) => (fieldData) => {
-    console.log(fieldData);
-    const newFormData = {};
-    newFormData[field] = fieldData;
-    setFormData((oldState) => {
-      return { ...oldState, ...newFormData };
-    });
-  };
+  const {
+    estimated_arrival_date,
+    order_status,
+    company,
+    order_name,
+    order_serial_code,
+  } = formData;
+  console.log("shay!!!!!!!!");
+  console.log({
+    estimated_arrival_date,
+    order_status,
+    company,
+    order_name,
+    order_serial_code,
+  });
 
   const sendCard = () => {
     console.log(api);
@@ -36,36 +41,34 @@ const NonDetailedForm = (props) => {
 
   return (
     <>
-      <SelectButton addInformation={setFormInformation("order_status")} />
+      <SelectButton
+        value={order_status}
+        setValue={setFormInformation("order_status")}
+      />
       <AutocompleteInput
         label="Company"
         autocompleteList={companies}
-        addInformation={setFormInformation("company_name")}
+        value={company}
+        setValue={setFormInformation("company")}
       />
-      <TextInput
+      <AutocompleteInput
         label="Order Name"
-        orderName={props.orderName}
-        setOrderName={props.setOrderName}
-        addInformation={setFormInformation("order_name")}
+        autocompleteList={[]}
+        value={order_name}
+        setValue={setFormInformation("order_name")}
       />
-      <TextInput
+      <AutocompleteInput
         label="Order Serial Code"
-        size="small"
-        addInformation={setFormInformation("order_serial_code")}
+        autocompleteList={[]}
+        value={order_serial_code}
+        setValue={setFormInformation("order_serial_code")}
       />
-      <TextField
-        sx={{ margin: "2% 5%" }}
-        label={"meow"}
-        value={props.orderName}
-        InputLabelProps={{ shrink: true }}
-        onChange={(event) => {
-          props.setOrderName(event.target.value);
-        }}
-      ></TextField>
       <DatePickerInput
         label="Estimated Arriving Date"
-        addInformation={setFormInformation("date")}
+        value={estimated_arrival_date}
+        setValue={setFormInformation("estimated_arrival_date")}
       />
+
       <Button
         onClick={sendCard}
         sx={{ margin: "2% 5%" }}

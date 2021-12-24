@@ -39,8 +39,8 @@ const amazonExtractor = async () => {
   }
 
   card.estimated_arrival_date = new Date(
-    card.estimated_arrival_date
-  ).toLocaleDateString("en-GB");
+    new Date(card.estimated_arrival_date).toLocaleDateString("en-US")
+  );
 
   //Fill 'order_name', 'company', 'order_url'
   card.company = "Amazon";
