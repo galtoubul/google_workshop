@@ -9,7 +9,7 @@ export const initMock = () => {
   axiosMock.onPost("http://trackeet.co/api/getCards").reply((request) => {
     console.log("mockkkkkkkkkk");
     console.log(request);
-    switch (request.timeline_position) {
+    switch (request.params.timeline_position) {
       case "WishList":
         return [
           200,

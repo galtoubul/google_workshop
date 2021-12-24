@@ -23,6 +23,7 @@ const style = {
 };
 
 export const getTimeLineIcon = (iconName) => {
+  console.log(iconName);
   switch (iconName) {
     case "LocalGroceryStoreIcon":
       return <LocalGroceryStoreIcon sx={style} />;
@@ -45,18 +46,20 @@ export const CardButtons = (props) => {
 
   const { isLoggedIn } = useUserInformationContext();
 
-  // eslint-disable-next-line no-unused-vars
   const getIcon = (position) => {
-    timeLineContent.filter((timelineItem) => {
+    const timeLineContent1 = timeLineContent.filter((timelineItem) => {
       return timelineItem.position === position;
     });
-    return getTimeLineIcon(timeLineContent[0].icon);
+    console.log();
+    return getTimeLineIcon(timeLineContent1[0].icon);
   };
 
   return (
     <>
       <Box>
-        <Tooltip title="Delete">{getIcon("LocalGroceryStoreIcon")}</Tooltip>
+        <Tooltip title={props.card.position}>
+          {getIcon(props.card.position)}
+        </Tooltip>
       </Box>
       <IconButton
         onClick={() => {
