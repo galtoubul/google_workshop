@@ -1,12 +1,12 @@
 import mysql.connector as SQLC
+import sys
+import os
+sys.path.append(os.path.abspath('../'))
+from config import db_host, db_user, db_password
 
-
-host = '35.185.234.203'
-user = 'root'
-password = '***REMOVED***'
 
 # connect to db
-db_con = SQLC.connect(host=host, user=user, passwd=password)
+db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
 cursor = db_con.cursor()
 
 # create database
@@ -36,7 +36,7 @@ db_con.commit()
 
 # create Order table
 cursor.execute("""CREATE TABLE IF NOT EXISTS Card(
-                  CardId SMALLINT UNSIGNED AUTO_INCREMENT,
+                  CardId VARCHAR(255),
                   OrderSerialCode VARCHAR(255),
                   Url VARCHAR(2083),
                   OrderName VARCHAR(255),
@@ -50,7 +50,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Card(
                   CustomerId VARCHAR(255),
                   FOREIGN KEY (CompanyName) REFERENCES Company(CompanyName) ON DELETE CASCADE ON UPDATE CASCADE,
                   FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId) ON DELETE CASCADE ON UPDATE CASCADE,
-                  PRIMARY KEY (CardId)
+                  PRIMARY KEY (CardId, OrderName)
     );""")
 db_con.commit()
 
