@@ -2837,7 +2837,7 @@
     "@emotion/cache" "^11.5.0"
     prop-types "^15.7.2"
 
-"@mui/styles@^5.2.1":
+"@mui/styles@^5.2.3":
   version "5.2.3"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@mui/styles/-/styles-5.2.3.tgz#fece4be72efe63368c3b2476db68074d2a4bc8d6"
   integrity sha1-/s5L5y7+YzaMOyR222gHTSpLyNY=
@@ -12278,6 +12278,11 @@ react-scripts@4.0.1:
     workbox-webpack-plugin "5.1.4"
   optionalDependencies:
     fsevents "^2.1.3"
+
+react-scroll-wheel-handler@^2.1.0:
+  version "2.1.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react-scroll-wheel-handler/-/react-scroll-wheel-handler-2.1.0.tgz#a175a48fdd8e45e0148e6b80f3f67df380e0b596"
+  integrity sha1-oXWkj92OReAUjmuA8/Z984DgtZY=
 
 react-scroll@^1.8.4:
   version "1.8.4"
