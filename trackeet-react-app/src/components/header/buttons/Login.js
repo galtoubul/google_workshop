@@ -3,7 +3,7 @@ import { BiLogIn } from "react-icons/bi";
 import { GREY } from "../../../assets/colors/colorsPalette";
 import { useGoogleLogout } from "react-google-login";
 import { useUserInformationContext } from "../../../utlis/hooks/userInformationContext/userInformationContext";
-import { CLIENT_ID } from "../../../containers/logInPage/logInModal";
+import { CLIENT_ID } from "../../../containers/logInPage/LoginModal/logInModal";
 
 export const Login = (props) => {
   const { setLogOutState } = useUserInformationContext();

@@ -3,9 +3,11 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import { boxStyle, fabStyle } from "./insertButtonStyle";
+import { useUserInformationContext } from "../../../utlis/hooks/userInformationContext/userInformationContext";
 
 export const InsertButton = (props) => {
-  return (
+  const { isLoggedIn } = useUserInformationContext();
+  return isLoggedIn ? (
     <Box sx={boxStyle}>
       <Fab
         className="fab"
@@ -18,5 +20,7 @@ export const InsertButton = (props) => {
         <AddIcon />
       </Fab>
     </Box>
+  ) : (
+    <></>
   );
 };

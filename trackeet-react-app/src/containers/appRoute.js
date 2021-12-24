@@ -3,7 +3,7 @@ import { LoginPage } from "./logInPage/LoginPage";
 import { Page } from "./page/Page";
 import { useUserInformationContext } from "../utlis/hooks/userInformationContext/userInformationContext";
 
-export const AppRoute = () => {
+export const AppRoute = (props) => {
   const [clientId, setClientId] = useState("");
   const { isLoggedIn } = useUserInformationContext();
   useEffect(async () => {
@@ -12,8 +12,9 @@ export const AppRoute = () => {
     setClientId(logInData.clientId);
   }, []);
 
-  console.log("AppRoute");
-  console.log(isLoggedIn);
-  // eslint-disable-next-line no-constant-condition
-  return isLoggedIn ? <Page></Page> : <LoginPage clientId={clientId} />;
+  return isLoggedIn ? (
+    <Page></Page>
+  ) : (
+    <LoginPage changeSitePart={props.changeSitePart} clientId={clientId} />
+  );
 };
