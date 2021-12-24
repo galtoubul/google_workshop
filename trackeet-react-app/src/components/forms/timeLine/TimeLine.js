@@ -60,7 +60,7 @@ export const timeLineContent = [
   },
 ];
 
-const getTimeLineIcon = (iconName) => {
+export const getTimeLineIcon = (iconName) => {
   switch (iconName) {
     case "LocalGroceryStoreIcon":
       return <LocalGroceryStoreIcon className={"icon"} />;

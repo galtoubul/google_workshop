@@ -1,12 +1,19 @@
 import { initHttp } from "./http";
 import { getCardsInFormat, toCardServerFormat } from "./utils/utils";
 
-export const initApi = (userInformation) => {
-  console.log("initApi");
-  console.log(userInformation);
-  console.log(userInformation);
+export const initApi = (userInformation, getIsLoggedIn) => {
   const u = userInformation;
   const http = initHttp(u);
+
+  const checkIfTheUserLoggedIn = (callback) => () => {
+    if (getIsLoggedIn()) {
+      return callback();
+    }
+
+    return new Promise((resolve) => {
+      resolve("demo");
+    });
+  };
 
   const getCards = async (cursor) => {
     const onTheWayCards = await getCardsInFormat(http, cursor, "OnTheWay");
@@ -28,5 +35,10 @@ export const initApi = (userInformation) => {
     return http.post("deleteCard", { card_id: cardId });
   };
 
-  return { getCards, addCard, updateCard, deleteCard };
+  return {
+    getCards: checkIfTheUserLoggedIn(getCards),
+    addCard: checkIfTheUserLoggedIn(addCard),
+    updateCard: checkIfTheUserLoggedIn(updateCard),
+    deleteCard: checkIfTheUserLoggedIn(deleteCard),
+  };
 };

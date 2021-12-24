@@ -9,9 +9,7 @@ export const UserInformationProvider = (props) => {
   const [api, setApi] = useState({});
 
   useEffect(() => {
-    if (isLoggedIn) {
-      setApi(initApi(userInformation));
-    }
+    setApi(initApi(userInformation, getIsLoggedIn));
   }, [isLoggedIn]);
 
   const getIsLoggedIn = () => isLoggedIn;
@@ -24,11 +22,8 @@ export const UserInformationProvider = (props) => {
     setIsLoggedIn(false);
   };
 
-  const addInformationToUser = (p) => {
-    console.log("addInformationToUser");
-    console.log(p);
-    p.then((tokenId) => {
-      console.log(tokenId);
+  const addInformationToUser = (userInformationPromise) => {
+    userInformationPromise.then((tokenId) => {
       setUserInformation(tokenId);
       logIn();
     });
@@ -50,5 +45,6 @@ export const UserInformationProvider = (props) => {
     </UserInformationContext.Provider>
   );
 };
+
 export const useUserInformationContext = () =>
   useContext(UserInformationContext);

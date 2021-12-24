@@ -131,14 +131,14 @@ const DetailedForm = (props) => {
                       variant="outlined"
                       sx={{ width: "100px" }}
                     >
-                      MOVE
+                      Move
                     </Button>
                     <Button
                       onClick={() => saveCard(state.card)}
                       sx={{ width: "100px" }}
                       variant="contained"
                     >
-                      SAVE
+                      Save
                     </Button>
                   </div>
                 </div>

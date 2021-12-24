@@ -4,17 +4,24 @@ import {
   DARK_TURQUOISE,
   TURQUOISE,
   GREY,
+  WHITE,
 } from "../../assets/colors/colorsPalette";
 import { FONT_FAMILY, FONT_WEIGHT } from "../../assets/fonts/font";
+import { BOARDER_RADIUS } from "../../assets/styles/styles";
 
 export const theme = createTheme({
   spacing: 10,
   components: {
+    textTransform: "capitalize",
     MuiButton: {
+      textTransform: "capitalize",
       styleOverrides: {
+        textTransform: "capitalize",
         root: {
+          textTransform: "capitalize",
           fontWeight: FONT_WEIGHT,
           fontSize: "1rem",
+          borderRadius: BOARDER_RADIUS,
         },
       },
     },
@@ -24,7 +31,7 @@ export const theme = createTheme({
       light: GREY,
       main: TURQUOISE,
       dark: DARK_TURQUOISE,
-      contrastText: BLACK,
+      contrastText: WHITE,
     },
     secondary: {
       light: GREY,
