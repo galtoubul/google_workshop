@@ -11,6 +11,18 @@ db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
 cursor = db_con.cursor()
 
 
+def get_not_updated_cards_serial_codes(user_id):
+    select_query = """SELECT OrderSerialCode, Bucket
+                      FROM Trackeet.Card
+                      WHERE CustomerId = %(user_id)s AND
+                            LastUpdated < DATE_SUB(NOW(), INTERVAL 1 HOUR)"""
+    query_params_dict = {'user_id': user_id}
+
+    print(f'\n\nDB get_not_updated_cards_serial_codes\nselect_query = \n{select_query}query_params_dict = \n{query_params_dict}')
+
+    cursor.execute(select_query, query_params_dict)
+    return cursor.fetchall()
+
 # return all the cards of the user that associated with user_id
 def get_cards(user_id, bucket=None):
     select_query = """SELECT *

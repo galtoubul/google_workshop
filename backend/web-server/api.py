@@ -9,10 +9,9 @@ from google.auth.transport import requests
 sys.path.append(os.path.abspath('../db'))
 import db_manipulate as db
 sys.path.append(os.path.abspath('../'))
-from config import client_id
+from config import client_id, ERR
+from auto_track import getDeliveryStatus
 
-
-ERR = -1
 
 app = Flask(__name__)
 CORS(app)
@@ -22,7 +21,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def get_user_info(token_id):
     print(f'\n\nget_user_info\ntoken_id = {token_id}', flush=True)
     try:
-        # user_id = idinfo['sub']
         return id_token.verify_oauth2_token(token_id, requests.Request(), client_id)
     except ValueError as err:
         print(f'\ninvalid token: {err}', flush=True)
@@ -49,6 +47,31 @@ def json_bytes_to_dict(json_bytes):
     return dict
 
 
+track_api_to_bucket = {
+    'pending': 'Paid',
+    'transit': 'Transit',
+    'pickup': 'PickUp',
+    'delivered': 'Arrived'
+}
+
+
+def update_cards_if_needed(not_updated_cards):
+    for card in not_updated_cards:
+        serial_code = card['order_serial_code']
+        bucket = card['timeline_position']
+        curr_bucket = getDeliveryStatus(serial_code)
+        if curr_bucket == ERR:
+            continue
+
+        if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
+            data = {
+                'card_id': card['card_id'], 
+                'order_name':card['order_name'] , 
+                'timeline_position': curr_bucket
+            }
+            db.update_card(data)
+
+
 @app.route('/api/getCards', methods=['POST'])
 @cross_origin()
 def retrieve_cards():
@@ -66,10 +89,14 @@ def retrieve_cards():
     user_id = user_info['sub']
     print(f'user_id = {user_id}', flush=True)
 
+    not_updated_cards_serial_codes = db.get_not_updated_cards_serial_codes(user_id)
+    update_cards_if_needed(not_updated_cards_serial_codes)
+
     bucket = None if 'timeline_position' not in request.args else request.args.get('timeline_position')
     print(f'bucket = {bucket}', flush=True)
 
     cards = db.get_cards(user_id, bucket)
+    
     print(f'cards = {cards}', flush=True)
     return get_response(cards)
 
