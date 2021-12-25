@@ -48,6 +48,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Card(
                   Notes TEXT,
                   CompanyName VARCHAR(255),
                   CustomerId VARCHAR(255),
+                  LastUpdated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
                   FOREIGN KEY (CompanyName) REFERENCES Company(CompanyName) ON DELETE CASCADE ON UPDATE CASCADE,
                   FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId) ON DELETE CASCADE ON UPDATE CASCADE,
                   PRIMARY KEY (CardId, OrderName)
