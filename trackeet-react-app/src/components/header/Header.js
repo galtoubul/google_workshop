@@ -6,14 +6,21 @@ import { Login } from "../../components/header/buttons/Login";
 import styles from "./header.scss";
 import { DARK_TURQUOISE } from "../../assets/colors/colorsPalette";
 import { HeaderLogo } from "./headerLogo/headerLogo";
-import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { useLocation } from "react-router-dom";
 
 export const Header = (props) => {
-  const { isLoggedIn } = useUserInformationContext();
+  const location = useLocation();
+
+  const getIsInLogInPage = () => {
+    return location.pathname !== "/login";
+  };
+
   const getLoggedInButton = () => {
-    return <>{isLoggedIn && <Login className={styles.headerIconButton} />}</>;
+    return (
+      <>{getIsInLogInPage() && <Login className={styles.headerIconButton} />}</>
+    );
   };
 
   const getLoggedOutButtons = () => {
@@ -48,7 +55,7 @@ export const Header = (props) => {
               marginLeft: "8px",
             }}
           >
-            {!isLoggedIn &&
+            {!getIsInLogInPage() &&
               pages.map((page) => (
                 <Button
                   key={page}
@@ -60,7 +67,7 @@ export const Header = (props) => {
               ))}
           </Box>
         </Box>
-        {isLoggedIn ? getLoggedInButton() : getLoggedOutButtons()}
+        {getIsInLogInPage() ? getLoggedInButton() : getLoggedOutButtons()}
       </Toolbar>
     </AppBar>
   );

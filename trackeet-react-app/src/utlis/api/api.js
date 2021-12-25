@@ -1,18 +1,22 @@
 import { initHttp } from "./http";
 import { getCardsInFormat, toCardServerFormat } from "./utils/utils";
 
-export const initApi = (userInformation, getIsLoggedIn) => {
-  const u = userInformation;
-  const http = initHttp(u);
+export const initApi = (userInformation, isLoggedIn) => {
+  console.log("isLoggedIn");
+  console.log(isLoggedIn);
+  const http = initHttp(userInformation);
 
-  const checkIfTheUserLoggedIn = (callback) => () => {
-    if (getIsLoggedIn()) {
-      return callback();
+  const checkIfTheUserLoggedIn = (callback) => {
+    if (isLoggedIn) {
+      // eslint-disable-next-line no-debugger
+      return callback;
     }
 
-    return new Promise((resolve) => {
-      resolve("demo");
-    });
+    return () => {
+      return new Promise((resolve) => {
+        resolve("demo");
+      });
+    };
   };
 
   const getCards = async (cursor) => {
@@ -36,7 +40,7 @@ export const initApi = (userInformation, getIsLoggedIn) => {
   };
 
   return {
-    getCards: checkIfTheUserLoggedIn(getCards),
+    getCards,
     addCard: checkIfTheUserLoggedIn(addCard),
     updateCard: checkIfTheUserLoggedIn(updateCard),
     deleteCard: checkIfTheUserLoggedIn(deleteCard),

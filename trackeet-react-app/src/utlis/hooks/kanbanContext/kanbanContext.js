@@ -8,16 +8,14 @@ const KanbanContext = createContext({ boardData: { lanes: [] } });
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
   const { api, isLoggedIn } = useUserInformationContext();
-  console.log("api");
-  console.log(api);
   const [kanbanState, setKanbanState] = useState({
     boardData: {
       lanes: [
         {
           cards: wishListCards.cards,
-          id: "Wishlist",
+          id: "WishList",
           style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "Wishlist",
+          title: "WishList",
         },
         {
           cards: onTheWayCards.cards,
@@ -47,15 +45,16 @@ export const KanbanProvider = (props) => {
   };
 
   const addCard = (card) => {
+    card.id = uuid();
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
       laneId: card.position,
       card: {
         ...card,
-        id: uuid(),
       },
     });
-    api.addCard(card).catch((e) => console.log(e));
+
+    api.addCard(card);
   };
 
   const handleCardDrag = (dragPosition, card) => {
@@ -68,7 +67,7 @@ export const KanbanProvider = (props) => {
       laneId: card.position,
       cardId: card.id,
     });
-    api.deleteCard(card.id).catch((e) => console.log(e));
+    api.deleteCard(card.id);
   };
 
   const updateCard = (card, dragPosition) => {
@@ -77,9 +76,7 @@ export const KanbanProvider = (props) => {
       type: "UPDATE_CARD",
       laneId: card.position,
     });
-    api
-      .updateCard({ ...card, position: dragPosition })
-      .catch((e) => console.log(e));
+    api.updateCard({ ...card, position: dragPosition });
   };
 
   return (
