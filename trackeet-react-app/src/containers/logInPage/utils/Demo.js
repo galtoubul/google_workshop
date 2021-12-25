@@ -73,7 +73,7 @@ const getDemo = () => {
                 order_serial_code: "3444234",
                 notes: "",
                 card_id: "1",
-                timeline_position: "Wishlist",
+                timeline_position: "WishList",
                 currency_amount: 120,
               },
             ],

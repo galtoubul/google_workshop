@@ -1,6 +1,6 @@
-const { uuid } = require("uuidv4");
-
 export const toCards = (response) => {
+  // eslint-disable-next-line no-debugger
+
   const cards = response.cards.map((card) => {
     return {
       orderName: card.order_name,
@@ -11,7 +11,7 @@ export const toCards = (response) => {
       estimatedArrivingDate: card.estimated_arrival_date,
       orderNumber: card.order_serial_code,
       notes: card.notes,
-      id: uuid(),
+      id: card.card_id,
       position:
         card.timeline_position === "OnTheWay"
           ? "On The Way"
@@ -41,7 +41,7 @@ export const toCardServerFormat = (card) => {
     estimated_arrival_date: card.estimatedArrivingDate,
     order_serial_code: card.orderNumber,
     notes: card.notes,
-    card_id: uuid(),
+    card_id: card.id,
     timeline_position:
       card.position === "On The Way" ? "OnTheWay" : card.position,
     price: card.currencyAmount,

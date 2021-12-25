@@ -5,17 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/clientId.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/forms/ErrorAlert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/loader/Loader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/errorPage/ErrorPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/errorPage/errorPage.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/errorPage/images/ErrorLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/timeLine/TimeLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/timeLine/TimeLine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/headerLogo/HeaderLogo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/headerLogo/HeaderLogo.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/headerLogo/headerLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/headerLogo/headerLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/buttons/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/buttons/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/kanban/data/getData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/data/getData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/kanban/kanbanCard/cardButtons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/app/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/appRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/appRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/ContactUs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/logInModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/LoginModal/logInModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/refreshToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/refreshToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/logInPage/utils/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/logInPage/utils/Demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/page/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/api/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/http.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/utils/mock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/api/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/api/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utlis/hooks/userInformationContext/userInformationContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utlis/hooks/userInformationContext/userInformationContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,11 +109,11 @@
       <recent name="C:\Users\ShayAbramovich\google_workshop\trackeet-react-app\src\components\common" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/components/loader/Loader.js" />
+      <recent name="$PROJECT_DIR$/src/assets/clientId.js" />
       <recent name="$PROJECT_DIR$/src/utlis/api/utils/utils.js" />
       <recent name="$PROJECT_DIR$/src/components/forms/timeLine/TimeLineItem.js" />
       <recent name="$PROJECT_DIR$/src/containers/forms/forms.js" />
-      <recent name="$PROJECT_DIR$/src/components/header/headerLogo/headerLogo.js" />
-      <recent name="$PROJECT_DIR$/src/components/common/kanban/kanbanStyle.js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -148,7 +164,8 @@
       <workItem from="1640006110088" duration="57000" />
       <workItem from="1640115246816" duration="5193000" />
       <workItem from="1640195319779" duration="95000" />
-      <workItem from="1640290591207" duration="624000" />
+      <workItem from="1640290591207" duration="11472000" />
+      <workItem from="1640370111603" duration="14847000" />
     </task>
     <servers />
   </component>

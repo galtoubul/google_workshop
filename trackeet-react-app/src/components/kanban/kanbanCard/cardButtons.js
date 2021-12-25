@@ -23,7 +23,6 @@ const style = {
 };
 
 export const getTimeLineIcon = (iconName) => {
-  console.log(iconName);
   switch (iconName) {
     case "LocalGroceryStoreIcon":
       return <LocalGroceryStoreIcon sx={style} />;
@@ -50,7 +49,6 @@ export const CardButtons = (props) => {
     const timeLineContent1 = timeLineContent.filter((timelineItem) => {
       return timelineItem.position === position;
     });
-    console.log();
     return getTimeLineIcon(timeLineContent1[0].icon);
   };
 
