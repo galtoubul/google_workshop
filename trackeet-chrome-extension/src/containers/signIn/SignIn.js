@@ -16,7 +16,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FcGoogle } from "react-icons/fc";
 import { useUserInformationContext } from "../userInformationContext";
-import { GoogleLoginButton } from "../logInModal";
+//import { GoogleLoginButton } from "../logInModal";
 
 export default function SignIn(props) {
   const { logIn } = useUserInformationContext();
@@ -57,7 +57,7 @@ export default function SignIn(props) {
             >
               Sign In With Google
             </Button>
-            <GoogleLoginButton></GoogleLoginButton>
+            {/*<GoogleLoginButton></GoogleLoginButton>*/}
           </Box>
         </Box>
       </Container>

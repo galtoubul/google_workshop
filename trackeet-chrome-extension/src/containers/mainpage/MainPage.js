@@ -4,7 +4,7 @@ import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { CircularProgress } from "@mui/material";
-import { getIsSupported, cardAutoCreator } from "../../scripts/cardAutoCreator";
+import { cardAutoCreator } from "../../scripts/cardAutoCreator";
 
 export const MainPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,21 +28,17 @@ export const MainPage = () => {
   };
 
   useEffect(async () => {
-    if (await getIsSupported()) {
-      let card = {};
-      try {
-        card = await cardAutoCreator();
-        console.log(card);
-        setFormData((oldCard) => {
-          return { ...oldCard, ...card, order_status: "On The Way" };
-        });
-        setIsLoading(false);
-      } catch (e) {
-        setIsLoading(false);
-      }
+    let card = {};
+    try {
+      card = await cardAutoCreator();
+      console.log(card);
+      setFormData((oldCard) => {
+        return { ...oldCard, ...card, order_status: "On The Way" };
+      });
+      setIsLoading(false);
+    } catch (e) {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   }, []);
 
   return (

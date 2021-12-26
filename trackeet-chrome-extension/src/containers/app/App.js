@@ -6,7 +6,6 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import * as React from "react";
 import { UserInformationProvider } from "../userInformationContext";
 import { AppRoute } from "../appRoute";
-// import { Footer } from "../../components/footer/Footer";
 
 const App = () => {
   return (
@@ -17,7 +16,6 @@ const App = () => {
             <Header />
             {/* eslint-disable-next-line no-constant-condition */}
             <AppRoute />
-            {/*<Footer></Footer>*/}
           </div>
         </LocalizationProvider>
       </UserInformationProvider>

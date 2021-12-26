@@ -9,7 +9,7 @@ import { TextField } from "@mui/material";
 
 export const SelectButton = (props) => {
   return (
-    <FormControl sx={{ margin: "2% 5%" }} size="small">
+    <FormControl sx={{ margin: "2% 5%" }}>
       <InputLabel id="order-status-select-label">Order Status</InputLabel>
       <Select
         labelId="order-status-select-label"

@@ -1,13 +1,12 @@
 import { MainPage } from "./mainpage/MainPage";
 import SignIn from "./signIn/SignIn";
 import * as React from "react";
-import { useUserInformationContext } from "./userInformationContext";
+//import { useUserInformationContext } from "./userInformationContext";
 
 export const AppRoute = () => {
-  const { isLoggedIn } = useUserInformationContext();
+  //const { isLoggedIn } = useUserInformationContext();
   return (
-    <>
-      {isLoggedIn ? <MainPage className={"mainPage"}></MainPage> : <SignIn />}
-    </>
+    // eslint-disable-next-line no-constant-condition
+    <>{true ? <MainPage className={"mainPage"}></MainPage> : <SignIn />}</>
   );
 };
