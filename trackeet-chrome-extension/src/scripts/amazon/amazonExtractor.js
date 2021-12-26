@@ -5,7 +5,7 @@
 import tabGetURL from "../chrome_api/tabGetURL";
 import tabGetDocument from "../chrome_api/tabGetDocument";
 import tabGetSearchParams from "../chrome_api/tabGetSearchParams";
-import amazonGetFurtherData from "./amazonGetFurtherData";
+import getDocOfURL from "./getDocOfURL";
 import getCurrentTabID from "../chrome_api/getCurrentTabID";
 
 const amazonExtractor = async () => {
@@ -51,14 +51,23 @@ const amazonExtractor = async () => {
   //Extracting the 'currency', 'order_price', 'order_date' fields
   //Therefore I need to open a new tab and close it
   var newURL = `https://www.amazon.com/gp/css/summary/print.html/?ie=UTF8&orderID=${url_params.orderId}`;
-  var furtherDoc = await amazonGetFurtherData(newURL);
+  var furtherDoc = await getDocOfURL(newURL);
   data = furtherDoc.getElementsByTagName("td");
   card.order_date = data[1].outerText.split(":")[1].trim();
-  card.order_date = new Date(card.order_date).toLocaleDateString("en-GB");
+  card.order_date = new Date(
+    new Date(card.order_date).toLocaleDateString("en-GB")
+  );
+  //Before continuing-verify the correctness of the Estimated Arrival Date (compared to the Order Date)
+  if (card.estimated_arrival_date < card.order_date)
+    card.estimated_arrival_date.setFullYear(
+      card.estimated_arrival_date.getFullYear() + 1
+    );
+  //Rest
   text = data[3].outerText.split(":")[1].trim();
   card.order_price = text.substring(1, text.length);
   // eslint-disable-next-line prefer-destructuring
   card.currency = text[0];
+  console.log(card);
   return card;
 };
 

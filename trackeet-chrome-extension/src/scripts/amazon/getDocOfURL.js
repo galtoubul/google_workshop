@@ -3,7 +3,7 @@
 /* eslint-disable vars-on-top */
 import tabGetDocument from "../chrome_api/tabGetDocument";
 
-const amazonGetFurtherData = (newURL) => {
+const getDocOfURL = (newURL) => {
   // eslint-disable-next-line no-debugger
   // eslint-disable-next-line no-async-promise-executor
   return new Promise((resolve) => {
@@ -32,4 +32,4 @@ const amazonGetFurtherData = (newURL) => {
   });
 };
 
-export default amazonGetFurtherData;
+export default getDocOfURL;

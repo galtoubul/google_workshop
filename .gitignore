@@ -33,6 +33,8 @@ trackeet-chrome-extension/.pnp.js
 # testing
 trackeet-chrome-extension/coverage
 
+# production
+trackeet-chrome-extension/build
 
 # misc
 trackeet-chrome-extension/.DS_Store
