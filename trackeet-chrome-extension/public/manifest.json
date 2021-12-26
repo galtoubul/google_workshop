@@ -4,8 +4,9 @@
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [
-    "tabs","scripting"
+    "tabs","scripting", "identity", "identity.email"
   ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz6J6/bSO+AOv0XTViA/0PgX+2DdGDIZqu4Mv66LnMA4yQo6gvJNcjsxzRfTuxvFZ/REFK8nXQuDkDxHWG8z0URkf2Z1Pqcp6cNq2pTkI/EZHXRR/BBFeFO9Fo1sG4OE/ML4qkdLiS3bw2hJpy4OG7WVTufhFaxZjxf5NmOZcybOnGmaBVuMQ4xGA6MTGJ/YcPdX8Y880+TUiyWiETFKh2INCsjoHRrr22GQuupJfNPjgYpR0gsHlW+P6+NLNy9BriwAT5sJLP4Zm5o8b0jOt8hRKqZPCJNXd6pb0FRPvt2ctuqcPuGeecet8QYQO43Y9Dz5O/cTasiLUpBc/Kq3A4QIDAQAB",
   "host_permissions": ["<all_urls>","https://www.amazon.com/*"],
   "icons": {
     "16": "keet.png",
@@ -13,7 +14,7 @@
     "128": "keet.png"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self' https://apis.google.com https://www.gstatic.com https://www.googleapis.com https://securetoken.googleapis.com; object-src 'self'"
+    "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "action": {
     "default_popup": "index.html",
