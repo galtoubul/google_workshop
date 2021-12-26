@@ -1,45 +1,38 @@
 import tabGetHostname from "./chrome_api/tabGetHostname";
 import amazonExtractor from "./amazon/amazonExtractor";
 import tabGetPathname from "./chrome_api/tabGetPathname";
-import cardValidator from "./cardValidator";
+import isCardValid from "./isCardValid";
 
-export const getIsSupported = async () => {
+export const getAdaptedCode = async () => {
   const hostname = await tabGetHostname();
   const path = await tabGetPathname();
-  if (
-    path.search("/progress-tracker/package/") !== -1 &&
-    hostname === "www.amazon.com"
-  ) {
-    return true;
-  }
+  //Default Adapted code is the one that return undefined card object
+  let ret = async () => {
+    return undefined;
+  };
 
-  return false;
-};
-
-export const cardAutoCreator = async () => {
-  // eslint-disable-next-line no-var
-  const hostname = await tabGetHostname();
-  const path = await tabGetPathname();
-  let ret;
-
+  //Check maybe there is an adapted extractor code for the website
   switch (hostname) {
     case "www.amazon.com":
-      if (path.search("/progress-tracker/package/") === -1) {
-        console.log("hi2");
-        ret = null;
-        break;
-      } else {
-        ret = await amazonExtractor();
-        console.log(ret);
+      if (path.search("/progress-tracker/package/") === -1) break;
+      else {
+        ret = amazonExtractor;
         break;
       }
 
     default:
-      ret = null;
       break;
   }
 
-  if (!cardValidator(ret))
-    throw "The URL isn't supported! Please refer to the manual";
   return ret;
+};
+
+export const cardAutoCreator = async () => {
+  // eslint-disable-next-line no-var
+  const creator = await getAdaptedCode();
+  const card = await creator();
+
+  if (!isCardValid(card))
+    throw "The URL isn't supported! Please refer to the manual";
+  else return card;
 };
