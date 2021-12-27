@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import { FormContext } from "../formContext/formContext";
 import { useContext, useEffect } from "react";
 import { useForm } from "../formContext/useForm";
+import { Dialog } from "@progress/kendo-react-dialogs";
 
 const NonDetailedForm = (props) => {
   const { saveCard } = useForm();
@@ -29,7 +30,7 @@ const NonDetailedForm = (props) => {
     { title: "Apple" },
   ];
 
-  return (
+  return ( <Dialog title={<CustomTitleBar />}>
     <form className="non-detailed-form-container">
       <div className="non-detailed-form-header">
         <Typography variant={"h4"}>New Order</Typography>

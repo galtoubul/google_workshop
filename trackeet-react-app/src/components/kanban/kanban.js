@@ -9,7 +9,7 @@ import {
   FormContext,
   formInitialState,
 } from "../../containers/forms/formContext/formContext";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
 
 export const Kanban = (props) => {
@@ -51,6 +51,27 @@ export const Kanban = (props) => {
     handleCardDrag(targetLaneId, cardDetails);
   };
 
+  const getBoardTitleComponent = (props, id) => {
+    const styleBoxSmall = {
+      display: "flex",
+      justifyContent: "center",
+      flexDirection: "column",
+      width: "100%",
+    };
+    return (
+      <Box sx={styleBoxSmall}>
+        <Typography
+          sx={{ display: "flex", margin: "4px", justifyContent: "center" }}
+          variant={"h6"}
+        >
+          {id}{" "}
+        </Typography>
+
+        {getInsertCardButton(props, id)}
+      </Box>
+    );
+  };
+
   return (
     <Box
       sx={{ marginTop: isLoggedIn ? "67.89px" : "0px" }}
@@ -60,11 +81,12 @@ export const Kanban = (props) => {
         className={"board"}
         style={boardStyle}
         components={{
-          AddCardLink: (p) => getInsertCardButton(props, p.laneId),
+          LaneHeader: (p) => getBoardTitleComponent(props, p.id),
           Card: getCard,
         }}
         handleDragEnd={handleDragEnd}
-        editable
+        editable={false}
+        laneDraggable={false}
         draggable
         eventBusHandle={setEventBus}
         data={kanbanState.boardData}
