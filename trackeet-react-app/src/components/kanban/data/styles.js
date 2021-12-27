@@ -5,7 +5,7 @@ export const boardStyle = {
   width: 400,
   maxHeight: window.innerHeight * 0.9,
   backgroundColor: GREY,
-  marginLeft: 30,
+  margin: 15,
   borderWidth: "4px",
   borderStyle: "solid",
   borderColor: TURQUOISE,

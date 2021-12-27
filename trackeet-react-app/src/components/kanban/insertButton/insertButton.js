@@ -1,5 +1,5 @@
 import * as React from "react";
-import Fab from "@mui/material/Fab";
+import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import { boxStyle, fabStyle } from "./insertButtonStyle";
@@ -9,16 +9,17 @@ export const InsertButton = (props) => {
   const { isLoggedIn } = useUserInformationContext();
   return isLoggedIn ? (
     <Box sx={boxStyle}>
-      <Fab
+      <Button
         className="fab"
         size="small"
-        color="primary"
+        color="secondary"
         aria-label="add"
+        variant="outlined"
         sx={fabStyle}
         onClick={props.openNonDetailedForm}
       >
         <AddIcon />
-      </Fab>
+      </Button>
     </Box>
   ) : (
     <></>

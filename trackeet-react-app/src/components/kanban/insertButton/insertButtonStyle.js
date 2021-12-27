@@ -8,6 +8,6 @@ export const boxStyle = {
 export const fabStyle = {
   borderRadius: BOARDER_RADIUS,
   height: "30px",
-  width: "30px",
+  width: 350,
   minHeight: "0",
 };

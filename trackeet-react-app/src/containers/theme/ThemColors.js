@@ -36,8 +36,8 @@ export const theme = createTheme({
     secondary: {
       light: GREY,
       main: DARK_TURQUOISE,
-      dark: DARK_TURQUOISE,
-      contrastText: BLACK,
+      dark: BLACK,
+      contrastText: WHITE,
     },
   },
   typography: {

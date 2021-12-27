@@ -22,6 +22,7 @@
     "@mui/icons-material": "^5.1.0",
     "emailjs-com": "^3.2.0",
     "firebase": "^9.5.0",
+    "kendo-react": "^2.6.5",
     "react-google-login": "6.14.15",
     "react-social-login-buttons": "^3.6.0",
     "sass": "^1.43.4"
