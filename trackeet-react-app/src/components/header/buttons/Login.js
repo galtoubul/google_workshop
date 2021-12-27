@@ -1,6 +1,5 @@
 import IconButton from "@mui/material/IconButton";
 import { BiLogIn } from "react-icons/bi";
-import { GREY } from "../../../assets/colors/colorsPalette";
 import { useUserInformationContext } from "../../../utlis/hooks/userInformationContext/userInformationContext";
 
 export const Login = (props) => {
@@ -8,7 +7,7 @@ export const Login = (props) => {
 
   return (
     <IconButton>
-      <BiLogIn onClick={logOut} color={GREY} />
+      <BiLogIn onClick={logOut} />
     </IconButton>
   );
 };

@@ -1,40 +1,22 @@
 import React, { createContext, useContext, useState } from "react";
-import { boardStyle } from "../../../components/kanban/data/styles";
 import { uuid } from "uuidv4";
 import { useUserInformationContext } from "../userInformationContext/userInformationContext";
+import { getKanbanInitialState } from "./utils";
+import { ErrorAlert } from "../../../components/forms/ErrorAlert";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
   const { api, isLoggedIn } = useUserInformationContext();
-  const [kanbanState, setKanbanState] = useState({
-    boardData: {
-      lanes: [
-        {
-          cards: wishListCards.cards,
-          id: "WishList",
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "WishList",
-        },
-        {
-          cards: onTheWayCards.cards,
-          currentPage: 1,
-          id: "On The Way",
-
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "On The Way",
-        },
-        {
-          cards: arrivedCards.cards,
-          currentPage: 1,
-          id: "Arrived",
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "Arrived",
-        },
-      ],
-    },
-  });
+  const [kanbanState, setKanbanState] = useState(
+    getKanbanInitialState(
+      wishListCards,
+      isLoggedIn,
+      onTheWayCards,
+      arrivedCards
+    )
+  );
 
   const setEventBus = (eventBus) => {
     setKanbanState({ eventBus });
@@ -46,6 +28,7 @@ export const KanbanProvider = (props) => {
 
   const addCard = (card) => {
     card.id = uuid();
+    const oldCard = { ...card };
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
       laneId: card.position,
@@ -54,7 +37,14 @@ export const KanbanProvider = (props) => {
       },
     });
 
-    api.addCard(card);
+    api.addCard(card).catch((e) => {
+      ErrorAlert();
+      kanbanState.eventBus.publish({
+        type: "REMOVE_CARD",
+        laneId: oldCard.position,
+        cardId: oldCard.id,
+      });
+    });
   };
 
   const handleCardDrag = (dragPosition, card) => {
@@ -76,7 +66,30 @@ export const KanbanProvider = (props) => {
       type: "UPDATE_CARD",
       laneId: card.position,
     });
-    api.updateCard({ ...card, position: dragPosition });
+
+    api.updateCard({ ...card, position: dragPosition }).catch((e) => {
+      ErrorAlert();
+      if (dragPosition) {
+        kanbanState.eventBus.publish({
+          type: "REMOVE_CARD",
+          laneId: dragPosition,
+          cardId: card.id,
+        });
+        kanbanState.eventBus.publish({
+          type: "ADD_CARD",
+          laneId: card.position,
+          card: {
+            ...card,
+          },
+        });
+      } else {
+        kanbanState.eventBus.publish({
+          card,
+          type: "UPDATE_CARD",
+          laneId: card.position,
+        });
+      }
+    });
   };
 
   return (

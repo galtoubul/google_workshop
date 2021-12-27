@@ -2,13 +2,10 @@ import { initHttp } from "./http";
 import { getCardsInFormat, toCardServerFormat } from "./utils/utils";
 
 export const initApi = (userInformation, isLoggedIn) => {
-  console.log("isLoggedIn");
-  console.log(isLoggedIn);
   const http = initHttp(userInformation);
 
   const checkIfTheUserLoggedIn = (callback) => {
     if (isLoggedIn) {
-      // eslint-disable-next-line no-debugger
       return callback;
     }
 

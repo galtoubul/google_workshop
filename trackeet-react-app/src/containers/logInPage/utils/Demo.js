@@ -4,6 +4,7 @@ import { toCards } from "../../../utlis/api/utils/utils";
 import { Kanban } from "../../../components/kanban/kanban";
 import * as React from "react";
 import "./demo.scss";
+import Button from "@mui/material/Button";
 
 const getDemo = () => {
   return (
@@ -86,19 +87,25 @@ const getDemo = () => {
   );
 };
 
-export const Demo = () => {
+export const Demo = (props) => {
   return (
     <body className="bodyWithDemoContainer" id={"Demo"}>
       <div className={"loginTextContainer"}>
-        <Typography sx={{ marginBottom: "24px" }} variant="h5">
-          All-in-one international tracking for <br />
-          any post office tracking
+        <Typography sx={{ marginBottom: "24px", width: "410px" }} variant="h5">
+          All your orders in one place
         </Typography>
-        <Typography sx={{ marginTop: "24px" }} variant="h6">
-          This track my package universal tracking tool was created to make it
-          easier than ever before to track all of your international packages by
-          tracking number lookup.
+        <Typography sx={{ marginTop: "24px", width: "410px" }} variant="h6">
+          Our easy to use, universal tracking features make it a breeze to track
+          all your orders. Trackeet automatically arranges orders as well as
+          instantly updates you when each order arrives.
         </Typography>
+        <Button
+          onClick={props.openLoggingModal}
+          sx={{ marginTop: "24px" }}
+          variant="contained"
+        >
+          Get started
+        </Button>
       </div>
       {getDemo()}
     </body>

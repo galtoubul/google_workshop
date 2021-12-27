@@ -20,7 +20,7 @@ export const theme = createTheme({
         root: {
           textTransform: "capitalize",
           fontWeight: FONT_WEIGHT,
-          fontSize: "1rem",
+          fontSize: "0.9rem",
           borderRadius: BOARDER_RADIUS,
         },
       },
@@ -36,13 +36,28 @@ export const theme = createTheme({
     secondary: {
       light: GREY,
       main: DARK_TURQUOISE,
-      dark: BLACK,
+      dark: DARK_TURQUOISE,
       contrastText: BLACK,
     },
   },
   typography: {
+    h5: {
+      fontSize: "35px",
+      lineHeight: "1.1em",
+      letterSpacing: "normal",
+      textAlign: "start",
+      overflowWrap: "break-word",
+    },
+    h6: {
+      fontSize: "22px",
+      lineHeight: "1.6em",
+      verticalAlign: "baseline",
+      letterSpacing: "0.01",
+      textAlign: "start",
+      overflowWrap: "break-word",
+    },
     fontFamily: [FONT_FAMILY].join(","),
-    fontWeight: 900,
+    fontWeight: FONT_WEIGHT,
     textTransform: "none",
   },
 });

@@ -9,7 +9,16 @@ const UserInformationContext = createContext({});
 
 export const UserInformationProvider = (props) => {
   const [isServerError, setIsServerError] = useState(true);
+  const [isLoggInModalOpen, setIslogInModalOpen] = useState(false);
   const navigate = useNavigate();
+
+  const openLogInModal = () => {
+    setIslogInModalOpen(true);
+  };
+
+  const closeLogInModal = () => {
+    setIslogInModalOpen(false);
+  };
 
   const {
     userInformation,
@@ -73,6 +82,9 @@ export const UserInformationProvider = (props) => {
         logIn,
         isServerError,
         setIsServerError,
+        isLoggInModalOpen,
+        openLogInModal,
+        closeLogInModal,
       }}
     >
       {props.children}

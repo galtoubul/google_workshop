@@ -1,0 +1,29 @@
+@import "./src/assets/colors/colorsPalette";
+@import "./src/assets/styles/styles";
+@import "./src/assets/fonts/font";
+
+.headerExtensionDemo{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 93vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: $white;
+}
+.player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:58%;
+
+}
+
+.extensionTextContainer{
+  width: 20%;
+}
+video{
+
+  border-radius: $boarderRadius;
+}

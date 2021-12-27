@@ -4,7 +4,7 @@ import { BOARDER_RADIUS } from "../../assets/styles/styles";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 
-export const ErrorPage = () => {
+export const ErrorPage = (props) => {
   const style = {
     display: "flex",
     justifyContent: "space-between",
