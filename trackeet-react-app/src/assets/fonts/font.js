@@ -1,3 +1,3 @@
 export const FONT_FAMILY = "Inter";
 
-export const FONT_WEIGHT = 600;
+export const FONT_WEIGHT = 700;

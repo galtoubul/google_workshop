@@ -17,8 +17,7 @@ export const initHttp = (idtoken) => {
       )
       .then((r) => {
         return r.data;
-      })
-      .catch((e) => console.log(e));
+      });
   };
 
   const post = (path, data, param = {}) => {

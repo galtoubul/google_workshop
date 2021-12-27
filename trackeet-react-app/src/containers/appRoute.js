@@ -10,10 +10,20 @@ import { Header } from "../components/header/Header";
 import { scroller } from "react-scroll";
 import { Loader } from "../components/loader/Loader";
 import { LogInProvider } from "../utlis/hooks/logInContext/logInContext";
+import { ErrorPage } from "./errorPage/ErrorPage";
 
 export const AppRoute = (props) => {
   const [scrollPosition, setScrollPosition] = useState("About Us");
-  const sitePosition = ["About Us", "Demo", "Contact Us"];
+  const sitePosition = ["About Us", "Extension", "Demo", "Contact Us"];
+  const [isPlay, setIsPlay] = useState(false);
+
+  const changeExtensionVideoState = (newScrollPosition) => {
+    if (newScrollPosition === "Extension") {
+      setIsPlay(true);
+    } else {
+      setIsPlay(false);
+    }
+  };
 
   const scrollToPosition = (position) => {
     setScrollPosition(position);
@@ -23,13 +33,14 @@ export const AppRoute = (props) => {
       delay: 0,
       smooth: "easeInOutQuart",
     });
+    changeExtensionVideoState(position);
   };
 
   const changeSitePart = (state) => {
     const newScrollPosition =
       sitePosition[
         state === "next"
-          ? Math.min(sitePosition.indexOf(scrollPosition) + 1, 2)
+          ? Math.min(sitePosition.indexOf(scrollPosition) + 1, 3)
           : Math.max(sitePosition.indexOf(scrollPosition) + -1, 0)
       ];
 
@@ -40,6 +51,7 @@ export const AppRoute = (props) => {
       delay: 0,
       smooth: "easeInOutQuart",
     });
+    changeExtensionVideoState(newScrollPosition, setIsPlay);
   };
   // const { isLoggedIn } = useUserInformationContext();
 
@@ -57,8 +69,14 @@ export const AppRoute = (props) => {
                   <Route
                     exact
                     path="/login"
-                    element={<LoginPage changeSitePart={changeSitePart} />}
+                    element={
+                      <LoginPage
+                        isPlay={isPlay}
+                        changeSitePart={changeSitePart}
+                      />
+                    }
                   />
+                  <Route exact path="/error" element={<ErrorPage />} />
                 </Routes>
               </Fragment>
             </LocalizationProvider>
