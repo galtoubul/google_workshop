@@ -1,4 +1,4 @@
-export const LIGHT_TURQUOISE = "#a0d5d2";
+export const DARK_TURQUOISELIGHT_TURQUOISE = "#a0d5d2";
 export const WHITE = "#ffffff";
 export const GREY = "#e3eef1";
 export const TURQUOISE = "#2eb6b9";
