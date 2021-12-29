@@ -1,47 +1,58 @@
 import mysql.connector as SQLC
+import sys
+import os
+sys.path.append(os.path.abspath('../'))
+from config import db_host, db_user, db_password
 
-
-host = '35.185.234.203'
-user = 'root'
-password = '***REMOVED***'
 
 # connect to db
-db_con = SQLC.connect(host=host,user=user,passwd=password)
+db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
 cursor = db_con.cursor()
 
 # create database
-cursor.execute("CREATE DATABASE Trackeet")
+cursor.execute("CREATE DATABASE IF NOT EXISTS Trackeet")
 db_con.commit()
 
 # use db
 cursor.execute("use Trackeet")
 db_con.commit()
 
-# create Company table
-cursor.execute("""CREATE TABLE Company(
-    CompanyName VARCHAR(255) PRIMARY KEY);""")
+# create Customer table
+cursor.execute("""CREATE TABLE IF NOT EXISTS Customer(
+                  CustomerId VARCHAR(255),
+                  FirstName VARCHAR(255),
+                  LastName VARCHAR(255),
+                  Email VARCHAR(255),
+                  PRIMARY KEY (CustomerId)
+    );""")
 db_con.commit()
 
-# create Customer table
-cursor.execute("""CREATE TABLE Customer(
-    CustomerId INT(11) AUTO_INCREMENT PRIMARY KEY,
-    CustomerName VARCHAR(255) NOT NULL DEFAULT 'guest');""")
+# create Company table
+cursor.execute("""CREATE TABLE IF NOT EXISTS Company(
+                  CompanyName VARCHAR(255),
+                  PRIMARY KEY (CompanyName)
+    );""")
 db_con.commit()
- 
+
 # create Order table
-cursor.execute("""CREATE TABLE Orders(
-    OrderNumber VARCHAR(255),
-    Url VARCHAR(2083),
-    OrderName VARCHAR(255) NOT NULL DEFAULT 'unknown',
-    Bucket ENUM('WishList', 'OnTheWay', 'Arrived') NOT NULL DEFAULT 'WishList',
-    Price DECIMAL,
-    Currency ENUM('ILS', 'USD', 'EUR'),
-    OrderDate DATETIME,
-    EstimatedArrivingDate DATETIME,
-    Notes TEXT,
-    CompanyName VARCHAR(255) REFERENCES Company(CompanyName) ON DELETE CASCADE ON UPDATE CASCADE,
-    CustomerId INT(11) REFERENCES Customer(CustomerId) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (OrderNumber, CompanyName, CustomerId));""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS Card(
+                  CardId VARCHAR(255),
+                  OrderSerialCode VARCHAR(255),
+                  Url VARCHAR(2083),
+                  OrderName VARCHAR(255),
+                  Bucket ENUM('WishList', 'OnTheWay', 'Arrived') DEFAULT 'WishList',
+                  Price DECIMAL(33,3),
+                  Currency ENUM('ILS', 'USD', 'EUR', 'GBP'),
+                  OrderDate VARCHAR(12),
+                  EstimatedArrivingDate VARCHAR(12),
+                  Notes TEXT,
+                  CompanyName VARCHAR(255),
+                  CustomerId VARCHAR(255),
+                  LastUpdated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+                  FOREIGN KEY (CompanyName) REFERENCES Company(CompanyName) ON DELETE CASCADE ON UPDATE CASCADE,
+                  FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId) ON DELETE CASCADE ON UPDATE CASCADE,
+                  PRIMARY KEY (CardId, OrderName)
+    );""")
 db_con.commit()
 
 cursor.close()
