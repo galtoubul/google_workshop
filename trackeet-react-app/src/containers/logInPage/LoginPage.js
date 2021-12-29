@@ -5,21 +5,14 @@ import { Demo } from "./utils/Demo";
 import { LoginHeader } from "./utils/LoginHeader";
 import { ContactUs } from "./utils/ContactUs";
 import { LoginModal } from "./LoginModal/logInModal";
-import { useState } from "react";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
+import { ExtensionDemo } from "./utils/extensionDemo";
+import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
 
 export const LoginPage = (props) => {
-  const [isLoggInModalOpen, setIslogInModalOpen] = useState(false);
-
-  const openLogInModal = () => {
-    setIslogInModalOpen(true);
-  };
-
-  const closeLogInModal = () => {
-    setIslogInModalOpen(false);
-  };
-
   document.body.style.overflow = "hidden";
+  const { isLoggInModalOpen, openLogInModal, closeLogInModal } =
+    useUserInformationContext();
 
   return (
     <ReactScrollWheelHandler
@@ -30,9 +23,13 @@ export const LoginPage = (props) => {
         <LoginHeader openLoggingModal={openLogInModal} />
 
         <LoginModal closeModal={closeLogInModal} isOpen={isLoggInModalOpen} />
-        <div name={"Demo"} id={"Demo"}>
-          <Demo />
+        <div id={"Extension"}>
+          <ExtensionDemo isPlay={props.isPlay} />
         </div>
+        <div name={"Demo"} id={"Demo"}>
+          <Demo openLoggingModal={openLogInModal} />
+        </div>
+
         <ContactUs />
       </div>
     </ReactScrollWheelHandler>

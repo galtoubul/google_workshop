@@ -9,9 +9,7 @@ const DatePickerInput = (props) => {
       label={label}
       value={value}
       onChange={onChange}
-      renderInput={(params) => (
-        <TextField {...params} sx={{ width: "223px" }} />
-      )}
+      renderInput={(params) => <TextField {...params} />}
     />
   );
 };
