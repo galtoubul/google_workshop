@@ -1,5 +1,5 @@
 const tabGetHostname = () => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     // eslint-disable-next-line no-undef
     chrome.tabs.query({ active: true }, (result) => {
       // eslint-disable-next-line prefer-destructuring, prefer-const
@@ -13,6 +13,11 @@ const tabGetHostname = () => {
           },
         },
         (injectionResults) => {
+          if (injectionResults === undefined) {
+            // eslint-disable-next-line prefer-promise-reject-errors
+            reject("Not a legal tab to execute a script at");
+          }
+
           resolve(injectionResults[0].result);
         }
       );

@@ -5,7 +5,7 @@
 import tabGetURL from "../chrome_api/tabGetURL";
 import tabGetDocument from "../chrome_api/tabGetDocument";
 import tabGetSearchParams from "../chrome_api/tabGetSearchParams";
-import getDocOfURL from "./getDocOfURL";
+import getDocOfURL from "../chrome_api/getDocOfURL";
 import getCurrentTabID from "../chrome_api/getCurrentTabID";
 
 const amazonExtractor = async () => {
@@ -55,7 +55,7 @@ const amazonExtractor = async () => {
   data = furtherDoc.getElementsByTagName("td");
   card.order_date = data[1].outerText.split(":")[1].trim();
   card.order_date = new Date(
-    new Date(card.order_date).toLocaleDateString("en-GB")
+    new Date(card.order_date).toLocaleDateString("en-US")
   );
   //Before continuing-verify the correctness of the Estimated Arrival Date (compared to the Order Date)
   if (card.estimated_arrival_date < card.order_date)

@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-var */
 /* eslint-disable vars-on-top */
-import tabGetDocument from "../chrome_api/tabGetDocument";
+import tabGetDocument from "./tabGetDocument";
 
 const getDocOfURL = (newURL) => {
   // eslint-disable-next-line no-debugger

@@ -1,12 +1,18 @@
 import axios from "axios";
 
-export const initHttp = (tokenId) => {
-  const post = (path, data, param = {}) => {
-    const a = {};
+const getGoogleToken = () => {
+  return new Promise((resolve) => {
     // eslint-disable-next-line no-undef
-    chrome.identity.getAuthToken({}, (x, y) => {
-      console.log({ x, y });
+    chrome.identity.getAuthToken({ interactive: true }, (auth_token, x) => {
+      resolve(auth_token);
     });
+  });
+};
+
+export const initHttp = (tokenId) => {
+  const post = async (path, data, param = {}) => {
+    const a = {};
+    const apiToken = await getGoogleToken();
     Object.keys(data.card).forEach((k) => {
       if (data.card[k] != null) {
         a[k] = data.card[k];
@@ -14,16 +20,11 @@ export const initHttp = (tokenId) => {
       }
     });
     return axios.post(
-      `http://trackeet.co/api/${path}`,
-      { ...a, token_id: tokenId },
+      `https://trackeet.co/api/${path}`,
+      { ...a, token_id: apiToken },
       {
         headers: {
           "Content-Type": "application/json",
-        },
-
-        params: {
-          company: data.card.company,
-          order_serial_code: data.card.order_serial_code,
         },
       }
     );

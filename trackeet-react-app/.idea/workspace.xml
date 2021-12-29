@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01ea6c63-8c8b-4c2f-b167-3f289df37f9a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/forms/non_detailed/TextInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build.crx" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/build.crx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/build.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/static/js/3.dd4af097.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/static/js/3.dd4af097.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/static/js/runtime-main.2161d595.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/build/static/js/runtime-main.2161d595.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/api/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/api/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/api/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/api/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/selectButton/SelectButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/components/selectButton/SelectButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/mainpage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/mainpage/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/signIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/containers/signIn/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/amazon/amazonExtractor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/amazon/amazonExtractor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/amazon/getDocOfURL.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/chrome_api/getDocOfURL.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/cardAutoCreator.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/cardAutoCreator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/chrome_api/tabGetHostname.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/chrome_api/tabGetHostname.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/chrome_api/tabGetPathname.js" beforeDir="false" afterPath="$PROJECT_DIR$/../trackeet-chrome-extension/src/scripts/chrome_api/tabGetPathname.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,6 +151,7 @@
       <workItem from="1639739504322" duration="837000" />
       <workItem from="1640029498436" duration="363000" />
       <workItem from="1640086234257" duration="356000" />
+      <workItem from="1640780515413" duration="772000" />
     </task>
     <servers />
   </component>
