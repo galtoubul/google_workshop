@@ -4,12 +4,13 @@ import tabGetPathname from "./chrome_api/tabGetPathname";
 import isCardValid from "./isCardValid";
 
 export const getAdaptedCode = async () => {
-  const hostname = await tabGetHostname();
-  const path = await tabGetPathname();
   //Default Adapted code is the one that return undefined card object
   let ret = async () => {
     return undefined;
   };
+
+  const hostname = await tabGetHostname();
+  const path = await tabGetPathname();
 
   //Check maybe there is an adapted extractor code for the website
   switch (hostname) {
@@ -32,6 +33,8 @@ export const cardAutoCreator = async () => {
   const creator = await getAdaptedCode();
   const card = await creator();
 
+  console.log("First version of automatic card");
+  console.log(card);
   if (!isCardValid(card))
     throw "The URL isn't supported! Please refer to the manual";
   else return card;

@@ -14,11 +14,11 @@ export const SelectButton = (props) => {
       <Select
         labelId="order-status-select-label"
         label="Order Status"
-        defaultValue={props.value}
+        //defaultValue={props.value}
         value={props.value}
         onChange={(event) => {
           props.setValue(event.target.value);
-          props.addInformation(event.target.value);
+          //props.addInformation(event.target.value);
         }}
         renderInput={(params) => <TextField {...params} label={props.label} />}
       >
