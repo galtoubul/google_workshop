@@ -57,8 +57,7 @@ def getDeliveryStatus(serial_code):
         return ERR
     if real_time_result['code'] != 200:
         return ERR
-    if 'data' in real_time_result:
-        if 'delivery_status' in real_time_result['data']:
+    if 'data' in real_time_result and 'delivery_status' in real_time_result['data']:
             return real_time_result['data']['delivery_status']
     
     return ERR

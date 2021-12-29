@@ -11,17 +11,30 @@ db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
 cursor = db_con.cursor()
 
 
-def get_not_updated_cards_serial_codes(user_id):
-    select_query = """SELECT OrderSerialCode, Bucket
+# return all the relevant details of cards that were updated before more than 1 hour
+def get_not_updated_cards(user_id):
+    select_query = """SELECT OrderSerialCode, Bucket, CardId, OrderName
                       FROM Trackeet.Card
                       WHERE CustomerId = %(user_id)s AND
                             LastUpdated < DATE_SUB(NOW(), INTERVAL 1 HOUR)"""
     query_params_dict = {'user_id': user_id}
 
-    print(f'\n\nDB get_not_updated_cards_serial_codes\nselect_query = \n{select_query}query_params_dict = \n{query_params_dict}')
+    print(f'\n\nDB get_not_updated_cards\nselect_query = \n{select_query}\nquery_params_dict = {query_params_dict}')
 
-    cursor.execute(select_query, query_params_dict)
-    return cursor.fetchall()
+    try:
+        cursor.execute(select_query, query_params_dict)
+        db_con.commit()
+    except SQLC.IntegrityError as err:
+        print(f'\n\n{get_not_updated_cards}\nerror = {err}')
+    
+    cards = []
+    results = cursor.fetchall()
+    for res in results:
+        cards.append({'order_serial_code': res[0],
+                        'timeline_position': res[1],
+                        'card_id': res[2],
+                        'order_name': res[3]})
+    return cards
 
 # return all the cards of the user that associated with user_id
 def get_cards(user_id, bucket=None):
@@ -35,8 +48,13 @@ def get_cards(user_id, bucket=None):
         query_params_dict['bucket'] = bucket
     
     print(f'\n\nDB get_cards\nselect_query = \n{select_query}query_params_dict = \n{query_params_dict}')
-
-    cursor.execute(select_query, query_params_dict)
+    
+    try:
+        cursor.execute(select_query, query_params_dict)
+        db_con.commit()
+    except SQLC.IntegrityError as err:
+        print(f'\n\n{get_cards}\nerror = {err}')
+        return {'response': f'ERROR: failed to get records: {err}'}
 
     results = cursor.fetchall()
     cards = []
