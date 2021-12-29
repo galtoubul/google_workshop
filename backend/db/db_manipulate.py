@@ -8,7 +8,7 @@ from config import db_host, db_user, db_password
 
 # connect to db
 db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
-cursor = db_con.cursor()
+cursor = db_con.cursor(buffered=True)
 
 
 # return all the relevant details of cards that were updated before more than 1 hour
@@ -19,7 +19,7 @@ def get_not_updated_cards(user_id):
                             LastUpdated < DATE_SUB(NOW(), INTERVAL 1 HOUR)"""
     query_params_dict = {'user_id': user_id}
 
-    print(f'\n\nDB get_not_updated_cards\nselect_query = \n{select_query}\nquery_params_dict = {query_params_dict}')
+    print(f'\n\nDB get_not_updated_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
 
     try:
         cursor.execute(select_query, query_params_dict)
@@ -47,7 +47,7 @@ def get_cards(user_id, bucket=None):
         select_query += ' AND Bucket = %(bucket)s'
         query_params_dict['bucket'] = bucket
     
-    print(f'\n\nDB get_cards\nselect_query = \n{select_query}query_params_dict = \n{query_params_dict}')
+    print(f'\n\nDB get_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
     
     try:
         cursor.execute(select_query, query_params_dict)
@@ -148,16 +148,16 @@ def insert(table_name, data):
     insert_query_vals += ');'
     insert_query += insert_query_cols + insert_query_vals
 
-    print(f'\n\ninsert | caller = {caller} | table name = {table_name}insert_query = \n{insert_query}\nquery_params_dict = \n{insert_query_params_dict}')
+    print(f'\n\ninsert | caller = {caller} | table name = {table_name}\ninsert_query = {insert_query}\nquery_params_dict = {insert_query_params_dict}', flush=True)
     
     try:
         cursor.execute(insert_query, insert_query_params_dict)
         db_con.commit()
     except SQLC.IntegrityError as err:
-        print(f'\n\n{caller}\nerror = {err}')
+        print(f'\n\n{caller}\nerror = {err}', flush=True)
         return {'response': f'ERROR: failed to insert records: {err}'}
 
-    print(f'\n\ninsert | caller = {caller} | table name = {table_name}\nSuccesful insert! {cursor.rowcount} rows were affacted')
+    print(f'\n\ninsert | caller = {caller} | table name = {table_name}\nSuccesful insert! {cursor.rowcount} rows were affacted', flush=True)
     return {'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount)}
 
 
@@ -195,7 +195,7 @@ def update_card(data):
     update_query += ' WHERE CardId = %(card_id)s AND OrderName = %(order_name)s'
     query_params_dict['card_id'] = data['card_id']
     query_params_dict['order_name'] = data['order_name']
-    print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}')
+    print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}', flush=True)
 
     try:
         cursor.execute(update_query, query_params_dict)
@@ -214,7 +214,7 @@ def delete_card(card_id, order_name):
     query_params_dict = {}
     query_params_dict['card_id'] = card_id
     query_params_dict['order_name'] = order_name
-    print(f'\n\ndelete_card\delete_query = {delete_query}\n query_params_dict = {query_params_dict}')
+    print(f'\n\ndelete_card\ndelete_query = {delete_query}\n query_params_dict = {query_params_dict}', flush=True)
 
     try:
         cursor.execute(delete_query, query_params_dict)
