@@ -1,110 +1,76 @@
+import inspect
 import mysql.connector as SQLC
+import sys
+import os
+sys.path.append(os.path.abspath('../'))
+from config import db_host, db_user, db_password
 
 
-# TODO hide these in .env.local
-db_host = '35.185.234.203'
-db_user = 'root'
-db_password = 'pkayHgFByeOHjs8F'
-
-# TODO should it be under an init function?
 # connect to db
-db_con = SQLC.connect(host=db_host,user=db_user,passwd=db_password)
-cursor = db_con.cursor()
-
-fe_to_db = {
-    'bucket': {
-        'Wishlist': 'wishlist',
-        'On The Way': 'OnTheWay',
-        'Arrived': 'Arrived',
-        None: 'Wishlist'
-    }
-}
-
-db_to_fe = {
-    'bucket': {
-        'Wishlist': 'Wishlist',
-        'OnTheWay': 'On The Way',
-        'Arrived': 'Arrived',
-        None: 'wishlist'
-    }
-}
+db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
+cursor = db_con.cursor(buffered=True)
 
 
-db_to_fe_dict = {
-    'OrderNumber': 'order_serial_code',
-    'OrderName': 'order_name',
-    'CompanyName': 'company',
-    'CustomerId': 'user_id',
-    'Url': 'order_url',
-    'Bucket': 'timeline_position',
-    'Price': 'price',
-    'Currency': 'currency',
-    'OrderDate': 'order_date',
-    'EstimatedArrivingDate': 'estimated_arrival_date',
-    'Notes': 'notes'
-}
+# return all the relevant details of cards that were updated before more than 1 hour
+def get_not_updated_cards(user_id):
+    select_query = """SELECT OrderSerialCode, Bucket, CardId, OrderName
+                      FROM Trackeet.Card
+                      WHERE CustomerId = %(user_id)s AND
+                            LastUpdated < DATE_SUB(NOW(), INTERVAL 1 HOUR)"""
+    query_params_dict = {'user_id': user_id}
 
+    print(f'\n\nDB get_not_updated_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
 
-def get_fe_param_to_query_param(data):
-    order_serial_code = None if 'order_serial_code' not in data else data.get('order_serial_code')
-    order_name = None if 'order_name' not in data else data.get('order_name')
-    company = None if 'company' not in data else data.get('company')
-    user_id = None if 'user_id' not in data else data.get('user_id')
-    order_url = None if 'order_url' not in data else data.get('order_url')
-    timeline_position = 'Wishlist' if 'timeline_position' not in data else data.get('timeline_position')
-    price = None if 'price' not in data else data.get('price')
-    currency = None if 'currency' not in data else data.get('currency')
-    order_date = None if 'order_date' not in data else data.get('order_date')
-    estimated_arrival_date = None if 'estimated_arrival_date' not in data else data.get('estimated_arrival_date')
-    notes = None if 'notes' not in data else data.get('notes')
-
-    fe_param_to_query_param = {
-        'order_serial_code': order_serial_code,
-        'order_name': order_name,
-        'company': company,
-        'user_id': user_id,
-        'order_url': order_url,
-        'timeline_position': timeline_position,
-        'price': price,
-        'currency': currency,
-        'order_date': order_date,
-        'estimated_arrival_date': estimated_arrival_date,
-        'notes': notes
-    }
-
-    return fe_param_to_query_param
-
+    try:
+        cursor.execute(select_query, query_params_dict)
+        db_con.commit()
+    except SQLC.IntegrityError as err:
+        print(f'\n\n{get_not_updated_cards}\nerror = {err}')
+    
+    cards = []
+    results = cursor.fetchall()
+    for res in results:
+        cards.append({'order_serial_code': res[0],
+                        'timeline_position': res[1],
+                        'card_id': res[2],
+                        'order_name': res[3]})
+    return cards
 
 # return all the cards of the user that associated with user_id
 def get_cards(user_id, bucket=None):
     select_query = """SELECT *
-                      FROM Trackeet.Orders
-                      WHERE CustomerId = %(user_id)s"""
+                      FROM Trackeet.Card
+                      WHERE CustomerId = %(user_id)s """
     query_params_dict = {'user_id': user_id}
 
     if bucket != None:
         select_query += ' AND Bucket = %(bucket)s'
         query_params_dict['bucket'] = bucket
     
-    print('\n\nDB get_cards\n')
-    print(f'select_query = \n{select_query}')
-    print(f'query_params_dict = \n{query_params_dict}')
-
-    cursor.execute(select_query, query_params_dict)
+    print(f'\n\nDB get_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
+    
+    try:
+        cursor.execute(select_query, query_params_dict)
+        db_con.commit()
+    except SQLC.IntegrityError as err:
+        print(f'\n\n{get_cards}\nerror = {err}')
+        return {'response': f'ERROR: failed to get records: {err}'}
 
     results = cursor.fetchall()
     cards = []
     for res in results:
-        cards.append({'order_name': res[2],
-                      'company': res[9],
-                      'estimated_arrival_date': res[7],
-                      'order_url': res[1],
-                      'price': res[4],
-                      'currency': res[5],
-                      'order_date': res[6],
-                      'order_serial_code': res[0],
-                      'notes': res[8],
-                      'timeline_position': res[3]})
+        cards.append({'order_name': res[3],
+                      'company': res[10],
+                      'estimated_arrival_date': res[8],
+                      'order_url': res[2],
+                      'price': res[5],
+                      'currency': res[6],
+                      'order_date': res[7],
+                      'order_serial_code': res[1],
+                      'notes': res[9],
+                      'timeline_position': res[4],
+                      'card_id': res[0],
+                      'user_id': res[11]})
     return {'cards': cards}
 
 
@@ -126,86 +92,112 @@ def is_in_customers(customer_id):
     return int(res[0]) >= 1
 
 
-def update_foreign_keys(data, user_id):
-    # add foreign keys to parents tables if needed
-    if not is_in_company(data['company']):
-        cursor.execute("""INSERT INTO Trackeet.Company (CompanyName)
-                          values (%(company_name)s)""",
-                          {'company_name': data.get('company')})
-        db_con.commit()
+db_to_fe_dict = {
+    'bucket': {
+        'Wishlist': 'Wishlist',
+        'OnTheWay': 'On The Way',
+        'Arrived': 'Arrived',
+        None: 'wishlist'
+    },
+    'Customer': {
+        'CustomerId': 'sub',
+        'FirstName': 'name',
+        'LastName': 'family_name',
+        'Email': 'email',
+    },
+    'Company': {
+        'CompanyName': 'company'
+    },
+    'Card': {
+        'CardId': 'card_id',
+        'OrderSerialCode': 'order_serial_code',
+        'OrderName': 'order_name',
+        'CompanyName': 'company',
+        'CustomerId': 'user_id',
+        'Url': 'order_url',
+        'Bucket': 'timeline_position',
+        'Price': 'price',
+        'Currency': 'currency',
+        'OrderDate': 'order_date',
+        'EstimatedArrivingDate': 'estimated_arrival_date',
+        'Notes': 'notes'
+    } 
+}
 
-    if not is_in_customers(user_id):
-        cursor.execute("""INSERT INTO Trackeet.Customer (CustomerId)
-                          values (%(customer_id)s)""",
-                          {'customer_id': user_id})
-        db_con.commit()
 
+def insert(table_name, data):
+    caller = inspect.stack()[1].function
+    insert_query = f'INSERT INTO Trackeet.{table_name} '
+    insert_query_cols = '('
+    insert_query_vals = 'VALUES('
 
-def add_card(data, user_id):
-    update_foreign_keys(data, user_id)
-
-    fe_param_to_query_param = get_fe_param_to_query_param(data)
-    
-    insert_query = 'INSERT INTO Trackeet.Orders '
-    insert_query_cols = '(CustomerId, '
-    insert_query_vals = ' values(%(user_id)s, '
-
-    query_params_dict = {}
+    insert_query_params_dict = {}
     is_first = True
-    for (db_format, fe_format) in db_to_fe_dict.items():
+    for (db_format, fe_format) in db_to_fe_dict[table_name].items():
         if fe_format in data and data[fe_format] != '':
             if not is_first:
                 insert_query_cols += ', '
                 insert_query_vals += ', '
+            is_first = False
+
             insert_query_cols += db_format
             insert_query_vals += f'%({fe_format})s'
-            query_params_dict[fe_format] = fe_param_to_query_param[fe_format]
-            is_first = False
+            insert_query_params_dict[fe_format] = data[fe_format]
     
-    insert_query_cols += ')'
-    insert_query_vals += ')'
+    insert_query_cols += ') '
+    insert_query_vals += ');'
     insert_query += insert_query_cols + insert_query_vals
-    query_params_dict['user_id'] = user_id
 
-    print('\n\nDB add_card\n')
-    print(f'insert_query = \n{insert_query}')
-    print(f'query_params_dict = \n{query_params_dict}')
+    print(f'\n\ninsert | caller = {caller} | table name = {table_name}\ninsert_query = {insert_query}\nquery_params_dict = {insert_query_params_dict}', flush=True)
     
     try:
-        cursor.execute(insert_query, query_params_dict)
+        cursor.execute(insert_query, insert_query_params_dict)
         db_con.commit()
     except SQLC.IntegrityError as err:
-        print(err)
+        print(f'\n\n{caller}\nerror = {err}', flush=True)
         return {'response': f'ERROR: failed to insert records: {err}'}
-    print(cursor.rowcount)
+
+    print(f'\n\ninsert | caller = {caller} | table name = {table_name}\nSuccesful insert! {cursor.rowcount} rows were affacted', flush=True)
     return {'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount)}
 
 
-def update_card(customer_id, compamy_name, order_number, data):
-    fe_param_to_query_param = get_fe_param_to_query_param(data)
-      
-    update_query = 'UPDATE Trackeet.Orders SET '
+# add foreign keys to parents' tables if needed
+def update_foreign_keys(data, user_info):
+    
+    if 'company' in data and not is_in_company(data['company']):
+        insert('Company', data)
+
+    user_id = user_info['sub']
+    if not is_in_customers(user_id):
+        insert('Customer', user_info)
+
+
+def add_card(data, user_info):
+    update_foreign_keys(data, user_info)
+    user_id = user_info['sub']
+    data['user_id'] = user_id
+    insert('Card', data)
+
+
+def update_card(data):     
+    update_query = 'UPDATE Trackeet.Card SET '
 
     query_params_dict = {}
     is_first = True
-    for (db_format, fe_format) in db_to_fe_dict.items():
-        if fe_format in data:
+    for (db_format, fe_format) in db_to_fe_dict['Card'].items():
+        if fe_format in data and data[fe_format] != '':
             if not is_first:
                 update_query += ', '
             update_query += f'{db_format} = %({fe_format})s'
-            query_params_dict[fe_format] = fe_param_to_query_param[fe_format]
+            query_params_dict[fe_format] = data[fe_format]
             is_first = False
 
-    query_params_dict['customer_id'] = customer_id
-    query_params_dict['compamy_name'] = compamy_name
-    query_params_dict['order_number'] = order_number
-
-    update_query += (""" WHERE CustomerId = %(customer_id)s   AND
-                                CompanyName = %(compamy_name)s AND
-                                OrderNumber = %(order_number)s""")
+    update_query += ' WHERE CardId = %(card_id)s AND OrderName = %(order_name)s'
+    query_params_dict['card_id'] = data['card_id']
+    query_params_dict['order_name'] = data['order_name']
+    print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}', flush=True)
 
     try:
-        print(update_query, '\n', query_params_dict)
         cursor.execute(update_query, query_params_dict)
         db_con.commit()
 
@@ -214,16 +206,15 @@ def update_card(customer_id, compamy_name, order_number, data):
     return {'response': 'Succesful update! {} rows were affacted'.format(cursor.rowcount)}
 
 
-def delete_card(user_id, compamy_name, order_number):
-    delete_query = """DELETE FROM Trackeet.Orders
-                      WHERE CustomerId  = %(customer_id)s  AND
-                            CompanyName = %(compamy_name)s AND
-                            OrderNumber = %(order_number)s"""
+def delete_card(card_id, order_name):
+    delete_query = """DELETE FROM Trackeet.Card
+                      WHERE CardId = %(card_id)s AND
+                            OrderName = %(order_name)s;"""
     
     query_params_dict = {}
-    query_params_dict['customer_id'] = int(user_id)
-    query_params_dict['compamy_name'] = compamy_name
-    query_params_dict['order_number'] = int(order_number)
+    query_params_dict['card_id'] = card_id
+    query_params_dict['order_name'] = order_name
+    print(f'\n\ndelete_card\ndelete_query = {delete_query}\n query_params_dict = {query_params_dict}', flush=True)
 
     try:
         cursor.execute(delete_query, query_params_dict)
@@ -232,19 +223,3 @@ def delete_card(user_id, compamy_name, order_number):
     except SQLC.IntegrityError as err:
         return {'response': f'ERROR: failed to delete records: {err}'}
     return {'response': 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)}
-
-
-
-# """
-#                           OrderNumber = %(order_number)s,
-#                           OrderName = %(order_name)s,
-#                           CompanyName = %(company_name)s,
-#                           CustomerId = %(customer_id)s,
-#                           Url = %(url)s,
-#                           Bucket = %(bucket)s,
-#                           Price = %(price)s,
-#                           Currency = %(currency)s,
-#                           OrderDate = %(order_date)s,
-#                           EstimatedArrivingDate = %(estimated_arriving_date)s,
-#                           Notes = %(notes)s)""",
-                                

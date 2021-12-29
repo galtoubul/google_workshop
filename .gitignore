@@ -56,4 +56,5 @@ trackeet-react-app/.eslintcache
 __pycache__
 
 .vscode/settings.json
-/.vscode/settings.json
+backend/web-server/test_post.py
+backend/.env
