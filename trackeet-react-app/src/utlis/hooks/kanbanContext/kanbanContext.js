@@ -1,42 +1,22 @@
 import React, { createContext, useContext, useState } from "react";
-import { boardStyle } from "../../../components/kanban/data/styles";
 import { uuid } from "uuidv4";
 import { useUserInformationContext } from "../userInformationContext/userInformationContext";
+import { getKanbanInitialState } from "./utils";
+import { ErrorAlert } from "../../../components/forms/ErrorAlert";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
   const { api, isLoggedIn } = useUserInformationContext();
-  console.log("api");
-  console.log(api);
-  const [kanbanState, setKanbanState] = useState({
-    boardData: {
-      lanes: [
-        {
-          cards: wishListCards.cards,
-          id: "Wishlist",
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "Wishlist",
-        },
-        {
-          cards: onTheWayCards.cards,
-          currentPage: 1,
-          id: "On The Way",
-
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "On The Way",
-        },
-        {
-          cards: arrivedCards.cards,
-          currentPage: 1,
-          id: "Arrived",
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
-          title: "Arrived",
-        },
-      ],
-    },
-  });
+  const [kanbanState, setKanbanState] = useState(
+    getKanbanInitialState(
+      wishListCards,
+      isLoggedIn,
+      onTheWayCards,
+      arrivedCards
+    )
+  );
 
   const setEventBus = (eventBus) => {
     setKanbanState({ eventBus });
@@ -47,15 +27,26 @@ export const KanbanProvider = (props) => {
   };
 
   const addCard = (card) => {
+    console.log(card);
+    card.id = uuid();
+    console.log(card);
+    // const oldCard = { ...card };
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
       laneId: card.position,
       card: {
         ...card,
-        id: uuid(),
       },
     });
-    api.addCard(card).catch((e) => console.log(e));
+
+    // api.addCard(card).catch((e) => {
+    //   ErrorAlert();
+    //   kanbanState.eventBus.publish({
+    //     type: "REMOVE_CARD",
+    //     laneId: oldCard.position,
+    //     cardId: oldCard.id,
+    //   });
+    // });
   };
 
   const handleCardDrag = (dragPosition, card) => {
@@ -68,7 +59,7 @@ export const KanbanProvider = (props) => {
       laneId: card.position,
       cardId: card.id,
     });
-    api.deleteCard(card.id).catch((e) => console.log(e));
+    api.deleteCard(card.id);
   };
 
   const updateCard = (card, dragPosition) => {
@@ -77,9 +68,30 @@ export const KanbanProvider = (props) => {
       type: "UPDATE_CARD",
       laneId: card.position,
     });
-    api
-      .updateCard({ ...card, position: dragPosition })
-      .catch((e) => console.log(e));
+
+    api.updateCard({ ...card, position: dragPosition }).catch((e) => {
+      ErrorAlert();
+      if (dragPosition) {
+        kanbanState.eventBus.publish({
+          type: "REMOVE_CARD",
+          laneId: dragPosition,
+          cardId: card.id,
+        });
+        kanbanState.eventBus.publish({
+          type: "ADD_CARD",
+          laneId: card.position,
+          card: {
+            ...card,
+          },
+        });
+      } else {
+        kanbanState.eventBus.publish({
+          card,
+          type: "UPDATE_CARD",
+          laneId: card.position,
+        });
+      }
+    });
   };
 
   return (

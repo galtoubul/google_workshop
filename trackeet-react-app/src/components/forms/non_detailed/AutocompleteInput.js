@@ -9,9 +9,7 @@ const AutocompleteInput = (props) => {
       onChange={props.onChange}
       freeSolo
       options={props.autocompleteList.map((option) => option.title)}
-      renderInput={(params) => (
-        <TextField {...params} label={props.label} sx={{ width: "223px" }} />
-      )}
+      renderInput={(params) => <TextField {...params} label={props.label} />}
     />
   );
 };

@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 export const CardTitle = (props) => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Typography variant="h5">{props.cardName}</Typography>
+      <Typography variant="h6">{props.cardName}</Typography>
     </Box>
   );
 };
