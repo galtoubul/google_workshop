@@ -91,8 +91,8 @@ export const Demo = (props) => {
   return (
     <body className="bodyWithDemoContainer" id={"Demo"}>
       <div className={"loginTextContainer"}>
-        <Typography sx={{ marginBottom: "24px", width: "410px" }} variant="h5">
-          All your orders in one place
+        <Typography sx={{ marginBottom: "24px", width: "440px" }} variant="h5">
+          All your orders <br /> in one single place
         </Typography>
         <Typography sx={{ marginTop: "24px", width: "410px" }} variant="h6">
           Our easy to use, universal tracking features make it a breeze to track
