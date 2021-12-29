@@ -7,8 +7,8 @@ from flask_cors import CORS, cross_origin
 from google.oauth2 import id_token
 from google.auth.transport import requests
 sys.path.append(os.path.abspath('../db'))
-import db_manipulate as db
 sys.path.append(os.path.abspath('../'))
+import db_manipulate as db
 from config import web_app_client_id, chrome_ext_client_id, ERR
 from auto_track import getDeliveryStatus
 
@@ -63,7 +63,7 @@ def update_cards_if_needed(not_updated_cards):
     for card in not_updated_cards:
         serial_code = card['order_serial_code']
         bucket = card['timeline_position']
-        
+
         curr_bucket = getDeliveryStatus(serial_code)
         if curr_bucket == ERR:
             continue
