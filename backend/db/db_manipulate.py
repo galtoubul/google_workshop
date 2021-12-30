@@ -63,7 +63,7 @@ def get_cards(user_id, bucket=None):
                       'company': res[10],
                       'estimated_arrival_date': res[8],
                       'order_url': res[2],
-                      'price': res[5],
+                      'price': str(res[5]),
                       'currency': res[6],
                       'order_date': res[7],
                       'order_serial_code': res[1],

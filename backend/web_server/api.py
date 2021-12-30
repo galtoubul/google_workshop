@@ -1,16 +1,19 @@
+import json
 import sys
 import os
 import ast
 from flask import Flask, request, jsonify
 from flask.helpers import make_response
 from flask_cors import CORS, cross_origin
+# from google import auth
+import requests
 from google.oauth2 import id_token
-from google.auth.transport import requests
+from google.auth.transport import requests as google_requests
 sys.path.append(os.path.abspath('../db'))
-sys.path.append(os.path.abspath('../'))
-import db_manipulate as db
+import backend.db.db_manipulate as db
+sys.path.append(os.path.abspath('../')) 
 from config import web_app_client_id, chrome_ext_client_id, ERR
-from auto_track import getDeliveryStatus
+from backend.web_server.auto_track import getDeliveryStatus
 
 
 app = Flask(__name__)
@@ -23,8 +26,18 @@ def get_user_info(token_id, use_chrome_ext_client_id=False):
 
     try:
         if use_chrome_ext_client_id:
-            return id_token.verify_oauth2_token(token_id, requests.Request(), chrome_ext_client_id)
-        return id_token.verify_oauth2_token(token_id, requests.Request(), web_app_client_id)
+            access_token = token_id
+            headers = {'Authorization': f'Bearer {access_token}'}
+            response = requests.request("GET", "https://www.googleapis.com/oauth2/v3/userinfo", headers=headers)
+            response_dict = response.json()
+            print(f'\n\nuse_chrome_ext_client_id\nresponse = {response_dict}')
+            if 'error' in response_dict:
+                err = response_dict['error_description'] if 'error_description' in response_dict else response_dict['error']
+                print(f'\ninvalid token: {err}', flush=True)
+                return ERR
+            return response_dict
+
+        return id_token.verify_oauth2_token(token_id, google_requests.Request(), web_app_client_id)
 
     except ValueError as err:
         print(f'\ninvalid token: {err}', flush=True)
@@ -46,7 +59,9 @@ def get_response(data, code=200):
 
 
 def json_bytes_to_dict(json_bytes):
+    print(f'\n\njson_bytes_to_dict\njson_bytes = {json_bytes}')
     string_dict = (json_bytes.decode()).strip("'")
+    print(f'\n\njson_bytes_to_dict\nstring_dict = {string_dict}')
     dict = ast.literal_eval(string_dict)
     return dict
 
@@ -58,23 +73,23 @@ track_api_to_bucket = {
     'delivered': 'Arrived'
 }
 
+# #TODO: cancel check to arrived
+# def update_cards_if_needed(not_updated_cards):
+#     for card in not_updated_cards:
+#         serial_code = card['order_serial_code']
+#         bucket = card['timeline_position']
 
-def update_cards_if_needed(not_updated_cards):
-    for card in not_updated_cards:
-        serial_code = card['order_serial_code']
-        bucket = card['timeline_position']
+#         curr_bucket = getDeliveryStatus(serial_code)
+#         if curr_bucket == ERR:
+#             continue
 
-        curr_bucket = getDeliveryStatus(serial_code)
-        if curr_bucket == ERR:
-            continue
-
-        if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
-            data = {
-                'card_id': card['card_id'], 
-                'order_name': card['order_name'], 
-                'timeline_position': track_api_to_bucket[curr_bucket]
-            }
-            db.update_card(data)
+#         if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
+#             data = {
+#                 'card_id': card['card_id'], 
+#                 'order_name': card['order_name'], 
+#                 'timeline_position': track_api_to_bucket[curr_bucket]
+#             }
+#             db.update_card(data)
 
 
 @app.route('/api/getCards', methods=['POST'])
@@ -97,8 +112,8 @@ def retrieve_cards():
     user_id = user_info['sub']
     print(f'\n\nuser_id = {user_id}', flush=True)
 
-    not_updated_cards = db.get_not_updated_cards(user_id)
-    update_cards_if_needed(not_updated_cards)
+    # not_updated_cards = db.get_not_updated_cards(user_id)
+    # update_cards_if_needed(not_updated_cards)
 
     bucket = None if 'timeline_position' not in request.args else request.args.get('timeline_position')
     cards = db.get_cards(user_id, bucket)
