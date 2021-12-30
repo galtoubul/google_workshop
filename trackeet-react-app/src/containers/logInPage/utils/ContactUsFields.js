@@ -17,18 +17,31 @@ export const ContactUsFields = (props) => {
       }}
     >
       <div sx={{ width: 500 }} className={"logInRowContainer"}>
-        <TextField id="outlined-error" label="First Name" />
-      </div>
-      <div className={"logInRowContainer"}>
-        <TextField id="outlined-error" label="Last Name" />
-      </div>
-      <div className={"logInRowContainer"}>
-        <TextField id="outlined-error" label="Email" />
+        <TextField
+          sx={{ m: 1, width: "351px" }}
+          id="outlined-error"
+          label="First Name"
+        />
       </div>
       <div className={"logInRowContainer"}>
         <TextField
+          sx={{ m: 1, width: "351px" }}
+          id="outlined-error"
+          label="Last Name"
+        />
+      </div>
+      <div className={"logInRowContainer"}>
+        <TextField
+          sx={{ m: 1, width: "351px" }}
+          id="outlined-error"
+          label="Email"
+        />
+      </div>
+      <div className={"logInRowContainer"}>
+        <TextField
+          sx={{ m: 1, width: "351px" }}
           id="outlined-multiline-flexible"
-          label="Details"
+          label="Message"
           multiline
           maxRows={7}
         />
@@ -36,11 +49,10 @@ export const ContactUsFields = (props) => {
 
       <div className={"logInRowContainer"}>
         <Button
-          sx={{ m: 1, width: "351px" }}
-          color={"secondary"}
-          variant="outlined"
+          sx={{ m: 1, width: "351px", marginBottom: "16px" }}
+          variant="contained"
         >
-          send
+          Submit
         </Button>
       </div>
     </Box>
