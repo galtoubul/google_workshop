@@ -12,11 +12,11 @@ import BackpackIcon from "@mui/icons-material/Backpack";
 export const timeLineContent = [
   {
     icon: "LocalGroceryStoreIcon",
-    content: "Wishlist",
+    content: "WishList",
     isFirst: true,
     isLast: false,
     isChoose: false,
-    position: "Wishlist",
+    position: "WishList",
   },
   {
     icon: "BackpackIcon",

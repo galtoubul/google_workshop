@@ -3,12 +3,9 @@ import axios from "axios";
 const MockAdapter = require("axios-mock-adapter");
 
 export const initMock = () => {
-  console.log("mockkkkkkkkkk");
   window.axiosMock = new MockAdapter(axios);
   // eslint-disable-next-line no-undef
   axiosMock.onPost("http://trackeet.co/api/getCards").reply((request) => {
-    console.log("mockkkkkkkkkk");
-    console.log(request);
     switch (request.params.timeline_position) {
       case "WishList":
         return [
@@ -26,7 +23,7 @@ export const initMock = () => {
                 order_serial_code: "3444234",
                 notes: "",
                 card_id: "1",
-                timeline_position: "Wishlist",
+                timeline_position: "WishList",
                 currency_amount: 120,
               },
             ],

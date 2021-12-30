@@ -1,7 +1,4 @@
 .input-fields-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: monospace;
-  width: 223px;
+
 }

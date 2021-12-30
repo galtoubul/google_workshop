@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { IconButton, Tooltip } from "@mui/material";
+import { Chip, IconButton, Tooltip } from "@mui/material";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { React, useContext } from "react";
 import { FormContext } from "../../../containers/forms/formContext/formContext";
@@ -23,7 +23,6 @@ const style = {
 };
 
 export const getTimeLineIcon = (iconName) => {
-  console.log(iconName);
   switch (iconName) {
     case "LocalGroceryStoreIcon":
       return <LocalGroceryStoreIcon sx={style} />;
@@ -50,7 +49,6 @@ export const CardButtons = (props) => {
     const timeLineContent1 = timeLineContent.filter((timelineItem) => {
       return timelineItem.position === position;
     });
-    console.log();
     return getTimeLineIcon(timeLineContent1[0].icon);
   };
 
@@ -58,7 +56,14 @@ export const CardButtons = (props) => {
     <>
       <Box>
         <Tooltip title={props.card.position}>
-          {getIcon(props.card.position)}
+          <Chip
+            sx={{ fontWeight: "0.1px" }}
+            icon={getIcon(props.card.position)}
+            label={props.card.position}
+            variant="outlined"
+            size={"small"}
+            color={"primary"}
+          />
         </Tooltip>
       </Box>
       <IconButton
