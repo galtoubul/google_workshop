@@ -11,25 +11,20 @@ export const LoginHeader = (props) => {
         <HeaderBackground />
       </div>
       <div className={"LoginDivContainer"}>
-        <div className={"loginTextContainer"}>
-          <Typography
-            sx={{ marginBottom: "24px", width: "410px" }}
-            variant="h5"
-          >
-            Make Tracking Online Orders Easier
-          </Typography>
-          <Typography sx={{ marginTop: "24px", width: "410px" }} variant="h6">
-            Effortlessly track, organize and know exactly when your
-            international orders will arrive, with Trackeet.
-          </Typography>
-          <Button
-            onClick={props.openLoggingModal}
-            sx={{ marginTop: "24px" }}
-            variant="contained"
-          >
-            Start tracking - it’s free!
-          </Button>
-        </div>
+        <Typography sx={{ marginBottom: "24px", width: "410px" }} variant="h5">
+          Make Tracking Online Orders Easier
+        </Typography>
+        <Typography sx={{ marginTop: "24px", width: "410px" }} variant="h6">
+          Effortlessly track, organize and know exactly when your international
+          orders will arrive, with Trackeet.
+        </Typography>
+        <Button
+          onClick={props.openLoggingModal}
+          sx={{ marginTop: "24px" }}
+          variant="contained"
+        >
+          Start tracking - it’s free!
+        </Button>
       </div>
     </div>
   );

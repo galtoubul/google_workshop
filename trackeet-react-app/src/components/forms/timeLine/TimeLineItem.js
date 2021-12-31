@@ -25,7 +25,7 @@ export const TimeLineItem = (props) => {
       <TimelineContent
         sx={{
           display: "flex",
-          justifyContent: "center",
+
           alignItems: "center",
           width: "15px",
         }}

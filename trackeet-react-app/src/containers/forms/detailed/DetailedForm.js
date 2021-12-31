@@ -13,11 +13,16 @@ import { useForm } from "../formContext/useForm";
 import { getLogo } from "../../../components/common/companyLogo/getLogo";
 import "rodal/lib/rodal.css";
 import { BOARDER_RADIUS } from "../../../assets/styles/styles";
-import { BLACK, WHITE } from "../../../assets/colors/colorsPalette";
+import { GREY, WHITE } from "../../../assets/colors/colorsPalette";
 import Rodal from "rodal";
+import { EditableText } from "../../../components/forms/editableText";
+import Typography from "@mui/material/Typography";
+import { TimeLine } from "../../../components/forms/timeLine/TimeLine";
 
 const DetailedForm = (props) => {
-  const { getSetInputValueCallback, state } = useContext(FormContext);
+  const { getSetInputValueCallback, state, closeForm } =
+    useContext(FormContext);
+  const { isDetailedFormOpen } = state;
   const {
     orderName,
     url,
@@ -26,7 +31,7 @@ const DetailedForm = (props) => {
     estimatedArrivingDate,
     orderNumber,
     notes,
-    // position,
+    position,
   } = state.card;
 
   const { saveCard } = useForm();
@@ -41,29 +46,28 @@ const DetailedForm = (props) => {
   ];
   return (
     <Rodal
-      height={700}
-      width={800}
-      visible={true}
-      onClose={props.closeForm}
+      height={680}
+      width={940}
+      visible={isDetailedFormOpen}
+      onClose={closeForm}
+      closeOnEsc={true}
       customStyles={{
-        display: "flex",
-        justifyContent: "center",
         borderRadius: BOARDER_RADIUS,
-        backgroundColor: WHITE,
-        background: `linear-gradient(0deg, ${WHITE} 87.79%, ${BLACK} 88%, ${WHITE} 88.1%)`,
+        display: "flex",
+        flexDirection: "row",
+        background: `linear-gradient(90deg,${WHITE} 74%, ${GREY} 74%)`,
       }}
     >
+      <div className={"leftPartContainer"}></div>
       <div className={"detailed-form-container"}>
-        <div className="non-detailed-form-header">
-          <div className="icon">{getLogo(company)}</div>
-          <TextInput
-            label="Order Name"
-            onChange={(event) =>
-              getSetInputValueCallback("orderName")(event.target.value)
-            }
-            value={orderName}
-          />
-          {/*<Typography variant="h4">{orderName}</Typography>*/}
+        <div className="detailed-form-header-container">
+          <div className="detailed-form-header">
+            <EditableText
+              onChange={getSetInputValueCallback("orderName")}
+              value={orderName}
+            />
+            <div className="detailed-form-icon">{getLogo(company)}</div>
+          </div>
         </div>
 
         <div className="detailed-form-input-fields-with-notes">
@@ -112,23 +116,25 @@ const DetailedForm = (props) => {
               value={orderNumber}
             />
           </div>
-
-          <MultilineInput
-            onChange={(event) =>
-              getSetInputValueCallback("notes")(event.target.value)
-            }
-            label="notes"
-            value={notes}
-          />
+          <div className={"detailed-notes"}>
+            <MultilineInput
+              onChange={(event) =>
+                getSetInputValueCallback("notes")(event.target.value)
+              }
+              label="notes"
+              value={notes}
+              width={"643px"}
+            />
+          </div>
         </div>
         <div className="detailed-form-buttons">
           <Button
             sx={{ marginRight: "8px" }}
             color={"secondary"}
             variant="outlined"
-            onClick={() => {}}
+            onClick={closeForm}
           >
-            Advanced
+            Close
           </Button>
           <Button
             sx={{ marginLeft: "8px" }}
@@ -137,6 +143,16 @@ const DetailedForm = (props) => {
           >
             Save
           </Button>
+        </div>
+      </div>
+      <div className="time-line-container">
+        <div className="time-line-header-container">
+          <div className="time-line-header">
+            <Typography variant="h6">Timeline</Typography>
+          </div>
+        </div>
+        <div className="time-line-content">
+          <TimeLine position={position} />
         </div>
       </div>
     </Rodal>

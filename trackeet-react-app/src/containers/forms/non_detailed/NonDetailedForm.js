@@ -20,7 +20,7 @@ const NonDetailedForm = (props) => {
 
   useEffect(() => {
     getSetInputValueCallback("position")(props.newCardPosition);
-  }, [props.newCardPosition]);
+  }, [props.newCardPosition, props.isNonDetailedFormOpen]);
 
   const companies = [
     { title: "Amazon" },
@@ -35,10 +35,14 @@ const NonDetailedForm = (props) => {
   return (
     <Rodal
       height={450}
+      width={360}
       visible={props.isNonDetailedFormOpen}
       onClose={props.closeForm}
+      closeOnEsc={true}
       customStyles={{
         borderRadius: BOARDER_RADIUS,
+        display: "flex",
+        justifyContent: "center",
         backgroundColor: WHITE,
         background: `linear-gradient(0deg, ${WHITE} 82.79%, ${BLACK} 83%, ${WHITE} 83.1%)`,
       }}

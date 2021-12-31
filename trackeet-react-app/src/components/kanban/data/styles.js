@@ -3,11 +3,14 @@ import { BOARDER_RADIUS } from "../../../assets/styles/styles";
 
 export const boardStyle = {
   width: 400,
-  maxHeight: window.innerHeight * 0.9,
+
   backgroundColor: GREY,
-  margin: 15,
+
+  overflow: "visible",
+
   borderWidth: "4px",
   borderStyle: "solid",
+
   borderColor: TURQUOISE,
   borderRadius: BOARDER_RADIUS,
 };

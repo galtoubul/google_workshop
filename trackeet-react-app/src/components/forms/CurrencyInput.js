@@ -14,20 +14,20 @@ const CurrencyInput = () => {
   const { currency, currencyAmount } = state.card;
 
   return (
-    <Box className="input-fields-container">
+    <div className="input-fields-container">
       <TextInput
         onChange={(event) =>
           getSetInputValueCallback("currencyAmount")(event.target.value)
         }
         value={currencyAmount}
-        sx={{ width: "80%" }}
+        width="185px"
       />
-      <Box sx={{ width: "20%" }}>
-        <FormControl sx={{ width: "100%" }}>
-          <InputLabel id="select-label">Currency</InputLabel>
+
+      <Box sx={{ width: "115px" }}>
+        <FormControl fullWidth>
+          <InputLabel fullWidth>Currency</InputLabel>
           <Select
-            labelId="label"
-            id="select"
+            fullWidth
             value={currency}
             label="Currency"
             onChange={(event) =>
@@ -40,7 +40,7 @@ const CurrencyInput = () => {
           </Select>
         </FormControl>
       </Box>
-    </Box>
+    </div>
   );
 };
 
