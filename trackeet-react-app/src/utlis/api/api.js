@@ -20,7 +20,7 @@ export const initApi = (userInformation, isLoggedIn) => {
     const onTheWayCards = await getCardsInFormat(http, cursor, "OnTheWay");
     const arrivedCards = await getCardsInFormat(http, cursor, "Arrived");
     const wishListCards = await getCardsInFormat(http, cursor, "WishList");
-
+    console.log(onTheWayCards);
     return { onTheWayCards, arrivedCards, wishListCards };
   };
 

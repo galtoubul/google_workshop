@@ -1,5 +1,14 @@
 import { boardStyle } from "../../../components/kanban/data/styles";
 
+const getBoardStyle = (isLoggedIn) => {
+  return {
+    ...boardStyle,
+    width: !isLoggedIn ? "290px" : "400px",
+    maxHeight: !isLoggedIn ? "500px" : "83vh",
+    marginTop: isLoggedIn && "4vh",
+  };
+};
+
 export const getKanbanInitialState = (
   wishListCards,
   isLoggedIn,
@@ -12,7 +21,7 @@ export const getKanbanInitialState = (
         {
           cards: wishListCards.cards,
           id: "WishList",
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
+          style: getBoardStyle(isLoggedIn),
           title: "WishList",
         },
         {
@@ -20,14 +29,14 @@ export const getKanbanInitialState = (
           currentPage: 1,
           id: "On The Way",
 
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
+          style: getBoardStyle(isLoggedIn),
           title: "On The Way",
         },
         {
           cards: arrivedCards.cards,
           currentPage: 1,
           id: "Arrived",
-          style: { ...boardStyle, width: !isLoggedIn ? "290px" : "400px" },
+          style: getBoardStyle(isLoggedIn),
           title: "Arrived",
         },
       ],

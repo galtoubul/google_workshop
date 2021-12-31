@@ -7,7 +7,7 @@ const MultilineInput = (props) => {
       label={props.label}
       multiline
       rows={6}
-      sx={{ width: "100%" }}
+      sx={{ width: props.width ? props.width : "100%" }}
     />
   );
 };

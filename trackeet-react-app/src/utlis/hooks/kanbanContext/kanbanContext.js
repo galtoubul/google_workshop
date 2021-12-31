@@ -30,7 +30,7 @@ export const KanbanProvider = (props) => {
     console.log(card);
     card.id = uuid();
     console.log(card);
-    // const oldCard = { ...card };
+    const oldCard = { ...card };
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
       laneId: card.position,
@@ -39,14 +39,14 @@ export const KanbanProvider = (props) => {
       },
     });
 
-    // api.addCard(card).catch((e) => {
-    //   ErrorAlert();
-    //   kanbanState.eventBus.publish({
-    //     type: "REMOVE_CARD",
-    //     laneId: oldCard.position,
-    //     cardId: oldCard.id,
-    //   });
-    // });
+    api.addCard(card).catch((e) => {
+      ErrorAlert();
+      kanbanState.eventBus.publish({
+        type: "REMOVE_CARD",
+        laneId: oldCard.position,
+        cardId: oldCard.id,
+      });
+    });
   };
 
   const handleCardDrag = (dragPosition, card) => {

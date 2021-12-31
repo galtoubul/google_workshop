@@ -5,7 +5,8 @@ const MockAdapter = require("axios-mock-adapter");
 export const initMock = () => {
   window.axiosMock = new MockAdapter(axios);
   // eslint-disable-next-line no-undef
-  axiosMock.onPost("http://trackeet.co/api/getCards").reply((request) => {
+  axiosMock.onPost("https://trackeet.co/api/getCards").reply((request) => {
+    console.log("fds;gjsfdl");
     switch (request.params.timeline_position) {
       case "WishList":
         return [

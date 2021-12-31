@@ -7,7 +7,7 @@ import {
   WHITE,
 } from "../../assets/colors/colorsPalette";
 import { FONT_FAMILY, FONT_WEIGHT } from "../../assets/fonts/font";
-import { BOARDER_RADIUS } from "../../assets/styles/styles";
+import { BOARDER_RADIUS, TITLE_H5 } from "../../assets/styles/styles";
 
 export const theme = createTheme({
   spacing: 10,
@@ -41,13 +41,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    h5: {
-      fontSize: "35px",
-      lineHeight: "1.1em",
-      letterSpacing: "normal",
-      textAlign: "start",
-      overflowWrap: "break-word",
-    },
+    h5: TITLE_H5,
     h6: {
       fontSize: "22px",
       lineHeight: "1.6em",

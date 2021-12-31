@@ -28,23 +28,23 @@ export const timeLineContent = [
   },
   {
     icon: "FlightTakeoffIcon",
-    content: "In transit",
+    content: "Transit",
     isFirst: false,
     isLast: false,
     isChoose: false,
     position: "On The Way",
   },
-  {
-    icon: "DeliveryDiningIcon",
-    content: "Out for delivery",
-    isFirst: false,
-    isLast: false,
-    isChoose: false,
-    position: "On The Way",
-  },
+  // {
+  //   icon: "DeliveryDiningIcon",
+  //   content: "Out for delivery",
+  //   isFirst: false,
+  //   isLast: false,
+  //   isChoose: false,
+  //   position: "On The Way",
+  // },
   {
     icon: "RedeemIcon",
-    content: "Pickup point",
+    content: "PickUp",
     isFirst: false,
     isLast: false,
     isChoose: false,
@@ -99,5 +99,19 @@ export const TimeLine = (props) => {
     });
   };
 
-  return <Timeline position="alternate">{getTimeLineItems()}</Timeline>;
+  return (
+    <Timeline
+      sx={{
+        display: "flex",
+        position: "absolute",
+        top: "55%",
+        left: "80.5%",
+        transform: "translate(-50%, -50%)",
+        width: "350px ",
+      }}
+      position="right"
+    >
+      {getTimeLineItems()}
+    </Timeline>
+  );
 };

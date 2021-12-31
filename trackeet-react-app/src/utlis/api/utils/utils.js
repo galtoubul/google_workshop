@@ -1,6 +1,4 @@
 export const toCards = (response) => {
-  // eslint-disable-next-line no-debugger
-
   const cards = response.cards.map((card) => {
     return {
       orderName: card.order_name,
