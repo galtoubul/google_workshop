@@ -2,17 +2,16 @@ import inspect
 import mysql.connector as SQLC
 
 
-db_con = None
+mysql = None
 
 
-def init_con(mysql):
-    global db_con
-    db_con = mysql.connect()
+def init_con(mysql_param):
+    global mysql
+    mysql = mysql_param
 
 
 # return all the relevant details of cards that were updated before more than 1 hour
 def get_not_updated_cards(user_id):
-    cursor = db_con.cursor()
     select_query = """SELECT OrderSerialCode, Bucket, CardId, OrderName
                       FROM Card
                       WHERE CustomerId = %(user_id)s AND
@@ -21,6 +20,8 @@ def get_not_updated_cards(user_id):
 
     print(f'\n\nDB get_not_updated_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
 
+    db_con = mysql.get_db()
+    cursor = db_con.cursor()
     try:
         cursor.execute(select_query, query_params_dict)
         db_con.commit()
@@ -49,6 +50,7 @@ def get_cards(user_id, bucket=None):
     
     print(f'\n\nDB get_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
     
+    db_con = mysql.get_db()
     cursor = db_con.cursor()
     try:
         cursor.execute(select_query, query_params_dict)
@@ -76,6 +78,7 @@ def get_cards(user_id, bucket=None):
 
 
 def is_in_company(company_name):
+    db_con = mysql.get_db()
     cursor = db_con.cursor()
     cursor.execute("""SELECT count(*)
                       FROM Company
@@ -86,6 +89,7 @@ def is_in_company(company_name):
 
 
 def is_in_customers(customer_id):
+    db_con = mysql.get_db()
     cursor = db_con.cursor()
     cursor.execute("""SELECT count(*)
                       FROM Customer
@@ -156,6 +160,7 @@ def insert(table_name, data):
 
     print(f'\n\ninsert | caller = {caller} | table name = {table_name}\ninsert_query = {insert_query}\nquery_params_dict = {insert_query_params_dict}', flush=True)
     
+    db_con = mysql.get_db()
     cursor = db_con.cursor()
     try:
         cursor.execute(insert_query, insert_query_params_dict)
@@ -204,6 +209,7 @@ def update_card(data):
     query_params_dict['order_name'] = data['order_name']
     print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}', flush=True)
 
+    db_con = mysql.get_db()
     cursor = db_con.cursor()
     try:
         cursor.execute(update_query, query_params_dict)
@@ -224,6 +230,7 @@ def delete_card(card_id, order_name):
     query_params_dict['order_name'] = order_name
     print(f'\n\ndelete_card\ndelete_query = {delete_query}\n query_params_dict = {query_params_dict}', flush=True)
 
+    db_con = mysql.get_db()
     cursor = db_con.cursor()
     try:
         cursor.execute(delete_query, query_params_dict)
