@@ -1,24 +1,55 @@
-import json
 import sys
 import os
 import ast
 from flask import Flask, request, jsonify
 from flask.helpers import make_response
 from flask_cors import CORS, cross_origin
-# from google import auth
+from flaskext.mysql import MySQL
 import requests
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 sys.path.append(os.path.abspath('../db'))
 import backend.db.db_manipulate as db
 sys.path.append(os.path.abspath('../')) 
-from config import web_app_client_id, chrome_ext_client_id, ERR
+from config import web_app_client_id, ERR, db_host, db_user, db_password, db_database
 from backend.web_server.auto_track import getDeliveryStatus
 
 
 app = Flask(__name__)
+
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+mysql = MySQL()
+app.config['MYSQL_DATABASE_USER'] = db_user
+app.config['MYSQL_DATABASE_PASSWORD'] = db_password
+app.config['MYSQL_DATABASE_DB'] = db_database
+app.config['MYSQL_DATABASE_HOST'] = db_host
+mysql.init_app(app)
+db.init_con(mysql)
+
+
+# Validate that the access token from the chrome extension is valid
+# If it is valid returns the user's details (including user_id)
+def authenticate_chrome_ext(access_token):
+    authorization_header = {'Authorization': f'Bearer {access_token}'}
+    google_apis_url = 'https://www.googleapis.com/oauth2/v3/userinfo'
+
+    try:
+        response = requests.request('GET', google_apis_url, headers=authorization_header)
+    except requests.exceptions.RequestException as err:
+        print(f'\n\nauthenticate_chrome_ext\n error: {err}')
+        return ERR
+    
+    response_dict = response.json()
+    print(f'\n\nuse_chrome_ext_client_id\nresponse = {response_dict}')
+
+    if 'error' in response_dict:
+        err = response_dict['error_description'] if 'error_description' in response_dict else response_dict['error']
+        print(f'\ninvalid token: {err}', flush=True)
+        return ERR
+
+    return response_dict
 
 
 def get_user_info(token_id, use_chrome_ext_client_id=False):
@@ -26,17 +57,7 @@ def get_user_info(token_id, use_chrome_ext_client_id=False):
 
     try:
         if use_chrome_ext_client_id:
-            access_token = token_id
-            headers = {'Authorization': f'Bearer {access_token}'}
-            response = requests.request("GET", "https://www.googleapis.com/oauth2/v3/userinfo", headers=headers)
-            response_dict = response.json()
-            print(f'\n\nuse_chrome_ext_client_id\nresponse = {response_dict}')
-            if 'error' in response_dict:
-                err = response_dict['error_description'] if 'error_description' in response_dict else response_dict['error']
-                print(f'\ninvalid token: {err}', flush=True)
-                return ERR
-            return response_dict
-
+            return authenticate_chrome_ext(access_token=token_id)
         return id_token.verify_oauth2_token(token_id, google_requests.Request(), web_app_client_id)
 
     except ValueError as err:
@@ -73,23 +94,23 @@ track_api_to_bucket = {
     'delivered': 'Arrived'
 }
 
-# #TODO: cancel check to arrived
-# def update_cards_if_needed(not_updated_cards):
-#     for card in not_updated_cards:
-#         serial_code = card['order_serial_code']
-#         bucket = card['timeline_position']
+#TODO: cancel check to arrived
+def update_cards_if_needed(not_updated_cards):
+    for card in not_updated_cards:
+        serial_code = card['order_serial_code']
+        bucket = card['timeline_position']
 
-#         curr_bucket = getDeliveryStatus(serial_code)
-#         if curr_bucket == ERR:
-#             continue
+        curr_bucket = getDeliveryStatus(serial_code)
+        if curr_bucket == ERR:
+            continue
 
-#         if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
-#             data = {
-#                 'card_id': card['card_id'], 
-#                 'order_name': card['order_name'], 
-#                 'timeline_position': track_api_to_bucket[curr_bucket]
-#             }
-#             db.update_card(data)
+        if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
+            data = {
+                'card_id': card['card_id'], 
+                'order_name': card['order_name'], 
+                'timeline_position': track_api_to_bucket[curr_bucket]
+            }
+            db.update_card(data)
 
 
 @app.route('/api/getCards', methods=['POST'])

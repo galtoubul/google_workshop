@@ -1,20 +1,20 @@
 import inspect
 import mysql.connector as SQLC
-import sys
-import os
-sys.path.append(os.path.abspath('../'))
-from config import db_host, db_user, db_password
 
 
-# connect to db
-db_con = SQLC.connect(host=db_host, user=db_user, passwd=db_password)
-cursor = db_con.cursor(buffered=True)
+db_con = None
+
+
+def init_con(mysql):
+    global db_con
+    db_con = mysql.connect()
 
 
 # return all the relevant details of cards that were updated before more than 1 hour
 def get_not_updated_cards(user_id):
+    cursor = db_con.cursor()
     select_query = """SELECT OrderSerialCode, Bucket, CardId, OrderName
-                      FROM Trackeet.Card
+                      FROM Card
                       WHERE CustomerId = %(user_id)s AND
                             LastUpdated < DATE_SUB(NOW(), INTERVAL 1 HOUR)"""
     query_params_dict = {'user_id': user_id}
@@ -36,10 +36,10 @@ def get_not_updated_cards(user_id):
                         'order_name': res[3]})
     return cards
 
-# return all the cards of the user that associated with user_id
+# return all the cards of user_id from the given bucket (or all the buckets if bucket wasn't supplied)
 def get_cards(user_id, bucket=None):
     select_query = """SELECT *
-                      FROM Trackeet.Card
+                      FROM Card
                       WHERE CustomerId = %(user_id)s """
     query_params_dict = {'user_id': user_id}
 
@@ -49,6 +49,7 @@ def get_cards(user_id, bucket=None):
     
     print(f'\n\nDB get_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
     
+    cursor = db_con.cursor()
     try:
         cursor.execute(select_query, query_params_dict)
         db_con.commit()
@@ -75,8 +76,9 @@ def get_cards(user_id, bucket=None):
 
 
 def is_in_company(company_name):
+    cursor = db_con.cursor()
     cursor.execute("""SELECT count(*)
-                      FROM Trackeet.Company
+                      FROM Company
                       WHERE CompanyName = %(company_name)s""",
                       {'company_name': company_name})
     res = cursor.fetchone()
@@ -84,8 +86,9 @@ def is_in_company(company_name):
 
 
 def is_in_customers(customer_id):
+    cursor = db_con.cursor()
     cursor.execute("""SELECT count(*)
-                      FROM Trackeet.Customer
+                      FROM Customer
                       WHERE CustomerId = %(customer_id)s""",
                       {'customer_id': customer_id})
     res = cursor.fetchone()
@@ -97,7 +100,10 @@ db_to_fe_dict = {
         'Wishlist': 'Wishlist',
         'OnTheWay': 'On The Way',
         'Arrived': 'Arrived',
-        None: 'wishlist'
+        'Paid': 'Paid',
+        'Transit': 'Transit',
+        'PickUp': 'PickUp',
+        None: 'Wishlist'
     },
     'Customer': {
         'CustomerId': 'sub',
@@ -127,7 +133,7 @@ db_to_fe_dict = {
 
 def insert(table_name, data):
     caller = inspect.stack()[1].function
-    insert_query = f'INSERT INTO Trackeet.{table_name} '
+    insert_query = f'INSERT INTO {table_name} '
     insert_query_cols = '('
     insert_query_vals = 'VALUES('
 
@@ -150,6 +156,7 @@ def insert(table_name, data):
 
     print(f'\n\ninsert | caller = {caller} | table name = {table_name}\ninsert_query = {insert_query}\nquery_params_dict = {insert_query_params_dict}', flush=True)
     
+    cursor = db_con.cursor()
     try:
         cursor.execute(insert_query, insert_query_params_dict)
         db_con.commit()
@@ -180,7 +187,7 @@ def add_card(data, user_info):
 
 
 def update_card(data):     
-    update_query = 'UPDATE Trackeet.Card SET '
+    update_query = 'UPDATE Card SET '
 
     query_params_dict = {}
     is_first = True
@@ -197,6 +204,7 @@ def update_card(data):
     query_params_dict['order_name'] = data['order_name']
     print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}', flush=True)
 
+    cursor = db_con.cursor()
     try:
         cursor.execute(update_query, query_params_dict)
         db_con.commit()
@@ -207,7 +215,7 @@ def update_card(data):
 
 
 def delete_card(card_id, order_name):
-    delete_query = """DELETE FROM Trackeet.Card
+    delete_query = """DELETE FROM Card
                       WHERE CardId = %(card_id)s AND
                             OrderName = %(order_name)s;"""
     
@@ -216,6 +224,7 @@ def delete_card(card_id, order_name):
     query_params_dict['order_name'] = order_name
     print(f'\n\ndelete_card\ndelete_query = {delete_query}\n query_params_dict = {query_params_dict}', flush=True)
 
+    cursor = db_con.cursor()
     try:
         cursor.execute(delete_query, query_params_dict)
         db_con.commit()
