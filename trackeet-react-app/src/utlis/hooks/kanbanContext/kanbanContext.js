@@ -60,7 +60,18 @@ export const KanbanProvider = (props) => {
       laneId: card.position,
       cardId: card.id,
     });
-    api.deleteCard(card.id);
+
+    api.deleteCard(card.id, card.orderName).catch((e) => {
+      console.log(e);
+      ErrorAlert();
+      kanbanState.eventBus.publish({
+        type: "ADD_CARD",
+        laneId: card.position,
+        card: {
+          ...card,
+        },
+      });
+    });
   };
 
   const updateCard = (card, oldCard, dragPosition) => {

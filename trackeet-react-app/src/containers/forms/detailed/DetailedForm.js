@@ -77,6 +77,7 @@ const DetailedForm = (props) => {
         <div className="detailed-form-header-container">
           <div className="detailed-form-header">
             <EditableText
+              titleSize={"h5"}
               onChange={getSetInputValueCallback("orderName")}
               value={orderName}
             />
@@ -102,9 +103,13 @@ const DetailedForm = (props) => {
               error={
                 isCheckFormFailed && !validateNormalText(state.card.company)
               }
-              onChange={(event, newInputValue) =>
-                getSetInputValueCallback("company")(newInputValue)
-              }
+              onChange={(event, newInputValue) => {
+                const inputValue =
+                  newInputValue &&
+                  newInputValue.charAt(0).toUpperCase() +
+                    newInputValue.toLowerCase().slice(1);
+                getSetInputValueCallback("company")(inputValue);
+              }}
               label="Company"
               autocompleteList={companies}
               value={company}
