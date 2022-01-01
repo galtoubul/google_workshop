@@ -1,3 +1,14 @@
+const getCardPositionFrontFormat = (timeline_position) => {
+  switch (timeline_position) {
+    case "Arrived":
+      return "Arrived";
+    case "Wishlist":
+      return "Wishlist";
+    default:
+      return "On The Way";
+  }
+};
+
 export const toCards = (response) => {
   const cards = response.cards.map((card) => {
     return {
@@ -10,11 +21,12 @@ export const toCards = (response) => {
       orderNumber: card.order_serial_code,
       notes: card.notes,
       id: card.card_id,
-      position:
+      position: getCardPositionFrontFormat(card.timeline_position),
+      additionalPosition:
         card.timeline_position === "OnTheWay"
           ? "On The Way"
           : card.timeline_position,
-      currencyAmount: card.currency_amount,
+      currencyAmount: card.price,
     };
   });
 
@@ -31,9 +43,10 @@ export const getCardsInFormat = async (http, cursor, position) => {
 
 export const toCardServerFormat = (card) => {
   return {
+    old_order_name: card.oldOrderName,
     order_name: card.orderName,
     order_url: card.url,
-    currency: "ILS", // todo fix the currency enum with the server .,
+    currency: card.currency,
     company: card.company,
     order_date: card.orderDate,
     estimated_arrival_date: card.estimatedArrivingDate,
@@ -42,6 +55,8 @@ export const toCardServerFormat = (card) => {
     card_id: card.id,
     timeline_position:
       card.position === "On The Way" ? "OnTheWay" : card.position,
-    price: card.currencyAmount,
+    price: card.currencyAmount
+      ? Number(parseFloat(card.currencyAmount).toFixed(3))
+      : "",
   };
 };
