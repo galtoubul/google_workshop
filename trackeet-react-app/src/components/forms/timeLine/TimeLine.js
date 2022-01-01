@@ -104,7 +104,7 @@ export const TimeLine = (props) => {
       sx={{
         display: "flex",
         position: "absolute",
-        top: "55%",
+        top: "40%",
         left: "80.5%",
         transform: "translate(-50%, -50%)",
         width: "350px ",

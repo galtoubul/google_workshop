@@ -46,20 +46,26 @@ export const CardButtons = (props) => {
   const { isLoggedIn } = useUserInformationContext();
 
   const getIcon = (position) => {
+    if (position === "On The Way") {
+      return <BackpackIcon sx={style} />;
+    }
+
+    console.log(position);
     const timeLineContent1 = timeLineContent.filter((timelineItem) => {
-      return timelineItem.position === position;
+      return timelineItem.content === position;
     });
+
     return getTimeLineIcon(timeLineContent1[0].icon);
   };
 
   return (
     <>
       <Box>
-        <Tooltip title={props.card.position}>
+        <Tooltip title={props.card.additionalPosition}>
           <Chip
-            sx={{ fontWeight: "0.1px" }}
-            icon={getIcon(props.card.position)}
-            label={props.card.position}
+            sx={{ fontWeight: "0.1px", fontSize: "200px" }}
+            icon={getIcon(props.card.additionalPosition)}
+            label={props.card.additionalPosition}
             variant="outlined"
             size={"small"}
             color={"primary"}

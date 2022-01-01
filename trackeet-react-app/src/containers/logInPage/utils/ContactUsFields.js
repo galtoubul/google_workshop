@@ -17,8 +17,14 @@ export const ContactUsFields = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCheckFormFailed, setIsCheckFormFailed] = useState(false);
 
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const checkFields = () => {
-    return message && email && firstName && lastName;
+    return message && email && validateEmail(email);
   };
 
   const onSend = async () => {
@@ -59,32 +65,41 @@ export const ContactUsFields = (props) => {
     >
       <div sx={{ width: 500 }} className={"logInRowContainer"}>
         <TextField
-          error={isCheckFormFailed && !firstName}
+          // error={isCheckFormFailed && !firstName}
           sx={{ m: 1 }}
           id="outlined-error"
           label="First Name"
           value={firstName}
           onChange={onTextChange(setFirstName)}
+          // helperText={
+          //   isCheckFormFailed && !firstName && "Please add your first name."
+          // }
         />
       </div>
       <div className={"logInRowContainer"}>
         <TextField
-          error={isCheckFormFailed && !lastName}
+          // error={isCheckFormFailed && !lastName}
           sx={{ m: 1 }}
           id="outlined-error"
           label="Last Name"
           value={lastName}
           onChange={onTextChange(setLastName)}
+          // helperText={
+          //   isCheckFormFailed && !lastName && "Please add your last name."
+          // }
         />
       </div>
       <div className={"logInRowContainer"}>
         <TextField
-          error={isCheckFormFailed && !email}
+          error={isCheckFormFailed && !validateEmail(email)}
           sx={{ m: 1 }}
           id="outlined-error"
           label="Email"
           value={email}
           onChange={onTextChange(setEmail)}
+          helperText={
+            isCheckFormFailed && !validateEmail(email) && "Incorrect email."
+          }
         />
       </div>
       <div className={"logInRowContainer"}>
@@ -97,6 +112,7 @@ export const ContactUsFields = (props) => {
           maxRows={7}
           value={message}
           onChange={onTextChange(setMessage)}
+          helperText={isCheckFormFailed && !message && "Please add a message."}
         />
       </div>
 

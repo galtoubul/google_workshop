@@ -2,39 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1a9678-8cb4-4fa4-805c-c1d1f533e453" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/editableText.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/validateForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/assets/styles/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/assets/styles/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.css" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/MultilineInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/MultilineInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/AutocompleteInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/AutocompleteInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/TextInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/timeLine/TimeLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/timeLine/TimeLine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/timeLine/TimeLineItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/timeLine/TimeLineItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/data/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/data/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/app/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/formContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/formContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/formReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/formReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/useForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/ContactUs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/ContactUs.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/ContactUsFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/ContactUsFields.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/Demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/LoginHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/LoginHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/demo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/demo.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/theme/ThemColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/theme/ThemColors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/mock.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/mock.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/sendEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/sendEmail.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +124,9 @@
       <workItem from="1640679659287" duration="247000" />
       <workItem from="1640768839364" duration="17487000" />
       <workItem from="1640806287499" duration="1920000" />
-      <workItem from="1640939953783" duration="22712000" />
+      <workItem from="1640939953783" duration="23120000" />
+      <workItem from="1641033926722" duration="9832000" />
+      <workItem from="1641045912210" duration="7019000" />
     </task>
     <servers />
   </component>

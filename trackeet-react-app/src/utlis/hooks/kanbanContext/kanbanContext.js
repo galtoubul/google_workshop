@@ -23,19 +23,20 @@ export const KanbanProvider = (props) => {
   };
 
   const getNewCard = (card, dragPosition) => {
-    return dragPosition ? { ...card, position: dragPosition } : card;
+    return dragPosition
+      ? { ...card, position: dragPosition, additionalPosition: dragPosition }
+      : card;
   };
 
   const addCard = (card) => {
-    console.log(card);
     card.id = uuid();
-    console.log(card);
     const oldCard = { ...card };
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
       laneId: card.position,
       card: {
         ...card,
+        additionalPosition: card.position,
       },
     });
 
@@ -50,7 +51,7 @@ export const KanbanProvider = (props) => {
   };
 
   const handleCardDrag = (dragPosition, card) => {
-    updateCard(card, dragPosition);
+    updateCard(card, card, dragPosition);
   };
 
   const deleteCard = (card) => {
@@ -62,36 +63,42 @@ export const KanbanProvider = (props) => {
     api.deleteCard(card.id);
   };
 
-  const updateCard = (card, dragPosition) => {
+  const updateCard = (card, oldCard, dragPosition) => {
     kanbanState.eventBus.publish({
       card: getNewCard(card, dragPosition),
       type: "UPDATE_CARD",
       laneId: card.position,
     });
 
-    api.updateCard({ ...card, position: dragPosition }).catch((e) => {
-      ErrorAlert();
-      if (dragPosition) {
-        kanbanState.eventBus.publish({
-          type: "REMOVE_CARD",
-          laneId: dragPosition,
-          cardId: card.id,
-        });
-        kanbanState.eventBus.publish({
-          type: "ADD_CARD",
-          laneId: card.position,
-          card: {
-            ...card,
-          },
-        });
-      } else {
-        kanbanState.eventBus.publish({
-          card,
-          type: "UPDATE_CARD",
-          laneId: card.position,
-        });
-      }
-    });
+    api
+      .updateCard({
+        ...card,
+        position: dragPosition,
+        oldOrderName: oldCard.orderName,
+      })
+      .catch((e) => {
+        ErrorAlert();
+        if (dragPosition) {
+          kanbanState.eventBus.publish({
+            type: "REMOVE_CARD",
+            laneId: dragPosition,
+            cardId: card.id,
+          });
+          kanbanState.eventBus.publish({
+            type: "ADD_CARD",
+            laneId: oldCard.position,
+            card: {
+              ...oldCard,
+            },
+          });
+        } else {
+          kanbanState.eventBus.publish({
+            card: oldCard,
+            type: "UPDATE_CARD",
+            laneId: oldCard.position,
+          });
+        }
+      });
   };
 
   return (

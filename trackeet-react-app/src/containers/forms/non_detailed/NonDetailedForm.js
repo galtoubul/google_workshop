@@ -11,12 +11,19 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { BOARDER_RADIUS } from "../../../assets/styles/styles";
 import { BLACK, WHITE } from "../../../assets/colors/colorsPalette";
+import * as React from "react";
+import {
+  ORDER_NAME_LENGTH,
+  validateNormalText,
+  validateOrderName,
+} from "../formContext/validateForm";
 
 const NonDetailedForm = (props) => {
   const { saveCard } = useForm();
   const { getSetInputValueCallback, openDetailedForm, state } =
     useContext(FormContext);
   const { orderName, orderNumber, estimatedArrivingDate, company } = state.card;
+  const { isCheckFormFailed } = state;
 
   useEffect(() => {
     getSetInputValueCallback("position")(props.newCardPosition);
@@ -60,16 +67,25 @@ const NonDetailedForm = (props) => {
             value={company}
             label="Company"
             autocompleteList={companies}
+            error={isCheckFormFailed && !validateNormalText(state.card.company)}
           />
           <TextInput
-            label="Order Name"
-            onChange={(event) =>
-              getSetInputValueCallback("orderName")(event.target.value)
+            error={
+              isCheckFormFailed && !validateOrderName(state.card.orderName)
             }
+            label="Order Name"
+            onChange={(event) => {
+              if (event.target.value.length <= ORDER_NAME_LENGTH) {
+                getSetInputValueCallback("orderName")(event.target.value);
+              }
+            }}
             value={orderName}
           />
           <TextInput
             label="Order Number"
+            error={
+              isCheckFormFailed && !validateNormalText(state.card.orderNumber)
+            }
             onChange={(event) =>
               getSetInputValueCallback("orderNumber")(event.target.value)
             }

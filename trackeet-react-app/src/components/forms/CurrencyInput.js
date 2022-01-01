@@ -9,13 +9,14 @@ import "./CurrencyInput.css";
 import { useContext } from "react";
 import { FormContext } from "../../containers/forms/formContext/formContext";
 
-const CurrencyInput = () => {
+const CurrencyInput = (props) => {
   const { getSetInputValueCallback, state } = useContext(FormContext);
   const { currency, currencyAmount } = state.card;
 
   return (
     <div className="input-fields-container">
       <TextInput
+        error={props.error}
         onChange={(event) =>
           getSetInputValueCallback("currencyAmount")(event.target.value)
         }

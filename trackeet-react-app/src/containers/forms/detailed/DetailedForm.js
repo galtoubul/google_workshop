@@ -3,13 +3,11 @@ import AutocompleteInput from "../../../components/forms/non_detailed/Autocomple
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./DetailedForm.scss";
 import Button from "@mui/material/Button";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MultilineInput from "../../../components/forms/MultilineInput";
 import CurrencyInput from "../../../components/forms/CurrencyInput";
 import { FormContext } from "../formContext/formContext";
 import { useForm } from "../formContext/useForm";
-// import { TimeLine } from "../../../components/forms/timeLine/TimeLine";
-// import { Typography } from "@mui/material";
 import { getLogo } from "../../../components/common/companyLogo/getLogo";
 import "rodal/lib/rodal.css";
 import { BOARDER_RADIUS } from "../../../assets/styles/styles";
@@ -18,11 +16,20 @@ import Rodal from "rodal";
 import { EditableText } from "../../../components/forms/editableText";
 import Typography from "@mui/material/Typography";
 import { TimeLine } from "../../../components/forms/timeLine/TimeLine";
+import {
+  ORDER_NAME_LENGTH,
+  validateCurrencyAmount,
+  validateNormalText,
+  validateOrderName,
+  validateUrl,
+} from "../formContext/validateForm";
+import * as React from "react";
 
 const DetailedForm = (props) => {
-  const { getSetInputValueCallback, state, closeForm } =
+  const { getSetInputValueCallback, state, closeForm, setOldCard } =
     useContext(FormContext);
-  const { isDetailedFormOpen } = state;
+  const { isDetailedFormOpen, isCheckFormFailed, isNewForm } = state;
+
   const {
     orderName,
     url,
@@ -31,10 +38,17 @@ const DetailedForm = (props) => {
     estimatedArrivingDate,
     orderNumber,
     notes,
-    position,
+    additionalPosition,
   } = state.card;
 
   const { saveCard } = useForm();
+
+  useEffect(() => {
+    if (!isNewForm) {
+      setOldCard(state.card);
+    }
+  }, [isNewForm]);
+
   const companies = [
     { title: "Amazon" },
     { title: "Ebay" },
@@ -46,7 +60,7 @@ const DetailedForm = (props) => {
   ];
   return (
     <Rodal
-      height={680}
+      height={710}
       width={940}
       visible={isDetailedFormOpen}
       onClose={closeForm}
@@ -72,7 +86,22 @@ const DetailedForm = (props) => {
 
         <div className="detailed-form-input-fields-with-notes">
           <div className="detailed-form-input-fields">
+            <TextInput
+              label="Order Name"
+              onChange={(event) => {
+                if (event.target.value.length <= ORDER_NAME_LENGTH) {
+                  getSetInputValueCallback("orderName")(event.target.value);
+                }
+              }}
+              error={
+                isCheckFormFailed && !validateOrderName(state.card.orderName)
+              }
+              value={state.card.orderName}
+            />
             <AutocompleteInput
+              error={
+                isCheckFormFailed && !validateNormalText(state.card.company)
+              }
               onChange={(event, newInputValue) =>
                 getSetInputValueCallback("company")(newInputValue)
               }
@@ -90,15 +119,6 @@ const DetailedForm = (props) => {
               label="Estimated Arriving Date"
               value={estimatedArrivingDate}
             />
-
-            <TextInput
-              label="URL"
-              onChange={(event) =>
-                getSetInputValueCallback("url")(event.target.value)
-              }
-              value={url}
-            />
-            <CurrencyInput />
             <DatePickerInput
               onChange={(newDate) =>
                 getSetInputValueCallback("orderDate")(
@@ -109,14 +129,33 @@ const DetailedForm = (props) => {
               value={orderDate}
             />
             <TextInput
+              error={
+                isCheckFormFailed && !validateNormalText(state.card.orderNumber)
+              }
               label="Order Number"
               onChange={(event) =>
                 getSetInputValueCallback("orderNumber")(event.target.value)
               }
               value={orderNumber}
             />
+            <CurrencyInput
+              error={
+                isCheckFormFailed &&
+                !validateCurrencyAmount(state.card.currencyAmount)
+              }
+            />
           </div>
           <div className={"detailed-notes"}>
+            <TextInput
+              width={"643px"}
+              label="URL"
+              onChange={(event) =>
+                getSetInputValueCallback("url")(event.target.value)
+              }
+              error={isCheckFormFailed && !validateUrl(state.card.url)}
+              value={url}
+            />
+
             <MultilineInput
               onChange={(event) =>
                 getSetInputValueCallback("notes")(event.target.value)
@@ -152,7 +191,7 @@ const DetailedForm = (props) => {
           </div>
         </div>
         <div className="time-line-content">
-          <TimeLine position={position} />
+          <TimeLine position={additionalPosition} />
         </div>
       </div>
     </Rodal>
