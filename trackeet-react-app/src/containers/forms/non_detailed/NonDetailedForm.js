@@ -3,7 +3,6 @@ import AutocompleteInput from "../../../components/forms/non_detailed/Autocomple
 import DatePickerInput from "../../../components/forms/non_detailed/DatePickerInput.js";
 import "./NonDetailedForm.scss";
 import Button from "@mui/material/Button";
-import { Typography } from "@mui/material";
 import { FormContext } from "../formContext/formContext";
 import { useContext, useEffect } from "react";
 import { useForm } from "../formContext/useForm";
@@ -17,6 +16,7 @@ import {
   validateNormalText,
   validateOrderName,
 } from "../formContext/validateForm";
+import { EditableText } from "../../../components/forms/editableText";
 
 const NonDetailedForm = (props) => {
   const { saveCard } = useForm();
@@ -57,18 +57,14 @@ const NonDetailedForm = (props) => {
     >
       <div className={"form-container"}>
         <div className="non-detailed-form-header">
-          <Typography variant={"h6"}>New Order</Typography>
+          <EditableText
+            titleSize={"h6"}
+            width={"80%"}
+            onChange={getSetInputValueCallback("orderName")}
+            value={orderName}
+          />
         </div>
         <div className="non-detailed-form-input-fields">
-          <AutocompleteInput
-            onChange={(event, newInputValue) =>
-              getSetInputValueCallback("company")(newInputValue)
-            }
-            value={company}
-            label="Company"
-            autocompleteList={companies}
-            error={isCheckFormFailed && !validateNormalText(state.card.company)}
-          />
           <TextInput
             error={
               isCheckFormFailed && !validateOrderName(state.card.orderName)
@@ -81,6 +77,16 @@ const NonDetailedForm = (props) => {
             }}
             value={orderName}
           />
+          <AutocompleteInput
+            onChange={(event, newInputValue) =>
+              getSetInputValueCallback("company")(newInputValue)
+            }
+            value={company}
+            label="Company"
+            autocompleteList={companies}
+            error={isCheckFormFailed && !validateNormalText(state.card.company)}
+          />
+
           <TextInput
             label="Order Number"
             error={

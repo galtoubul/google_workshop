@@ -1,0 +1,13 @@
+@import "./src/assets/colors/colorsPalette";
+@import "./src/assets/styles/styles";
+@import "./src/assets/fonts/font";
+
+.editText:focus{
+    outline: none !important;
+    border:2px solid $turquoise;
+    border-radius: $boarderRadius;
+
+}
+.editText{
+    border-radius: $boarderRadius;
+}

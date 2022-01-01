@@ -21,16 +21,10 @@ export const initHttp = (idtoken) => {
   };
 
   const post = (path, data, param = {}) => {
-    const a = {};
-    Object.keys(data.card).forEach((k) => {
-      if (data.card[k] != null) {
-        a[k] = data.card[k];
-      }
-    });
     return axios.post(
       `https://trackeet.co/api/${path}`,
       {
-        ...a,
+        ...data,
         token_id: idtoken,
       },
       {

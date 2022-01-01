@@ -13,6 +13,14 @@ export const TITLE = {
   fontWeight: 800,
   color: BLACK,
 };
+export const TITLE_H6 = {
+  fontSize: "22px",
+  lineHeight: "1.6em",
+  verticalAlign: "baseline",
+  letterSpacing: "0.01",
+  textAlign: "start",
+  overflowWrap: "break-word",
+};
 
 export const TITLE_H5 = {
   fontSize: "35px",
