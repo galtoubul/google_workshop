@@ -6,7 +6,10 @@ export const toCardServerFormat = (card) => {
     order_url: card.url,
     currency: "ILS", // todo fix the currency enum with the server .,
     company: card.company,
-    order_date: card.order_date.toLocaleDateString("en-US"),
+    order_date:
+      card.order_date === null
+        ? null
+        : card.order_date.toLocaleDateString("en-US"),
     estimated_arrival_date:
       card.estimated_arrival_date.toLocaleDateString("en-US"),
     order_serial_code: card.order_serial_code,

@@ -5,9 +5,13 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { CircularProgress } from "@mui/material";
 import { cardAutoCreator } from "../../scripts/cardAutoCreator";
+import SendLoader from "../sendLoader/SendLoader";
 
 export const MainPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isSendLoading, setIsSendLoading] = useState(false);
+  const [isSendFinish, setIsSendFinish] = useState(false);
+  const [isSendError, setIsSendError] = useState(false);
   const [formData, setFormData] = useState({
     order_name: "",
     url: "",
@@ -24,6 +28,20 @@ export const MainPage = () => {
     newFormData[field] = fieldData;
     setFormData((oldState) => {
       return { ...oldState, ...newFormData };
+    });
+  };
+
+  const resetForm = () => {
+    setFormData({
+      order_name: "",
+      url: "",
+      currency: "", // todo fix the currency enum with the server .,
+      company: "",
+      order_date: null,
+      estimated_arrival_date: null,
+      order_serial_code: "",
+      order_status: "",
+      order_price: "",
     });
   };
 
@@ -52,10 +70,21 @@ export const MainPage = () => {
             <CircularProgress value={0} />
           </Box>
         </>
+      ) : isSendLoading || isSendFinish ? (
+        <SendLoader
+          isFinish={isSendFinish}
+          loading={isSendLoading}
+          setIsFinish={setIsSendFinish}
+          isError={isSendError}
+        />
       ) : (
         <NonDetailedForm
           setFormInformation={setFormInformation}
           formData={formData}
+          resetForm={resetForm}
+          setIsSendLoading={setIsSendLoading}
+          setIsSendFinish={setIsSendFinish}
+          setIsSendError={setIsSendError}
         />
       )}
     </div>

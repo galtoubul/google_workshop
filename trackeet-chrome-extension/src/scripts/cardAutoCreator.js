@@ -1,5 +1,7 @@
 import tabGetHostname from "./chrome_api/tabGetHostname";
 import amazonExtractor from "./amazon/amazonExtractor";
+import aliExpressExtractor from "./aliexpress/aliExpressExtractor";
+import ebayExtractor from "./ebay/ebayExtractor";
 import tabGetPathname from "./chrome_api/tabGetPathname";
 import isCardValid from "./isCardValid";
 
@@ -12,12 +14,26 @@ export const getAdaptedCode = async () => {
   const hostname = await tabGetHostname();
   const path = await tabGetPathname();
 
-  //Check maybe there is an adapted extractor code for the website
+  //Check if there is an adapted extractor code for the website
   switch (hostname) {
     case "www.amazon.com":
       if (path.search("/progress-tracker/package/") === -1) break;
       else {
         ret = amazonExtractor;
+        break;
+      }
+
+    case "track.aliexpress.com":
+      if (path !== "/logisticsdetail.htm") break;
+      else {
+        ret = aliExpressExtractor;
+        break;
+      }
+
+    case "order.ebay.com":
+      if (path !== "/ord/show") break;
+      else {
+        ret = ebayExtractor;
         break;
       }
 
