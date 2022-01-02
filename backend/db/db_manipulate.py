@@ -14,7 +14,10 @@ def init_con(mysql_param):
 def get_not_updated_cards(user_id):
     select_query = """SELECT OrderSerialCode, Bucket, CardId, OrderName
                       FROM Card
-                      WHERE CustomerId = %(user_id)s AND
+                      WHERE CustomerId = %(user_id)s    AND
+                            Bucket <> 'Arrived'         AND
+                            Bucket <> 'WishList'        AND
+                            OrderSerialCode IS NOT NULL AND
                             LastUpdated < DATE_SUB(NOW(), INTERVAL 1 HOUR)"""
     query_params_dict = {'user_id': user_id}
 
@@ -26,7 +29,7 @@ def get_not_updated_cards(user_id):
         cursor.execute(select_query, query_params_dict)
         db_con.commit()
     except SQLC.IntegrityError as err:
-        print(f'\n\n{get_not_updated_cards}\nerror = {err}')
+        print(f'\n\n{get_not_updated_cards}\nerror = {str(err)}')
     
     cards = []
     results = cursor.fetchall()
@@ -38,15 +41,11 @@ def get_not_updated_cards(user_id):
     return cards
 
 # return all the cards of user_id from the given bucket (or all the buckets if bucket wasn't supplied)
-def get_cards(user_id, bucket=None):
+def get_cards(user_id):
     select_query = """SELECT *
                       FROM Card
                       WHERE CustomerId = %(user_id)s """
     query_params_dict = {'user_id': user_id}
-
-    if bucket != None:
-        select_query += ' AND Bucket = %(bucket)s'
-        query_params_dict['bucket'] = bucket
     
     print(f'\n\nDB get_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
     
@@ -57,7 +56,7 @@ def get_cards(user_id, bucket=None):
         db_con.commit()
     except SQLC.IntegrityError as err:
         print(f'\n\n{get_cards}\nerror = {err}')
-        return {'response': f'ERROR: failed to get records: {err}'}
+        return {'response': f'ERROR: failed to get records: {str(err)}'}
 
     results = cursor.fetchall()
     cards = []
@@ -66,7 +65,7 @@ def get_cards(user_id, bucket=None):
                       'company': res[10],
                       'estimated_arrival_date': res[8],
                       'order_url': res[2],
-                      'price': str(res[5]),
+                      'price': ('%f' % res[5]).rstrip('0').rstrip('.') if res[5] != None else None,
                       'currency': res[6],
                       'order_date': res[7],
                       'order_serial_code': res[1],
@@ -167,16 +166,18 @@ def insert(table_name, data):
         db_con.commit()
     except SQLC.IntegrityError as err:
         print(f'\n\n{caller}\nerror = {err}', flush=True)
-        return {'response': f'ERROR: failed to insert records: {err}'}
+        return {'response': f'ERROR: failed to insert records: {str(err)}'}
 
     print(f'\n\ninsert | caller = {caller} | table name = {table_name}\nSuccesful insert! {cursor.rowcount} rows were affacted', flush=True)
-    return {'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount)}
+    bucket = data['timeline_position'] if 'timeline_position' in data else None
+    return {'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount),
+            'timeline_position': f'{bucket}'}
 
 
 # add foreign keys to parents' tables if needed
 def update_foreign_keys(data, user_info):
     
-    if 'company' in data and not is_in_company(data['company']):
+    if 'company' in data and data['company'] != '' and not is_in_company(data['company']):
         insert('Company', data)
 
     user_id = user_info['sub']
@@ -197,16 +198,16 @@ def update_card(data):
     query_params_dict = {}
     is_first = True
     for (db_format, fe_format) in db_to_fe_dict['Card'].items():
-        if fe_format in data and data[fe_format] != '':
+        if fe_format != 'card_id' and fe_format in data and data[fe_format] != '':
             if not is_first:
                 update_query += ', '
             update_query += f'{db_format} = %({fe_format})s'
             query_params_dict[fe_format] = data[fe_format]
             is_first = False
 
-    update_query += ' WHERE CardId = %(card_id)s AND OrderName = %(order_name)s'
+    update_query += ' WHERE CardId = %(card_id)s AND OrderName = %(old_order_name)s'
     query_params_dict['card_id'] = data['card_id']
-    query_params_dict['order_name'] = data['order_name']
+    query_params_dict['old_order_name'] = data['old_order_name']
     print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}', flush=True)
 
     db_con = mysql.get_db()
@@ -216,7 +217,7 @@ def update_card(data):
         db_con.commit()
 
     except SQLC.IntegrityError as err:
-        return {'response': f'ERROR: failed to update records: {err}'}
+        return {'response': f'ERROR: failed to update records: {str(err)}'}
     return {'response': 'Succesful update! {} rows were affacted'.format(cursor.rowcount)}
 
 
@@ -237,5 +238,5 @@ def delete_card(card_id, order_name):
         db_con.commit()
 
     except SQLC.IntegrityError as err:
-        return {'response': f'ERROR: failed to delete records: {err}'}
+        return {'response': f'ERROR: failed to delete records: {str(err)}'}
     return {'response': 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)}

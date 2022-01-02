@@ -18,7 +18,7 @@ class TrackingApi:
             url = self.baseApi + "/" + self.apiVersion + "/trackings/sandbox/" + api_path
         else:
             url = self.baseApi + "/" + self.apiVersion + "/trackings/" + api_path
-        print("Request url: %s " % url)
+        print(f'\n\ndoRequest\nurl = {url}')
         headers = {"Content-Type": "application/json", "Tracking-Api-Key": self.apiKey,
                    'User-Agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) '
                                  'Chrome/24.0.1312.27 Safari/537.17'}
@@ -34,11 +34,12 @@ def get_tracking_details(tracking_package_number):
     tracker = TrackingApi(apiKey)
 
     # Get courier code
-    postData = {"tracking_number": tracking_package_number}
-    postData = json.dumps(postData)
+    postData = json.dumps({"tracking_number": tracking_package_number})
     courier = tracker.doRequest("detect", postData, "POST")
-    courier_json = json.loads(courier.decode('utf-8'))
-    courier_code = courier_json['data'][0]['courier_code']
+    courier_dict = json.loads(courier.decode('utf-8'))
+    # courier_dict['data'] is a list in which only the first element is relevant for us
+    courier_code = courier_dict['data'][0]['courier_code']
+    print(f'\n\nget_tracking_details\ncourier_code = {courier_code}')
 
     # Get realtime tracking results of a single tracking
     post_request = json.dumps({"tracking_number": tracking_package_number, "courier_code": courier_code})
@@ -49,15 +50,14 @@ def get_tracking_details(tracking_package_number):
 def getDeliveryStatus(serial_code):
     try:
         real_time_result = get_tracking_details(serial_code)
-    except urllib.error.HTTPError as e:
-        print(f'\n\ngetDeliveryStatus\n error = {e.__dict__}')
+    except Exception as err:
+        print(f'\n\ngetDeliveryStatus\n error = {str(err)}')
         return ERR
-    except urllib.error.URLError as e:
-        print(f'\n\ngetDeliveryStatus\n error = {e.__dict__}')
-        return ERR
-    if real_time_result['code'] != 200:
-        return ERR
-    if 'data' in real_time_result and 'delivery_status' in real_time_result['data']:
-            return real_time_result['data']['delivery_status']
+
+    if (real_time_result['code'] == 200 and
+        'data' in real_time_result and 'delivery_status' in real_time_result['data']):
+            delivery_status = real_time_result['data']['delivery_status']
+            print(f'\n\ngetDeliveryStatus\ndelivery_status = {delivery_status}')
+            return delivery_status
     
     return ERR

@@ -12,3 +12,4 @@ web_app_client_id = os.getenv('REACT_APP_TRACKEET_GOOGLE_AUTH_CLIENT_ID')
 chrome_ext_client_id = os.getenv('TRACKEET_CHROME_EXTENSION_GOOGLE_AUTH_CLIENT_ID')
 
 ERR = -1
+SUCCESS = 0
