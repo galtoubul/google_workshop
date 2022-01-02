@@ -9,7 +9,24 @@ import * as React from "react";
 
 const NonDetailedForm = (props) => {
   const { api } = useUserInformationContext();
-  const { setFormInformation, formData } = props;
+  const { setFormInformation, formData, resetForm } = props;
+
+  const saveAction = async () => {
+    props.setIsSendLoading(true);
+    try {
+      await api.addCard(formData);
+      props.setIsSendFinish(true);
+      props.setIsSendError(false);
+      props.setIsSendLoading(false);
+      resetForm();
+    } catch (e) {
+      console.log(e);
+      props.setIsSendError(true);
+      props.setIsSendFinish(true);
+      props.setIsSendLoading(false);
+      resetForm();
+    }
+  };
 
   const {
     estimated_arrival_date,
@@ -26,11 +43,6 @@ const NonDetailedForm = (props) => {
     order_name,
     order_serial_code,
   });
-
-  const sendCard = () => {
-    console.log(api);
-    api.addCard(formData);
-  };
 
   const companies = [
     { title: "Amazon" },
@@ -70,7 +82,7 @@ const NonDetailedForm = (props) => {
       />
 
       <Button
-        onClick={sendCard}
+        onClick={saveAction}
         sx={{ margin: "2% 5%" }}
         variant="contained"
         size={"small"}
