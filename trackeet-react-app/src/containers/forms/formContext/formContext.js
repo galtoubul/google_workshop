@@ -25,6 +25,12 @@ export const formInitialState = {
 
 const getSetInputValueCallback = (dispatch) => (key) => {
   return (input) => {
+    if (key === "orderDate" && input == "") {
+      const newInput = {};
+      newInput[key] = null;
+      dispatch({ type: "ADD_INPUT_VALUE", payload: newInput });
+    }
+
     const newInput = {};
     newInput[key] = input;
     dispatch({ type: "ADD_INPUT_VALUE", payload: newInput });

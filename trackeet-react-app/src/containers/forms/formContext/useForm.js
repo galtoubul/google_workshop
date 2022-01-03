@@ -14,6 +14,10 @@ export const useForm = () => {
       return;
     }
 
+    card.currencyAmount = card.currencyAmount
+      ? Number(parseFloat(card.currencyAmount).toFixed(3))
+      : "";
+
     setIsCheckFormFailed(false);
 
     state.isNewForm ? addCard(card) : updateCard(card, oldCard);

@@ -2,24 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1a9678-8cb4-4fa4-805c-c1d1f533e453" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/common/companyLogo/logo/fedEx.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/common/companyLogo/logo/nikeLogo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/editableText.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/additionalOptions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/assets/styles/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/assets/styles/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/common/companyLogo/getLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/common/companyLogo/getLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/editableText.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/editableText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/cardButtons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/kanbanCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/kanbanCard/kanbanCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-chrome-extension/src/components/selectButton/SelectButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-chrome-extension/src/components/selectButton/SelectButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-chrome-extension/src/containers/mainpage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-chrome-extension/src/containers/mainpage/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-chrome-extension/src/containers/mainpage/scriptExecutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-chrome-extension/src/containers/mainpage/scriptExecutor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/MultilineInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/MultilineInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/TextInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/timeLine/TimeLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/timeLine/TimeLine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/data/getData.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/kanban/data/getData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/formContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/formContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/useForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/validateForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/formContext/validateForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/forms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/theme/ThemColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/theme/ThemColors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/Demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/extensionDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/extensionDemo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/mock.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/mock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +129,11 @@
       <workItem from="1640806287499" duration="1920000" />
       <workItem from="1640939953783" duration="23120000" />
       <workItem from="1641033926722" duration="9832000" />
-      <workItem from="1641045912210" duration="16426000" />
+      <workItem from="1641045912210" duration="16788000" />
+      <workItem from="1641145726068" duration="4927000" />
+      <workItem from="1641153946889" duration="707000" />
+      <workItem from="1641238120901" duration="5351000" />
+      <workItem from="1641243758761" duration="3955000" />
     </task>
     <servers />
   </component>

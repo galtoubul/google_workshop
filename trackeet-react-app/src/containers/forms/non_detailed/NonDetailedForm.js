@@ -48,12 +48,12 @@ const NonDetailedForm = (props) => {
       closeOnEsc={true}
       customStyles={{
         borderRadius: BOARDER_RADIUS,
+
         display: "flex",
         justifyContent: "center",
         backgroundColor: WHITE,
         background: `linear-gradient(0deg, ${WHITE} 82.79%, ${BLACK} 83%, ${WHITE} 83.1%)`,
       }}
-      className="non-detailed-form-container"
     >
       <div className={"form-container"}>
         <div className="non-detailed-form-header">
@@ -99,9 +99,7 @@ const NonDetailedForm = (props) => {
           />
           <DatePickerInput
             onChange={(newDate) =>
-              getSetInputValueCallback("estimatedArrivingDate")(
-                newDate.toLocaleDateString("en-US")
-              )
+              getSetInputValueCallback("estimatedArrivingDate")(newDate)
             }
             value={estimatedArrivingDate}
             label="Estimated Arriving Date"

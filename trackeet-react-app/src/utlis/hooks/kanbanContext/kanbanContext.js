@@ -29,7 +29,10 @@ export const KanbanProvider = (props) => {
   };
 
   const addCard = (card) => {
+    // eslint-disable-next-line no-debugger
+    debugger;
     card.id = uuid();
+    card.additionalPosition = card.position;
     const oldCard = { ...card };
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
@@ -40,14 +43,28 @@ export const KanbanProvider = (props) => {
       },
     });
 
-    api.addCard(card).catch((e) => {
-      ErrorAlert();
-      kanbanState.eventBus.publish({
-        type: "REMOVE_CARD",
-        laneId: oldCard.position,
-        cardId: oldCard.id,
+    api
+      .addCard(card)
+      .then((response) => {
+        kanbanState.eventBus.publish({
+          card: {
+            ...card,
+            additionalPosition:
+              (response.data && response.data.time_line_position) ||
+              card.additionalPosition,
+          },
+          type: "UPDATE_CARD",
+          laneId: card.position,
+        });
+      })
+      .catch((e) => {
+        ErrorAlert();
+        kanbanState.eventBus.publish({
+          type: "REMOVE_CARD",
+          laneId: oldCard.position,
+          cardId: oldCard.id,
+        });
       });
-    });
   };
 
   const handleCardDrag = (dragPosition, card) => {
@@ -62,7 +79,6 @@ export const KanbanProvider = (props) => {
     });
 
     api.deleteCard(card.id, card.orderName).catch((e) => {
-      console.log(e);
       ErrorAlert();
       kanbanState.eventBus.publish({
         type: "ADD_CARD",

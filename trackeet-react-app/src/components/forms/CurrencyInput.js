@@ -22,12 +22,16 @@ const CurrencyInput = (props) => {
         }
         value={currencyAmount}
         width="185px"
+        label={"Price"}
       />
 
       <Box sx={{ width: "115px" }}>
         <FormControl fullWidth>
-          <InputLabel fullWidth>Currency</InputLabel>
+          <InputLabel sx={{ zIndex: 500 }} fullWidth>
+            Currency
+          </InputLabel>
           <Select
+            sx={{ zIndex: 500 }}
             fullWidth
             value={currency}
             label="Currency"
