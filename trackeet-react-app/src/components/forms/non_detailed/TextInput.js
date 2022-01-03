@@ -5,7 +5,7 @@ const TextInput = (props) => {
   return (
     <TextField
       error={props.error}
-      sx={{ width: props.width ? props.width : FIELD_WIDTH }}
+      sx={{ width: props.width ? props.width : FIELD_WIDTH, zIndex: 500 }}
       label={props.label}
       value={props.value}
       onChange={props.onChange}

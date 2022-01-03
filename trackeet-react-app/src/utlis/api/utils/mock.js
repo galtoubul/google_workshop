@@ -6,9 +6,8 @@ export const initMock = () => {
   window.axiosMock = new MockAdapter(axios);
   // eslint-disable-next-line no-undef
   axiosMock.onPost("https://trackeet.co/api/getCards").reply((request) => {
-    console.log("fds;gjsfdl");
     switch (request.params.timeline_position) {
-      case "WishList":
+      case "Wishlist":
         return [
           200,
           {
@@ -24,7 +23,7 @@ export const initMock = () => {
                 order_serial_code: "3444234",
                 notes: "",
                 card_id: "1",
-                timeline_position: "WishList",
+                timeline_position: "Wishlist",
                 currency_amount: 120,
               },
             ],
@@ -60,7 +59,7 @@ export const initMock = () => {
                 order_serial_code: "3444234",
                 notes: "",
                 card_id: "13424",
-                timeline_position: "PickUp",
+                timeline_position: "Pick Up",
                 currency_amount: 120,
               },
               {
@@ -118,17 +117,14 @@ export const initMock = () => {
   });
   // eslint-disable-next-line no-undef
   axiosMock.onPost("http://trackeet.co/apiaddCard").reply((e) => {
-    console.log(e);
     return [200, {}];
   });
   // eslint-disable-next-line no-undef
   axiosMock.onPost("http://trackeet.co/api/deleteCard").reply((e) => {
-    console.log(e);
     return [200, {}];
   });
   // eslint-disable-next-line no-undef
   axiosMock.onPost("http://trackeet.co/api/updateCard").reply((e) => {
-    console.log(e);
     return [200, {}];
   });
 };

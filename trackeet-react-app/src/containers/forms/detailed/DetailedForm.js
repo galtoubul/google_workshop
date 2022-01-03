@@ -60,8 +60,8 @@ const DetailedForm = (props) => {
   ];
   return (
     <Rodal
-      height={710}
-      width={940}
+      height={630}
+      width={910}
       visible={isDetailedFormOpen}
       onClose={closeForm}
       closeOnEsc={true}
@@ -69,7 +69,7 @@ const DetailedForm = (props) => {
         borderRadius: BOARDER_RADIUS,
         display: "flex",
         flexDirection: "row",
-        background: `linear-gradient(90deg,${WHITE} 74%, ${GREY} 74%)`,
+        background: `linear-gradient(90deg,${WHITE} 76.5%, ${GREY} 76.5%)`,
       }}
     >
       <div className={"leftPartContainer"}></div>
@@ -117,18 +117,14 @@ const DetailedForm = (props) => {
 
             <DatePickerInput
               onChange={(newDate) =>
-                getSetInputValueCallback("estimatedArrivingDate")(
-                  newDate.toLocaleDateString("en-US")
-                )
+                getSetInputValueCallback("estimatedArrivingDate")(newDate)
               }
               label="Estimated Arriving Date"
               value={estimatedArrivingDate}
             />
             <DatePickerInput
               onChange={(newDate) =>
-                getSetInputValueCallback("orderDate")(
-                  newDate.toLocaleDateString("en-US")
-                )
+                getSetInputValueCallback("orderDate")(newDate)
               }
               label="Order Date"
               value={orderDate}
@@ -165,7 +161,7 @@ const DetailedForm = (props) => {
               onChange={(event) =>
                 getSetInputValueCallback("notes")(event.target.value)
               }
-              label="notes"
+              label="Notes"
               value={notes}
               width={"643px"}
             />

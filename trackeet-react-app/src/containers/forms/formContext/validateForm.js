@@ -12,6 +12,17 @@ export const validateForm = (card) => {
     notes,
     currencyAmount,
   } = card;
+  console.log(
+    validateOrderName(orderName) &&
+      validateUrl(url) &&
+      validateNormalText(orderNumber) &&
+      validateNormalText(company) &&
+      validateNormalText() &&
+      validateCurrencyAmount(currencyAmount) &&
+      validateNotes(notes) &&
+      validateDate(orderDate) &&
+      validateDate(estimatedArrivingDate)
+  );
 
   return (
     validateOrderName(orderName) &&
@@ -39,7 +50,6 @@ export const validateNormalText = (text) => {
 };
 
 export const validateCurrencyAmount = (currencyAmount) => {
-  console.log(currencyAmount);
   if (!currencyAmount) {
     return true;
   }
@@ -50,6 +60,8 @@ export const validateCurrencyAmount = (currencyAmount) => {
     return false;
   }
 
+  if (currencyAmount < 0) return false;
+
   if (number > 10 ** 30) {
     return false;
   }
@@ -58,6 +70,14 @@ export const validateCurrencyAmount = (currencyAmount) => {
 };
 
 export const validateDate = (date) => {
+  if (Object.prototype.toString.call(date) === "[object Date]") {
+    if (isNaN(date.getTime())) {
+      return false;
+    }
+
+    return true;
+  }
+
   return true;
 };
 

@@ -16,11 +16,7 @@ export const Forms = (props) => {
         closeForm={closeForm}
       />
 
-      <DetailedForm
-        closeModal={closeForm}
-        isModalOpen={isDetailedFormOpen}
-        addPosition={props.formPosition}
-      />
+      <DetailedForm closeModal={closeForm} isModalOpen={isDetailedFormOpen} />
     </>
   );
 };

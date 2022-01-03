@@ -8,15 +8,17 @@ import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import RedeemIcon from "@mui/icons-material/Redeem";
 import HomeIcon from "@mui/icons-material/Home";
 import BackpackIcon from "@mui/icons-material/Backpack";
+import { Tooltip } from "@mui/material";
 
 export const timeLineContent = [
   {
     icon: "LocalGroceryStoreIcon",
-    content: "WishList",
+    content: "Wishlist",
     isFirst: true,
     isLast: false,
     isChoose: false,
-    position: "WishList",
+    description: "Wishlist",
+    position: "Wishlist",
   },
   {
     icon: "BackpackIcon",
@@ -24,6 +26,7 @@ export const timeLineContent = [
     isFirst: false,
     isLast: false,
     isChoose: false,
+    description: "Paid",
     position: "On The Way",
   },
   {
@@ -32,6 +35,8 @@ export const timeLineContent = [
     isFirst: false,
     isLast: false,
     isChoose: false,
+    description:
+      "Courier has picked up the package from the shipper, the package is on the way to destination",
     position: "On The Way",
   },
   // {
@@ -44,10 +49,12 @@ export const timeLineContent = [
   // },
   {
     icon: "RedeemIcon",
-    content: "PickUp",
+    content: "Pick Up",
     isFirst: false,
     isLast: false,
     isChoose: false,
+    description:
+      "Courier is about to deliver the package, or the package is waiting for the addressee to pick up",
     position: "On The Way",
   },
   {
@@ -56,6 +63,7 @@ export const timeLineContent = [
     isFirst: false,
     isLast: true,
     isChoose: false,
+    description: "The package was delivered successfully",
     position: "Arrived",
   },
 ];
@@ -93,7 +101,9 @@ export const TimeLine = (props) => {
                 timeLineState.content === "Paid"),
           }}
         >
-          {getTimeLineIcon(timeLineState.icon)}
+          <Tooltip key={index} title={timeLineState.description}>
+            {getTimeLineIcon(timeLineState.icon)}
+          </Tooltip>
         </TimeLineItem>
       );
     });
@@ -104,8 +114,8 @@ export const TimeLine = (props) => {
       sx={{
         display: "flex",
         position: "absolute",
-        top: "40%",
-        left: "80.5%",
+        top: "42%",
+        left: "83.5%",
         transform: "translate(-50%, -50%)",
         width: "350px ",
       }}

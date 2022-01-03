@@ -27,9 +27,18 @@ export const initApi = (userInformation, isLoggedIn) => {
   };
 
   const getCards = async (cursor) => {
-    const onTheWayCards = await getCardsInFormat(http, cursor, "OnTheWay");
-    const arrivedCards = await getCardsInFormat(http, cursor, "Arrived");
-    const wishListCards = await getCardsInFormat(http, cursor, "WishList");
+    const cards = await getCardsInFormat(http, cursor);
+    const onTheWayCards = [...cards].filter((card) => {
+      return card.position === "On The Way";
+    });
+
+    const arrivedCards = [...cards].filter(
+      (card) => card.position === "Arrived"
+    );
+
+    const wishListCards = [...cards].filter(
+      (card) => card.position === "Wishlist"
+    );
 
     return { onTheWayCards, arrivedCards, wishListCards };
   };

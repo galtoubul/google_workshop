@@ -15,17 +15,18 @@ export const getKanbanInitialState = (
   onTheWayCards,
   arrivedCards
 ) => {
+  console.log(wishListCards);
   return {
     boardData: {
       lanes: [
         {
-          cards: wishListCards.cards,
-          id: "WishList",
+          cards: wishListCards,
+          id: "Wishlist",
           style: getBoardStyle(isLoggedIn),
-          title: "WishList",
+          title: "Wishlist",
         },
         {
-          cards: onTheWayCards.cards,
+          cards: onTheWayCards,
           currentPage: 1,
           id: "On The Way",
 
@@ -33,7 +34,7 @@ export const getKanbanInitialState = (
           title: "On The Way",
         },
         {
-          cards: arrivedCards.cards,
+          cards: arrivedCards,
           currentPage: 1,
           id: "Arrived",
           style: getBoardStyle(isLoggedIn),

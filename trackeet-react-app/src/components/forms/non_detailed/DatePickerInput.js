@@ -9,11 +9,16 @@ const DatePickerInput = (props) => {
   return (
     <Box>
       <DatePicker
+        disableFuture={props.disableFuture}
+        openTo="year"
+        inputFormat={"dd/MM/yyyy"}
         label={label}
         value={value}
-        onChange={onChange}
+        onChange={(newDate, y) => {
+          onChange(newDate);
+        }}
         renderInput={(params) => (
-          <TextField sx={{ width: FIELD_WIDTH }} {...params} />
+          <TextField sx={{ width: FIELD_WIDTH, zIndex: 500 }} {...params} />
         )}
       />
     </Box>
