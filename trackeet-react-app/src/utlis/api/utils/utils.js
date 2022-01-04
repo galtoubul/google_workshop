@@ -12,7 +12,7 @@ const getCardPositionFrontFormat = (timeline_position) => {
   }
 };
 
-const getAdditionalPosition = (card) => {
+export const getAdditionalPosition = (card) => {
   switch (card.timeline_position) {
     case "OnTheWay":
       return "On The Way";

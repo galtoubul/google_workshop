@@ -11,6 +11,7 @@ import { useUserInformationContext } from "../../utlis/hooks/userInformationCont
 
 export const LoginPage = (props) => {
   document.body.style.overflow = "hidden";
+
   const { isLoggInModalOpen, openLogInModal, closeLogInModal } =
     useUserInformationContext();
 
