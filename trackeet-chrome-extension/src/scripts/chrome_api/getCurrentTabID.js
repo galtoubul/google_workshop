@@ -2,7 +2,7 @@
 /* eslint-disable no-var */
 /* eslint-disable vars-on-top */
 
-const getTabID = () => {
+const getCurrentTabID = () => {
   return new Promise((resolve) => {
     // eslint-disable-next-line no-undef,no-unused-vars
     var tabID;
@@ -14,4 +14,4 @@ const getTabID = () => {
   });
 };
 
-export default getTabID;
+export default getCurrentTabID;
