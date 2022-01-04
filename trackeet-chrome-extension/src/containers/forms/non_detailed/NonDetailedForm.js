@@ -58,16 +58,16 @@ const NonDetailedForm = (props) => {
         setValue={setFormInformation("order_status")}
       />
       <AutocompleteInput
-        label="Company"
-        autocompleteList={companies}
-        value={company}
-        setValue={setFormInformation("company")}
-      />
-      <AutocompleteInput
         label="Order Name"
         autocompleteList={[]}
         value={order_name}
         setValue={setFormInformation("order_name")}
+      />
+      <AutocompleteInput
+        label="Company"
+        autocompleteList={companies}
+        value={company}
+        setValue={setFormInformation("company")}
       />
       <AutocompleteInput
         label="Order Serial Code"

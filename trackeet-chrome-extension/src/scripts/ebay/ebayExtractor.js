@@ -46,7 +46,6 @@ const ebayExtractor = async () => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < arr.length; i++) {
     console.log("Hi2");
-
     console.log(arr[i].innerText);
     if (arr[i].innerText === "Order number") {
       // eslint-disable-next-line prefer-destructuring
@@ -58,11 +57,10 @@ const ebayExtractor = async () => {
   card.order_name = `Ebay: ${order_number}`;
   card.company = "Ebay";
   //*************order_date*************
-  card.order_date = undefined; //OK????
+  card.order_date = null;
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < arr.length; i++) {
     console.log("Hi3");
-
     console.log(arr[i].innerText);
     if (arr[i].innerText === "Time placed") {
       // eslint-disable-next-line prefer-destructuring

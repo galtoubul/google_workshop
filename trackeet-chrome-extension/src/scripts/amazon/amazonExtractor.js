@@ -63,8 +63,9 @@ const amazonExtractor = async () => {
       card.estimated_arrival_date.getFullYear() + 1
     );
   //Rest
-  text = data[3].outerText.split(":")[1].trim();
-  card.order_price = text.substring(1, text.length);
+  text = data[3].innerText.split(":")[1].trim();
+  regex = /\d+\.?\d*/;
+  card.order_price = text.substring(text.search(regex), text.length);
   // eslint-disable-next-line prefer-destructuring
   card.currency = text[0];
   console.log(card);

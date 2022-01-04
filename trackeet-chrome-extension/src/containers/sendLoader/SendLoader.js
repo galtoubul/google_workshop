@@ -66,9 +66,7 @@ export default function SendLoader({
             sx={{ display: "flex", justifyContent: "center", margin: "2% 5%" }}
           >
             <Typography>
-              {isError
-                ? "Failed to create a new tracking card"
-                : "Your tracking card was saved"}
+              {isError ? "Failed to save your order" : "Your order was saved"}
             </Typography>
           </Box>
           <Box
