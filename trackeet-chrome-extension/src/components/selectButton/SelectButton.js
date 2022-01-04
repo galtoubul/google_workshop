@@ -3,18 +3,25 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import * as React from "react";
-import { ADD_NEW_ORDER } from "../../containers/mainpage/MainPage";
+import { TextField } from "@mui/material";
+//import TextField from "@mui/material/TextField";
+//import Autocomplete from "@mui/material/Autocomplete";
 
 export const SelectButton = (props) => {
   return (
     <FormControl sx={{ margin: "2% 5%" }}>
-      <InputLabel>{ADD_NEW_ORDER}</InputLabel>
+      <InputLabel id="order-status-select-label">Order Status</InputLabel>
       <Select
-        value={props.addCardPosition}
-        label={ADD_NEW_ORDER}
-        onChange={(t) => props.openForm(t.target.value)}
+        labelId="order-status-select-label"
+        label="Order Status"
+        //defaultValue={props.value}
+        value={props.value}
+        onChange={(event) => {
+          props.setValue(event.target.value);
+          //props.addInformation(event.target.value);
+        }}
+        renderInput={(params) => <TextField {...params} label={props.label} />}
       >
-        <MenuItem value={ADD_NEW_ORDER}>Add new order</MenuItem>
         <MenuItem value={"WishList"}>WishList</MenuItem>
         <MenuItem value={"On The Way"}>On The Way</MenuItem>
         <MenuItem value={"Arrived"}>Arrived</MenuItem>
