@@ -3,6 +3,7 @@ import { uuid } from "uuidv4";
 import { useUserInformationContext } from "../userInformationContext/userInformationContext";
 import { getKanbanInitialState } from "./utils";
 import { ErrorAlert } from "../../../components/forms/ErrorAlert";
+import { getAdditionalPosition } from "../../api/utils/utils";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
@@ -50,7 +51,8 @@ export const KanbanProvider = (props) => {
           card: {
             ...card,
             additionalPosition:
-              (response.data && response.data.time_line_position) ||
+              (response.data &&
+                getAdditionalPosition(response.data.timeline_position)) ||
               card.additionalPosition,
           },
           type: "UPDATE_CARD",
