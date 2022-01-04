@@ -23,16 +23,20 @@ def get_not_updated_cards(user_id):
 
     print(f'\n\nDB get_not_updated_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
 
-    db_con = mysql.get_db()
-    cursor = db_con.cursor()
+    
     try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
         cursor.execute(select_query, query_params_dict)
         db_con.commit()
-    except SQLC.IntegrityError as err:
+
+        results = cursor.fetchall()
+    except Exception as err:
         print(f'\n\n{get_not_updated_cards}\nerror = {str(err)}')
+        return []
     
     cards = []
-    results = cursor.fetchall()
     for res in results:
         cards.append({'order_serial_code': res[0],
                         'timeline_position': res[1],
@@ -49,16 +53,19 @@ def get_cards(user_id):
     
     print(f'\n\nDB get_cards\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
     
-    db_con = mysql.get_db()
-    cursor = db_con.cursor()
+    
     try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
         cursor.execute(select_query, query_params_dict)
         db_con.commit()
-    except SQLC.IntegrityError as err:
+
+        results = cursor.fetchall()
+    except Exception as err:
         print(f'\n\n{get_cards}\nerror = {err}')
         return {'response': f'ERROR: failed to get records: {str(err)}'}
 
-    results = cursor.fetchall()
     cards = []
     for res in results:
         cards.append({'order_name': res[3],
@@ -159,12 +166,13 @@ def insert(table_name, data):
 
     print(f'\n\ninsert | caller = {caller} | table name = {table_name}\ninsert_query = {insert_query}\nquery_params_dict = {insert_query_params_dict}', flush=True)
     
-    db_con = mysql.get_db()
-    cursor = db_con.cursor()
     try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
         cursor.execute(insert_query, insert_query_params_dict)
         db_con.commit()
-    except SQLC.IntegrityError as err:
+    except Exception as err:
         print(f'\n\n{caller}\nerror = {err}', flush=True)
         return {'response': f'ERROR: failed to insert records: {str(err)}'}
 
@@ -189,7 +197,7 @@ def add_card(data, user_info):
     update_foreign_keys(data, user_info)
     user_id = user_info['sub']
     data['user_id'] = user_id
-    insert('Card', data)
+    return insert('Card', data)
 
 
 def update_card(data):     
@@ -210,13 +218,13 @@ def update_card(data):
     query_params_dict['old_order_name'] = data['old_order_name']
     print(f'\n\nupdate_card\nupdate_query = {update_query}\n query_params_dict = {query_params_dict}', flush=True)
 
-    db_con = mysql.get_db()
-    cursor = db_con.cursor()
     try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
         cursor.execute(update_query, query_params_dict)
         db_con.commit()
-
-    except SQLC.IntegrityError as err:
+    except Exception as err:
         return {'response': f'ERROR: failed to update records: {str(err)}'}
     return {'response': 'Succesful update! {} rows were affacted'.format(cursor.rowcount)}
 
@@ -231,12 +239,12 @@ def delete_card(card_id, order_name):
     query_params_dict['order_name'] = order_name
     print(f'\n\ndelete_card\ndelete_query = {delete_query}\n query_params_dict = {query_params_dict}', flush=True)
 
-    db_con = mysql.get_db()
-    cursor = db_con.cursor()
     try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
         cursor.execute(delete_query, query_params_dict)
         db_con.commit()
-
-    except SQLC.IntegrityError as err:
+    except Exception as err:
         return {'response': f'ERROR: failed to delete records: {str(err)}'}
     return {'response': 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)}
