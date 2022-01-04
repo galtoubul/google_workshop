@@ -40,7 +40,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Card(
                   OrderSerialCode VARCHAR(255),
                   Url VARCHAR(2083),
                   OrderName VARCHAR(255),
-                  Bucket ENUM('WishList', 'OnTheWay', 'Arrived') DEFAULT 'WishList',
+                  Bucket ENUM('WishList', 'OnTheWay', 'Paid', 'Transit', 'PickUp', 'Arrived') DEFAULT 'WishList',
                   Price DECIMAL(33,3),
                   Currency ENUM('ILS', 'USD', 'EUR', 'GBP'),
                   OrderDate VARCHAR(12),
