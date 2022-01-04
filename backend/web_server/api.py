@@ -12,7 +12,7 @@ sys.path.append(os.path.abspath('../db'))
 import backend.db.db_manipulate as db
 sys.path.append(os.path.abspath('../')) 
 from config import web_app_client_id, ERR, SUCCESS, db_host, db_user, db_password, db_database
-from backend.web_server.auto_track import getDeliveryStatus
+from backend.web_server.tracking_more import getDeliveryStatus
 
 
 app = Flask(__name__)
@@ -97,7 +97,7 @@ def authenticate_user(data_dict):
                 'error': 'Couldn\'t authenticate user via Google',
                 'error_description': str(err),
                 'return_code': 403}
-
+    print(f'\n\nauthenticate_user\nuser_info_ret = {user_info_ret}')
     return {'status': SUCCESS, 'user_info': user_info_ret}
 
 

@@ -1,9 +1,10 @@
 import urllib.request
 import json
-from config import ERR
+from config import ERR, tracking_more_api_key
+
 
 class TrackingApi:
-    apiKey = "e87b5128-a872-49b3-aefb-f8dd17e37f96"
+    apiKey = tracking_more_api_key
     apiPath = "realtime?tracking_number=RS0393888296Y&courier_code=cainiao"
     baseApi = "https://api.trackingmore.com"
     apiVersion = "v3"
@@ -30,16 +31,21 @@ class TrackingApi:
 
 
 def get_tracking_details(tracking_package_number):
-    apiKey = "6fcb859c-1389-42af-8cc8-14109852e6cd"
+    apiKey = tracking_more_api_key
     tracker = TrackingApi(apiKey)
 
     # Get courier code
     postData = json.dumps({"tracking_number": tracking_package_number})
     courier = tracker.doRequest("detect", postData, "POST")
     courier_dict = json.loads(courier.decode('utf-8'))
+    print(f'\n\nget_tracking_details\ncourier_dict = {courier_dict}')
+
+    if courier_dict['code'] != 200:
+        return courier_dict
+
     # courier_dict['data'] is a list in which only the first element is relevant for us
     courier_code = courier_dict['data'][0]['courier_code']
-    print(f'\n\nget_tracking_details\ncourier_code = {courier_code}')
+    print(f'courier_code = {courier_code}')
 
     # Get realtime tracking results of a single tracking
     post_request = json.dumps({"tracking_number": tracking_package_number, "courier_code": courier_code})
@@ -56,8 +62,9 @@ def getDeliveryStatus(serial_code):
 
     if (real_time_result['code'] == 200 and
         'data' in real_time_result and 'delivery_status' in real_time_result['data']):
+            print(f'\n\nget_tracking_details\nreal_time_result = {real_time_result}')
             delivery_status = real_time_result['data']['delivery_status']
-            print(f'\n\ngetDeliveryStatus\ndelivery_status = {delivery_status}')
+            print(f'delivery_status = {delivery_status}')
             return delivery_status
     
     return ERR
