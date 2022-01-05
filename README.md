@@ -21,3 +21,19 @@ Effortlessly track, organize and know exactly when your international orders wil
 
 # Architecture
 ![image](https://user-images.githubusercontent.com/58177619/148173039-2762acf6-1d1b-4027-97a5-754f590f5b4f.png)
+
+All our resources are hosted on Google Cloud.
+
+Front-End
+In the view layer we are using React components.
+For communicating with clients and our BE API we use Axios.
+We expose our web app is by using NGINX.
+
+Back-End
+We used Flask as a (micro) web framework.
+We expose Flask api to our FE by using Gunicorn as a HTTP server and NGINX as reverse proxy.
+
+Information Security
+We used Cloudflare free service for creating a SSL/TLS certificate.
+We used Google Oauth 2.0 our frontend to enable users to sign in with google.
+We also used Google Oauth 2.0 in our backend to authenticate the calls the backend gets from our frontend
