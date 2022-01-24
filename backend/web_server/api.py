@@ -157,9 +157,9 @@ def retrieve_cards():
     not_updated_cards = db.get_not_updated_cards(user_id)
     update_cards_if_needed(not_updated_cards)
 
-    cards = db.get_cards(user_id)
+    cards, rc = db.get_cards(user_id)
     print(f'\n\ncards = {cards}', flush=True)
-    return get_response(cards)
+    return get_response(cards, rc)
 
 
 @app.route('/api/addCard', methods=['POST'])
@@ -183,8 +183,8 @@ def add_card():
         if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
             data_dict['timeline_position'] = track_api_to_bucket[curr_bucket]
 
-    res = db.add_card(data_dict, authenticate_user_ret['user_info'])
-    return get_response(res)
+    res, rc = db.add_card(data_dict, authenticate_user_ret['user_info'])
+    return get_response(res, rc)
 
 
 @app.route('/api/updateCard', methods=['POST'])
@@ -204,9 +204,9 @@ def update_card():
         return create_err(authenticate_user_ret)
 
     data_dict['user_id'] = authenticate_user_ret['user_info']['sub']
-    res = db.update_card(data_dict)
+    res, rc = db.update_card(data_dict)
 
-    resp = get_response(res)
+    resp = get_response(res, rc)
     resp.headers["Accept-Post"] = "*/*"
     resp.headers["Accept"] = "*/*"
 
@@ -228,5 +228,5 @@ def delete_card():
     if authenticate_user_ret['status'] == ERR:
         return create_err(authenticate_user_ret)
 
-    res = db.delete_card(data_dict['card_id'], data_dict['order_name'])
-    return get_response(res)
+    res, rc = db.delete_card(data_dict['card_id'], data_dict['order_name'])
+    return get_response(res, rc)

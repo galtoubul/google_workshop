@@ -1,6 +1,9 @@
 import urllib.request
 import json
 from config import ERR, tracking_more_api_key
+import datetime
+
+timeout = 16
 
 
 class TrackingApi:
@@ -25,7 +28,11 @@ class TrackingApi:
                                  'Chrome/24.0.1312.27 Safari/537.17'}
         post_data = post_data.encode('UTF-8')
         req = urllib.request.Request(url, post_data, headers=headers, method=method)
-        with urllib.request.urlopen(req) as response:
+        start = datetime.datetime.now()
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            end = datetime.datetime.now()
+            delta = end - start
+            print(f'\n\ntime to repsonse = {delta.seconds}')
             print(response.getcode())
             return response.read()
 
