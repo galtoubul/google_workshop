@@ -3,11 +3,13 @@ import TextField from "@mui/material/TextField";
 const MultilineInput = (props) => {
   return (
     <TextField
+      onChange={props.onChange}
+      value={props.value}
       id="outlined-multiline-static"
       label={props.label}
       multiline
-      rows={6}
-      sx={{ width: "100%" }}
+      rows={5}
+      sx={{ width: props.width ? props.width : "100%" }}
     />
   );
 };

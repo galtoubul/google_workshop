@@ -17,10 +17,10 @@ export const getData = (cards) => {
   return {
     lanes: [
       {
-        cards: getFormatCards(cards, "WishList"),
-        id: "WishList",
+        cards: getFormatCards(cards, "Wishlist"),
+        id: "Wishlist",
         style: boardStyle,
-        title: "WishList",
+        title: "Wishlist",
       },
       {
         cards: getFormatCards(cards, "On The Way"),

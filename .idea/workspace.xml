@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bb1a9678-8cb4-4fa4-805c-c1d1f533e453" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/assets/colors/colorsPalette.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/assets/colors/colorsPalette.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.css" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/CurrencyInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/AutocompleteInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/AutocompleteInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/DatePickerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/DatePickerInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/components/forms/non_detailed/TextInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/forms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/utils/Demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/containers/logInPage/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/api/utils/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/trackeet-react-app/src/utlis/hooks/kanbanContext/kanbanContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +41,13 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/trackeet-react-app/src/containers/forms/non_detailed/NonDetailedForm.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/trackeet-react-app/src/components/forms/MultilineInput.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/trackeet-react-app/src/components/forms/editableText.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/trackeet-react-app/src/containers/forms/detailed/DetailedForm.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="20Y0Jl8C7iEM4LmQIIzp6fbS89c" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -68,11 +63,12 @@
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_interpreter_path" value="$PROJECT_DIR$/../.nvm/versions/node/v17.0.1/bin/node" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v17.0.1/bin/node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/trackeet-react-app/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReaderModeSettings">
@@ -112,11 +108,34 @@
       <workItem from="1640592489186" duration="17486000" />
       <workItem from="1640679659287" duration="247000" />
       <workItem from="1640768839364" duration="17487000" />
+      <workItem from="1640806287499" duration="1920000" />
+      <workItem from="1640939953783" duration="23120000" />
+      <workItem from="1641033926722" duration="9832000" />
+      <workItem from="1641045912210" duration="16788000" />
+      <workItem from="1641145726068" duration="4927000" />
+      <workItem from="1641153946889" duration="707000" />
+      <workItem from="1641238120901" duration="5351000" />
+      <workItem from="1641243758761" duration="4800000" />
+      <workItem from="1641282654321" duration="1213000" />
+      <workItem from="1641286271261" duration="894000" />
+      <workItem from="1641311731342" duration="1129000" />
     </task>
+    <task id="LOCAL-00001" summary="Changes">
+      <created>1641248371112</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641248371112</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

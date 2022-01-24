@@ -29,7 +29,7 @@ export const ExtensionDemo = (props) => {
         <ReactPlayer
           loop={true}
           playing={props.isPlay}
-          url="https://video.wixstatic.com/video/af2570_49defd13db7a4f558b905b83dc9e0d50/1080p/mp4/file.mp4"
+          url="https://video.wixstatic.com/video/ba4f98_b5d9c8f0dd1b493886fbae880e54c479/1080p/mp4/file.mp4"
           className="react-player"
           width="90%"
           height="90%"

@@ -14,14 +14,23 @@ export const formInitialState = {
     position: "",
     id: "",
     currencyAmount: "",
+    additionalPosition: "",
   },
   isNonDetailedFormOpen: false,
   isDetailedFormOpen: false,
-  isNewForm: false,
+  isNewForm: null,
+  isCheckFormFailed: false,
+  oldCard: null,
 };
 
 const getSetInputValueCallback = (dispatch) => (key) => {
   return (input) => {
+    if (key === "orderDate" && input == "") {
+      const newInput = {};
+      newInput[key] = null;
+      dispatch({ type: "ADD_INPUT_VALUE", payload: newInput });
+    }
+
     const newInput = {};
     newInput[key] = input;
     dispatch({ type: "ADD_INPUT_VALUE", payload: newInput });
@@ -58,6 +67,18 @@ const setIsNewForm = (dispatch) => {
   };
 };
 
+const setIsCheckFormFailed = (dispatch) => {
+  return (isCheckFormFailed) => {
+    dispatch({ type: "SET_IS_CHECK_FORM_FAILED", payload: isCheckFormFailed });
+  };
+};
+
+const setOldCard = (dispatch) => {
+  return (oldCard) => {
+    dispatch({ type: "SET_OLD_CARD", payload: oldCard });
+  };
+};
+
 const Actions = {
   getSetInputValueCallback,
   openNonDetailedForm,
@@ -65,6 +86,8 @@ const Actions = {
   closeForm,
   loadForm,
   setIsNewForm,
+  setIsCheckFormFailed,
+  setOldCard,
 };
 
 export const { Context: FormContext, Provider: FormProvider } = CreateContext(

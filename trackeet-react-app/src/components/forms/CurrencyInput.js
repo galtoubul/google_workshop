@@ -9,25 +9,30 @@ import "./CurrencyInput.css";
 import { useContext } from "react";
 import { FormContext } from "../../containers/forms/formContext/formContext";
 
-const CurrencyInput = () => {
+const CurrencyInput = (props) => {
   const { getSetInputValueCallback, state } = useContext(FormContext);
   const { currency, currencyAmount } = state.card;
 
   return (
-    <Box className="input-fields-container">
+    <div className="input-fields-container">
       <TextInput
+        error={props.error}
         onChange={(event) =>
           getSetInputValueCallback("currencyAmount")(event.target.value)
         }
         value={currencyAmount}
-        sx={{ width: "80%" }}
+        width="185px"
+        label={"Price"}
       />
-      <Box sx={{ width: "20%" }}>
-        <FormControl sx={{ width: "100%" }}>
-          <InputLabel id="select-label">Currency</InputLabel>
+
+      <Box sx={{ width: "115px" }}>
+        <FormControl fullWidth>
+          <InputLabel sx={{ zIndex: 500 }} fullWidth>
+            Currency
+          </InputLabel>
           <Select
-            labelId="label"
-            id="select"
+            sx={{ zIndex: 500 }}
+            fullWidth
             value={currency}
             label="Currency"
             onChange={(event) =>
@@ -40,7 +45,7 @@ const CurrencyInput = () => {
           </Select>
         </FormControl>
       </Box>
-    </Box>
+    </div>
   );
 };
 

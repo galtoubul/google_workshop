@@ -74,7 +74,7 @@ export const Kanban = (props) => {
 
   return (
     <Box
-      sx={{ marginTop: isLoggedIn ? "67.89px" : "0px" }}
+      sx={{ height: "100%", marginTop: isLoggedIn ? "67.89px" : "0px" }}
       className={"kanbanContainer"}
     >
       <RealtimeBoard

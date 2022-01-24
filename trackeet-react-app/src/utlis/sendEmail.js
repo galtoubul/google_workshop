@@ -1,12 +1,19 @@
-import { init } from "emailjs-com";
+import emailjs, { init } from "emailjs-com";
 
-init("user_MJh57N5VBWTHgTCow2fSV");
-const sendEmail = (firstName, lastName, email, message) => {
-  e.preventDefault(); // Prevents default refresh by the browser
-  emailjs.sendForm(
-    `gmail`,
-    apiKey.TEMPLATE_ID,
-    e.target,
-    "user_MJh57N5VBWTHgTCow2fSV"
-  );
+const SERVICE_ID = "user_MJh57N5VBWTHgTCow2fSV";
+const TEMPLATE_ID = "template_doktnrk";
+
+init(SERVICE_ID);
+
+export const sendEmail = async ({ firstName, lastName, email, message }) => {
+  return emailjs
+    .send("service_khiqfqu", TEMPLATE_ID, {
+      firstName,
+      lastName,
+      message,
+      email,
+      from_name: "trackeet contact us form",
+    })
+    .then(() => true)
+    .catch(() => false);
 };

@@ -1,13 +1,26 @@
 import { useKanbanContext } from "../../../utlis/hooks/kanbanContext/kanbanContext";
 import { FormContext } from "../formContext/formContext";
 import { useContext } from "react";
+import { validateForm } from "./validateForm";
 
 export const useForm = () => {
   const { addCard, updateCard } = useKanbanContext();
-  const { closeForm, state } = useContext(FormContext);
+  const { closeForm, state, setIsCheckFormFailed } = useContext(FormContext);
+  const { oldCard } = state;
 
   const saveCard = (card) => {
-    state.isNewForm ? addCard(card) : updateCard(card);
+    if (!validateForm(card)) {
+      setIsCheckFormFailed(true);
+      return;
+    }
+
+    card.currencyAmount = card.currencyAmount
+      ? Number(parseFloat(card.currencyAmount).toFixed(3))
+      : "";
+
+    setIsCheckFormFailed(false);
+
+    state.isNewForm ? addCard(card) : updateCard(card, oldCard);
     closeForm();
   };
 

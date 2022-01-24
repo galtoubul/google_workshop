@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
-import { Chip, IconButton, Tooltip } from "@mui/material";
-import { AiOutlineArrowsAlt } from "react-icons/ai";
+import { Chip, Tooltip } from "@mui/material";
 import { React, useContext } from "react";
 import { FormContext } from "../../../containers/forms/formContext/formContext";
 import { useUserInformationContext } from "../../../utlis/hooks/userInformationContext/userInformationContext";
@@ -12,6 +11,7 @@ import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import RedeemIcon from "@mui/icons-material/Redeem";
 import HomeIcon from "@mui/icons-material/Home";
 import BackpackIcon from "@mui/icons-material/Backpack";
+import { AdditionalOptions } from "./additionalOptions";
 
 const style = {
   height: "50px",
@@ -45,38 +45,46 @@ export const CardButtons = (props) => {
 
   const { isLoggedIn } = useUserInformationContext();
 
+  const onOpenDetailedForm = () => {
+    if (isLoggedIn) {
+      loadForm(props.card);
+      openDetailedForm();
+      setIsNewForm(false);
+    }
+  };
+
   const getIcon = (position) => {
+    if (position === "On The Way") {
+      return <BackpackIcon sx={style} />;
+    }
+
     const timeLineContent1 = timeLineContent.filter((timelineItem) => {
-      return timelineItem.position === position;
+      return timelineItem.content === position;
     });
+
     return getTimeLineIcon(timeLineContent1[0].icon);
   };
 
   return (
     <>
       <Box>
-        <Tooltip title={props.card.position}>
+        <Tooltip title={props.card.additionalPosition}>
           <Chip
-            sx={{ fontWeight: "0.1px" }}
-            icon={getIcon(props.card.position)}
-            label={props.card.position}
+            className={`fontSize${isLoggedIn ? "17" : "15"}`}
+            sx={{ fontWeight: "0.1px", fontSize: "200px" }}
+            icon={getIcon(props.card.additionalPosition)}
+            label={props.card.additionalPosition}
             variant="outlined"
             size={"small"}
             color={"primary"}
           />
         </Tooltip>
       </Box>
-      <IconButton
-        onClick={() => {
-          if (isLoggedIn) {
-            loadForm(props.card);
-            openDetailedForm();
-            setIsNewForm(false);
-          }
-        }}
-      >
-        <AiOutlineArrowsAlt />
-      </IconButton>
+
+      <AdditionalOptions
+        card={props.card}
+        openDetailedForm={onOpenDetailedForm}
+      />
     </>
   );
 };

@@ -25,6 +25,7 @@
     "puppeteer": "^13.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-button": "^0.7.2",
     "react-i18next": "^11.13.0",
     "react-icons": "^4.3.1",
     "react-scripts": "4.0.3",
@@ -75,6 +76,7 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.163",
+    "axios": "^0.24.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-pretty-strict": "8.1.1",
@@ -84,6 +86,8 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "parcel": "^1.12.3",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "react-google-login": "^5.2.2",
+    "uuidv4": "^6.2.12"
   }
 }

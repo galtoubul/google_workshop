@@ -6,12 +6,23 @@
     width: 150px;
 
 }
-.logoContainer {
+.headerContainer {
     padding: 4px;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
+}
+.logo{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.buttonsContainer{
+    display: flex;
+    justify-content: right;
 }
 
 .ToolBar {

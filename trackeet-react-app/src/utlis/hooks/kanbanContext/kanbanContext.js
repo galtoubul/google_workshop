@@ -3,6 +3,7 @@ import { uuid } from "uuidv4";
 import { useUserInformationContext } from "../userInformationContext/userInformationContext";
 import { getKanbanInitialState } from "./utils";
 import { ErrorAlert } from "../../../components/forms/ErrorAlert";
+import { getAdditionalPosition } from "../../api/utils/utils";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
@@ -23,34 +24,53 @@ export const KanbanProvider = (props) => {
   };
 
   const getNewCard = (card, dragPosition) => {
-    return dragPosition ? { ...card, position: dragPosition } : card;
+    return dragPosition
+      ? { ...card, position: dragPosition, additionalPosition: dragPosition }
+      : card;
   };
 
   const addCard = (card) => {
-    console.log(card);
+    // eslint-disable-next-line no-debugger
+    debugger;
     card.id = uuid();
-    console.log(card);
-    // const oldCard = { ...card };
+    card.additionalPosition = card.position;
+    const oldCard = { ...card };
     kanbanState.eventBus.publish({
       type: "ADD_CARD",
       laneId: card.position,
       card: {
         ...card,
+        additionalPosition: card.position,
       },
     });
 
-    // api.addCard(card).catch((e) => {
-    //   ErrorAlert();
-    //   kanbanState.eventBus.publish({
-    //     type: "REMOVE_CARD",
-    //     laneId: oldCard.position,
-    //     cardId: oldCard.id,
-    //   });
-    // });
+    api
+      .addCard(card)
+      .then((response) => {
+        kanbanState.eventBus.publish({
+          card: {
+            ...card,
+            additionalPosition:
+              (response.data &&
+                getAdditionalPosition(response.data.timeline_position)) ||
+              card.additionalPosition,
+          },
+          type: "UPDATE_CARD",
+          laneId: card.position,
+        });
+      })
+      .catch((e) => {
+        ErrorAlert();
+        kanbanState.eventBus.publish({
+          type: "REMOVE_CARD",
+          laneId: oldCard.position,
+          cardId: oldCard.id,
+        });
+      });
   };
 
   const handleCardDrag = (dragPosition, card) => {
-    updateCard(card, dragPosition);
+    updateCard(card, card, dragPosition);
   };
 
   const deleteCard = (card) => {
@@ -59,39 +79,55 @@ export const KanbanProvider = (props) => {
       laneId: card.position,
       cardId: card.id,
     });
-    api.deleteCard(card.id);
+
+    api.deleteCard(card.id, card.orderName).catch((e) => {
+      ErrorAlert();
+      kanbanState.eventBus.publish({
+        type: "ADD_CARD",
+        laneId: card.position,
+        card: {
+          ...card,
+        },
+      });
+    });
   };
 
-  const updateCard = (card, dragPosition) => {
+  const updateCard = (card, oldCard, dragPosition) => {
     kanbanState.eventBus.publish({
       card: getNewCard(card, dragPosition),
       type: "UPDATE_CARD",
       laneId: card.position,
     });
 
-    api.updateCard({ ...card, position: dragPosition }).catch((e) => {
-      ErrorAlert();
-      if (dragPosition) {
-        kanbanState.eventBus.publish({
-          type: "REMOVE_CARD",
-          laneId: dragPosition,
-          cardId: card.id,
-        });
-        kanbanState.eventBus.publish({
-          type: "ADD_CARD",
-          laneId: card.position,
-          card: {
-            ...card,
-          },
-        });
-      } else {
-        kanbanState.eventBus.publish({
-          card,
-          type: "UPDATE_CARD",
-          laneId: card.position,
-        });
-      }
-    });
+    api
+      .updateCard({
+        ...card,
+        position: dragPosition,
+        oldOrderName: oldCard.orderName,
+      })
+      .catch((e) => {
+        ErrorAlert();
+        if (dragPosition) {
+          kanbanState.eventBus.publish({
+            type: "REMOVE_CARD",
+            laneId: dragPosition,
+            cardId: card.id,
+          });
+          kanbanState.eventBus.publish({
+            type: "ADD_CARD",
+            laneId: oldCard.position,
+            card: {
+              ...oldCard,
+            },
+          });
+        } else {
+          kanbanState.eventBus.publish({
+            card: oldCard,
+            type: "UPDATE_CARD",
+            laneId: oldCard.position,
+          });
+        }
+      });
   };
 
   return (

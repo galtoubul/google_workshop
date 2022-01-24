@@ -7,10 +7,20 @@
   color: #006d77;
 }
 .MuiChip-labelSmall{
-  font-size: 18px !important;
   line-height: 1.6em;
   vertical-align: baseline;
   letter-spacing: 0.01px;
   text-align: start;
   overflow-wrap: break-word;
+}
+.fontSize17{
+  .MuiChip-labelSmall {
+    font-size: 17px !important;
+  }
+}
+
+.fontSize15{
+  .MuiChip-labelSmall {
+    font-size: 15px !important;
+  }
 }

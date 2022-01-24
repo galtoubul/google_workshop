@@ -1,50 +1,92 @@
 import "./MainPage.css";
 import * as React from "react";
-import { SelectButton } from "../../components/selectButton/SelectButton";
-import Button from "@mui/material/Button";
-import { BiScan, BiLinkExternal } from "react-icons/bi";
 import NonDetailedForm from "../forms/non_detailed/NonDetailedForm";
-import { useState } from "react";
-import cardAutoCreator from "../../scripts/cardAutoCreator";
-
-export const ADD_NEW_ORDER = "Add new order";
+import { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import { CircularProgress } from "@mui/material";
+import { cardAutoCreator } from "../../scripts/cardAutoCreator";
+import SendLoader from "../sendLoader/SendLoader";
 
 export const MainPage = () => {
-  const [addCardPosition, setAddCardPosition] = useState(ADD_NEW_ORDER);
-
-  const openForm = (cardPosition) => {
-    setAddCardPosition(cardPosition);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSendLoading, setIsSendLoading] = useState(false);
+  const [isSendFinish, setIsSendFinish] = useState(false);
+  const [isSendError, setIsSendError] = useState(false);
+  const [formData, setFormData] = useState({
+    order_name: "",
+    url: "",
+    currency: "", // todo fix the currency enum with the server .,
+    company: "",
+    order_date: null,
+    estimated_arrival_date: null,
+    order_serial_code: "",
+    order_status: "",
+    order_price: "",
+  });
+  const setFormInformation = (field) => (fieldData) => {
+    const newFormData = {};
+    newFormData[field] = fieldData;
+    setFormData((oldState) => {
+      return { ...oldState, ...newFormData };
+    });
   };
 
-  const closeForm = (cardPosition) => {
-    setAddCardPosition(ADD_NEW_ORDER);
+  const resetForm = () => {
+    setFormData({
+      order_name: "",
+      url: "",
+      currency: "", // todo fix the currency enum with the server .,
+      company: "",
+      order_date: null,
+      estimated_arrival_date: null,
+      order_serial_code: "",
+      order_status: "",
+      order_price: "",
+    });
   };
+
+  useEffect(async () => {
+    let card = {};
+    try {
+      card = await cardAutoCreator();
+      console.log(card);
+      setFormData((oldCard) => {
+        return { ...oldCard, ...card, order_status: "On The Way" };
+      });
+      setIsLoading(false);
+    } catch (e) {
+      console.log(e);
+      setIsLoading(false);
+    }
+  }, []);
 
   return (
     <div className="pageContainer">
-      <SelectButton openForm={openForm} addCardPosition={addCardPosition} />
-      {addCardPosition !== ADD_NEW_ORDER && (
-        <NonDetailedForm closeForm={closeForm} />
+      {isLoading ? (
+        <>
+          <Box
+            sx={{ display: "flex", justifyContent: "center", margin: "2% 5%" }}
+          >
+            <CircularProgress value={0} />
+          </Box>
+        </>
+      ) : isSendLoading || isSendFinish ? (
+        <SendLoader
+          isFinish={isSendFinish}
+          loading={isSendLoading}
+          setIsFinish={setIsSendFinish}
+          isError={isSendError}
+        />
+      ) : (
+        <NonDetailedForm
+          setFormInformation={setFormInformation}
+          formData={formData}
+          resetForm={resetForm}
+          setIsSendLoading={setIsSendLoading}
+          setIsSendFinish={setIsSendFinish}
+          setIsSendError={setIsSendError}
+        />
       )}
-      <Button
-        variant="outlined"
-        sx={{ margin: "2% 5%", display: "flex", justifyContent: "center" }}
-        endIcon={<BiScan />}
-        onClick={async () => {
-          // eslint-disable-next-line no-var,vars-on-top
-          var x = await cardAutoCreator();
-          console.log(x);
-        }}
-      >
-        Scan
-      </Button>
-      <Button
-        variant="outlined"
-        sx={{ margin: "2% 5%", display: "flex", justifyContent: "center" }}
-        endIcon={<BiLinkExternal />}
-      >
-        Trackeet
-      </Button>
     </div>
   );
 };
