@@ -12,6 +12,7 @@ export default function SendLoader({
   isFinish,
   setIsFinish,
   isError,
+  showCleanButton,
 }) {
   // React.useEffect(() => {
   //   if (isFinish) {
@@ -90,6 +91,7 @@ export default function SendLoader({
               size="small"
               sx={{ margin: "2% 5%" }}
               onClick={() => {
+                showCleanButton(true);
                 setIsFinish(false);
               }}
             >

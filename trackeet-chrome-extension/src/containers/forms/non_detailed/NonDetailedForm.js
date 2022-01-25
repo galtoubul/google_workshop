@@ -13,6 +13,7 @@ const NonDetailedForm = (props) => {
 
   const saveAction = async () => {
     props.setIsSendLoading(true);
+    props.showCleanButton(false);
     try {
       await api.addCard(formData);
       props.setIsSendFinish(true);
@@ -35,14 +36,6 @@ const NonDetailedForm = (props) => {
     order_name,
     order_serial_code,
   } = formData;
-  console.log("shay!!!!!!!!");
-  console.log({
-    estimated_arrival_date,
-    order_status,
-    company,
-    order_name,
-    order_serial_code,
-  });
 
   const companies = [
     { title: "Amazon" },
@@ -80,7 +73,6 @@ const NonDetailedForm = (props) => {
         value={estimated_arrival_date}
         setValue={setFormInformation("estimated_arrival_date")}
       />
-
       <Button
         onClick={saveAction}
         sx={{ margin: "2% 5%" }}

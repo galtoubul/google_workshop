@@ -8,6 +8,21 @@ export const UserInformationProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [api, setApi] = useState({});
 
+  //My part
+  const [formData, setFormData] = useState({
+    order_name: "",
+    url: "",
+    currency: "", // todo fix the currency enum with the server .,
+    company: "",
+    order_date: null,
+    estimated_arrival_date: null,
+    order_serial_code: "",
+    order_status: "",
+    order_price: "",
+  });
+
+  const [cleanButton, showCleanButton] = useState(false);
+
   useEffect(() => {
     setApi(initApi(userInformation, getIsLoggedIn));
   }, [isLoggedIn]);
@@ -39,6 +54,10 @@ export const UserInformationProvider = (props) => {
         api,
         isLoggedIn,
         logIn,
+        formData,
+        setFormData,
+        cleanButton,
+        showCleanButton,
       }}
     >
       {props.children}
