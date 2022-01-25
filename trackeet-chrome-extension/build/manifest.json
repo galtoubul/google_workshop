@@ -8,7 +8,7 @@
   ],
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvuOR9miNbzSwrCpPVmQMz67eQCXAPVBs2UstKNc1ELrvUOS1/ACKpcA7sJBtjTdvB39/5Vj6bjtIcUCrg6dc84NW4HjIz/Dbemv1qAZeIUixBidd+s+KpwarcpgxWglTvdEAEddZy55EO5+aVHfIuq05c0K2MUToSR84l/WbXtYcpPKxX6XmKPig8KvHoyYiEZQyXAmIq0rwV3lZWM5FySO69rrx0kyMIx4+bUlGo1JW4+SVn+kjhrfLR4TcwNwM2xjLBZv1WNdY35yd/E2QxmCaeWjn+bguvnShVo0RX4Q8bMG/XZwsOz5FoBxL54XIe5K7PsJLgFErnhMgelVU7wIDAQAB",
   "oauth2": {
-    "client_id": "233763386465-jnm78fckv2ecbbfn0pr6nemjeb5it164.apps.googleusercontent.com",
+    "client_id": "118024983796-ma81u5vqau2f04j108cs09tan9lb4te7.apps.googleusercontent.com",
     "scopes": ["profile email"]
   },
   "host_permissions": ["<all_urls>","https://www.amazon.com/*"],
@@ -25,3 +25,4 @@
     "default_title": "Open Trackeet tool"
   }
 }
+

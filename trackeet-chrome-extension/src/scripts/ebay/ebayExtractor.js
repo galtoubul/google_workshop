@@ -24,18 +24,23 @@ const ebayExtractor = async () => {
     new Date(card.estimated_arrival_date).toLocaleDateString("en-US")
   );
   //*************order_serial_code*************
-  let arr = doc
-    .getElementsByClassName("tracking-info-details")[0]
-    .getElementsByClassName("eui-textual-display");
-  card.order_serial_code = "";
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < arr.length; i++) {
-    console.log("Hi1");
-    console.log(arr[i].innerText);
-    if (arr[i].innerText === "Number") {
-      card.order_serial_code = arr[i + 1].innerText;
-      break;
+  let arr;
+  try {
+    arr = doc
+      .getElementsByClassName("tracking-info-details")[0]
+      .getElementsByClassName("eui-textual-display");
+    card.order_serial_code = "";
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < arr.length; i++) {
+      console.log("Hi1");
+      console.log(arr[i].innerText);
+      if (arr[i].innerText === "Number") {
+        card.order_serial_code = arr[i + 1].innerText;
+        break;
+      }
     }
+  } catch (error) {
+    /*Do Nothing*/
   }
 
   //*************order_name,company,*************

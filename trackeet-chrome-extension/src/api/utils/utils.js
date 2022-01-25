@@ -4,7 +4,7 @@ export const toCardServerFormat = (card) => {
   const newCard = {
     order_name: card.order_name,
     order_url: card.url,
-    currency: "ILS", // todo fix the currency enum with the server .,
+    currency: card.currency === "" ? "ILS" : card.currency, // todo fix the currency enum with the server .,
     company: card.company,
     order_date:
       card.order_date === null
