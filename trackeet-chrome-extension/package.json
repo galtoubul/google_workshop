@@ -88,6 +88,7 @@
     "parcel": "^1.12.3",
     "prettier": "^2.4.1",
     "react-google-login": "^5.2.2",
+    "react-inline-script": "^1.2.0",
     "uuidv4": "^6.2.12"
   }
 }

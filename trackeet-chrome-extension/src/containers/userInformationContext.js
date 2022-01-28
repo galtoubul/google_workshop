@@ -21,8 +21,37 @@ export const UserInformationProvider = (props) => {
     order_price: "",
   });
 
+  const resetForm = () => {
+    setFormData({
+      order_name: "",
+      url: "",
+      currency: "", // todo fix the currency enum with the server .,
+      company: "",
+      order_date: null,
+      estimated_arrival_date: null,
+      order_serial_code: "",
+      order_status: "",
+      order_price: "",
+    });
+  };
+
   const [cleanButton, showCleanButton] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSendLoading, setIsSendLoading] = useState(false);
+  const [isSendFinish, setIsSendFinish] = useState(false);
+  const [isSendError, setIsSendError] = useState(false);
+  const [isScanSuccess, setIsScanSuccess] = useState(false);
+  const [isOrderSerialCodeMissing, setIsOrderSerialCodeMissing] =
+    useState(false);
+  const [isScanNotSupported, setIsScanNotSupported] = useState(false);
+  const [isScanNotSupportedLocation, setIsScanNotSupportedLocation] =
+    useState(false);
+  const [isScanNotSupportedWebsite, setIsScanNotSupportedWebsite] =
+    useState(false);
+  const [hostname, setHostname] = useState("");
+
+  //End of my part
   useEffect(() => {
     setApi(initApi(userInformation, getIsLoggedIn));
   }, [isLoggedIn]);
@@ -58,6 +87,27 @@ export const UserInformationProvider = (props) => {
         setFormData,
         cleanButton,
         showCleanButton,
+        isLoading,
+        setIsLoading,
+        isSendLoading,
+        setIsSendLoading,
+        isSendFinish,
+        setIsSendFinish,
+        isSendError,
+        setIsSendError,
+        resetForm,
+        isScanSuccess,
+        setIsScanSuccess,
+        isOrderSerialCodeMissing,
+        setIsOrderSerialCodeMissing,
+        isScanNotSupported,
+        setIsScanNotSupported,
+        isScanNotSupportedLocation,
+        setIsScanNotSupportedLocation,
+        isScanNotSupportedWebsite,
+        setIsScanNotSupportedWebsite,
+        hostname,
+        setHostname,
       }}
     >
       {props.children}

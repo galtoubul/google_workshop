@@ -22,15 +22,15 @@ const amazonExtractor = async () => {
       .replace(/&/g, '","')
       .replace(/=/g, '":"')}"}`
   );
-  let data = doc.getElementsByClassName("pt-delivery-card-trackingId");
+  let data = doc.getElementById("carrierRelatedInfo-container").innerText;
 
   //Extracting the 'order_serial_code', Format: 'ZZ000000009Z7':
   try {
     let regex = /[A-Z]{2}[0-9]{9}[A-Z,0-9]{2}/;
-    let text = data[0].innerText;
-    card.order_serial_code = text.slice(text.search(regex), text.length);
+    // eslint-disable-next-line prefer-destructuring
+    card.order_serial_code = regex.exec(data)[0];
   } catch (e) {
-    /*Nothing to do*/
+    card.order_serial_code = "";
   }
 
   //Extracting the 'estimated_arrival_date', Format: 'December 6, 2021':
@@ -49,7 +49,7 @@ const amazonExtractor = async () => {
       new Date(card.estimated_arrival_date).toLocaleDateString("en-US")
     );
   } catch (error) {
-    /*Nothing to do*/
+    card.estimated_arrival_date = null;
   }
   //Fill 'order_name', 'company', 'order_url'
 

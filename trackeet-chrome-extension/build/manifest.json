@@ -1,7 +1,7 @@
 {
   "name": "Trackeet",
   "description": "Trackeet tool",
-  "version": "1.0",
+  "version": "0.0.0.1",
   "manifest_version": 3,
   "permissions": [
     "tabs","scripting", "identity", "identity.email"
@@ -11,7 +11,7 @@
     "client_id": "118024983796-ma81u5vqau2f04j108cs09tan9lb4te7.apps.googleusercontent.com",
     "scopes": ["profile email"]
   },
-  "host_permissions": ["<all_urls>","https://www.amazon.com/*"],
+  "host_permissions": ["<all_urls>"],
   "icons": {
     "16": "keet.png",
     "48": "keet.png",
@@ -22,7 +22,7 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Open Trackeet tool"
+    "default_title": "Trackeet Assistant"
   }
 }
 

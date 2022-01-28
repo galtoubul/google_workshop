@@ -14,7 +14,7 @@ const ebayExtractor = async () => {
   card.url = await tabGetURL();
   //*************estimated_arrival_date*************
   let text = doc.getElementsByClassName("shipment-card-sub-title")[0].innerText;
-  let regex = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [1-9]{1,2}/;
+  let regex = /[A-Za-z]+ [1-9]{1,2}[,] [0-9]{4}/;
   card.estimated_arrival_date = text
     .substring(text.search(regex), text.length)
     .trim();
@@ -27,8 +27,8 @@ const ebayExtractor = async () => {
   let arr;
   try {
     arr = doc
-      .getElementsByClassName("tracking-info-details")[0]
-      .getElementsByClassName("eui-textual-display");
+      .getElementsByClassName("tracking-box")[0]
+      .getElementsByClassName("eui-text-span ");
     card.order_serial_code = "";
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < arr.length; i++) {
@@ -45,12 +45,11 @@ const ebayExtractor = async () => {
 
   //*************order_name,company,*************
   arr = doc
-    .getElementsByClassName("section-data-items")[0]
-    .getElementsByClassName("eui-textual-display");
+    .getElementsByClassName("section-module order-info")[0]
+    .getElementsByClassName("eui-text-span");
   let order_number = "";
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < arr.length; i++) {
-    console.log("Hi2");
     console.log(arr[i].innerText);
     if (arr[i].innerText === "Order number") {
       // eslint-disable-next-line prefer-destructuring
@@ -70,8 +69,7 @@ const ebayExtractor = async () => {
     if (arr[i].innerText === "Time placed") {
       // eslint-disable-next-line prefer-destructuring
       let dateString = arr[i + 1].innerText;
-      regex =
-        /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [1-9]{1,2}[,] [0-9]{4}/;
+      regex = /[A-Za-z]+ [1-9]{1,2}[,] [0-9]{4}/;
       if (regex.exec(dateString) !== null) {
         // eslint-disable-next-line prefer-destructuring
         card.order_date = new Date(
@@ -96,10 +94,7 @@ const ebayExtractor = async () => {
       if (regex.exec(priceString) !== null) {
         // eslint-disable-next-line prefer-destructuring
         card.order_price = regex.exec(priceString)[0];
-        card.currency = priceString.substring(
-          0,
-          priceString.search(card.order_price)
-        );
+        card.currency = priceString.substring(0, priceString.search(regex));
         console.log("currency");
         console.log(card.currency);
         break;

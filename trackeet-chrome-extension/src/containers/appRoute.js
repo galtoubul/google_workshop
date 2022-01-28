@@ -1,11 +1,10 @@
 import { MainPage } from "./mainpage/MainPage";
-import SignIn from "./signIn/SignIn";
 import * as React from "react";
-//import { useUserInformationContext } from "./userInformationContext";
 
 export const AppRoute = () => {
   return (
-    // eslint-disable-next-line no-constant-condition
-    <>{true ? <MainPage className={"mainPage"}></MainPage> : <SignIn />}</>
+    <>
+      <MainPage className={"mainPage"}></MainPage>
+    </>
   );
 };

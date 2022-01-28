@@ -11717,6 +11717,11 @@
   "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
   "version" "4.3.1"
 
+"react-inline-script@^1.2.0":
+  "integrity" "sha512-Idfm2rYZ5KLr6Ti1IICkb8lIC7FMxDZoEJF93egGH+F1rAwWByAjPElcD0Tx2yBk39shYu8Pjo/CF09++yA27g=="
+  "resolved" "https://registry.npmjs.org/react-inline-script/-/react-inline-script-1.2.0.tgz"
+  "version" "1.2.0"
+
 "react-is@^16.6.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"

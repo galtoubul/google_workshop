@@ -6,23 +6,21 @@ import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useUserInformationContext } from "../userInformationContext";
 
-export default function SendLoader({
-  loading,
-  isFinish,
-  setIsFinish,
-  isError,
-  showCleanButton,
-}) {
-  // React.useEffect(() => {
-  //   if (isFinish) {
-  //     window.setTimeout(() => {
-  //       setIsFinish(false);
-  //     }, 2000);
-  //   }
-  //
-  //   return null;
-  // }, [loading, isFinish]);
+export default function SendLoader() {
+  const {
+    isSendLoading,
+    isSendFinish,
+    setIsSendFinish,
+    isSendError,
+    showCleanButton,
+    setIsScanNotSupported,
+  } = useUserInformationContext();
+  const loading = isSendLoading;
+  const isFinish = isSendFinish;
+  const setIsFinish = setIsSendFinish;
+  const isError = isSendError;
 
   const openTrackeet = () => {
     setIsFinish(false);
@@ -91,8 +89,9 @@ export default function SendLoader({
               size="small"
               sx={{ margin: "2% 5%" }}
               onClick={() => {
-                showCleanButton(true);
+                setIsScanNotSupported(false);
                 setIsFinish(false);
+                showCleanButton(true);
               }}
             >
               Clear all fields

@@ -6,25 +6,46 @@ import Button from "@mui/material/Button";
 import { useUserInformationContext } from "../../userInformationContext";
 import { SelectButton } from "../../../components/selectButton/SelectButton";
 import * as React from "react";
+import { ScanSuccessSnackbar } from "../../../components/snackbar/scanSuccessSnackbar";
+import { ScanMissingOrderSerialNumberSnackbar } from "../../../components/snackbar/scanMissingOrderSerialNumberSnachbar";
+import { ScanNotSupportedWebsite } from "../../../components/snackbar/scanNotSupportedWebsite";
+import { ScanNotSupportedLocation } from "../../../components/snackbar/scanNotSupportedLocation";
 
 const NonDetailedForm = (props) => {
-  const { api } = useUserInformationContext();
-  const { setFormInformation, formData, resetForm } = props;
+  const {
+    api,
+    setIsSendLoading,
+    setIsSendFinish,
+    setIsSendError,
+    formData,
+    resetForm,
+    showCleanButton,
+    isScanSuccess,
+    isOrderSerialCodeMissing,
+    isScanNotSupportedWebsite,
+    isScanNotSupportedLocation,
+    //isScanNotSupported,
+    //setIsScanSuccess,
+    //setIsScanMissingOrderSerialCode,
+    //setIsScanNotSupportedLocation,
+    //setIsScanNotSupportedWebsite,
+  } = useUserInformationContext();
+  const { setFormInformation } = props;
 
   const saveAction = async () => {
-    props.setIsSendLoading(true);
-    props.showCleanButton(false);
+    setIsSendLoading(true);
+    showCleanButton(false);
     try {
       await api.addCard(formData);
-      props.setIsSendFinish(true);
-      props.setIsSendError(false);
-      props.setIsSendLoading(false);
+      setIsSendFinish(true);
+      setIsSendError(false);
+      setIsSendLoading(false);
       resetForm();
     } catch (e) {
       console.log(e);
-      props.setIsSendError(true);
-      props.setIsSendFinish(true);
-      props.setIsSendLoading(false);
+      setIsSendError(true);
+      setIsSendFinish(true);
+      setIsSendLoading(false);
       resetForm();
     }
   };
@@ -46,6 +67,14 @@ const NonDetailedForm = (props) => {
 
   return (
     <>
+      {/* Snackbar*/}
+      {isScanSuccess ? <ScanSuccessSnackbar /> : null}
+      {isOrderSerialCodeMissing ? (
+        <ScanMissingOrderSerialNumberSnackbar />
+      ) : null}
+      {isScanNotSupportedWebsite ? <ScanNotSupportedWebsite /> : null}
+      {isScanNotSupportedLocation ? <ScanNotSupportedLocation /> : null}
+      {/* Snackbar*/}
       <SelectButton
         value={order_status}
         setValue={setFormInformation("order_status")}
