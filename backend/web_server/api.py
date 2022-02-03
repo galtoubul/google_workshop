@@ -1,6 +1,8 @@
 import sys
 import os
 import ast
+import time
+import concurrent.futures
 from flask import Flask, request, jsonify
 from flask.helpers import make_response
 from flask_cors import CORS, cross_origin
@@ -120,23 +122,31 @@ track_api_to_bucket = {
 
 
 def update_cards_if_needed(not_updated_cards):
-    print('\n\nupdate_cards_if_needed')
-    for card in not_updated_cards:
-        serial_code = card['order_serial_code']
-        bucket = card['timeline_position']
+    print('\n\nmultithreading update_cards_if_needed')
 
-        if bucket == 'Arrived':
-            continue
+    # multithreading tracking more api calls
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        serial_codes = [card['order_serial_code'] for card in not_updated_cards]
+        curr_buckets = executor.map(getDeliveryStatus, serial_codes)
+        print(f'curr_buckets = {curr_buckets}')
 
-        curr_bucket = getDeliveryStatus(serial_code)
-        if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != bucket:
-            data = {
-                'card_id': card['card_id'], 
-                'old_order_name': card['order_name'], 
-                'timeline_position': track_api_to_bucket[curr_bucket]
+    # update all non updated cards for updating the LastUpdated Column
+    curr_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    for i, curr_bucket in enumerate(curr_buckets):
+        orig_bucket = not_updated_cards[i]['timeline_position']
+        data = {
+                'card_id': not_updated_cards[i]['card_id'], 
+                'old_order_name': not_updated_cards[i]['order_name'],
+                'last_updated': curr_time
             }
-            print(f"\n\ncard {data['card_id']} was updated\nOld bucket = {bucket} | new bucket = {track_api_to_bucket[curr_bucket]}")
-            db.update_card(data)
+        
+        # update timeline_position if it was changed
+        if curr_bucket in track_api_to_bucket and track_api_to_bucket[curr_bucket] != orig_bucket:
+            data['timeline_position'] = track_api_to_bucket[curr_bucket]
+            print(f"\n\ncard {data['card_id']} timeline position was changed from \
+                    {orig_bucket} to {track_api_to_bucket[curr_bucket]}")
+            
+        db.update_card(data)
 
 
 @app.route('/api/getCards', methods=['POST'])
@@ -155,7 +165,8 @@ def retrieve_cards():
     user_id = authenticate_user_ret['user_info']['sub']
 
     not_updated_cards = db.get_not_updated_cards(user_id)
-    update_cards_if_needed(not_updated_cards)
+    if not_updated_cards:
+        update_cards_if_needed(not_updated_cards)
 
     cards, rc = db.get_cards(user_id)
     print(f'\n\ncards = {cards}', flush=True)

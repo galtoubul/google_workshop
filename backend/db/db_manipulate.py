@@ -136,7 +136,8 @@ db_to_fe_dict = {
         'Currency': 'currency',
         'OrderDate': 'order_date',
         'EstimatedArrivingDate': 'estimated_arrival_date',
-        'Notes': 'notes'
+        'Notes': 'notes',
+        'LastUpdated': 'last_updated'
     } 
 }
 
