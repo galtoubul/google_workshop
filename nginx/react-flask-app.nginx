@@ -2,7 +2,7 @@ server {
         listen 443 ssl;
         ssl_certificate /etc/ssl/cert.pem;
         ssl_certificate_key /etc/ssl/key.pem;
-        root /home/frontend/google_workshop_current_version/tempgoogle/build;
+        root /home/trackeetco/frontend/tempgoogle/build;
         index index.html;
 
         location / {
@@ -12,6 +12,11 @@ server {
 
 	location ~ ^/(login|site|error) {
 		return 301 https://$host;
+	}
+
+	location /privacy {
+		root /home/trackeetco/frontend/tempgoogle/build;
+		try_files $uri $uri.html;
 	}
 
 	location /static {
