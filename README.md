@@ -1,8 +1,8 @@
 # [Trackeet](http://trackeet.co) - **Make Tracking Online Orders Easier**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/webserver-off-red.svg" alt="web server" />
-  <img src="https://img.shields.io/badge/autotrack-off-red.svg" alt="auto track" />
+  <img src="https://img.shields.io/badge/webserver-on-brightgreen.svg" alt="web server" />
+  <img src="https://img.shields.io/badge/autotrack-on-brightgreen.svg" alt="auto track" />
 </p>
 
 ![image](https://user-images.githubusercontent.com/58177619/147886708-d6200934-1188-43bb-ba12-2dec2930a819.png)
