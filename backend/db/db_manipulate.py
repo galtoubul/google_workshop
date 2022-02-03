@@ -184,14 +184,15 @@ def insert(table_name, data):
 
 
 # add foreign keys to parents' tables if needed
-def update_foreign_keys(data, user_info):
+def update_foreign_keys(data, user_info=None):
     
     if 'company' in data and data['company'] != '' and not is_in_company(data['company']):
         insert('Company', data)
 
-    user_id = user_info['sub']
-    if not is_in_customers(user_id):
-        insert('Customer', user_info)
+    if user_info:
+        user_id = user_info['sub']
+        if not is_in_customers(user_id):
+            insert('Customer', user_info)
 
 
 def add_card(data, user_info):
@@ -201,7 +202,8 @@ def add_card(data, user_info):
     return insert('Card', data)
 
 
-def update_card(data):     
+def update_card(data):
+    update_foreign_keys(data)     
     update_query = 'UPDATE Card SET '
 
     query_params_dict = {}
