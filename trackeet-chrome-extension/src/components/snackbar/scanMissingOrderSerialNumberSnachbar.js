@@ -9,16 +9,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export const ScanMissingOrderSerialNumberSnackbar = () => {
-  const { isOrderSerialCodeMissing, setIsOrderSerialCodeMissing } =
-    useUserInformationContext();
-  const [open, setOpen] = [
-    isOrderSerialCodeMissing,
-    setIsOrderSerialCodeMissing,
-  ];
-  // const handleClick = () => {
-  //   setOpen(true);
-  // };
-
+  const { isScanSuccess, setIsScanSuccess } = useUserInformationContext();
+  const [open, setOpen] = [isScanSuccess, setIsScanSuccess];
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;

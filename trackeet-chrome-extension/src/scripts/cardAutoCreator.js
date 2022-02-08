@@ -8,7 +8,12 @@ import tabGetPathname from "./chrome_api/tabGetPathname";
 import isCardValid from "./isCardValid";
 import tabRefresh from "./chrome_api/tabRefresh";
 
-const currency_dict = { "€": "EUR", "£": "GBP", "₪": "ILS", $: "USD" };
+const currency_dict = {
+  "€": "EUR",
+  "£": "GBP",
+  "₪": "ILS",
+  $: "USD",
+};
 
 export const getAdaptedCode = async () => {
   //Default Adapted code is the one that return undefined card object
@@ -67,6 +72,11 @@ export const cardAutoCreator = async () => {
   console.log(card);
   if (!isCardValid(card))
     throw "The URL isn't supported! Please refer to the manual";
+
+  for (const key in card) {
+    if (card[key] instanceof String) card[key] = card[key].trim();
+  }
+
   if (
     currency_dict[card.currency] !== "" &&
     currency_dict[card.currency] !== undefined

@@ -6,10 +6,8 @@ import Button from "@mui/material/Button";
 import { useUserInformationContext } from "../../userInformationContext";
 import { SelectButton } from "../../../components/selectButton/SelectButton";
 import * as React from "react";
-import { ScanSuccessSnackbar } from "../../../components/snackbar/scanSuccessSnackbar";
-import { ScanMissingOrderSerialNumberSnackbar } from "../../../components/snackbar/scanMissingOrderSerialNumberSnachbar";
-import { ScanNotSupportedWebsite } from "../../../components/snackbar/scanNotSupportedWebsite";
-import { ScanNotSupportedLocation } from "../../../components/snackbar/scanNotSupportedLocation";
+import ScanSuccess from "../../../components/snackbar/scanSuccess";
+import ScanNotSuccess from "../../../components/snackbar/scanNotSuccess";
 
 const NonDetailedForm = (props) => {
   const {
@@ -21,14 +19,7 @@ const NonDetailedForm = (props) => {
     resetForm,
     showCleanButton,
     isScanSuccess,
-    isOrderSerialCodeMissing,
-    isScanNotSupportedWebsite,
-    isScanNotSupportedLocation,
-    //isScanNotSupported,
-    //setIsScanSuccess,
-    //setIsScanMissingOrderSerialCode,
-    //setIsScanNotSupportedLocation,
-    //setIsScanNotSupportedWebsite,
+    isScanNotSuccess,
   } = useUserInformationContext();
   const { setFormInformation } = props;
 
@@ -68,12 +59,8 @@ const NonDetailedForm = (props) => {
   return (
     <>
       {/* Snackbar*/}
-      {isScanSuccess ? <ScanSuccessSnackbar /> : null}
-      {isOrderSerialCodeMissing ? (
-        <ScanMissingOrderSerialNumberSnackbar />
-      ) : null}
-      {isScanNotSupportedWebsite ? <ScanNotSupportedWebsite /> : null}
-      {isScanNotSupportedLocation ? <ScanNotSupportedLocation /> : null}
+      {isScanSuccess ? <ScanSuccess /> : null}
+      {isScanNotSuccess ? <ScanNotSuccess /> : null}
       {/* Snackbar*/}
       <SelectButton
         value={order_status}

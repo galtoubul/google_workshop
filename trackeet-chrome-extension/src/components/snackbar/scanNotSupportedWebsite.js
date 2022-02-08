@@ -9,18 +9,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export const ScanNotSupportedWebsite = () => {
-  const {
-    isScanNotSupportedWebsite,
-    setIsScanNotSupportedWebsite,
-    setIsScanNotSupported,
-  } = useUserInformationContext();
-  const [open, setOpen] = [
-    isScanNotSupportedWebsite,
-    (val) => {
-      setIsScanNotSupportedWebsite(val);
-      setIsScanNotSupported(val);
-    },
-  ];
+  const { isScanNotSuccess, setIsScanNotSuccess } = useUserInformationContext();
+  const [open, setOpen] = [isScanNotSuccess, setIsScanNotSuccess];
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {

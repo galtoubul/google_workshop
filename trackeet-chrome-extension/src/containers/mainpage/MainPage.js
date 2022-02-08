@@ -18,9 +18,7 @@ export const MainPage = () => {
     isSendLoading,
     isSendFinish,
     setIsScanSuccess,
-    setIsScanMissingOrderSerialCode,
-    setIsScanNotSupportedLocation,
-    setIsScanNotSupportedWebsite,
+    setIsScanNotSuccess,
     setHostname,
   } = useUserInformationContext();
 
@@ -44,28 +42,14 @@ export const MainPage = () => {
       });
       setIsLoading(false);
       showCleanButton(true);
-      if (card.order_serial_code === "") setIsScanMissingOrderSerialCode(true);
-      else setIsScanSuccess(true);
+      setIsScanSuccess(true);
     } catch (e) {
       console.log(e);
       setIsLoading(false);
       showCleanButton(true);
-
       //New part
-      if (hostname.search(".amazon.") !== -1) {
-        setHostname("Amazon");
-        //setIsScanNotSupported(true);
-        setIsScanNotSupportedLocation(true);
-      } else if (hostname.search(".ebay.") !== -1) {
-        setHostname("Ebay");
-        //setIsScanNotSupported(true);
-        setIsScanNotSupportedLocation(true);
-      } else if (hostname.search(".aliexpress.") !== -1) {
-        setHostname("AliExpress");
-        //setIsScanNotSupported(true);
-        setIsScanNotSupportedLocation(true);
-      } else setIsScanNotSupportedWebsite(true);
-
+      setHostname(hostname);
+      setIsScanNotSuccess(true);
       //End of new part
     }
   }, []);
@@ -82,11 +66,6 @@ export const MainPage = () => {
         </>
       ) : isSendLoading || isSendFinish ? (
         <>
-          {/*<Script>*/}
-          {/*  setIsScanSuccess(false); setIsScanMissingOrderSerialCode(false);*/}
-          {/*  setIsScanNotSupportedLocation(false);*/}
-          {/*  setIsScanNotSupportedWebsite(false);*/}
-          {/*</Script>*/}
           <SendLoader />
         </>
       ) : (

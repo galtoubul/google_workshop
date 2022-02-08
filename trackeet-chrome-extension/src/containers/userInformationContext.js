@@ -42,13 +42,7 @@ export const UserInformationProvider = (props) => {
   const [isSendFinish, setIsSendFinish] = useState(false);
   const [isSendError, setIsSendError] = useState(false);
   const [isScanSuccess, setIsScanSuccess] = useState(false);
-  const [isOrderSerialCodeMissing, setIsOrderSerialCodeMissing] =
-    useState(false);
-  const [isScanNotSupported, setIsScanNotSupported] = useState(false);
-  const [isScanNotSupportedLocation, setIsScanNotSupportedLocation] =
-    useState(false);
-  const [isScanNotSupportedWebsite, setIsScanNotSupportedWebsite] =
-    useState(false);
+  const [isScanNotSuccess, setIsScanNotSuccess] = useState(false);
   const [hostname, setHostname] = useState("");
 
   //End of my part
@@ -98,14 +92,8 @@ export const UserInformationProvider = (props) => {
         resetForm,
         isScanSuccess,
         setIsScanSuccess,
-        isOrderSerialCodeMissing,
-        setIsOrderSerialCodeMissing,
-        isScanNotSupported,
-        setIsScanNotSupported,
-        isScanNotSupportedLocation,
-        setIsScanNotSupportedLocation,
-        isScanNotSupportedWebsite,
-        setIsScanNotSupportedWebsite,
+        isScanNotSuccess,
+        setIsScanNotSuccess,
         hostname,
         setHostname,
       }}

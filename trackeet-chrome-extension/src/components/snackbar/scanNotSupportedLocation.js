@@ -8,21 +8,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const ScanNotSupportedLocation = () => {
-  const {
-    isScanNotSupportedLocation,
-    setIsScanNotSupportedLocation,
-    setIsScanNotSupported,
-    hostname,
-  } = useUserInformationContext();
-  const website = hostname;
-  const [open, setOpen] = [
-    isScanNotSupportedLocation,
-    (val) => {
-      setIsScanNotSupportedLocation(val);
-      setIsScanNotSupported(val);
-    },
-  ];
+export const ScanNotSupportedLocation = (props) => {
+  const { isScanNotSuccess, setIsScanNotSuccess } = useUserInformationContext();
+  const [open, setOpen] = [isScanNotSuccess, setIsScanNotSuccess];
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -46,8 +34,8 @@ export const ScanNotSupportedLocation = () => {
           sx={{ width: "100%", marginTop: "50px" }}
         >
           {/* eslint-disable-next-line react/no-unescaped-entities */}
-          {website} is supported with the auto-scan tool, but you aren't inside{" "}
-          a proper order page.
+          {props.website} is supported with the auto-scan tool, but you aren't
+          inside a proper order page.
         </Alert>
       </Snackbar>
     </>

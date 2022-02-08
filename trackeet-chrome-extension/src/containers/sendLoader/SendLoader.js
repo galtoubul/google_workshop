@@ -15,7 +15,8 @@ export default function SendLoader() {
     setIsSendFinish,
     isSendError,
     showCleanButton,
-    setIsScanNotSupported,
+    setIsScanSuccess,
+    setIsScanNotSuccess,
   } = useUserInformationContext();
   const loading = isSendLoading;
   const isFinish = isSendFinish;
@@ -89,7 +90,8 @@ export default function SendLoader() {
               size="small"
               sx={{ margin: "2% 5%" }}
               onClick={() => {
-                setIsScanNotSupported(false);
+                setIsScanSuccess(false);
+                setIsScanNotSuccess(false);
                 setIsFinish(false);
                 showCleanButton(true);
               }}

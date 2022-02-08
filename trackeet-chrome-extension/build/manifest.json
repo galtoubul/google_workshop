@@ -1,6 +1,6 @@
 {
   "name": "Trackeet",
-  "description": "Trackeet tool",
+  "description": "Trackeet.co - A Website That Makes Tracking Online Orders Easier! This tool is made for helping our users to conveniently scan their online orders, with a minimal effort!",
   "version": "0.0.0.1",
   "manifest_version": 3,
   "permissions": [

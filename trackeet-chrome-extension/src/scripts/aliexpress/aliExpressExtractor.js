@@ -23,7 +23,7 @@ const aliExpressExtractor = async () => {
       new Date(card.estimated_arrival_date).toLocaleDateString("en-US")
     );
   } catch (error) {
-    /*Do nothing*/
+    card.estimated_arrival_date = null;
   }
 
   //*************order_serial_code*************
@@ -32,14 +32,21 @@ const aliExpressExtractor = async () => {
     card.order_serial_code =
       mainDoc.getElementsByClassName("tracking-no")[0].textContent;
   } catch (error) {
-    /*Do nothing*/
+    card.order_serial_code = "";
   }
 
   //*************order_name,order_url,company,*************
   console.log("order_name,order_url,company");
-  const order_number = mainDoc.getElementsByClassName("value")[0].textContent;
-  card.order_name = `AliExpress: ${order_number}`;
-  card.url = `https://track.aliexpress.com/logisticsdetail.htm?tradeId=${order_number}`;
+  let order_number = "";
+  try {
+    order_number = mainDoc.getElementsByClassName("value")[0].textContent;
+    card.order_name = `AliExpress: ${order_number}`;
+    card.url = `https://track.aliexpress.com/logisticsdetail.htm?tradeId=${order_number}`;
+  } catch (e) {
+    card.order_name = "";
+    card.url = "";
+  }
+
   card.company = "AliExpress";
 
   //*************order_date,order_price,currency*************
@@ -65,7 +72,9 @@ const aliExpressExtractor = async () => {
       .split("\t");
     card.order_date = new Date(dataArray[dataArray.length - 1]);
   } catch (error) {
-    /*do nothing*/
+    card.currency = "";
+    card.order_price = "";
+    card.order_date = null;
   }
 
   return card;
