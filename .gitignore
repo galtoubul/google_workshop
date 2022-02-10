@@ -55,3 +55,5 @@ __pycache__
 .vscode/settings.json
 backend/web-server/test_post.py
 backend/.env
+
+backend/.vscode/
