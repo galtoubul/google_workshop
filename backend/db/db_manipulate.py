@@ -202,6 +202,30 @@ def add_card(data, user_info):
     return insert('Card', data)
 
 
+def get_curr_bucket_and_order_serial_code(data_dict_for_updating):
+    select_query = """SELECT Bucket, OrderSerialCode
+                      FROM Card
+                      WHERE CardId = %(card_id)s    AND
+                            OrderName = %(old_order_name)s"""
+    query_params_dict = {'card_id': data_dict_for_updating['card_id'],
+                         'old_order_name': data_dict_for_updating['old_order_name']}
+
+    print(f'\n\nDB get_curr_bucket_and_order_serial_code\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
+
+    try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
+        cursor.execute(select_query, query_params_dict)
+        db_con.commit()
+
+        ((Bucket, OrderSerialCode, ),) = cursor.fetchall()
+    except Exception:
+        Bucket, OrderSerialCode = data_dict_for_updating['order_serial_code'], ''
+        
+    return Bucket, OrderSerialCode
+
+
 def update_card(data):
     update_foreign_keys(data)     
     update_query = 'UPDATE Card SET '

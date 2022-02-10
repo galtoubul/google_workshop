@@ -198,6 +198,18 @@ def add_card():
     return get_response(res, rc)
 
 
+def update_timeline_position_if_needed(data_dict_for_updating):
+    curr_bucket, curr_order_serial_code = db.get_curr_bucket_and_order_serial_code(data_dict_for_updating)
+    
+    if curr_order_serial_code != data_dict_for_updating['order_serial_code']:
+        realtime_bucket = getDeliveryStatus(data_dict_for_updating['order_serial_code'])
+
+        if realtime_bucket in track_api_to_bucket and track_api_to_bucket[realtime_bucket] != curr_bucket:
+            return realtime_bucket
+    
+    return curr_bucket
+
+
 @app.route('/api/updateCard', methods=['POST'])
 @cross_origin()
 def update_card():
@@ -215,6 +227,7 @@ def update_card():
         return create_err(authenticate_user_ret)
 
     data_dict['user_id'] = authenticate_user_ret['user_info']['sub']
+    data_dict['timeline_position'] = update_timeline_position_if_needed(data_dict)    
     res, rc = db.update_card(data_dict)
 
     resp = get_response(res, rc)
