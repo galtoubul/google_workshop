@@ -5,6 +5,7 @@ import { Kanban } from "../../../components/kanban/kanban";
 import * as React from "react";
 import "./demo.scss";
 import Button from "@mui/material/Button";
+import { useIsPhoneContext } from "../../../utlis/hooks/phone/isPhoneContext";
 
 const getDemo = () => {
   return (
@@ -88,17 +89,30 @@ const getDemo = () => {
 };
 
 export const Demo = (props) => {
+  const { isIpad } = useIsPhoneContext();
+
   return (
     <body className="bodyWithDemoContainer" id={"Demo"}>
       <div className={"contentContainer"}>
         <div className={"loginTextContainer"}>
           <Typography
-            sx={{ marginBottom: "24px", width: "440px" }}
-            variant="h5"
+            sx={{
+              textAlign: isIpad ? "center" : undefined,
+              marginBottom: "24px",
+              width: isIpad ? "240px" : "410px",
+            }}
+            variant={isIpad ? "h6" : "h5"}
           >
             All your orders <br /> in one single place
           </Typography>
-          <Typography sx={{ marginTop: "24px", width: "410px" }} variant="h6">
+          <Typography
+            sx={{
+              textAlign: isIpad ? "center" : undefined,
+              marginTop: !isIpad && "24px",
+              width: isIpad ? "240px" : "410px",
+            }}
+            variant={isIpad ? "h7" : "h6"}
+          >
             Our easy to use, universal tracking features make it a breeze to
             track all your orders. Trackeet automatically arranges orders as
             well as instantly updates you when each order arrives.

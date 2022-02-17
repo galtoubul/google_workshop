@@ -3,7 +3,7 @@ import RealtimeBoard from "react-trello";
 import { KanbanCard } from "./kanbanCard/kanbanCard";
 import "./kanban.scss";
 import { InsertButton } from "./insertButton/insertButton";
-import { boardStyle } from "./kanbanStyle";
+import { getBoardStyle } from "./kanbanStyle";
 import { useKanbanContext } from "../../utlis/hooks/kanbanContext/kanbanContext";
 import {
   FormContext,
@@ -11,12 +11,15 @@ import {
 } from "../../containers/forms/formContext/formContext";
 import { Box, Typography } from "@mui/material";
 import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
+import { useIsPhoneContext } from "../../utlis/hooks/phone/isPhoneContext";
 
 export const Kanban = (props) => {
   const { kanbanState, setEventBus, handleCardDrag } = useKanbanContext();
   const { openNonDetailedForm, setIsNewForm } = useContext(FormContext);
   const { setNewCardPosition } = props;
   const { isLoggedIn } = useUserInformationContext();
+  const { isIpad, screenWidth } = useIsPhoneContext();
+
   const getInsertCardButton = (props, id) => (
     <InsertButton
       openNonDetailedForm={() => {
@@ -74,12 +77,15 @@ export const Kanban = (props) => {
 
   return (
     <Box
-      sx={{ height: "100%", marginTop: isLoggedIn ? "67.89px" : "0px" }}
+      sx={{
+        height: "100%",
+        marginTop: isLoggedIn ? "67.89px" : "0px",
+      }}
       className={"kanbanContainer"}
     >
       <RealtimeBoard
         className={"board"}
-        style={boardStyle}
+        style={getBoardStyle(isIpad, isLoggedIn, screenWidth)}
         components={{
           LaneHeader: (p) => getBoardTitleComponent(props, p.id),
           Card: getCard,

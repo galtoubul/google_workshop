@@ -9,6 +9,7 @@ import RedeemIcon from "@mui/icons-material/Redeem";
 import HomeIcon from "@mui/icons-material/Home";
 import BackpackIcon from "@mui/icons-material/Backpack";
 import { Tooltip } from "@mui/material";
+import { useIsPhoneContext } from "../../../utlis/hooks/phone/isPhoneContext";
 
 export const timeLineContent = [
   {
@@ -88,6 +89,8 @@ export const getTimeLineIcon = (iconName) => {
 };
 
 export const TimeLine = (props) => {
+  const { isIpadForForm } = useIsPhoneContext();
+
   const getTimeLineItems = () => {
     return timeLineContent.map((timeLineState, index) => {
       return (
@@ -111,14 +114,25 @@ export const TimeLine = (props) => {
 
   return (
     <Timeline
-      sx={{
-        display: "flex",
-        position: "absolute",
-        top: "42%",
-        left: "83.5%",
-        transform: "translate(-50%, -50%)",
-        width: "350px ",
-      }}
+      sx={
+        isIpadForForm
+          ? {
+              display: "flex",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "350px ",
+            }
+          : {
+              display: "flex",
+              position: "absolute",
+              top: "42%",
+              left: "83.5%",
+              transform: "translate(-50%, -50%)",
+              width: "350px ",
+            }
+      }
       position="right"
     >
       {getTimeLineItems()}

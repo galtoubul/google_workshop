@@ -11,6 +11,7 @@ import { scroller } from "react-scroll";
 import { Loader } from "../components/loader/Loader";
 import { LogInProvider } from "../utlis/hooks/logInContext/logInContext";
 import { ErrorPage } from "./errorPage/ErrorPage";
+import { IsPhoneProvider } from "../utlis/hooks/phone/isPhoneContext";
 
 export const AppRoute = (props) => {
   const [scrollPosition, setScrollPosition] = useState("About Us");
@@ -33,6 +34,8 @@ export const AppRoute = (props) => {
       delay: 0,
       smooth: "easeInOutQuart",
     });
+    console.log("changeExtensionVideoStatechangeExtensionVideoState");
+    console.log(position);
     changeExtensionVideoState(position);
   };
 
@@ -51,7 +54,12 @@ export const AppRoute = (props) => {
       delay: 0,
       smooth: "easeInOutQuart",
     });
+    console.log("newScrollPositionnewScrollPositionnewScrollPosition");
+    console.log(newScrollPosition);
     changeExtensionVideoState(newScrollPosition, setIsPlay);
+    if (newScrollPosition === "Extension") {
+      scrollToPosition("Extension");
+    }
   };
   // const { isLoggedIn } = useUserInformationContext();
 
@@ -59,36 +67,32 @@ export const AppRoute = (props) => {
     <LogInProvider>
       <Router>
         <ThemColors>
-          <UserInformationProvider>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <Header scrollToPosition={scrollToPosition} />
-              <Fragment>
-                <Routes>
-                  <Route exact path="/" element={<Loader />} />
-                  <Route exact path="/site" element={<Page></Page>} />
-                  <Route
-                    exact
-                    path="/login"
-                    element={
-                      <LoginPage
-                        isPlay={isPlay}
-                        changeSitePart={changeSitePart}
-                      />
-                    }
-                  />
-                  <Route exact path="/error" element={<ErrorPage />} />
-                </Routes>
-              </Fragment>
-            </LocalizationProvider>
-          </UserInformationProvider>
+          <IsPhoneProvider>
+            <UserInformationProvider>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <Header scrollToPosition={scrollToPosition} />
+                <Fragment>
+                  <Routes>
+                    <Route exact path="/" element={<Loader />} />
+                    <Route exact path="/site" element={<Page></Page>} />
+                    <Route
+                      exact
+                      path="/login"
+                      element={
+                        <LoginPage
+                          isPlay={isPlay}
+                          changeSitePart={changeSitePart}
+                        />
+                      }
+                    />
+                    <Route exact path="/error" element={<ErrorPage />} />
+                  </Routes>
+                </Fragment>
+              </LocalizationProvider>
+            </UserInformationProvider>
+          </IsPhoneProvider>
         </ThemColors>
       </Router>
     </LogInProvider>
   );
 };
-
-// isLoggedIn ? (
-//   <Page></Page>
-// ) : (
-//   <LoginPage changeSitePart={props.changeSitePart} />
-// );

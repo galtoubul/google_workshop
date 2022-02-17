@@ -4,18 +4,25 @@ import { useUserInformationContext } from "../userInformationContext/userInforma
 import { getKanbanInitialState } from "./utils";
 import { ErrorAlert } from "../../../components/forms/ErrorAlert";
 import { getAdditionalPosition } from "../../api/utils/utils";
+import { useIsPhoneContext } from "../phone/isPhoneContext";
 
 const KanbanContext = createContext({ boardData: { lanes: [] } });
 
 export const KanbanProvider = (props) => {
   const { onTheWayCards, arrivedCards, wishListCards } = props.startKanbanState;
   const { api, isLoggedIn } = useUserInformationContext();
+  const { isIpad, isPhone, screenWidth, screenHeight } = useIsPhoneContext();
+
   const [kanbanState, setKanbanState] = useState(
     getKanbanInitialState(
       wishListCards,
       isLoggedIn,
       onTheWayCards,
-      arrivedCards
+      arrivedCards,
+      isIpad,
+      isPhone,
+      screenWidth,
+      screenHeight
     )
   );
 
@@ -30,8 +37,6 @@ export const KanbanProvider = (props) => {
   };
 
   const addCard = (card) => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     card.id = uuid();
     card.additionalPosition = card.position;
     const oldCard = { ...card };
