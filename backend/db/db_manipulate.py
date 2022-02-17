@@ -64,7 +64,7 @@ def get_cards(user_id):
         results = cursor.fetchall()
     except Exception as err:
         print(f'\n\n{get_cards}\nerror = {err}')
-        return {'response': f'ERROR: failed to get records: {str(err)}'}
+        return ({'response': f'ERROR: failed to get records: {str(err)}'}, 400)
 
     cards = []
     for res in results:
@@ -80,7 +80,7 @@ def get_cards(user_id):
                       'timeline_position': res[4],
                       'card_id': res[0],
                       'user_id': res[11]})
-    return {'cards': cards}
+    return ({'cards': cards}, 200)
 
 
 def is_in_company(company_name):
@@ -136,7 +136,8 @@ db_to_fe_dict = {
         'Currency': 'currency',
         'OrderDate': 'order_date',
         'EstimatedArrivingDate': 'estimated_arrival_date',
-        'Notes': 'notes'
+        'Notes': 'notes',
+        'LastUpdated': 'last_updated'
     } 
 }
 
@@ -174,23 +175,24 @@ def insert(table_name, data):
         db_con.commit()
     except Exception as err:
         print(f'\n\n{caller}\nerror = {err}', flush=True)
-        return {'response': f'ERROR: failed to insert records: {str(err)}'}
+        return ({'response': f'ERROR: failed to insert records: {str(err)}'}, 400)
 
     print(f'\n\ninsert | caller = {caller} | table name = {table_name}\nSuccesful insert! {cursor.rowcount} rows were affacted', flush=True)
     bucket = data['timeline_position'] if 'timeline_position' in data else None
-    return {'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount),
-            'timeline_position': f'{bucket}'}
+    return ({'response': 'Succesful insert! {} rows were affacted'.format(cursor.rowcount),
+            'timeline_position': f'{bucket}'}, 200)
 
 
 # add foreign keys to parents' tables if needed
-def update_foreign_keys(data, user_info):
+def update_foreign_keys(data, user_info=None):
     
     if 'company' in data and data['company'] != '' and not is_in_company(data['company']):
         insert('Company', data)
 
-    user_id = user_info['sub']
-    if not is_in_customers(user_id):
-        insert('Customer', user_info)
+    if user_info:
+        user_id = user_info['sub']
+        if not is_in_customers(user_id):
+            insert('Customer', user_info)
 
 
 def add_card(data, user_info):
@@ -200,7 +202,32 @@ def add_card(data, user_info):
     return insert('Card', data)
 
 
-def update_card(data):     
+def get_curr_bucket_and_order_serial_code(data_dict_for_updating):
+    select_query = """SELECT Bucket, OrderSerialCode
+                      FROM Card
+                      WHERE CardId = %(card_id)s    AND
+                            OrderName = %(old_order_name)s"""
+    query_params_dict = {'card_id': data_dict_for_updating['card_id'],
+                         'old_order_name': data_dict_for_updating['old_order_name']}
+
+    print(f'\n\nDB get_curr_bucket_and_order_serial_code\nselect_query = {select_query}\nquery_params_dict = {query_params_dict}', flush=True)
+
+    try:
+        db_con = mysql.get_db()
+        cursor = db_con.cursor()
+
+        cursor.execute(select_query, query_params_dict)
+        db_con.commit()
+
+        ((Bucket, OrderSerialCode, ),) = cursor.fetchall()
+    except Exception:
+        Bucket, OrderSerialCode = data_dict_for_updating['order_serial_code'], ''
+        
+    return Bucket, OrderSerialCode
+
+
+def update_card(data):
+    update_foreign_keys(data)     
     update_query = 'UPDATE Card SET '
 
     query_params_dict = {}
@@ -225,8 +252,8 @@ def update_card(data):
         cursor.execute(update_query, query_params_dict)
         db_con.commit()
     except Exception as err:
-        return {'response': f'ERROR: failed to update records: {str(err)}'}
-    return {'response': 'Succesful update! {} rows were affacted'.format(cursor.rowcount)}
+        return ({'response': f'ERROR: failed to update records: {str(err)}'}, 400)
+    return ({'response': 'Succesful update! {} rows were affacted'.format(cursor.rowcount)}, 200)
 
 
 def delete_card(card_id, order_name):
@@ -246,5 +273,5 @@ def delete_card(card_id, order_name):
         cursor.execute(delete_query, query_params_dict)
         db_con.commit()
     except Exception as err:
-        return {'response': f'ERROR: failed to delete records: {str(err)}'}
-    return {'response': 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)}
+        return ({'response': f'ERROR: failed to delete records: {str(err)}'}, 400)
+    return ({'response': 'Succesful delete! {} rows were affacted'.format(cursor.rowcount)}, 200)

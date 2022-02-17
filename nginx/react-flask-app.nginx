@@ -1,0 +1,40 @@
+server {
+        listen 443 ssl;
+        ssl_certificate /etc/ssl/cert.pem;
+        ssl_certificate_key /etc/ssl/key.pem;
+        root /home/trackeetco/frontend/tempgoogle/build;
+        index index.html;
+
+        location / {
+                try_files $uri $uri/ =404;
+		add_header Cache-Control "no-cache";
+        }
+
+	location ~ ^/(login|site|error) {
+		return 301 https://$host;
+	}
+
+	location /privacy {
+		root /home/trackeetco/frontend/tempgoogle/build;
+		try_files $uri $uri.html;
+	}
+
+	location /static {
+	        expires 1y;
+        	add_header Cache-Control "public";
+	}
+
+        location /api {
+                include proxy_params;
+                proxy_pass http://localhost:5000;
+        }
+}
+server {
+        listen 80;
+        server_name trackeet.co;
+
+        location / {
+                return 301 https://$host$request_uri;
+        }
+}
+
