@@ -63,30 +63,22 @@ export const ContactUsFields = (props) => {
       }}
       height="400px"
     >
-      <div sx={{ width: 500 }} className={"logInRowContainer"}>
+      <div className={"logInRowContainer"}>
         <TextField
-          // error={isCheckFormFailed && !firstName}
           sx={{ m: 1 }}
           id="outlined-error"
           label="First Name"
           value={firstName}
           onChange={onTextChange(setFirstName)}
-          // helperText={
-          //   isCheckFormFailed && !firstName && "Please add your first name."
-          // }
         />
       </div>
       <div className={"logInRowContainer"}>
         <TextField
-          // error={isCheckFormFailed && !lastName}
           sx={{ m: 1 }}
           id="outlined-error"
           label="Last Name"
           value={lastName}
           onChange={onTextChange(setLastName)}
-          // helperText={
-          //   isCheckFormFailed && !lastName && "Please add your last name."
-          // }
         />
       </div>
       <div className={"logInRowContainer"}>

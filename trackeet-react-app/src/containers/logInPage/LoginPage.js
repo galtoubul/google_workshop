@@ -11,22 +11,30 @@ import { useUserInformationContext } from "../../utlis/hooks/userInformationCont
 
 export const LoginPage = (props) => {
   document.body.style.overflow = "hidden";
-
   const { isLoggInModalOpen, openLogInModal, closeLogInModal } =
     useUserInformationContext();
-
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
   return (
     <ReactScrollWheelHandler
-      upHandler={(e) => props.changeSitePart("prev")}
-      downHandler={(e) => props.changeSitePart("next")}
+      upHandler={(e) => {
+        props.changeSitePart("prev");
+        forceUpdate();
+      }}
+      downHandler={(e) => {
+        props.changeSitePart("next");
+        forceUpdate();
+      }}
     >
       <div>
         <LoginHeader openLoggingModal={openLogInModal} />
 
         <LoginModal closeModal={closeLogInModal} isOpen={isLoggInModalOpen} />
+
         <div id={"Extension"}>
           <ExtensionDemo isPlay={props.isPlay} />
         </div>
+
         <div name={"Demo"} id={"Demo"}>
           <Demo openLoggingModal={openLogInModal} />
         </div>
