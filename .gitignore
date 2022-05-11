@@ -57,3 +57,5 @@ backend/web-server/test_post.py
 backend/.env
 
 backend/.vscode/
+
+trackeet-react-app/src/assets/clientId.js
