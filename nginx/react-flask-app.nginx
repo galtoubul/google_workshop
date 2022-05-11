@@ -2,7 +2,7 @@ server {
         listen 443 ssl;
         ssl_certificate /etc/ssl/cert.pem;
         ssl_certificate_key /etc/ssl/key.pem;
-        root /home/trackeetco/frontend/tempgoogle/build;
+        root /home/trackeet3/frontend/tempgoogle/build;
         index index.html;
 
         location / {
@@ -15,7 +15,7 @@ server {
 	}
 
 	location /privacy {
-		root /home/trackeetco/frontend/tempgoogle/build;
+		root /home/trackeet3/frontend/tempgoogle/build;
 		try_files $uri $uri.html;
 	}
 

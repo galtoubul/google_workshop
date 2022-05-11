@@ -11,6 +11,13 @@ import requests
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 sys.path.append(os.path.abspath('../db'))
+CURRPATH, TAIL = os.path.split(os.getcwd())
+while CURRPATH != "/":
+    if TAIL == 'google_workshop':
+        if os.path.join(CURRPATH, TAIL) not in sys.path:
+            sys.path.append(os.path.join(CURRPATH, TAIL))
+        break
+    CURRPATH, TAIL = os.path.split(CURRPATH)
 import backend.db.db_manipulate as db
 sys.path.append(os.path.abspath('../')) 
 from config import web_app_client_id, ERR, SUCCESS, db_host, db_user, db_password, db_database
@@ -201,7 +208,7 @@ def add_card():
 def update_timeline_position_if_needed(data_dict_for_updating):
     curr_bucket, curr_order_serial_code = db.get_curr_bucket_and_order_serial_code(data_dict_for_updating)
     
-    if curr_order_serial_code != data_dict_for_updating['order_serial_code']:
+    if 'order_serial_code' in data_dict_for_updating and curr_order_serial_code != data_dict_for_updating['order_serial_code']:
         realtime_bucket = getDeliveryStatus(data_dict_for_updating['order_serial_code'])
 
         if realtime_bucket in track_api_to_bucket and track_api_to_bucket[realtime_bucket] != curr_bucket:
