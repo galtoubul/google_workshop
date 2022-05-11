@@ -41,6 +41,7 @@ export const Page = () => {
       <KanbanProvider startKanbanState={startKanbanState}>
         <FormProvider>
           <NotificationContainer> </NotificationContainer>
+
           <Kanban setNewCardPosition={setNewCardPosition}></Kanban>
 
           <Forms newCardPosition={newCardPosition} />

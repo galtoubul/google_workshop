@@ -10,9 +10,11 @@ export const EditableText = (props) => {
     <React.Fragment>
       <EditText
         name="textbox"
+        rows={1}
         className={"editText"}
         defaultValue={"Order Title"}
         placeholder={"Order Title"}
+        readonly={props.readonly}
         style={{
           ...titleSize,
           fontFamily: FONT_FAMILY,

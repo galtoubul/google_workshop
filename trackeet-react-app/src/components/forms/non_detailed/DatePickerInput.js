@@ -18,7 +18,10 @@ const DatePickerInput = (props) => {
           onChange(newDate);
         }}
         renderInput={(params) => (
-          <TextField sx={{ width: FIELD_WIDTH, zIndex: 500 }} {...params} />
+          <TextField
+            sx={{ width: props.width ? props.width : FIELD_WIDTH, zIndex: 500 }}
+            {...params}
+          />
         )}
       />
     </Box>

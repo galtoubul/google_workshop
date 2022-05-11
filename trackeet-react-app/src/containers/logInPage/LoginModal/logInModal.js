@@ -1,6 +1,5 @@
 import React from "react";
 import { useUserInformationContext } from "../../../utlis/hooks/userInformationContext/userInformationContext";
-import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { WHITE } from "../../../assets/colors/colorsPalette";
 import { LoginModalLogo } from "./LoginModalLogo";
@@ -8,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { BOARDER_RADIUS } from "../../../assets/styles/styles";
 import { getLogo } from "../../../components/common/companyLogo/getLogo";
 import Button from "@mui/material/Button";
+import Rodal from "rodal";
 
 export const LoginModal = (props) => {
   const { logIn } = useUserInformationContext();
@@ -27,20 +27,25 @@ export const LoginModal = (props) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: WHITE,
-    width: 300,
-    height: 200,
+    width: "100%",
+    height: "100%",
     boxShadow: 24,
     p: 4,
+    zIndex: 1800000,
     borderRadius: BOARDER_RADIUS,
   };
 
   return (
-    <Modal
-      open={props.isOpen}
+    <Rodal
+      height={280}
+      width={350}
+      visible={props.isOpen}
       onClose={props.closeModal}
-      closeAfterTransition
-      BackdropProps={{
-        timeout: 500,
+      closeOnEsc={true}
+      customStyles={{
+        zIndex: 1800000,
+        maxHeight: "95%",
+        maxWidth: "95%",
       }}
     >
       <Box sx={style} className="login-container">
@@ -73,6 +78,6 @@ export const LoginModal = (props) => {
           Sign in with google
         </Button>
       </Box>
-    </Modal>
+    </Rodal>
   );
 };

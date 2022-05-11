@@ -3,8 +3,11 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { ContactUsFields } from "./ContactUsFields";
 import { GirlSvg1 } from "../img/GirlSvg";
+import { useIsPhoneContext } from "../../../utlis/hooks/phone/isPhoneContext";
 
 export const ContactUs = () => {
+  const { isIpad, isPhone } = useIsPhoneContext();
+
   return (
     <div className={"contactUsContainer"} id="Contact Us">
       <div className={"contactUsContent"}>
@@ -15,16 +18,18 @@ export const ContactUs = () => {
               justifyContent: "center",
               marginBottom: "12px",
             }}
-            variant="h5"
+            variant={isIpad ? "h6" : "h5"}
           >
             How can we help? <br />
             Send us a message.
           </Typography>
           <ContactUsFields />
         </div>
-        <div className={"loginLogoContainer"}>
-          <GirlSvg1></GirlSvg1>
-        </div>
+        {isPhone || (
+          <div className={"loginLogoContainer"}>
+            <GirlSvg1></GirlSvg1>
+          </div>
+        )}
       </div>
     </div>
   );

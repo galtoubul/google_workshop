@@ -3,18 +3,36 @@ import Typography from "@mui/material/Typography";
 import "./LoginHeader.scss";
 import Button from "@mui/material/Button";
 import { HeaderBackground } from "../img/HeaderBackground";
+import { useIsPhoneContext } from "../../../utlis/hooks/phone/isPhoneContext";
+import { HeaderSvg } from "../img/phone/headerSvg";
 
 export const LoginHeader = (props) => {
+  const { isPhone, isIpad } = useIsPhoneContext();
+
   return (
     <div className="headerLogin" id={"About Us"}>
       <div className={"backgroundHeader"}>
-        <HeaderBackground />
+        {isPhone ? <HeaderSvg /> : <HeaderBackground />}
       </div>
       <div className={"LoginDivContainer"}>
-        <Typography sx={{ marginBottom: "24px", width: "410px" }} variant="h5">
+        <Typography
+          sx={{
+            textAlign: isIpad ? "center" : undefined,
+            marginBottom: "24px",
+            width: isIpad ? "250px" : "410px",
+          }}
+          variant={isIpad ? "h6" : "h5"}
+        >
           Make Tracking Online Orders Easier
         </Typography>
-        <Typography sx={{ marginTop: "24px", width: "410px" }} variant="h6">
+        <Typography
+          sx={{
+            textAlign: isIpad ? "center" : undefined,
+            marginTop: "24px",
+            width: isIpad ? "250px" : "410px",
+          }}
+          variant={isIpad ? "h7" : "h6"}
+        >
           Effortlessly track, organize and know exactly when your international
           orders will arrive, with Trackeet.
         </Typography>

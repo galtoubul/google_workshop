@@ -6,7 +6,7 @@ import * as React from "react";
 const AutocompleteInput = (props) => {
   return (
     <Autocomplete
-      sx={{ width: FIELD_WIDTH }}
+      sx={{ width: props.width ? props.width : FIELD_WIDTH }}
       value={props.value}
       onInputChange={props.onChange}
       onChange={props.onChange}

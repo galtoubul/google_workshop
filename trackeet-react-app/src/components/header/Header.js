@@ -9,11 +9,19 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useLocation } from "react-router-dom";
 import { useUserInformationContext } from "../../utlis/hooks/userInformationContext/userInformationContext";
+import { useIsPhoneContext } from "../../utlis/hooks/phone/isPhoneContext";
+import { MobileButtons } from "./headerMobile/MobileButtons";
+import { useState } from "react";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export const Header = (props) => {
   const location = useLocation();
   const { openLogInModal } = useUserInformationContext();
   const { logIn } = useUserInformationContext();
+  const { isIpad } = useIsPhoneContext();
+
+  const [isMenuOpen, setIsOpenMenu] = useState(false);
 
   const getIsInLogInPage = () => {
     return location.pathname !== "/login";
@@ -61,31 +69,52 @@ export const Header = (props) => {
   const pages = ["About Us", "Extension", "Demo", "Contact Us"];
 
   return (
-    <AppBar
-      sx={{
-        position: "fixed",
-        overflow: "hidden",
-        height: "7vh",
-        backgroundColor: WHITE,
-        minHeight: "65px",
-      }}
-      id={"header"}
-    >
-      <Toolbar
+    <Box>
+      <AppBar
         sx={{
-          height: "100%",
+          position: "fixed",
+          overflow: "hidden",
+          height: "7vh",
           backgroundColor: WHITE,
-          display: "flex",
-          justifyContent: "space-between",
+          minHeight: "65px",
         }}
+        id={"header"}
       >
-        <Box sx={{ display: "flex", alignItems: "center", width: "9%" }}>
-          {HeaderLogo()}
-        </Box>
-        <Box>
-          {getIsInLogInPage() ? getLoggedInButton() : getLoggedOutButtons()}
-        </Box>
-      </Toolbar>
-    </AppBar>
+        <Toolbar
+          sx={{
+            height: "100%",
+            backgroundColor: WHITE,
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", width: "160px" }}>
+            {HeaderLogo()}
+          </Box>
+          <Box>
+            {getIsInLogInPage() ? (
+              getLoggedInButton()
+            ) : isIpad ? (
+              <IconButton
+                onClick={() => {
+                  setIsOpenMenu(true);
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            ) : (
+              getLoggedOutButtons()
+            )}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <MobileButtons
+        open={isMenuOpen && isIpad}
+        scrollToPosition={props.scrollToPosition}
+        close={() => {
+          setIsOpenMenu(false);
+        }}
+      />
+    </Box>
   );
 };
