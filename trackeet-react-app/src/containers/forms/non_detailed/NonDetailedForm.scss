@@ -6,16 +6,14 @@
   height: 400px;
   width: 140px;
   border-radius: $boarderRadius;
-
 }
-.form-container{
-  display: flex !important; ;
+.form-container {
+  display: flex !important;
   flex-direction: column;
-  justify-content: center!important;
+  justify-content: center !important;
   align-items: center;
   width: 300px;
   height: 100%;
-
 }
 .non-detailed-form-header {
   width: 300px;
@@ -25,18 +23,16 @@
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .non-detailed-form-input-fields {
-height: 340px;
+  height: 340px;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
   justify-items: center;
 
   margin-top: 10px;
-
 }
 
 .non-detailed-form-buttons {
@@ -46,5 +42,4 @@ height: 340px;
   align-items: flex-end;
   margin-bottom: 16px;
   justify-content: flex-end;
-
 }
