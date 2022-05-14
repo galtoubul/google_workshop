@@ -8,8 +8,6 @@ from flask.helpers import make_response
 from flask_cors import CORS, cross_origin
 from flaskext.mysql import MySQL
 import requests
-from google.oauth2 import id_token
-from google.auth.transport import requests as google_requests
 sys.path.append(os.path.abspath('../db'))
 CURRPATH, TAIL = os.path.split(os.getcwd())
 while CURRPATH != "/":
@@ -20,7 +18,7 @@ while CURRPATH != "/":
     CURRPATH, TAIL = os.path.split(CURRPATH)
 import backend.db.db_manipulate as db
 sys.path.append(os.path.abspath('../')) 
-from config import web_app_client_id, ERR, SUCCESS, db_host, db_user, db_password, db_database
+from config import ERR, SUCCESS, db_host, db_user, db_password, db_database
 from backend.web_server.tracking_more import getDeliveryStatus
 
 
@@ -66,13 +64,16 @@ def create_err(ret):
     return get_response(data, ret['return_code'])
 
 
-# Validate that the access token from the chrome extension is valid
+# Validate that the access token (which is sent as token id) is valid
 # If it is valid returns the user's details (including user_id)
-def authenticate_chrome_ext(access_token):
-    authorization_header = {'Authorization': f'Bearer {access_token}'}
-    google_apis_url = 'https://www.googleapis.com/oauth2/v3/userinfo'
+def authenticate_user(data_dict):   
+    use_chrome_ext_client_id = True if 'use_chrome_ext_client_id' in data_dict else False
+    print(f'\n\nauthenticate_user\nuse_chrome_ext_client_id = {use_chrome_ext_client_id}', flush=True)
 
     try:
+        access_token=data_dict['token_id']
+        authorization_header = {'Authorization': f'Bearer {access_token}'}
+        google_apis_url = 'https://www.googleapis.com/oauth2/v3/userinfo'
         response = requests.request('GET', google_apis_url, headers=authorization_header)
     except requests.exceptions.RequestException as err:
         return {'status': ERR,
@@ -90,24 +91,6 @@ def authenticate_chrome_ext(access_token):
                 'return_code': 403}
 
     return {'status': SUCCESS, 'user_info': response_dict}
-
-
-def authenticate_user(data_dict):   
-    use_chrome_ext_client_id = True if 'use_chrome_ext_client_id' in data_dict else False
-    print(f'\n\authenticate_user\nuse_chrome_ext_client_id = {use_chrome_ext_client_id}', flush=True)
-
-    try:
-        if use_chrome_ext_client_id:
-            return authenticate_chrome_ext(access_token=data_dict['token_id'])
-        user_info_ret = id_token.verify_oauth2_token(data_dict['token_id'], google_requests.Request(), web_app_client_id)
-
-    except ValueError as err:
-        return {'status': ERR,
-                'error': 'Couldn\'t authenticate user via Google',
-                'error_description': str(err),
-                'return_code': 403}
-    print(f'\n\nauthenticate_user\nuser_info_ret = {user_info_ret}')
-    return {'status': SUCCESS, 'user_info': user_info_ret}
 
 
 def check_necessary_values(data_dict, necessary_values):
