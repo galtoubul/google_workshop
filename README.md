@@ -1,7 +1,7 @@
-# [Trackeet](http://trackeet.co) - **Make Tracking Online Orders Easier**
+# Trackeet - **Make Tracking Online Orders Easier**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/webserver-on-brightgreen.svg" alt="web server" />
+  <img src="https://img.shields.io/badge/autotrack-off-red.svg" alt="web server" />
   <img src="https://img.shields.io/badge/autotrack-off-red.svg" alt="auto track" />
 </p>
 
